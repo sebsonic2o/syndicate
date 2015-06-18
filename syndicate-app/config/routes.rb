@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+  root 'issues#index'
+  resources :issues
+  get '/issues/:id/live' => 'issues#live'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
