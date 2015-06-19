@@ -9,40 +9,56 @@ class Issue < ActiveRecord::Base
 
   def get_participants_count
     @participant_count = self.votes.count
-  end
-
-  def get_vote_count
-    @vote_count = self.votes.count
+    puts "PARTICIPANTS  COUNT " * 5
+    puts @participant_count
   end
 
   def get_yes_votes
-    @yes_votes = self.votes.where(:value == "yes").count
-  end
-
-  def get_yes_percentage
-    @yes_percentage = @yes_votes / @vote_count
+    @yes_votes = self.votes.where({value: "yes"}).count
+    puts "YES VOTES " * 5
+    puts @yes_votes
   end
 
   def get_no_votes
-    @no_votes = self.votes.where(:value == "no").count
+    @no_votes = self.votes.where({value: "no"}).count
+    puts "NO VOTES " * 5
+    puts @no_votes
   end
 
-  def get_no_percentage
-    @no_percentage = @no_votes / @vote_count
+  def get_vote_count
+    @vote_count = @yes_votes + @no_votes
+    puts "VOTE COUNT" * 5
+    puts @vote_count
   end
 
   def get_abstain_count
-    @abstain_count = @participant_count - (@no_votes + @yes_votes)
+    @abstain_count = @participant_count - @vote_count
+    puts "ABSTAIN COUNT" * 5
+    puts @abstain_count
   end
+
+  def get_yes_percentage
+    @yes_percentage = @yes_votes.to_f / @vote_count * 100
+    puts "YES PERCENT " * 5
+    @yes_percentage.round(2)
+  end
+
+
+  def get_no_percentage
+    @no_percentage = @no_votes.to_f / @vote_count * 100
+    puts "NO PERCENT " * 5
+    p @no_percentage.round(2)
+  end
+
 
   def generate_leaderboard
     get_participants_count
-    get_vote_count
     get_yes_votes
-    get_yes_percentage
     get_no_votes
-    get_no_percentage
+    get_vote_count
     get_abstain_count
+    get_yes_percentage
+    get_no_percentage
   end
 
   def hello
