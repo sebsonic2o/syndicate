@@ -1,0 +1,27 @@
+.vote {
+  text-align: center;
+  .vote-count {
+    margin: 8px 0;
+    display: block;
+    color: #777;
+    display: block;
+    font-size: 20px;
+    margin: 0 0 3px 0;
+  }
+  .vote-up {
+    @include btn-clear();
+    background-image: asset-url("sprites.svg");
+    background-position: 0 -170px;
+    width: 40px;
+    height: 30px;
+
+  }
+  .vote-down {
+    @include btn-clear();
+    background-image: asset-url("sprites.svg");
+    background-position: 0 -220px;
+    width: 40px;
+    height: 30px;
+  }
+}
+
