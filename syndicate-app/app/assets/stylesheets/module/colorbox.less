@@ -1,0 +1,161 @@
+
+// Overrides default colorbox styles NB. Set colorbox style to none in module config
+
+
+/**
+ * Colorbox Core Style:
+ * The following CSS is consistent between example themes and should not be altered.
+ */
+#colorbox, #cboxOverlay, #cboxWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+
+#cboxOverlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+#cboxMiddleLeft, #cboxBottomLeft {
+  clear: left;
+}
+#cboxContent {
+  position: relative;
+}
+#cboxLoadedContent {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+#cboxTitle {
+  margin: 0;
+}
+#cboxLoadingOverlay, #cboxLoadingGraphic {
+
+}
+/**
+ * These elements are buttons, and may need to have additional
+ * styles reset to avoid unwanted base styles.
+ */
+#cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow {
+  outline: 0;
+  cursor: pointer;
+}
+
+/**
+ * Colorbox module default style:
+ * The styles are ordered & tabbed in a way that represents
+ * the nesting of the generated HTML.
+ */
+#cboxOverlay {
+  background: #333;
+}
+#colorbox {
+  outline: 0;
+  //.teaserStyle();
+  button{
+  	border: 0;
+  }
+}
+  #cboxWrapper {
+    background: #fff;
+    
+  }
+    #cboxContent {
+      background: #fff;
+     // overflow: hidden;
+    }
+      #cboxError {
+        padding: 50px;
+        border: 1px solid #ccc;
+      }
+      #cboxLoadedContent {
+        margin-bottom: 28px;
+      }
+      #cboxTitle {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.7);
+        bottom: 28px;
+        left: 0;
+        width: 100%;
+		    color: #fff;
+		    text-indent: 12px;
+		    margin: 0;
+		    height:25px;
+		    padding:8px 0 0 0;
+      }
+
+      #cboxCurrent {
+        position: absolute;
+        bottom: 4px;
+        left: 60px;
+        color: #333;
+        font-size: 12px;
+      }
+      .cboxSlideshow_on #cboxSlideshow {
+        position: absolute;
+        bottom: 0px;
+        right: 30px;
+        background: url(../images/controls.png) no-repeat -75px -50px;
+        width: 25px;
+        height: 25px;
+        text-indent: -9999px;
+      }
+      .cboxSlideshow_on #cboxSlideshow:hover {
+        background-position: -101px -50px;
+      }
+      .cboxSlideshow_off #cboxSlideshow {
+        position: absolute;
+        bottom: 0px;
+        right: 30px;
+        background: url(../images/controls.png) no-repeat -25px -50px;
+        width: 25px;
+        height: 25px;
+        text-indent: -9999px;
+      }
+      .cboxSlideshow_off #cboxSlideshow:hover {
+        background-position: -49px -50px;
+      }
+      #cboxPrevious {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background: url(../images/controls.png) no-repeat -75px 0px;
+        width: 25px;
+        height: 25px;
+        text-indent: -9999px;
+      }
+      #cboxPrevious:hover {
+        background-position: -75px -25px;
+      }
+      #cboxNext {
+        position: absolute;
+        bottom: 0;
+        left: 27px;
+        background: url(../images/controls.png) no-repeat -50px 0px;
+        width: 25px;
+        height: 25px;
+        text-indent: -9999px;
+      }
+      #cboxNext:hover {
+        background-position: -50px -25px;
+      }
+      #cboxLoadingOverlay {
+        background: #fff;
+      }
+      #cboxLoadingGraphic {
+        background: url(../images/loading_animation.gif) no-repeat center center;
+      }
+      #cboxClose {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background: url(../images/controls.png) no-repeat -25px 0px;
+        width: 25px;
+        height: 25px;
+        text-indent: -9999px;
+      }
+      #cboxClose:hover {
+        background-position: -25px -25px;
+      }

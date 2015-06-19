@@ -1,0 +1,155 @@
+/* ==========================================================================
+   Desktop XL Grid Variables
+   ========================================================================== */
+@desktopxl-column-width: 90px;
+@desktopxl-columns: 12;
+@desktopxl-gutter: 14px;
+@desktopxl-column-fullwidth: (@columns * @desktopxl-column-width) - (@desktopxl-gutter) * 1px;
+
+/* ==========================================================================
+   Grid Variables
+   ========================================================================== */
+@column-width: 76px;
+@columns: 12;
+@gutter: 14px;
+@column-fullwidth: (@columns * @column-width) + (@columns * @gutter) - (@gutter)  * 1px;
+@column-size: (@column-width + @gutter);
+
+/* ==========================================================================
+   Ipad Grid Variables
+   ========================================================================== */
+@ipad-column-width: 50px;
+@ipad-columns: 12;
+@ipad-gutter: 12px;
+@ipad-column-fullwidth: (@columns * @ipad-column-width) * 1px;
+
+/* ==========================================================================
+   Mobile Grid Variables
+   ========================================================================== */
+@mobile-gutter: 14px;
+
+.clearfix {
+    &:after {
+      content:"";
+      display:table;
+      clear:both;
+    }
+}
+
+.reset {
+    margin: 0; 
+    padding: 0; 
+    width: auto;
+    height: auto;
+    display: block;
+    float: none;
+    width: auto;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+  
+.container() {
+  float: none;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+  @media @desktop-xl {
+    width: (@columns * @desktopxl-column-width) + (@columns * @desktopxl-gutter) - (@desktopxl-gutter)  * 1px;
+  }
+  @media @desktop {
+    width: (@columns * @column-width) + (@columns * @gutter) - @gutter * 1px;
+  }
+  @media @ipad {
+    width: (@columns * @ipad-column-width) + (@columns * @ipad-gutter) - @ipad-gutter * 1px;
+  }
+}
+
+.grid-container() {
+  position: relative;
+    @media @desktop-xl {
+      margin-left: @desktopxl-gutter * -1px;
+      float: none;
+      display: block;
+      clear: both;
+      width: auto;
+      .clearfix();
+    }
+    @media @desktop {
+      margin-left: @gutter * -1px;
+      float: none;
+      display: block;
+      clear: both;
+      width: auto;
+      .clearfix();
+    }
+    @media @ipad {
+      margin-left: @ipad-gutter * -1px;
+      float: none;
+      display: block;
+      clear: both;
+      width: auto;
+      .clearfix();
+    }
+     @media @mobile {
+      .reset();
+  }
+}
+
+
+.grid(@column;@column-padding:0;) {
+    box-sizing: border-box;
+    @media @desktop-xl {
+      width: (@column * @desktopxl-column-width) + (@column * @desktopxl-gutter) - (@column-padding) - (@desktopxl-gutter)  * 1px;
+      display: inline-block;
+      float: left;
+      margin-left: @desktopxl-gutter * 1px;
+      position: relative;
+    }
+    @media @desktop {
+      width: (@column * @column-width) + (@column * @gutter) - (@gutter)  * 1px;
+      display: inline-block;
+      float: left;
+      margin-left: @gutter * 1px;
+      position: relative;
+    }
+    @media @ipad {
+      width: (@column * @ipad-column-width) + (@column * @ipad-gutter) - (@ipad-gutter) * 1px;
+      display: inline-block;
+      float: left;
+      margin-left: @ipad-gutter * 1px;
+      position: relative;
+    }
+    @media @mobile {
+      width: auto;
+      display: block;
+      float: none;
+      position: relative;
+    }  
+}
+
+
+.grid() {
+    @media @desktop-xl {
+      margin-left: @desktopxl-gutter * 1px;
+      position: relative;
+    }
+    @media @desktop {
+      margin-left: @gutter * 1px;
+      position: relative;
+    }
+    @media @ipad {
+      margin-left: @ipad-gutter * 1px;
+      position: relative;
+    }
+    @media @mobile {
+      width: auto;
+      display: block;
+      float: none;
+      position: relative;
+      height: auto;
+      margin: 0 auto;
+    }  
+}
+

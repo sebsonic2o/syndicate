@@ -1,0 +1,140 @@
+/* 
+   Shopping Cart Block
+   ========================================================================== */
+#block-views-cart-badge-block {
+	.grid(2);
+	margin: 7px 0 7px 0;
+	&.block {
+		float: right;
+		@media @mobile {
+			float: left;
+			.clearfix();
+			padding: 10px 20px 10px 20px;
+		}			
+	}
+}
+
+
+/* Checkout Process
+----------------------------------------------------------------------------------------------------*/
+// url: cart 
+body.page-cart {
+}
+#uc-cart-view-form table {
+	.table();
+	.table-bordered();
+}
+// url: cart/checkout
+.body.page-cart-checkout {
+	
+}
+#uc-cart-checkout-form table {
+	.table();
+	.table-bordered();
+}
+// url: cart/checkout/review
+body.page-cart-checkout-review {}
+.review-instructions { }
+.order-review-table {
+	.table();
+	.table-bordered();
+}
+// url: cart/checkout/complete
+body.page-cart-checkout-complete {
+}
+
+input.node-add-to-cart { 
+	
+}
+
+/* Shopping Cart Block
+----------------------------------------------------------------------------------------------------*/
+#block-va-cart-utilities-cart-info {
+	/* 
+	background: @black url('../images/textures/subtlepatterns/classy_fabric.png') repeat; 
+	.border-radius-multiple(0,4px,4px,0);		
+	*/
+	background: #C42E00 url('../images/textures/subtlepatterns/white_carbon_red.png') repeat;
+	color: @white;
+	vertical-align: middle;
+	text-align: center;
+	float: right;
+	margin-top: 40px;
+	margin-right: -20px;
+	.border-radius-multiple(4px,0,0,4px);
+}
+#cart_info { 
+	//.grid(2);
+	float: right;
+	padding: 5px 10px;
+	text-align: center;	
+	.quantity 		{ display: inline; font-weight: bold; padding: 0 0 0 18px; } 
+	.price			{ display: inline; padding: 0; margin-left: 5px; }
+	.checkout		{ display: inline; padding: 0; margin-left: 5px; }
+	a.full 			{ display: inline; padding: 0; }
+	a.empty 		{ display: inline; padding: 0; }
+}
+#cart_info.full 	{ background: url('../images/cart-full.png') no-repeat 25px 6px; }
+#cart_info.empty 	{ background: url('../images/cart-empty.png')no-repeat 25px 6px; }
+
+#cart_info.full .quantity 	{ background: url("../images/cart-green.png") no-repeat; }
+#cart_info.empty .quantity 	{ background: url("../images/cart-black.png") no-repeat; }
+
+/* RESET Styles for uc_product module. COPIED FROM UC_PRODUCT.css
+----------------------------------------------------------------------------------------------------*/
+
+.product-image {
+  clear: none;
+  float: right;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.display-price {
+  clear: none;
+  float: none;
+  font-size: inherit;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.model {
+  display: inline;
+  font-weight: bold;
+  margin-right: 2em;
+}
+
+.uc-product-features td {
+  vertical-align: top;
+}
+
+.add-feature div {
+  padding-right: 1em;
+}
+
+.add-feature div,
+.add-feature label {
+  display: inline;
+}
+
+/**
+ * Styles for uc_attribute.
+ */
+.combinations .form-item {
+  margin: 0;
+  padding: 0;
+}
+
+/**
+ * Styles for uc_roles.
+ */
+.expiration {
+  display: inline;
+}
+
+.expiration .form-item {
+  display: inline;
+}

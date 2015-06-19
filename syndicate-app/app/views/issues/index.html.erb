@@ -1,18 +1,10 @@
+<% @issues.each do |issue| %>
+  <div id="issue-<%= issue.id %>"class="issue">
 
-      <% @issues.each do |issue| %>
-      <div id="issue-<%= issue.id %>"class="post issue cf">
-
-        <div class="issue-body">
-          <h4 class="issue-heading"><%= link_to issue.title, issue %></h4>
-          <p><%= issue.description %></p>
-
-          <div class="btn-group btn-group-sm">
-            <%= link_to "Show", issue_path(issue), :class => "btn  btn-default", :id => "my-id" %>
-            <%= link_to "Edit", edit_issue_path(issue), :class => "btn btn-default", :id => "my-id" %>
-            <%= link_to'Delete', issue_path(issue), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-default", :id => "my-id" %>
-          </div>
-
-        </div>
-      </div>
-      <% end %>
+    <div class="issue-body">
+      <h2 class="issue-heading"><%= link_to issue.title, issue %></h2>
+      <p><%= issue.description %></p>
+    </div>
+</div>
+<% end %>
 

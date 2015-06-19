@@ -1,0 +1,46 @@
+.top {
+  height: 8px;
+  background: @primarycolor;
+  margin-bottom: 20px;
+
+}
+
+.header {
+  padding: 8px 0 8px 0;
+  margin-bottom: 20px;
+  
+}
+
+.logo {
+  // background-image: asset-url("logo.png");
+  .grid(3);
+  display: block;
+  float: left;
+  font-size: 20px;
+  line-height: 20px;
+  text-transform: uppercase;
+  font-family: @customfont;
+  color: #333;
+  font-weight: 600;
+}
+
+// Session Dropdown
+.session-dropdown {
+  .float-right();
+
+}
+
+// User Profile
+.user-profile {
+  .grid(4);
+  .float-right();
+  line-height: 15px;
+  font-size: 12px;
+  form {
+    display: inline-block;
+  }
+
+  .user-profile-username {
+    font-weight: 700;
+  }
+}

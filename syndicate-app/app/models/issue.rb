@@ -16,7 +16,7 @@ class Issue < ActiveRecord::Base
   end
 
   def get_yes_votes
-    @yes_votes = self.votes.where(params[:value] == "yes")
+    @yes_votes = self.votes.where(:value == "yes").count
   end
 
   def get_yes_percentage
@@ -24,7 +24,7 @@ class Issue < ActiveRecord::Base
   end
 
   def get_no_votes
-    @no_votes = self.votes.where(params[:value] == "no")
+    @no_votes = self.votes.where(:value == "no").count
   end
 
   def get_no_percentage
@@ -32,18 +32,17 @@ class Issue < ActiveRecord::Base
   end
 
   def get_abstain_count
-    @abstain_count = @participants - (@no_votes + @yes_votes)
+    @abstain_count = @participant_count - (@no_votes + @yes_votes)
   end
 
   def generate_leaderboard
-    # get_participants
-    # get_vote_count
-    # get_yes_votes
-    # get_yes_percentage
-    # get_no_votes
-    # get_no_percentage
-    # get_abstain_count
-    hello
+    get_participants_count
+    get_vote_count
+    get_yes_votes
+    get_yes_percentage
+    get_no_votes
+    get_no_percentage
+    get_abstain_count
   end
 
   def hello

@@ -1,0 +1,174 @@
+/* ==========================================================================
+   Product Slideshow
+   ========================================================================== */
+div.mc-image {
+	/*NOTE: Mozilla flickers when fading and using 'all', so we have to be specific with what property we want to transition:
+	 If you are using fading transitions, use 'opacity: */
+	-webkit-transition: opacity 1s ease-in-out; 
+	-moz-transition: opacity 1s ease-in-out; 
+	-o-transition: opacity 1s ease-in-out; 
+	transition: opacity 1s ease-in-out;
+	/*If you are using horizontal slide transitions, use the following CSS:
+	-webkit-transition: left 1s ease-in-out; 
+	-moz-transition: left 1s ease-in-out; 
+	-o-transition: left 1s ease-in-out; 
+	transition: left 1s ease-in-out;*/
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-position:center center;
+	background-repeat:no-repeat;
+	height:100%;
+	overflow:hidden;
+	width:100%;
+}
+
+.views_slideshow_cycle_main {
+	//height: 600px !important;
+	@media @desktop-xl {
+		
+	}
+	@media @desktop {
+		
+	}
+	@media @ipad {
+		
+	}
+	@media @mobile {
+	}
+}
+
+.views_slideshow_cycle_main {
+  width: 100%;
+  float: left;
+}
+.views_slideshow_cycle_main .views-slideshow-cycle-main-frame {
+  width: 100% !important;
+  height: auto;
+}
+.views_slideshow_cycle_main .views-slideshow-cycle-main-frame-row {
+  width: 100% !important;
+  height: auto;
+}
+.views_slideshow_cycle_main .field-content {
+  max-width: 100%;
+  width: 100%;
+}
+.views_slideshow_cycle_main .field-content img {
+  max-width: 100%;
+  max-height: 600px ;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+
+.views-slideshow-controls-text {
+	.views-slideshow-controls-text-previous {
+		//.absolute-left();
+		position: absolute;
+		left: 20px;
+		bottom: 40px;
+		padding: 0 20px;
+		z-index: 30;
+		width: 40px;
+		height: 80px;
+		background: url('../images/slider-arrow-left-white.png') no-repeat center;
+		background-size: contain;
+		background-repeat: no-repeat;
+		.opacity(70);
+		cursor: pointer;
+		&:hover {
+			.transition(opacity 0.125 0.1);
+			.opacity(100);
+		}
+		a {
+			display: none;
+		}
+		@media @desktop {
+			left: 0;	
+		}
+		@media @ipad {
+			z-index: 30;
+			width: 22px;
+			height: 40px;
+		}
+		@media @mobile {
+			background: transparent;
+		}
+	}
+	.views-slideshow-controls-text-next {
+		position: absolute;
+		right: 20px;
+		bottom: 40px;
+		padding: 0 20px;
+		z-index: 30;
+		width: 40px;
+		height: 80px;
+		background: url('../images/slider-arrow-right-white.png') no-repeat center;
+		background-size: contain;
+		background-repeat: no-repeat;
+		.opacity(70);
+		cursor: pointer;
+		&:hover {
+			.transition(opacity 0.125 0.1);
+			.opacity(100);
+		}
+		a {
+			display: none;
+		}
+		@media @desktop {
+			right: 0;	
+		}
+		@media @ipad {
+			z-index: 30;
+			width: 24px;
+			height: 43px;
+			padding: 0 10px;	
+		}
+		@media @mobile {
+			//background: transparent;
+		}
+	}
+	.views-slideshow-controls-text-pause {
+		display: none;
+		position: absolute;
+		top: 200px;
+		right: 500px;
+		z-index: 20;
+
+	}
+}
+.views-slideshow-pager-fields {
+	position: absolute;
+	bottom: 40px;
+	left: 40px;
+	z-index: 20;
+	.views-slideshow-pager-field-item {
+		float: left;
+		height: 16px;
+		width: 16px;
+		margin-right: 4px;
+		background: #FFF;
+		color: #FFF;
+		font-size: 1px;
+		.opacity(70);
+		.border-radius(8px);
+		cursor: pointer;
+		&:hover {
+			.transition(opacity 0.125 0.1);
+			.opacity(100);
+		}
+		&.active {
+			.opacity(100);
+		}
+		.views-content-fid {
+			display: none;
+		}
+	}
+	@media @mobile {
+		bottom: 20px;
+		left: 20px;
+	}
+}

@@ -1,0 +1,110 @@
+/* ==========================================================================
+   Styles
+   ========================================================================== */
+// Core
+@import "core/reset.less";
+@import "core/mobile.less";
+@import "core/grid.less";
+@import "core/grid-fluid.less";
+@import "core/grid-utilities.less";
+@import "core/grid-classes.less";
+@import "core/layout.less";
+
+
+// Project
+@import "header.less";
+@import "issue.less";
+@import "participant.less";
+@import "vote.less";
+
+// Modules
+@import "module/pager.less";
+@import "module/views.less";
+@import "module/alerts.less";
+@import "module/author.less";
+@import "module/blog.less";
+@import "module/breadcrumbs.less";
+@import "module/buttons.less";
+@import "module/cart.less";
+@import "module/comments.less";
+@import "module/commerce.less";
+@import "module/contact.less";
+@import "module/forms.less";
+@import "module/headline.less";
+@import "module/layout.less";
+@import "module/logo.less";
+@import "module/masonary.less";
+@import "module/menu-menublock.less";
+@import "module/menu-responsive-meanmenu.less";
+@import "module/menu-responsive-simple.less";
+@import "module/mixins.less";
+@import "module/owlcarousel.less";
+@import "module/pager.less";
+@import "module/print.less";
+@import "module/view-modes.less";
+@import "module/search.less";
+@import "module/social.less";
+@import "module/tables.less";
+@import "module/theme-style.less";
+@import "module/type.less";
+@import "module/verticaltabs.less";
+@import "module/views-homepage-slider.less";
+@import "module/views-hero-slideshow.less";
+@import "module/scroll-to-top.less";
+@import "module/colorbox.less";
+@import "module/theme-style.less";
+
+
+
+// ==========================================================================
+//   Styles
+//  ==========================================================================
+
+@import url(http://fonts.googleapis.com/css?family=Lora:400,700|Open+Sans:400,600,300,700,800|Roboto+Slab:400,300,700|Merriweather:400,300,700|Slabo+27px);
+
+
+//   Body
+// ==========================================================================
+@baselineheight:			1.5;
+@basefontsize:				14px;
+@basefontcolor:				@textcolor;
+@customfontcolor:			@secondarycolor;
+@basefont:					"open sans", "helvetica", "arial";
+@customfont:				"roboto slab", "helvetica", "arial";
+@menufont:					@customfont;
+
+body {
+	margin: 0;
+	padding: 0;
+	color: @textcolor;
+	font-family: @basefont;
+	font-size: @basefontsize;
+	line-height: @baselineheight;
+	-webkit-font-smoothing: antialiased;
+	//background: #333;
+}
+
+//   Color
+// ==========================================================================
+@primarycolor:	 			#f20943; // blue
+@secondarycolor:			#2d3a41; // Dark blue
+
+/* Link Colors */
+@linkcolor:             	darken(@primarycolor, 8%);
+@linkcolorhover:        	darken(@primarycolor, 16%);
+
+/* Colors */
+@white:						#FFFFFF;
+@black:                 	#000000;
+@gray:                  	#c0c4c6;
+@red:						#a52020;
+@green:						#92ad27;
+
+/* Text Color */
+@textcolor:					#212121;
+@textcolorsecondary:		#727272;
+
+/* Global Links */
+a 						{ text-decoration: none; color: @primarycolor; }
+a:hover 				{ text-decoration: underline; color: @linkcolorhover; }
+

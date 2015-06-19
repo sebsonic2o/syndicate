@@ -4,19 +4,11 @@
   width: 10em;
   text-align: center;
 }
-
 .participant-image {
   width: 80%;
   border-radius: 100%;
   float: left;
-
 }
-// .participant-image:hover {
-//   border-bottom: 8px solid #333;
-//   display: block;
-
-// }
-
 .participant-username {
   margin: 0px;
 }

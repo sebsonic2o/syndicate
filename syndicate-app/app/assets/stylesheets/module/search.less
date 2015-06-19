@@ -1,0 +1,104 @@
+
+.view-mode-search_result.grid-12{
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+   // .hr();
+    .field-name-node-link{
+        margin: 10px 0; 
+    }
+}
+
+.page-search{
+    .ds-search-highlight {
+        background-color: @primarycolor;
+        background-color: #eee;
+    }
+    .ds-search-extra{
+        .well();
+    }
+    .group-result{
+        .fieldset-legend{
+            .h2();
+            .hr();
+            margin-bottom: 40px;
+        }
+    }
+}
+
+// search form in header
+#block-search-form{
+    .grid(1);
+    margin-top: 54px;
+    @media @ipad {
+           //margin-top: 44px;
+        }
+    @media @mobile {
+           clear: both;  
+           background: #000;
+    }
+    .block-title{
+        background: url(../images/search.png) no-repeat;
+        height: 33px;
+        //font-size: 0;
+        text-indent: -999px;
+        overflow: hidden;
+        background-size: contain;
+        @media @ipad {
+           height: 26px;
+        }
+        @media @mobile {
+          display: none;
+        }
+    }
+    form{
+        margin: 0;
+        position: absolute;
+        z-index: 99;
+        width: 190px;
+        top: 87px;
+        right: 0;
+        display: none;
+        background: url(../images/transparent-black.png);
+        @media @ipad {
+          top: 67px;
+        }
+        @media @mobile {
+          display: block;
+          position: relative;
+          top: 0;
+          width: 100%;
+        }
+    }
+    label{
+        float: left;
+    }
+    input{
+        //display: none;
+        float: left;
+        height: 56px;
+        color: #ccc;
+        font-size: 15px;
+        border: 0;
+        margin: 0;
+        outline: 0;
+        background: transparent;
+        &#edit-search-block-form--2{
+            width: 140px;
+            @media @mobile {
+                width: 80%;
+                font-size: 20px;
+                color: #fff;
+            }
+        }
+        &.form-submit{
+            overflow: hidden;
+            text-indent: -999px;
+            background: url(../images/arrow.png) no-repeat center;
+            width: 50px;
+            @media @mobile {
+                width: 20%;
+            }
+        }
+    }
+
+}

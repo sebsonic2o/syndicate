@@ -1,0 +1,166 @@
+// Button
+// --------------------------------------------------
+.btn {
+  background: #CCC;
+  display: inline-block;
+  padding: 4px 10px 4px;
+  margin-bottom: 0;
+  font-size: 12px;
+  line-height: normal;
+  color: #333;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  border: none;
+  text-transform: uppercase;
+  font-weight: 400;
+  .transition(background,.15s,linear);
+  &:hover {
+    color: #333;
+    text-decoration: none;
+    background-color: darken(#CCC, 10%);
+    .transition(background .15s linear);
+  }
+}
+
+// Button Sizes
+// --------------------------------------------------
+
+// Small
+.btn-small {
+  padding: 5px 10px;
+  font-size: 11px;
+}
+
+// Normal
+.btn-normal {
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 700;
+}
+// meduium
+.btn-medium {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 700;
+}
+// Large
+.btn-large {
+  padding: 16px 28px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+// Full-Width
+.btn-full {
+  padding: 13px 24px;
+  font-size: 14px;
+  display: block;
+}
+.btn-minimal {
+  padding: 13px 24px;
+  font-size: 14px;
+  text-transform: uppercase;
+  background: none;
+  color: @secondarycolor;
+  font-weight: 700;
+}
+.btn-clear {
+  background: none;
+  border: none;
+  -webkit-appearance: none;
+  margin: 0;
+  padding: 0;
+  height: auto;
+  text-indent: 0;
+  font-size: 12px;
+  color: @primarycolor;
+  vertical-align: baseline;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// Button Colours
+// --------------------------------------------------
+.btn-primary {
+  background-color: @primarycolor;
+  color: #FFF;
+  &:hover {
+    background-color: darken(@primarycolor, 10%);
+    color: #FFF;
+  }
+}
+
+.btn-secondary {
+  background-color: @secondarycolor;
+  color: @primarycolor;
+  &:hover {
+    background-color: darken(@secondarycolor, 10%);
+    color: @primarycolor;
+  }
+}
+
+.btn-red {
+  background-color: @red;
+  color: #FFF;
+  &:hover {
+    background-color: lighten(@red, 10%);
+    color: #FFF;
+  }
+}
+
+.btn-green {
+  background-color: @green;
+  color: #FFF;
+  &:hover {
+    background-color: lighten(@green, 10%);
+    color: #FFF;
+  }
+}
+
+.btn-black {
+  background-color: #000;
+  color: #FFF;
+  &:hover {
+    background-color: lighten(#000, 10%);
+    color: #FFF;
+  }
+}
+
+// Form Buttons
+// --------------------------------------------------
+input.form-submit {
+      .btn();
+      .btn-secondary();
+     // .btn-medium();
+      margin-right: 10px;
+      text-indent: 0;
+}
+input.form-submit.disabled {
+  cursor: default;
+  color: #666;
+  background-color: #EAEAEA;
+}
+
+input[value="Remove"]         { .btn-small(); } 
+input[value="Update cart"]    {  margin: 0 10px 0 0; }
+input[value="Checkout"]       {  }
+input[value="Buy Cushions"]   {  }
+input[value="Cancel"]         { margin: 0 10px 0 0; }
+input[value="Review order"]   {  }
+input[value="Back"]           {  margin: 0 10px 0 0; }
+input[value="Submit order"]   {  }
+
+
+// Read More (Smart Trim Module)
+// --------------------------------------------------
+.field-name-node-link {
+  a {
+      .btn(); 
+      .btn-normal(); 
+      .btn-secondary();
+    }
+}
+

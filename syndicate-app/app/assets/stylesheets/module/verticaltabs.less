@@ -1,0 +1,97 @@
+/* 
+   Vertical tabs used on product page ie "overview, accommodation, meals"
+   ========================================================================== */	
+div.vertical-tabs {
+	border: none;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	// Pane
+	.vertical-tabs-pane {
+		margin: 0 !important;
+		padding: 0;
+		border: 0;
+	}
+	// List
+	.vertical-tabs-list {
+		.grid-width(3);
+		.grid-ipad-width(4);
+		position: absolute;
+		top: 370px;
+		margin: 0;
+		padding: 0;
+		border: none;
+		z-index: 100;
+		@media @desktop-xl {
+    		right: ((3 * @column-width) + (3 * @gutter)) * -1px;
+  		}
+  		@media @desktop {
+    		right: ((3 * @column-width) + (3 * @gutter)) * -1px;
+  		}
+		@media @ipad {
+			top: 306px;
+			right: ((4 * @ipad-column-width) + (4 * @ipad-gutter)) * -1px;
+		}
+		@media @mobile {
+			position: relative;
+			top: 0;
+			right: 0;
+			width: 100%;
+			.clearfix();
+			margin-bottom: @gutter;
+		}
+		li {
+			list-style: none;
+			list-style-image: none;
+			border: 1px solid #FFF;
+			background-image: url('../images/arrow-left-white.png');
+			background-position: 10px 10px;
+			background-repeat: no-repeat;
+			padding-left: 20px;
+			&:focus {
+				outline: none;
+			}
+			a, strong {
+				&:hover {
+				 	outline: none;
+				}
+			}
+		}
+		li.selected {
+			color: @primarycolor;
+			background-image: url('../images/arrow-left-kaki.png');
+			background-position: 10px 10px;
+			background-repeat: no-repeat;
+			background-color: #FFF;
+			padding-left: 20px;
+			a, strong {
+				color: @primarycolor;
+			}
+		}
+	}
+	div.vertical-tabs-panes {
+		@media @mobile {
+		}
+	}
+		
+	// Tab Content
+	.vertical-tabs-panes {
+		.field-label {
+			.h2();
+		}
+		.field-type-text-long {
+			/* 
+			p:nth-child(1) {
+			    width: 46%;
+			    margin-right: 4%;
+			    display: inline-block;
+			}
+			p:nth-child(2) {
+				width: 49%;
+			    display: inline-block;
+			    vertical-align: top;
+			}
+			*/
+		}
+	}
+}

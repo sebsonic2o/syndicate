@@ -1,0 +1,89 @@
+
+// Base alert styles
+div.messages {
+  padding: 14px 10px 14px 56px;
+  margin: 5px 10px;
+  background-color: #c09853;
+  border: 1px solid darken(spin(#c09853, -10), 3%);
+  color: #c09853;
+  background-position: 10px center;
+  background-repeat: no-repeat;
+  border: 2px solid;
+  clear: both;
+  // .border-radius(4px);
+  ul {
+    margin: 0;
+  }
+  a {
+    color: #FFF;
+    text-decoration: underline;
+  }
+  li{
+    color: #FFF;
+  }
+}
+
+
+// Alert styles
+div.alert-success {
+  background-color: @green;
+  border-color: #fff;
+  color: #FFF;
+  background-image: url(../images/messages/success.png);
+}
+div.error {
+  background-color: @red;
+  border-color: #fff;
+  color: #FFF;
+  background-image: url(../images/messages/error.png);
+}
+div.status {
+  background-color: @green;
+  border-color: #fff;
+  color: #FFF;
+  background-image: url(../images/messages/success.png);
+}
+div.warning {
+  background-color: @red;
+  border-color: #fff;
+  color: #FFF;
+  background-image: url(../images/messages/warning.png);
+}
+
+
+
+.alert-heading {
+  color: inherit;
+}
+
+// Adjust close link position
+.alert .close {
+  position: relative;
+  top: -2px;
+  right: -21px;
+  line-height: 18px;
+}
+.placeholder {
+
+}
+
+// Block alerts
+// ------------------------
+.alert-block {
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+.alert-block > p,
+.alert-block > ul {
+  margin-bottom: 0;
+}
+.alert-block p + p {
+  margin-top: 5px;
+}
+
+
+.messages {
+  img {
+    width: auto;
+  }
+}

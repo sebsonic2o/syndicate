@@ -1,0 +1,56 @@
+/*
+Back to top button 
+*/
+#back-top {
+	position: fixed;
+	bottom: 10px;
+	right: 0;
+	margin-left: 0;
+	z-index:499;
+}
+
+#back-top a,  #back-top-prev a{
+	width: 50px;
+	display: block;
+	text-align: center;
+	font: 11px/100% @customfont;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: #bbb;
+	/* background color transition */
+	-webkit-transition: 1s;
+	-moz-transition: 1s;
+	transition: 1s;
+	
+}
+#back-top a:hover, #back-top-prev a:hover {
+	color: #333;
+}
+/* arrow icon (span tag) */
+#back-top span#button , #back-top-prev span#button-prev{
+	width: 50px;
+	height: 50px;
+	display: block;
+	margin-bottom: 7px;
+	background-color: @primarycolor; 
+	background-position: center center;
+	background-repeat: no-repeat;
+	
+	//background-image: url('up-arrow.png') ;
+	opacity:0.7;
+
+	/* rounded corners */
+	border-radius: 0;
+	/* background color transition */
+	-webkit-transition: 1s;
+	-moz-transition: 1s;
+	transition: 1s;
+}
+#back-top a:hover span#button, #back-top-prev a:hover span#button-prev {
+	opacity:1;
+	background-color: darken(@primarycolor,10%);
+}
+#edit-scroll-to-top-preview{
+float:right;
+width:100%;
+}

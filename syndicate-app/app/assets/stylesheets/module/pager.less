@@ -1,0 +1,31 @@
+// Pager pagination
+// --------------------------------------------------
+.item-list {
+	.pager {
+	  list-style: none;
+	  text-align: center;
+	  .clearfix();
+	}
+	.pager li {
+	  display: inline;
+	  border-bottom: none;
+	}
+	.pager a,
+	.pager span {
+	  display: inline-block;
+	}
+	.pager a:hover {
+	}
+	.pager .next a,
+	.pager .next span {
+	  float: right;
+	}
+	.pager .previous a {
+	  float: left;
+	}
+	.pager .disabled a,
+	.pager .disabled a:hover,
+	.pager .disabled span {
+	  cursor: default;
+	}
+}

@@ -1,0 +1,93 @@
+
+.grid-width(@column) {
+    @media @desktop-xl {
+      width: (@column * @desktopxl-column-width) + (@column * @desktopxl-gutter) - (@desktopxl-gutter)  * 1px;
+    }
+    @media @desktop {
+      width: (@column * @column-width) + (@column * @gutter) - (@gutter)  * 1px;
+    }
+    @media @ipad {
+      width: (@column * @ipad-column-width) + (@column * @ipad-gutter) - (@ipad-gutter) * 1px;
+    }
+}
+
+
+.grid-ipad(@column;@column-padding:0;) {
+    box-sizing: border-box;
+    @media @ipad {
+      width: (@column * @ipad-column-width) + (@column * @ipad-gutter) - (@ipad-gutter) * 1px;
+      display: inline-block;
+      float: left;
+      margin-left: @ipad-gutter * 1px;
+      position: relative;
+    }
+}
+
+.grid-ipad-width(@column) {
+    @media @ipad {
+      width: (@column * @ipad-column-width) + (@column * @ipad-gutter) - (@ipad-gutter) * 1px;
+    }
+}
+
+.padding() {
+    @media @desktop-xl {
+      padding: round((@desktopxl-gutter * 1)) * 1px;  
+    }
+    @media @desktop {
+      padding: @gutter * 1px;
+    }
+    @media @ipad {
+     padding: @ipad-gutter * 1px;
+    }
+    @media @mobile {
+      padding: @mobile-gutter * 1px;
+    }  
+}
+
+.node {
+    @media @desktop-xl {
+      //margin-bottom: @desktopxl-gutter * 1px;
+    }
+    @media @desktop {
+      //margin-bottom: @gutter * 1px;
+    }
+    @media @ipad {
+      //margin-bottom: @ipad-gutter * 1px;
+    }
+    @media @mobile {
+      //margin: 0 auto;
+      //margin-bottom: @mobile-gutter;
+    }  
+}
+
+
+.float-left {
+   @media @desktop-xl {
+      float: left !important;
+    }
+    @media @desktop {
+      float: left !important;
+    }
+    @media @ipad {
+      float: left !important;
+    }
+    @media @mobile {
+      float: left;
+    }  
+}
+
+
+.float-right {
+   @media @desktop-xl {
+      float: right !important;
+    }
+    @media @desktop {
+      float: right !important;
+    }
+    @media @ipad {
+      float: right !important;
+    }
+    @media @mobile {
+      float: right;
+    }  
+}
