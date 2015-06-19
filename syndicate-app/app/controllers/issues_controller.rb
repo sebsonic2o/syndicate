@@ -29,26 +29,27 @@ class IssuesController < ApplicationController
   end
 
   def delegate
-    @delegate = User.find(params[:id])
-    @delegate_vote = @delegate.votes.find_by(issue_id: params[:issue_id])
+    @representative = User.find(params[:id])
+    @representative_vote = @representative.votes.find_by(issue_id: params[:issue_id])
 
-    @current_vote = current_user.votes.find_by(issue_id: params[:issue_id])
+    @current_user_vote = current_user.votes.find_by(issue_id: params[:issue_id])
 
-    @current_vote.parent = @delegate_vote
-    @current_vote.save
+    @current_user_vote.parent = @representative_vote
+    @current_user_vote.save
 
-    @delegate_vote.descendants.each do |vote|
-      vote.value = @delegate_vote.value
-      vote.save
-    end
+    p @representative_vote.descendants
+    # @delegate_vote.descendants.each do |vote|
+    #   vote.value = @delegate_vote.value
+    #   vote.save
+    # end
 
-    render json: @delegate_vote
+    render json: @representative_vote.descendants
   end
 
   def live
     @current_issue = Issue.find(params[:id])
     @current_issue.generate_leaderboard
-    @participants = @current_issue.voters
+    @participants = @current_issue.voters.order(id: :asc)
     # number of voters - AR
     # number of yes votes for this issue - AR
     # number of no votes for this issue - AR

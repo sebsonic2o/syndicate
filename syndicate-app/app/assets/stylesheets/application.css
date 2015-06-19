@@ -2872,7 +2872,9 @@ body.two-sidebars .region-below-content {
 }
 .participant {
   box-sizing: border-box;
+  margin-bottom: 20px;
   text-align: center;
+  min-height: 180px;
 }
 @media only screen and (min-width : 1380px) {
   .participant {
@@ -2911,11 +2913,21 @@ body.two-sidebars .region-below-content {
 }
 .participant-image {
   border-radius: 100%;
+  background: #DDD;
 }
 .participant-username {
   margin: 0px;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 400;
+}
+.participant-username em {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 2px;
+}
+.participant-vote-count {
+  font-size: 18px;
+  font-weight: 700;
 }
 .vote {
   text-align: center;
