@@ -23,16 +23,22 @@
 <div class="participants">
 <% @participants.each do |participant| %>
   <div id="<%= participant.id %>" class="participant">
-    <h3 class="participant-username"><a href="#"><%= participant.username %></a></h3>
+
+    <h3 class="participant-username"><a href="#"><%= participant.username %></a><em>User ID: <%= participant.id %></em> </h3>
+
 
     <div class="avatar-holder">
-      <img class="participant-image" src="<%= asset_path 'sherif.jpg' %>" />
+      <img class="participant-image" src="<%= participant.image_url %>" />
+    </div>
+
+    <div class="participant-vote-count">
+      <%= participant.get_vote_power(@current_issue.id) %>
     </div>
 
     <div class="constituents">
     </div>
 
-     <button class="delegate-button" type="submit" value="Delegate" method="POST" action="/issues/<%= @current_issue.id %>/users/<%= participant.id %>/delegate" style="">Delegate</button>
+     <button class="delegate-button btn btn-primary btn-small" type="submit" value="Delegate" method="POST" action="/issues/<%= @current_issue.id %>/users/<%= participant.id %>/delegate" style="">Delegate</button>
 
   </div>
 <% end %>
