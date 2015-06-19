@@ -3,11 +3,11 @@
   VOTE HERE
 
   <div class="button">
-    <button id="yes-button" type="submit" value="YES">YES!</button>
+    <button id="yes-button" type="submit" value="YES" method="POST" action="/issues/<%= @current_issue.id %>">YES!</button>
   </div>
 
   <div class="button">
-    <button id="no-button" type="submit" value="NO">NO!</button>
+     <button id="no-button" type="submit" value="NO" method="POST" action="/issues/<%= @current_issue.id %>">NO!</button>
   </div>
 
 </div>
@@ -16,3 +16,22 @@
 <div class="abstain-board">
 
 </div>
+
+<% @participants.each do |participant| %>
+  <div id="<%= participant.id %>" class="participant">
+    <h3 class="participant-username"><%= participant.username %></h3>
+
+    <div class="avatar-holder">
+      <img class="participant-image" src="<%= asset_path 'sherif.jpg' %>" />
+    </div>
+
+    <div class="constituents">
+    </div>
+
+     <button class="delegate-button" type="submit" value="Delegate" method="POST" action="/issues/<%= @current_issue.id %>/users/<%= participant.id %>/delegate" style="">Delegate</button>
+
+  </div>
+<% end %>
+
+
+

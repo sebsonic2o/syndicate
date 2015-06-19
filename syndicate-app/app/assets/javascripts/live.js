@@ -1,6 +1,11 @@
 $(document).ready(function() {
   listenButtons();
-  loadParticipants();
+  // loadParticipants();
+  listenParticipants();
+  $(".participant-image").mouseenter(function() {
+    debugger
+      $(this).parent().siblings(".delegate-button").show();
+  })
 })
 
 var listenButtons = function(){
@@ -17,8 +22,18 @@ var listenButtons = function(){
   })
 
 }
-var loadParticipants = function(){
+var loadParticipants = function() {
 
-  $(".abstain-board").append()
+  // $(".abstain-board").append()
 
 }
+
+var listenParticipants = function() {
+
+    // .mouseleave(function() {
+    //   $(this).parent().siblings(".delegate-button").hide();
+    // })
+  }
+
+
+
