@@ -22,9 +22,3 @@ end
 
   issue.voters = User.all
 end
-
-30.times do
-  User.create(
-    username: Faker::Name.first_name
-  )
-end

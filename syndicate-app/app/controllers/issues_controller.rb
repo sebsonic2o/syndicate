@@ -48,12 +48,7 @@ class IssuesController < ApplicationController
   def live
     @current_issue = Issue.find(params[:id])
     @current_issue.generate_leaderboard
-
     @participants = @current_issue.voters
-
-
-
-
     # number of voters - AR
     # number of yes votes for this issue - AR
     # number of no votes for this issue - AR
