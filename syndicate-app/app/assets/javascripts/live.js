@@ -32,7 +32,7 @@ var voteButton = function(buttonClass, voteValue) {
   $(".button").on('click', buttonClass, function(e) {
     e.preventDefault();
 
-    var issueId = $(".vote-board").attr('id');
+    var issueId = $(".leaderboard").attr('id');
     var url = '/issues/' + issueId + '/vote?value='+voteValue;
 
     var request = $.ajax({

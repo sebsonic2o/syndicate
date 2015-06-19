@@ -20,7 +20,7 @@ class Issue < ActiveRecord::Base
   end
 
   def get_yes_percentage
-    @yes_percentage = @yes_votes / @vote_count
+    @yes_percentage = @yes_votes / @vote_count * 100
   end
 
   def get_no_votes
@@ -28,7 +28,7 @@ class Issue < ActiveRecord::Base
   end
 
   def get_no_percentage
-    @no_percentage = @no_votes / @vote_count
+    @no_percentage = @no_votes / @vote_count * 100
   end
 
   def get_abstain_count

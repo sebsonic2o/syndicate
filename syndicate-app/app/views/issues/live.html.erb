@@ -1,13 +1,12 @@
 
 <div id="<%= @current_issue.id %>" class="leaderboard">
-  
-  <%= @current_issue.participant_count %>
-  <%= @current_issue.vote_count %>
-  <%= @current_issue.yes_votes %>
-  <%= @current_issue.yes_percentage %>
-  <%= @current_issue.no_votes %>
-  <%= @current_issue.no_percentage %>
-  <%= @current_issue.abstain_count %>
+  <div id="count-board">
+    <h3>Total participants: <%= @current_issue.participant_count %></h3>
+    <h3>Total votes: <%= @current_issue.vote_count %></h3>
+    <h3>Yes: <%= @current_issue.yes_votes %> (<%= @current_issue.yes_percentage %>%)</h3>
+    <h3>No:  <%= @current_issue.no_votes %> (<%= @current_issue.no_percentage %>%)</h3>
+    <h3>Abstain: <%= @current_issue.abstain_count %></h3>
+  </div>
 
   <div class="button">
     <button id="yes-button" type="submit" value="YES" method="POST" action="/issues/<%= @current_issue.id %>">YES!</button>
