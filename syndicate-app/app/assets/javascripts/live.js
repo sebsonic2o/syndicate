@@ -3,7 +3,7 @@ $(document).ready(function() {
   // loadParticipants();
   listenParticipants();
   $(".participant-image").mouseenter(function() {
-    debugger
+    // debugger
       $(this).parent().siblings(".delegate-button").show();
   })
 })
