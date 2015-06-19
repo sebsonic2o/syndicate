@@ -1,10 +1,11 @@
 
 <div id="<%= @current_issue.id %>" class="leaderboard">
+
   <div id="count-board">
     <h3>Total participants: <%= @current_issue.participant_count %></h3>
     <h3>Total votes: <%= @current_issue.vote_count %></h3>
-    <h3>Yes: <%= @current_issue.yes_votes %> (<%= @current_issue.yes_percentage %>%)</h3>
-    <h3>No:  <%= @current_issue.no_votes %> (<%= @current_issue.no_percentage %>%)</h3>
+    <h3>Yes: <%= @current_issue.yes_votes %> (<%= @current_issue.get_yes_percentage %>%)</h3>
+    <h3>No:  <%= @current_issue.no_votes %> (<%= @current_issue.get_no_percentage %>%)</h3>
     <h3>Abstain: <%= @current_issue.abstain_count %></h3>
   </div>
 
