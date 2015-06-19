@@ -1,0 +1,86 @@
+// Social Media
+#block-va-social-social-icons {
+	//.grid(3);
+	&.block {
+		float: right;
+		@media @mobile {
+			float: none;
+		}				
+	}
+}
+
+// Secondary social block
+#block-va-social-social-icons-2{
+
+}
+#block-va-social-social-icons {
+	background: none !important;
+}
+
+.socialmedia {
+	@iconsize: 24px;
+	.clearfix();
+	margin: 8px 0 0 0;
+	ul {
+		margin: 0;
+		padding: 0;
+		float: right;
+	}
+	li {
+		float: left;
+		width: @iconsize;
+		height: @iconsize; 
+		margin: 0 20px 10px 0;
+		background-size: contain;	
+		list-style: none;	
+		@media @ipad {
+			margin: 0 10px 10px 0;
+			//width: 20px; 
+			//height: 20px; 
+		}		
+	}
+	a {
+		width: @iconsize; 
+		height: @iconsize; 
+		cursor: pointer;
+		padding: 0; 		
+		float: left;
+		.img-glow();
+		.border-radius();
+		
+	}	
+
+/* --------------------------------------------------------------------------------------------------------------	
+All images are in folders as below:
+
+COLOUR SQUARES 	../images/social/squares/facebook.png
+COLOUR CIRCLES 	../images/social/circles/facebook.png
+
+BLACK CIRCLES 	../images/social/black-circles/facebook.png
+BLACK SQUARES 	../images/social/black-squares/facebook.png
+
+GREY-SQUARES 	../images/social/grey-squares/facebook.png
+GREY-CIRCLES 	../images/social/grey-circles/facebook.png
+
+WHITE-CIRCLES 	../images/social/white-circles/facebook.png
+WHITE-SQUARES 	../images/social/white-squares/facebook.png
+-------------------------------------------------------------------------------------------------------------- */
+	
+	@icon-url: "../images/social/custom"; // set the icon type via url
+
+	.facebook 	{ background-image: url('@{icon-url}/facebook.png'); background-repeat: no-repeat; }
+	.twitter 	{ background-image: url('@{icon-url}/twitter.png'); background-repeat: no-repeat; }
+	.rss 		{ background-image: url('@{icon-url}/rss.png'); background-repeat: no-repeat; }
+	.vimeo		{ background-image: url('@{icon-url}/vimeo.png'); background-repeat: no-repeat; }
+	.linkedin 	{ background-image: url('@{icon-url}/linkedin.png'); background-repeat: no-repeat; }
+	.youtube 	{ background-image: url('@{icon-url}/youtube.png'); background-repeat: no-repeat; }
+	.instagram 	{ background-image: url('@{icon-url}/instagram.png'); background-repeat: no-repeat; }
+	.pinterest 	{ background-image: url('@{icon-url}/pinterest.png'); background-repeat: no-repeat; }
+	.googleplus	{ background-image: url('@{icon-url}/googleplus.png'); background-repeat: no-repeat; }
+}
+
+
+
+
+
+

@@ -1,0 +1,17 @@
+.issue {
+  border-bottom: 1px solid #CCC;
+  padding-bottom: 14px;
+  padding-top: 14px;
+}
+.issue .vote {
+  float: left;
+  width: 10%;
+}
+.issue .issue-body {
+  float: left;
+  width: 90%;
+}
+.issue h1 {
+  margin: 0 0 10px 0;
+  line-height: 46px;
+}

@@ -1,0 +1,217 @@
+.view-commerce-cart-form{
+	table{
+		.table();
+		.table-striped();
+		.table-bordered();
+		th,td{
+			text-align: right;
+		}
+		tr{
+			> th:first-of-type ,td:first-of-type{
+				text-align: left;
+			}
+		}
+	}
+	.commerce-line-item-views-form input.delete-line-item { // delete button in cart table
+		.btn-small();
+	}
+}
+
+/* Checkout Process
+----------------------------------------------------------------------------------------------------*/
+.view-commerce-cart-summary{
+	table.views-table{
+		.table();
+		.table-striped();
+		.table-bordered();
+		margin-bottom: 0;
+		th,td{
+			text-align: right;
+		}
+		tr{
+			> th:first-of-type ,td:first-of-type{
+				text-align: left;
+			}
+		}
+		thead{
+			background: #ccc;
+		}
+		td.price{
+			text-align: right;
+		}
+	}
+}
+table.commerce-price-formatted-components{ // order total
+		margin: 0 0 20px 0;
+		width: 100% !important;
+		tbody{
+			border: 0;
+		}
+		td{
+			padding: 10px;
+			color: @red;
+		}
+}
+
+
+.commerce-order-handler-area-order-total .commerce-price-formatted-components{
+	//width: 100%;
+}
+.checkout-buttons .checkout-cancel, .checkout-buttons .checkout-back {
+	box-shadow: none;
+}
+
+.button-operator{
+	margin: 0 12px;
+}
+// checout form page
+#commerce-checkout-form-checkout{
+	fieldset.account, 
+	fieldset.customer_profile_billing, 
+	fieldset.commerce_payment,{
+			.whitebox();
+			//.quick-quote-well();
+			//background: #FAFAFA;
+			padding: 20px;
+			margin-bottom: 10px;
+			legend{
+				padding: 0;
+				font-weight: 300;
+				float: left;
+				margin-bottom: 10px;
+				width: 100%;
+			}
+			label{
+				font-weight: 700;
+			}
+			.fieldset-legend{
+				color: @red;
+				display: block;
+				//color: #fff;
+				//line-height: 32px;
+				//padding: 8px 30px 8px 30px;
+			}
+			.fieldset-wrapper{
+				//padding: 10px 20px;
+		}
+	}
+	.street-block{
+		.form-item{
+			display: inline-block;
+			margin-right: 10px;
+		}
+	}
+	input.form-submit {
+      	.btn-normal();
+	}
+}
+
+
+// checkout review page
+.checkout-help{
+	.h2();
+	padding: 0 10px;
+}
+#commerce-checkout-form-review{
+	table.checkout-review{
+		width: 100%;
+		tbody{
+			border: 0;
+		}
+		td{
+		}
+		.view-commerce-cart-summary{
+			.view-inner{
+				margin: 10px 0 0 0;
+			}
+		}
+		.form-item{
+			display: inline-block;
+			margin: 0 10px 0 0;
+			//.float: left;
+		}
+		.field-label{
+			float: left;
+			font-weight: normal;
+		}
+		label{
+
+		}
+	}
+	fieldset.commerce_payment{
+		.whitebox();
+		padding: 20px;
+		margin: 10px 0;
+		legend{
+			padding: 0;
+			font-weight: 300;
+			float: left;
+			margin-bottom: 10px;
+			width: 100%;
+		}
+	}
+}
+
+
+// checkout buttons styling
+fieldset.checkout-buttons{
+	input.form-submit {
+		.btn-normal();
+	 	}
+	.checkout-buttons .checkout-cancel, .checkout-buttons .checkout-back {
+		background: none;
+		color: @gray;
+		padding: 0 !important;
+	}
+}
+
+
+
+
+/* Cart Badge
+----------------------------------------------------------------------------------------------------*/
+#block-views-cart-badge-block {
+	overflow: hidden;
+	padding: 0;
+	.views-field-quantity{
+		background-image: url(../images/icon-bag.png);
+		background-repeat: no-repeat;
+		background-position: 40px 5px;
+		a {
+			color: #FFF;	
+			padding: 7px 10px 7px 10px;	
+			background-color: @red;
+			display: block;
+			.border-radius(4px);
+			&:hover {
+				background-color: lighten(@red, 10%);
+				span.cart-badge-quantity {
+					background: lighten(@red,25%);
+				}	
+			}
+			span.cart-badge-quantity {
+				background: lighten(@red,15%);
+				height: 26px;
+				width: 26px;
+				line-height: 24px;
+				font-size: 16px;
+				text-align: center;
+				.border-radius(15px);
+				color: #FFF;
+				display: inline-block;
+				margin-right: 8px;
+			}
+			span.cart-badge-label {
+				color: #FFF;
+				display: inline-block;
+				line-height: 24px;
+				font-size: 14px;
+				text-align: center;
+			}
+		}
+	}
+}
+
+
+
+

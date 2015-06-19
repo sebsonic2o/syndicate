@@ -1,0 +1,32 @@
+/* ==========================================================================
+   Block Globals
+   ========================================================================== */
+.block { 
+
+}
+.region-content {
+    .block-title {
+        .grid();
+    }
+}
+.block:first-child  { 
+    margin-top: 0; 
+}
+
+/* Blocks in the sidebar have some bottom margin by default */
+.region-sidebar-first .block, 
+.region-sidebar-second .block {
+    margin-bottom: 20px;
+}
+
+#block-blockify-blockify-breadcrumb {
+    .reset();
+
+}
+.block-system-main {
+    .block-inner {
+        > form {
+            .grid(12);
+        }
+    }
+}

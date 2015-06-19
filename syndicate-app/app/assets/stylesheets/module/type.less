@@ -1,0 +1,208 @@
+/* ==========================================================================
+   Paragraph
+   ========================================================================== */
+p { 
+	color: @basefontcolor;
+	font-family: @basefont; 
+	font-size: @basefontsize; 
+	line-height: @baselineheight; 
+	margin: 0 0 20px 0; 
+	@media @ipad {
+		font-size: @basefontsize - 2;
+	}
+}
+.field-name-body {
+	img {
+		.img-normal();
+	}
+	@media @mobile {
+		img {
+			.img-responsive();
+		}
+	}
+}
+
+img {
+  .img-responsive();
+  //vertical-align: bottom;
+}
+a img {
+  //.img-glow();
+}
+
+
+/* ==========================================================================
+   Content Headings
+   ========================================================================== */
+h1, .h1	{ 
+	font-family: @customfont; 
+	font-size: 42px; 
+	line-height: 1.2; 
+	font-weight: 300; 
+	color: @customfontcolor;
+	padding: 0; 
+	margin: 0 0 20px 0; 
+	@media @ipad {
+		font-size: 32px;
+	}
+	@media @mobile {
+		font-size: 30px;
+	}
+}
+
+h2, .h2	{ 
+	font-family: @customfont; 
+	font-size: 24px;
+	line-height: 28px;
+	font-weight: 300; 
+	color: @customfontcolor; 
+	padding: 0; 
+	margin: 0 0 10px 0; 
+	//text-transform: uppercase;
+	@media @ipad {
+		font-size: 22px;
+	}
+	@media @mobile {
+		font-size: 20px;
+	}
+}
+h3, .h3	{ 
+	font-family: @customfont; 
+	font-size: 18px;
+	font-weight: 700; 
+	color: @customfontcolor; 
+	padding: 0; 
+	margin: 0; 
+}
+h4, .h4	{ 
+	font-family: @customfont; 
+	font-size: 16px;
+	font-weight: 700; 
+	color: @customfontcolor; 
+	padding: 0; 
+	margin: 0; 
+}
+h5, .h5	{ 
+	font-family: @customfont; 
+	font-size: 12px;
+	font-weight: 700; 
+	color: @customfontcolor; 
+	padding: 0; 
+	margin: 0; 
+}
+h6, .h6	{ 
+	font-family: @customfont; 
+	font-size: 11px;
+	font-weight: 700; 
+	color: @customfontcolor; 
+	padding: 0; 
+	margin: 0; 
+}
+/* ==========================================================================
+   Block Title Headings
+   ========================================================================== */
+h2.block-title {
+    .h2();
+    margin-bottom: 15px;
+}
+
+/* ==========================================================================
+   View Title Heading
+   ========================================================================== */
+.view-header h2 {
+    .h2();
+    margin-bottom: 15px;
+}
+
+
+/* ==========================================================================
+   Node Title Headings
+   ========================================================================== */
+.field-name-title {
+	h1 {
+		.h1();
+	}
+	h2 {
+		.h2();
+	}
+	h3 {
+		.h3();
+	}
+	h4 {
+		.h4();
+	}
+	h5 {
+		.h5();
+	}
+	h6 {
+		.h6();
+	}
+}
+
+
+// List
+ul	 						{ color: @textcolor; margin: 10px 0 30px 0; list-style: disc; padding: 0 0 0 14px }
+ol 							{ color: @textcolor; margin: 0 0 20px 0; list-style: decimal; }
+li 							{ color: @textcolor; margin: 0 0 7px 0px; list-style-type: disc; padding: 0;}
+
+// li in content
+.field-name-body, 
+.field-type-text-with-summary,
+.field-type-text-long{
+							li 	{ 
+								color: @textcolor; 
+								margin: 0 0 7px 0; 
+								padding: 0 0 0 14px; 
+								background: url('../images/small-arrow-right-black.png') no-repeat left 6px; 
+								list-style-type: none;
+								font-size: @basefontsize; 
+								@media @ipad {
+									font-size: @basefontsize - 2;
+								}
+							}
+}
+
+// Emphasis
+strong 					{ font-weight: bold; }
+em 						{ font-style: italic; }
+
+// Blockquote
+blockquote, .blockquote {
+	margin: 0 0 20px 0;
+	padding: 14px;
+	//float: right;
+	//width: 300px;
+	background: lighten(@gray,55%);
+	color: @primarycolor;
+	font-size: 18px;
+	line-height: 1.5;
+	font-weight: 200;
+	font-style: normal;
+	//border-left: 4px solid lighten(@primarycolor,40%);
+	p {
+		margin: 0;
+		padding: 0;
+		//color: @primarycolor;
+		font-size: 18px;
+		line-height: 24px;
+		font-weight: 200;
+		font-style: normal;
+		em {
+			font-style: normal;
+		}
+		&:first-of-type {
+			font-size: inherit;
+			line-height: inherit;
+			font-weight: inherit;
+		}
+	}
+}
+
+
+
+
+
+// HR
+hr, .hr					{ border: 0; border-bottom: 2px solid @gray; display: block;}
+
+

@@ -1,0 +1,24 @@
+/* ==========================================================================
+   Desktop XL Grid Variables
+   ========================================================================== */;
+@desktopxl-column-width-fluid: 5.5%;
+@desktopxl-columns: 12;
+@desktopxl-gutter-fluid: 3%;
+@desktopxl-column-fullwidth-fluid: (@columns * @desktopxl-column-width-fluid) - (@desktopxl-gutter-fluid) * 1px;
+
+
+// grid fluid
+// ==========================================================================
+.grid-fluid(@column;@column-padding:0;) {
+    box-sizing: border-box;
+    //@media @desktop-xl {
+      width: (@column * @desktopxl-column-width-fluid) + (@column * @desktopxl-gutter-fluid) - (@column-padding) - (@desktopxl-gutter-fluid)  * 1px;
+      display: inline-block;
+      float: left;
+      margin-left: @desktopxl-gutter * 1px;
+      position: relative;
+    //} 
+}
+
+
+

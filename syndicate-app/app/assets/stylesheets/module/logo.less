@@ -1,0 +1,40 @@
+#block-blockify-blockify-logo {
+	.grid(3);
+	@media @mobile {
+		float: left;
+		padding: 15px 20px 15px 20px;
+	}
+	#logo { 
+		float: left;
+		margin: 40px 10px 20px 10px;
+		img {
+			display: none;
+		}
+		@media @mobile {
+			display: inline-block;
+			img {
+				text-align: center;
+			}
+		}
+	}
+}
+
+#logo { 
+	height: 80px;
+	width: 240px;
+	background-image: url("../logo.png"); // logo images in theme root otherwise blockify throws an error
+	background-repeat: no-repeat;
+	background-size: contain;
+	img {
+		display: none;
+	}
+	@media @ipad {
+		height: 60px;
+		width: 200px;
+	}
+	@media @mobile {
+		height: 30px;
+		width: 50px;
+		background-image: url("../images/logo-mobile.png"); // logo images in theme root otherwise blockify throws an error
+	}
+}

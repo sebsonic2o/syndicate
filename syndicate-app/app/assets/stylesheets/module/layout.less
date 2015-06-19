@@ -1,0 +1,93 @@
+// Define Canyon
+@gap: @gutter * 3px;
+
+/*
+   Top
+   ========================================================================== */
+.layout-top {
+  @mobile{
+    display: none;
+  }
+}
+
+/*
+   Header
+   ========================================================================== */
+.layout-header {
+  background: #ccc;
+}
+.layout-subheader {
+
+}
+/*
+   Help
+   ========================================================================== */
+.layout-help {
+
+}
+ 
+/*
+   Featured
+   ========================================================================== */
+.layout-featured { 
+  background: #eee;
+}
+
+.layout-featured-fullwidth { 
+
+}
+
+/*
+   Middle
+   ========================================================================== */
+
+.layout-middle {
+   padding: @gap 0;
+}
+
+/*
+   Canyon
+   ========================================================================== */
+.layout-canyon {
+   padding: @gap 0;
+}
+
+/*
+   Above Footer
+   ========================================================================== */
+.layout-above-footer {
+
+}
+
+/*
+   Footer
+   ========================================================================== */
+.layout-footer {
+  padding: @gap 0;
+  background: #333;
+}
+
+/*
+   Sub Footer
+   ========================================================================== */
+.layout-subfooter {
+  background: #ccc;
+   p.copyright{
+      float: left;
+      width: 50%;
+      padding: 12px 0;
+      box-sizing: border-box;
+      @media @mobile {
+         width: 100%;
+         margin: 0;
+      }
+   }
+    p.va{
+      text-align: right;
+      @media @mobile {
+         text-align: left;
+         padding-top: 0;
+         margin-bottom: 20px;
+      }
+    }
+}

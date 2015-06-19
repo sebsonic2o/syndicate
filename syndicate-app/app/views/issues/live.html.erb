@@ -1,6 +1,13 @@
 
-<div id="<%= @current_issue.id %>" class="vote-board">
-  VOTE HERE
+<div id="<%= @current_issue.id %>" class="leaderboard">
+  
+  <%= @current_issue.participant_count %>
+  <%= @current_issue.vote_count %>
+  <%= @current_issue.yes_votes %>
+  <%= @current_issue.yes_percentage %>
+  <%= @current_issue.no_votes %>
+  <%= @current_issue.no_percentage %>
+  <%= @current_issue.abstain_count %>
 
   <div class="button">
     <button id="yes-button" type="submit" value="YES" method="POST" action="/issues/<%= @current_issue.id %>">YES!</button>
@@ -13,13 +20,10 @@
 </div>
 
 
-<div class="abstain-board">
-
-</div>
-
+<div class="participants">
 <% @participants.each do |participant| %>
   <div id="<%= participant.id %>" class="participant">
-    <h3 class="participant-username"><%= participant.username %></h3>
+    <h3 class="participant-username"><a href="#"><%= participant.username %></a></h3>
 
     <div class="avatar-holder">
       <img class="participant-image" src="<%= asset_path 'sherif.jpg' %>" />
@@ -32,6 +36,6 @@
 
   </div>
 <% end %>
-
+</div>
 
 

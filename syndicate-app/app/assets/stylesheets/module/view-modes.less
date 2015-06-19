@@ -1,0 +1,145 @@
+// Teaser
+// ==========================================================================
+.node.view-mode-teaser{ 
+
+}
+
+// Row
+// ==========================================================================
+.node.view-mode-row {
+	.hr();
+	margin-bottom: 14px;
+	padding-bottom: 14px;
+	.field-name-node-link{
+		margin: 20px 0;	
+	}
+}
+
+// Small Row
+// ==========================================================================
+.node.view-mode-small_row {
+	.field-name-title{
+		text-transform: uppercase;
+		h3{
+			margin: 0 0 5px 0;
+		}
+	}
+	.field-name-post-date{
+		font-size: 12px;
+		font-style: italic;
+		margin: 0 0 10px 0;
+	}
+	.field-name-body{
+		margin-bottom: 20px;
+	}
+	.group-right{
+		
+	}
+}
+
+// Tile
+// ==========================================================================
+.node.view-mode-tile {
+	//padding: 20px;
+	.group-top{
+		padding: 14px;
+	}
+	.group-middle {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		padding: 14px;
+		@media @mobile {
+			width: 100%;
+		}
+		.field-name-title {
+			h2{
+				background: url(../images/transparent-black.png);
+				margin: 0;
+				padding: 10px 20px;
+				font-size: 18px;
+				text-transform: none;
+				font-weight: 400;
+				@media @ipad {
+					font-size: 14px;
+				}
+				a{
+					color: #fff;
+				}
+			}
+		}
+
+	}
+}
+
+.node.view-mode-small_tile {
+	//padding: 20px;
+	margin-bottom: 14px;
+	.group-top{
+		//padding: 14px;
+	}
+	.group-middle {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		//padding: 14px;
+		@media @mobile {
+			width: 100%;
+		}
+		.field-name-title {
+			h2{
+				background: url(../images/transparent-black.png);
+				margin: 0;
+				padding: 7px 14px;
+				font-size: 16px;
+				@media @ipad {
+					font-size: 14px;
+				}
+				a{
+					color: #fff;
+				}
+			}
+			h3{
+				margin: 0 0 10px 0;
+			}
+
+		}
+
+	}
+}
+
+
+// Card
+// ==========================================================================
+.node.view-mode-card {
+	box-shadow: 0 2px 4px rgba(0,0,0,0.26);
+	.group-top {
+		.field-name-title {
+			position: absolute;
+			bottom: 20px;
+			left: 20px;
+			h1, h2 {
+				color: #FFF;
+				font-weight: 700;
+				margin: 0;
+				padding: 0;
+				// font-size: 36px;
+			}
+		}
+	}
+	.group-middle {
+		padding: @gutter;
+	}
+	.group-bottom {
+		border-top: 1px solid #EAEAEA;
+		padding: @gutter;
+	}
+	.field-name-node-link {
+		float: right;
+		a {
+			.btn-minimal();
+		}
+	}
+}
+
+

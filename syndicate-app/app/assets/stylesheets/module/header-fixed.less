@@ -1,0 +1,55 @@
+// Stops the Header from being hidden under the admin toolbar
+.wrapper   { 
+	padding-top: 81px;
+	position: relative;
+	@media @mobile {
+		padding-top: 0px;
+	}
+}
+
+
+.toolbar {
+	.wrapper {
+		.layout-top  {
+			top: 65px;
+		}
+		.layout-header{ 
+		    top: 98px;
+	   }
+	}
+	@media @mobile {
+		.wrapper {
+			.layout-header  { 
+			    top: 0px;
+		   }
+		}
+	}
+}
+
+.wrapper   { 
+	padding-top: 81px;
+	position: relative;
+	@media @mobile {
+		padding-top: 0px;
+	}
+}
+
+.layout-top { 
+	z-index: 500;
+	position: fixed;
+	top: 0;
+	@media @mobile {
+		position: relative;
+	}
+}
+
+.layout-header { 
+	z-index: 400;
+	position: fixed;
+	top: 36px;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.26);
+	@media @mobile {
+		position: relative;
+		top: 0;
+	}
+}

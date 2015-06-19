@@ -1,0 +1,491 @@
+/* ==========================================================================
+   Node Article
+   ========================================================================== */
+.node-article {
+	.field-name-title {
+	}
+	.field-name-field-image {
+	}
+	.field-name-post-date {
+	}
+	.field-name-submitted-by {
+	}
+	.field-name-author {
+	}
+
+	ul.links {
+		display: block;
+		margin: 0;
+		padding: 10px 0 10px 20px;
+		li {
+			margin: 0 5px 0 0;
+		}
+		.node-readmore {
+			a {
+				
+			}
+		}
+		.comment-add {
+			a {
+				.btn(); 
+				.btn-small(); 
+				.btn-primary();
+			}
+		}
+	}
+	.field-name-body {
+		margin-top: 10px;
+	}
+	.field-name-node-link {
+
+	}
+	.field-name-field-tags {
+		margin: 10px 0 10px 0;
+		.clearfix();
+		vertical-align: middle;
+		h3 {
+			font-size: 14px;
+			font-weight: bold;
+			display: inline-block;
+			margin-bottom: 0;
+		}
+		ul.links {
+			display: inline-block;
+			margin: 0;
+			padding: 0;
+			li {
+				display: inline-block;
+				padding: 0;
+				margin: 0 0 5px 5px;
+				list-style: none;
+
+				a {
+					.btn(); .btn-small();
+				}
+			}
+		}
+	}
+}
+
+.node-type-blog {
+	.field-name-post-date {
+		left: 0 !important;
+	}
+}
+
+/* Mobile */
+@media only screen and (min-width : 100px) and (max-width : 767px) { 
+	#hero-fullwidth {
+		background: @primarycolor;
+		.content, .node {
+			height: 320px;
+			position: relative;
+		}
+		#hero {
+			width: 100%;
+			.region-hero {
+				width: 100%; 
+				.field-name-title {
+					position: absolute;
+					bottom: 100px;
+					left: 20px;
+					width: 80%;					
+					h1, h2, a {
+						color: #FFF;
+						font-family: "proxima-nova", sans-serif;
+						font-weight: 600;
+						font-size: 36px;
+						line-height: 40px;
+						letter-spacing: -2px;
+						margin-bottom: 10px;
+						.text-shadow();
+						text-decoration: none;
+					}
+				}
+				.field-name-post-date {
+					left: 105px;
+				}
+				.field-name-author {
+					left: 105px;
+				}	
+				.field-name-ds-user-picture {
+					left: 20px;
+					bottom: 20px;
+				}
+			}
+		}
+	}
+	.node-type-blog {
+		.field-name-post-date {
+			left: 20px !important;
+		}
+	}
+}
+/* End Mobile */
+
+
+
+/* ==========================================================================
+   Blog Content
+   ========================================================================== */
+.node-blog {
+	.field-name-title {
+		h2 {
+			margin: 0;
+		}
+	}
+	> .field-name-body {
+		width: 640px;
+		margin: 0 0 60px 0;
+		p {
+			color: #525252;
+			font-size: 15px;
+			line-height: 29px;
+			font-family: "proxima-nova", sans-serif;
+			font-weight: 200;
+			margin: 0 0 28px 0;
+			&:first-of-type {
+				font-size: 23px;
+				line-height: 30px;
+				font-weight: 200;
+			}
+		}
+		blockquote {
+			margin: 0;
+			padding: 0;
+			float: right;
+			margin-right: -320px;
+			width: 240px;
+			color: @primarycolor;
+			font-size: 37px;
+			line-height: 36px;
+			font-weight: 200;
+			font-style: normal;
+			p {
+				margin: 0;
+				padding: 0;
+				color: @primarycolor;
+				font-size: 37px;
+				line-height: 36px;
+				font-weight: 200;
+				font-style: normal;
+				em {
+					font-style: normal;
+				}
+				&:first-of-type {
+					font-size: inherit;
+					line-height: inherit;
+					font-weight: inherit;
+				}
+			}
+		}
+		img {
+			width: 100% !important;
+			height: auto !important;
+			margin: 0 0 0 0;
+		}
+	}
+}
+
+
+/* Mobile */
+@media only screen and (min-width : 100px) and (max-width : 767px) { 
+	.node-blog {
+		> .field-name-body {
+			width: auto;
+			margin: 0 0 40px 0;
+			padding: 20px;
+			p {
+				color: #525252;
+				font-size: 15px;
+				line-height: 29px;
+				font-family: "proxima-nova", sans-serif;
+				font-weight: 200;
+				margin: 0 0 28px 0;
+				&:first-of-type {
+					font-size: 23px;
+					line-height: 30px;
+					font-weight: 200;
+				}
+			}
+			blockquote {
+				margin: 0 0 30px 0;
+				float: none;
+				width: auto;
+			}
+			img {
+				.img-responsive();
+			}
+		}
+	}
+}
+/* End Mobile */
+
+
+
+/* ==========================================================================
+   Node Blog Teaser
+   ========================================================================== */
+.node-blog.view-mode-teaser {
+	.field-name-title {
+		font-family: "proxima-nova", sans-serif;
+		font-weight: 400;
+		font-size: 22px;
+		line-height: 28px;
+		letter-spacing: -1px;
+		margin: 0 0 5px 0;
+		a {
+			color: @primarycolor;
+			text-decoration: none;
+		}
+	}
+
+	.field-name-ds-user-picture {
+		float: left;
+		display: inline-block;
+		margin: 0 10px 10px 0;
+		img {
+			.border-radius(15px);
+			width: 30px;
+			height: 30px;
+		}
+	}
+	.field-name-author {
+		display: inline-block;
+		font-family: "proxima-nova", sans-serif;
+		font-weight: 300;
+		font-size: 15px;
+		line-height: 30px;
+		letter-spacing: 0px;
+		color: #222;
+		margin: 0 4px 0 0;
+
+	}
+	.field-name-post-date {
+		display: inline-block;
+		font-family: "proxima-nova", sans-serif;
+		font-weight: 400;
+		font-size: 15px;
+		line-height: 30px;
+		letter-spacing: 0px;
+		color: #222;
+	}
+	> .field-name-body {
+		clear: left;
+		margin: 0;
+		display: inline-block;
+		p {
+			font-size: 13px;
+			line-height: 26px;
+			&:first-of-type {
+				font-size: 13px;
+				line-height: 26px;
+			}
+			&:last-of-type {
+				margin: 0;
+			}
+		}
+	}
+	.field-name-node-link {
+		display: inline-block;
+	}
+}
+
+/* Mobile */
+@media only screen and (min-width : 100px) and (max-width : 767px) { 
+	#block-views-blog-block-list {
+		margin-top: 30px;
+		.views-row {
+			width: auto;
+			margin-bottom: 20px;
+			padding-bottom: 20px;
+		}
+		.field-name-title {
+			font-size: 20px;
+			line-height: 22px;
+		}
+	}
+}
+/* End Mobile */
+
+
+
+
+
+
+/* ==========================================================================
+   Author Profile
+   ========================================================================== */
+.view-author-bio {
+	display: block;
+	margin-bottom: 30px;
+	.clearfix();
+	.views-field-picture {
+		float: left;
+		display: inline-block;
+		margin: 0 10px 10px 0;
+		img {
+			.border-radius(40px);
+			width: 80px;
+			height: 80px;
+		}
+	}
+	.views-field-field-first-name {
+		display: inline-block;
+		font-size: 24px;
+		font-weight: 800px;
+		font-family: "proxima-nova", sans-serif;
+		color: #222;
+		margin: 10px 0 8px 0;
+	}
+	.views-field-field-last-name {
+		display: inline-block;
+		font-size: 24px;
+		font-weight: 800px;
+		font-family: "proxima-nova", sans-serif;
+		color: #222;
+		margin: 10px 0 8px 0;
+	}
+	.views-field-field-author-bio {
+		font-family: "proxima-nova", sans-serif;
+		display: block;
+		font-weight: 400;
+		margin: 0;
+	}
+	.views-field-field-authortwitter {
+		display: inline-block;
+		font-family: "proxima-nova", sans-serif;
+		a {
+			color: #333;
+		}
+	}
+	.views-field-field-authorwebsite {
+		display: inline-block;
+		font-family: "proxima-nova", sans-serif;
+		margin: 0 10px 0 0;
+		a {
+			color: #333;
+		}
+	}	
+}
+
+/* Mobile */
+@media only screen and (min-width : 100px) and (max-width : 767px) { 
+	.view-author-bio {
+		padding: 20px 20px 0 20px;
+	}
+}
+/* End Mobile */
+
+
+
+/* ==========================================================================
+   Author Profile Block Top of blog page
+   ========================================================================== */
+#block-views-author-bio-block {
+	.views-field-picture {
+		padding: 30px 0 0 0;
+		border-top: 4px solid @primarycolor;
+	}
+	.views-field-field-first-name {
+		padding: 30px 0 0 0;
+	}
+	.views-field-field-last-name {
+		padding: 30px 0 0 0;
+	}
+}
+
+
+/* ==========================================================================
+   Author Profile Field Block Bottom of Page
+   ========================================================================== */
+.node-blog {
+	.field-name-author-information-footer{
+		width: 400px;
+		float: left;
+		margin-right: 60px;
+		border-top: 4px solid @primarycolor;
+		.field-label {
+			text-transform: uppercase;
+			margin: 8px 0 16px 0;
+			font-size: 13px;
+		}
+		.block-title {
+			display: none;
+		}
+	}
+}
+
+
+
+/* ==========================================================================
+   Referenced Bar in footer of blog post
+   ========================================================================== */
+.node-blog {
+	.field-name-field-bar {
+		.clearfix();
+		width: 500px;
+		float: left;
+		border-top: 4px solid @primarycolor;
+		.field-label {
+			text-transform: uppercase;
+			margin: 8px 0 16px 0;
+			font-size: 13px;
+		}
+		.block-title {
+			display: none;
+		}
+		.group-left {
+			width: 90px;
+			float: left;
+		}
+		.group-right {
+			width: 410px;
+			float: left;
+		}
+		.adr { 
+			font-size: 15px; 
+			margin-bottom: 6px; 
+			font-weight: normal; 
+			line-height: 22px;
+			font-weight: 500;
+			.fn 				{ display: none; }
+			.street-address		{ display: inline-block; }
+			.locality			{ display: inline-block; }
+			.postal-code		{ display: none; }
+			.country-name		{ display: none; }
+			.geo 				{ display: none; }
+			
+		}
+		.map-link				{ display: none; }
+	}
+}
+
+/* Mobile */
+@media only screen and (min-width : 100px) and (max-width : 767px) { 
+	.node-blog {
+		.field-name-field-bar {
+			width: auto;
+			float: none;
+			padding: 20px;			
+			.group-left {
+				width: 90px;
+				float: left;
+			}
+			.group-right {
+				width: 300px;
+				float: left;
+			}
+		}
+	}
+}
+/* End Mobile */
+
+
+
+/* ==========================================================================
+   Hide Title on Blog Basic Page
+   ========================================================================== */
+.page-node-1080 .region-content h1.node-title {
+	display: none;
+}

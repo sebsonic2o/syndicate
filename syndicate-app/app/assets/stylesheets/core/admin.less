@@ -1,0 +1,146 @@
+/* Tools Wraps Admin Links */
+#tools {
+	.clearfix();
+	display: block;
+	margin: 0 0 20px 0;
+	.tabs {
+		display: inline-block;
+	}
+}
+
+/* Admin Links */
+ul.primary, .primary {
+    border-bottom: 0px solid red;
+    line-height: normal;
+    list-style: none outside none;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    white-space: nowrap;
+    .clearfix();
+    font-size: 12px;
+    li {
+    	list-style: none;
+    	background: none;
+    	margin: 0;
+    	padding: 0;
+    }
+	li a {
+	  	background-color: #000;
+	  	color: #FFF;
+	 	margin: 0 0 0 0;
+	 	padding: 10px 16px 10px 16px;
+	 	border: none;
+	  	border-right: 1px solid #333;
+	  	float: left;
+	  	font-weight: normal;
+	  	text-decoration: none;
+	  }
+	li a:hover {
+		background-color: #333;
+		color: #FFF;
+		border: none;
+	  	border-right: 1px solid #333;
+	  	text-decoration: none;
+	}
+	li.active a {
+		background: @primarycolor;
+		color: #FFF;
+		border: none;
+	  	border-right: 1px solid #333;
+	}
+	li {
+		&:first-child {
+			a {
+			}
+	  	}
+	  	&:last-child {
+		  	a {
+			  	border-right: none;
+		  	}
+	  	}
+	}
+}
+
+
+ul.secondary  {
+	border-bottom: none;
+}
+/* Node Clone Admin Link */
+#tools {
+	.action-links {
+		.primary();
+		display: inline-block;
+	}
+}
+
+
+
+/* Skip link */
+#skip-link {
+  left: 50%;
+  margin-left: -6.5em;
+  margin-top: 0;
+  padding: 0 0.5em;
+  position: absolute;
+  width: 12em;
+  z-index: 50;
+}
+#skip-link a,
+#skip-link a:link,
+#skip-link a:visited {
+  background: #444;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  display: block;
+  line-height: 2;
+  padding: 0;
+  text-align: center;
+  text-decoration: none;
+  -khtml-border-radius: 0 0 10px 10px;
+  -moz-border-radius: 0 0 10px 10px;
+  -webkit-border-top-left-radius: 0;
+  -webkit-border-top-right-radius: 0;
+  -webkit-border-bottom-left-radius: 10px;
+  -webkit-border-bottom-right-radius: 10px;
+  border-radius: 0 0 10px 10px;
+}
+#skip-link a:hover,
+#skip-link a:active,
+#skip-link a:focus {
+  outline: 0;
+}
+
+
+// Contextual Links
+div.contextual-links-wrapper {
+    ul.contextual-links {
+	    li {
+	    	line-height: 100%;
+			list-style: none;
+			list-style-image: none;
+			margin: 0;
+			padding: 0;
+			background: none;
+			font-size: 11px;
+			font-family: Helvetica, Arial;
+			text-align: left;
+		    a {
+		    	text-align: left !important;
+			    &:hover {
+				    text-decoration: none;
+			    }
+		    }
+	    } 
+    }
+}
+
+
+
+.block .view div.contextual-links-wrapper { right: 25px; }
+.block .node div.contextual-links-wrapper { right: 25px; }
+
+
+// user pages
+.profile{
+	.grid(12);
+}

@@ -1,0 +1,125 @@
+/* ==========================================================================
+   Structure
+   ========================================================================== */
+.layout         { .clearfix(); }
+.region         { .clearfix(); }
+.block          { .clearfix(); }
+.view           { .clearfix(); }
+.node           { .clearfix(); }
+.field          { .clearfix(); }
+
+.layout         {  }
+.layout-inner   {  }
+.region         { }
+.region-inner   { .container(); }
+.block          { }
+.block-inner    { }
+.node           { }
+.node-inner     { }
+.view           { }
+.view-inner     { }
+
+
+// Content Wraps Sidebar and Main Content Area
+.content                       { .container(); }
+.content-inner                 { .grid-container(); }
+
+// Sets up nodes to use display suite grid class and provides sensible default grid settings for full layout
+.region-content .ds-1col {
+    .grid();
+}
+.ds-inner {
+    .grid-container();
+}
+.group-middle {
+    .grid();
+}
+.webform-client-form {
+    
+}
+
+
+// No Sidebar
+body.no-sidebars {
+    .region-above-content      { .grid(12); }
+    .region-content              { .grid(12); }
+    .region-below-content      { .grid(12); }
+}
+// One Sidebar
+body.one-sidebar {
+    .region-above-content    { .grid(12); }
+    .region-sidebar-first      { .grid(3); }
+    .region-content            { .grid(9); }
+   .region-sidebar-second     { .grid(3); }
+    .region-below-content    { .grid(12); }
+} 
+// Two Sidebar
+body.two-sidebars{
+    .region-above-content       { .grid(12); }
+    .region-sidebar-first       { .grid(3); }
+    .region-content             { .grid(6); }
+    .region-sidebar-second      { .grid(3); }
+    .region-below-content       { .grid(12); }
+}
+
+@media @mobile {
+    .layout                     { .reset(); }
+    .region                     { .reset(); }
+    // Add padding to all regions in the Middle & Footer
+    .layout-middle .region      { .reset(); padding: @mobile-gutter * 1px; }
+    .layout-footer .region      { .reset(); padding: @mobile-gutter * 1px; }
+    .block                      { .reset(); }
+    .view                       { .reset(); }
+    .node                       { .reset(); }
+}
+
+
+/* ==========================================================================
+   Regions Globals
+   ========================================================================== */
+.region-header,
+.region-subheader,
+.region-top,
+.region-footer {
+    .region-inner {
+        .grid-container();
+    }
+}
+
+.region-featured-fullwidth {
+  .reset();
+  .node.view-mode-full {
+    .reset();
+  }
+}
+
+.region-featured {
+}
+
+.region-content .block  { 
+  .grid-container(); 
+}
+
+
+
+/* ==========================================================================
+   Layout Globals
+   ========================================================================== */
+.layout-canyon-fullwidth {
+    .region {
+        .reset();
+        .region-inner {
+            .reset();
+            .block {
+                .reset();
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
