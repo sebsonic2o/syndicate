@@ -41,9 +41,9 @@ ActiveRecord::Schema.define(version: 20150618200002) do
     t.integer  "issue_id"
     t.integer  "user_id"
     t.string   "ancestry"
-    t.binary   "value"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "value",      default: "abstain"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   add_index "votes", ["ancestry"], name: "index_votes_on_ancestry", using: :btree

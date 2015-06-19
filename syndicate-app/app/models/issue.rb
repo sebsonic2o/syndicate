@@ -50,5 +50,4 @@ class Issue < ActiveRecord::Base
     @string = "hello"
   end
 
->>>>>>> master
 end
