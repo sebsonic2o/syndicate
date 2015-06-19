@@ -9,10 +9,21 @@ class IssuesController < ApplicationController
   end
 
   def vote
-    @vote = current_user.votes.find_by(issue_id: params[:issue_id])
-    @vote.update_attributes(value: params[:value])
-    @vote.save
-    p @vote
+    # p "Got here!"
+    # p params
+    @vote = current_user.votes.find_by(issue_id: params[:id])
+
+    if @vote.root?
+      @vote.update_attributes(value: params[:value])
+      @vote.save
+    else
+      puts "User has delegated their vote."
+    end
+
+    render json: @vote
+  end
+
+  def delegate
   end
 
   def live
