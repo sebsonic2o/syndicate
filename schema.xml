@@ -43,7 +43,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="1278" y="393" name="votes">
+<table x="1412" y="393" name="votes">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -55,6 +55,9 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="users" row="id" />
 </row>
+<row name="ancestry" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
 <row name="value" null="1" autoincrement="0">
 <datatype>BINARY</datatype>
 <default>NULL</default></row>
@@ -93,27 +96,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="475" y="185" name="delegations">
-<row name="id" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="issue_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="issues" row="id" />
-</row>
-<row name="delegate_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="users" row="id" />
-</row>
-<row name="constituent_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="users" row="id" />
-</row>
-<key type="PRIMARY" name="">
-<part>id</part>
-</key>
-</table>
-<table x="1012" y="252" name="groups">
+<table x="1062" y="231" name="groups">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -121,7 +104,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="830" y="331" name="participations">
+<table x="871" y="331" name="participations">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>

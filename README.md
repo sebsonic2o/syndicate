@@ -1,5 +1,5 @@
 # syndicate
 
-A liquid voting app...
+A live liquid voting app...
 
 ![Our Schema](schema.png)
