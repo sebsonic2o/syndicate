@@ -1,8 +1,7 @@
 class User < ActiveRecord::Base
-  attr_reader :vote_status
+  has_many :votes
+  has_many :voted_issues, through: :votes, source: :issue
 
-  def get_vote_status
-    @vote_status = self.
-  end
+  has_many :created_issues, foreign_key: :creator_id, class_name: 'Issue'
 
 end

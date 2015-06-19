@@ -7,10 +7,10 @@ class IssuesController < ApplicationController
     p @current_issue
   end
   def live
-    # @current_issue = Issue.find(params[:id])
-    # @current_issue.generate_leaderboard
+    @current_issue = Issue.find(params[:id])
+    @current_issue.generate_leaderboard
 
-    # @participants = @current_issue.voters
+    @participants = @current_issue.voters
 
 
 

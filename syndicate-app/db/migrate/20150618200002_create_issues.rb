@@ -7,8 +7,8 @@ class CreateIssues < ActiveRecord::Migration
       t.datetime :finish_date
       t.string :image_url
 
-      t.integer :creator_id
-      t.integer :group_id
+      t.references :creator, index: true
+      t.references :group, index: true
 
       t.timestamps null: false
     end
