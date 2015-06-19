@@ -49,5 +49,4 @@ class Issue < ActiveRecord::Base
   def hello
     @string = "hello"
   end
-
 end
