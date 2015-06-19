@@ -1,13 +1,11 @@
+<div id="issue-<%= @current_issue.id %>" class="post issue cf">
 
-
-<div id="issue-<%= @issue.id %>" class="post issue cf">
-
-  <div class="post-body">
-    <h1><%= @issue.title %></h1>
-    <p><%= @issue.description %></p>
-    <%= link_to "Edit", edit_issue_path(@issue) , :class => "btn btn-default"%>
+  <div class="issue-body">
+    <h1><%= @current_issue.title %></h1>
+    <p><%= @current_issue.description %></p>
+    <%= link_to "Edit", edit_issue_path(@current_issue) , :class => "btn btn-default"%>
     <%= link_to "Delete", issue_path, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-default" %>
   </div>
 
-<a href="/issues/<%= @issue.id %>/live" id="vote_now">Vote now!</a>
+<a href="/issues/<%= @current_issue.id %>/live" id="vote_now">Vote now!</a>
 </div>

@@ -1,0 +1,68 @@
+.top {
+  width: 100%;
+  padding: 8px 0 8px 0;
+  box-shadow: 1px 1px 4px #EAEAEA;
+  background: #333;
+  margin-bottom: 20px;
+  .top-inner {
+    width: 960px;
+    margin: 0 auto;
+  }
+}
+
+
+.header {
+  width: 100%;
+  padding: 8px 0 8px 0;
+  margin-bottom: 20px;
+  .header-inner {
+    width: 960px;
+    margin: 0 auto;
+  }
+}
+
+
+.logo {
+  // background-image: asset-url("logo.png");
+  display: block;
+  float: left;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.user-profile {
+  float: right;
+  color: #FFF;
+  line-height: 15px;
+  font-size: 12px;
+  form {
+    display: inline-block;
+  }
+}
+.user-profile a {
+  color: #FFF;
+
+}
+
+
+.user-profile-username {
+  font-weight: 700;
+}
+.form-logout {
+  display: inline-block;
+}
+input.form-logout {
+  background: none;
+  webkit-appearance: none;
+  padding: 0;
+  width: auto;
+  border: none;
+  outline: none;
+  color: #FFF;
+  display: inline-block;
+  text-decoration: underline;
+}
+
+#beer-search {
+  float: left;
+}

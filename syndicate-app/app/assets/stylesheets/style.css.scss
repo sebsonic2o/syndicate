@@ -1,0 +1,13 @@
+$primary-color: #F47920;
+
+
+@mixin btn-clear {
+  -webkit-appearance: none;
+  border: none;
+  background: none;
+}
+
+.container {
+  width: 960px;
+  margin: 0 auto;
+}
