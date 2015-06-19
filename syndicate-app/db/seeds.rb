@@ -5,8 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+30.times do
+  User.create(username: Faker::Name.first_name)
+end
+
 50.times do
-  Issue.create(
+  issue = Issue.create(
       title: Faker::Lorem.sentence,
       description: Faker::Lorem.paragraph(3),
       image_url: "/images/sherif.jpg",
@@ -15,4 +19,6 @@
       creator_id: 1,
       group_id: 1
   )
+
+  issue.voters = User.all
 end

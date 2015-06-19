@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
 
   root 'issues#index'
+
   resources :issues
+
+  patch '/issues/:id/vote' => 'issues#vote'
+
+  patch '/issues/:issue_id/users/:id/delegate' => 'issues#delegate'
+
   get '/issues/:id/live' => 'issues#live'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

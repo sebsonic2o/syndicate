@@ -2,10 +2,19 @@ class IssuesController < ApplicationController
   def index
     @issues = Issue.all
   end
+
   def show
     @current_issue = Issue.find(params[:id])
     p @current_issue
   end
+
+  def vote
+    @vote = current_user.votes.find_by(issue_id: params[:issue_id])
+    @vote.update_attributes(value: params[:value])
+    @vote.save
+    p @vote
+  end
+
   def live
     @current_issue = Issue.find(params[:id])
     @current_issue.generate_leaderboard
