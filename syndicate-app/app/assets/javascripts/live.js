@@ -1,5 +1,6 @@
 $(document).ready(function() {
   listenButtons();
+  loadParticipants();
 })
 
 var listenButtons = function(){
@@ -14,5 +15,10 @@ var listenButtons = function(){
     e.preventDefault();
     console.log("get out.")
   })
+
+}
+var loadParticipants = function(){
+
+  $(".abstain-board").append()
 
 }

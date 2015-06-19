@@ -1,6 +1,6 @@
 <% if session[:username] %>
   <div class="user-profile">
-    Hello <span class="user-profile-username">"<%= current_user.username %>"</span> |
+    Hello <span class="user-profile-username">"<%= current_user.id %>"</span> |
     <a href="/users/<%= current_user.id %>">My Profile</a> |
 
     <%= form_for(:session, url: logout_path, method: "delete" ) do |f| %>
