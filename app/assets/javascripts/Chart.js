@@ -8,7 +8,6 @@
  * https://github.com/nnnick/Chart.js/blob/master/LICENSE.md
  */
 
-
 (function(){
 
 	"use strict";
@@ -3079,7 +3078,7 @@
 			helpers.each(this.segments,function(segment){
 				segment.save();
 			});
-			
+
 			this.reflow();
 			this.render();
 		},
