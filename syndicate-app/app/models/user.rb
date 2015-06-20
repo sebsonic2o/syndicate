@@ -14,4 +14,17 @@ class User < ActiveRecord::Base
       return 0
     end
   end
+
+  def get_vote_status(issue_id)
+    @vote = self.votes.find_by(issue_id: issue_id)
+    @vote.value
+  end
+
+  def get_delegation_status(issue_id)
+    @vote = self.votes.find_by(issue_id: issue_id)
+    if !@vote.root?
+      return "delegated"
+    end
+  end
+
 end

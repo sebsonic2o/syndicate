@@ -53,12 +53,13 @@ var voteButton = function(buttonClass, voteValue) {
 }
 
 var delegateButton = function(){
-  $(".delegate-button").on('click', function(e){
+  $(".participant").on('click', function(e){
     e.preventDefault();
-    console.log("working!")
+    console.log("delegate button!")
 
+    var participant = $(this)
     var issueId = $(".leaderboard").attr('id');
-    var participantId = $(this).parent().attr('id');
+    var participantId = $(this).attr('id');
     var url = '/issues/' + issueId + '/users/' + participantId + '/delegate';
 
     var request = $.ajax({
@@ -69,11 +70,15 @@ var delegateButton = function(){
     request.done(function(data) {
       console.log("SUCCESS!");
       console.log(data);
+      // debugger
+      participant.children().children(".badge").html(data)
     });
 
     request.fail(function(response) {
       console.log("FAIL!");
     });
+
+
   })
 }
 

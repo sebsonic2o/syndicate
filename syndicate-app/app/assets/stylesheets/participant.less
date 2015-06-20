@@ -6,24 +6,68 @@
   margin-bottom: 20px;
   text-align: center;
   min-height: 180px;
-}
-
-.participant-image {
-  border-radius: 100%;
-  background: #DDD;
-}
-
-.participant-username {
-  margin: 0px;
-  font-size: 14px;
-  font-weight: 400;
-  em {
-    display: block;
-    font-size: 12px;
-    margin-bottom: 2px;
+  &.yes {
   }
-}
-.participant-vote-count {
-  font-size: 18px;
-  font-weight: 700;
+  &.no {
+  }
+  &.delegated {
+    .opacity(30);
+  }
+
+  .participant-image {
+    border-radius: 100%;
+    background: #DDD;
+    .img-glow();
+    cursor: pointer;
+  }
+  .avatar-holder {
+    position: relative;
+  }
+  .participant-username {
+    margin: 0px;
+    font-size: 14px;
+    font-weight: 400;
+    em {
+      display: block;
+      font-size: 12px;
+      margin-bottom: 2px;
+    }
+  }
+  .participant-vote-count {
+    font-size: 18px;
+    font-weight: 700;
+
+  }
+  .participant-badge {
+
+  }
+  .badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: inline-block;
+    min-width: 10px;
+    padding: 4px 8px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    color: #FFF;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    background-color: #CCC;
+    border-radius: 11px;
+    &.yes {
+      background-color: green;
+    }
+    &.no {
+      background-color: red;
+    }
+    &.abstain {
+      background-color:#666;
+    }
+     &.delegated {
+      display: none;
+    }
+  }
 }
