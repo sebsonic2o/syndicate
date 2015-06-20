@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   patch '/issues/:issue_id/users/:id/delegate' => 'issues#delegate'
 
   get '/issues/:id/live' => 'issues#live'
+  get '/issues/:id/graph' => 'issues#graph'
 
   get    'signup'  => 'users#new'
   get    'login'   => 'sessions#new'
