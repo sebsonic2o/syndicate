@@ -41,9 +41,9 @@ class IssuesController < ApplicationController
     if @current_user_vote.parent != nil
       @old_parent_vote = @current_user_vote.parent
       @old_parent = User.find(@old_parent_vote.user_id)
-      p '*'*80
-      p @old_parent.get_vote_power(params[:issue_id])
-      p '*'*80
+      # p '*'*80
+      # p @old_parent.get_vote_power(params[:issue_id])
+      # p '*'*80
     end
     @current_user_vote.parent = @representative_vote
     @current_user_vote.save
@@ -65,13 +65,12 @@ class IssuesController < ApplicationController
     @current_issue = Issue.find(params[:id])
     @current_issue.generate_leaderboard
     @participants = @current_issue.voters.order(id: :asc)
-    # number of voters - AR
-    # number of yes votes for this issue - AR
-    # number of no votes for this issue - AR
-    # number of abstains - ruby method
-    # number of active votes - ruby method
-    # percentage yes - ruby method
-    # percentage no - ruby method
+  end
 
+  def graph
+    @current_issue = Issue.find(params[:id])
+    @yes_votes = @current_issue.votes.where({value: "yes"}).count
+    @no_votes = @current_issue.votes.where({value: "no"}).count
+    render json: {yes_votes: @yes_votes, no_votes: @no_votes}
   end
 end

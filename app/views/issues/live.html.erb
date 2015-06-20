@@ -1,20 +1,34 @@
+<div class="grid-4" id="yes-board">
+  <h1>
+    YES: <%= @current_issue.yes_votes %>
+  </h1>
 
-<div id="<%= @current_issue.id %>" class="leaderboard">
+  <h2> (<%= @current_issue.get_yes_percentage %>%) </h2>
+</div>
+<div class="grid-4 min-height-300" id="vs-board">
+  <canvas id="percent-donut" width="300" height="300"></canvas>
+</div>
 
-  <div id="count-board">
+<div class="grid-4" id="no-board">
+  <h1> NO: <%= @current_issue.no_votes %></h1>
+  <h2> (<%= @current_issue.get_no_percentage %>%) </h2>
+</div>
+
+<div id="<%= @current_issue.id %>" class="leaderboard grid-12">
+
+
+  <div class="grid-4 vote-button">
+    <button type="submit" id="yes-button" value="YES" method="POST" action="/issues/<%= @current_issue.id %>"><img src="http://s3.amazonaws.com/rapgenius/1368571083_Facebook_like_thumb.png"></button>
+  </div>
+
+  <div class="grid-4 count-board">
     <h3>Total participants: <%= @current_issue.participant_count %></h3>
     <h3>Total votes: <%= @current_issue.vote_count %></h3>
-    <h3>Yes: <%= @current_issue.yes_votes %> (<%= @current_issue.get_yes_percentage %>%)</h3>
-    <h3>No:  <%= @current_issue.no_votes %> (<%= @current_issue.get_no_percentage %>%)</h3>
     <h3>Abstain: <%= @current_issue.abstain_count %></h3>
   </div>
 
-  <div class="button">
-    <button id="yes-button" type="submit" value="YES" method="POST" action="/issues/<%= @current_issue.id %>">YES!</button>
-  </div>
-
-  <div class="button">
-     <button id="no-button" type="submit" value="NO" method="POST" action="/issues/<%= @current_issue.id %>">NO!</button>
+  <div class="grid-4 vote-button">
+    <button type="submit" id="no-button" value="NO" method="POST" action="/issues/<%= @current_issue.id %>"><img src="http://bar-z.com/sites/default/files/styles/large/public/thumbsdown.png"</button>
   </div>
 
 </div>
@@ -36,13 +50,8 @@
 
     </div>
 
-
-
     <div class="constituents">
     </div>
-
-
-
   </div>
 <% end %>
 </div>

@@ -39,6 +39,7 @@ class Issue < ActiveRecord::Base
 
   def get_yes_percentage
     @yes_percentage = @yes_votes.to_f / @vote_count * 100
+    @yes_percentage = 0 if @yes_percentage.nan?
     puts "YES PERCENT " * 5
     @yes_percentage.round(2)
   end
@@ -46,6 +47,7 @@ class Issue < ActiveRecord::Base
 
   def get_no_percentage
     @no_percentage = @no_votes.to_f / @vote_count * 100
+    @no_percentage = 0 if @no_percentage.nan?
     puts "NO PERCENT " * 5
     p @no_percentage.round(2)
   end

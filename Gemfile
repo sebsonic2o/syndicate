@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'therubyracer', group: :production
+# gem 'therubyracer', group: :production
 gem 'ancestry'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
