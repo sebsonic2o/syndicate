@@ -5,8 +5,8 @@ $(document).ready(function() {
   // drawChart();
   delegateButton();
 
-  var myDataRef = new Firebase('https://incandescent-heat-2238.firebaseio.com/delegates');
-  var myVoteRef = new Firebase('https://incandescent-heat-2238.firebaseio.com/votes');
+  var myDataRef = new Firebase('https://vivid-torch-59.firebaseio.com/delegates');
+  var myVoteRef = new Firebase('https://vivid-torch-59.firebaseio.com/votes');
 
   // $('#messageInput').keypress(function (e) {
   //   if (e.keyCode == 13) {

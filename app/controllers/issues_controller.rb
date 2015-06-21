@@ -23,7 +23,7 @@ class IssuesController < ApplicationController
         vote.save
       end
 
-      base_uri = 'https://incandescent-heat-2238.firebaseio.com/'
+      base_uri = 'https://vivid-torch-59.firebaseio.com/'
 
       firebase = Firebase::Client.new(base_uri)
 
@@ -72,7 +72,7 @@ class IssuesController < ApplicationController
       vote.save
     end
 
-    base_uri = 'https://incandescent-heat-2238.firebaseio.com/'
+    base_uri = 'https://vivid-torch-59.firebaseio.com/'
 
     firebase = Firebase::Client.new(base_uri)
 
