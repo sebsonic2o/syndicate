@@ -6,6 +6,7 @@ $(document).ready(function() {
   delegateButton();
 
   var myDataRef = new Firebase('https://incandescent-heat-2238.firebaseio.com/delegates');
+  var myVoteRef = new Firebase('https://incandescent-heat-2238.firebaseio.com/votes');
 
   // $('#messageInput').keypress(function (e) {
   //   if (e.keyCode == 13) {
@@ -21,6 +22,13 @@ $(document).ready(function() {
     console.log("firebase snapshot")
     console.log(message)
     appendScore(message.delegate_count, message.delegate_vote_id);
+  });
+
+  myVoteRef.on('child_added', function(snapshot) {
+    var message = snapshot.val();
+    console.log("firebase vote snapshot");
+    console.log(message);
+    changeVoteDOM(message.yes_votes, message.no_votes);
   });
 
 });
@@ -46,18 +54,22 @@ var voteButton = function(buttonClass, voteValue) {
       console.log("SUCCESS!");
       console.log(data);
 
-      $('#yes-votes').html(data.yes_votes);
-      $('#no-votes').html(data.no_votes);
-
-      myDoughnutChart.segments[0].value = data.no_votes;
-      myDoughnutChart.segments[1].value = data.yes_votes;
-      myDoughnutChart.update();
+      // changeVoteDOM(data.yes_votes, data.no_votes);
     });
 
     request.fail(function(response) {
       console.log("FAIL!");
     });
   });
+}
+
+var changeVoteDOM = function(yes_votes, no_votes) {
+  $('#yes-votes').html(yes_votes);
+  $('#no-votes').html(no_votes);
+
+  myDoughnutChart.segments[0].value = no_votes;
+  myDoughnutChart.segments[1].value = yes_votes;
+  myDoughnutChart.update();
 }
 
 var delegateButton = function(){

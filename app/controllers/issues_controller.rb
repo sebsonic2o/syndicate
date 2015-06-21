@@ -22,6 +22,12 @@ class IssuesController < ApplicationController
         vote.value = @vote.value
         vote.save
       end
+
+      base_uri = 'https://incandescent-heat-2238.firebaseio.com/'
+
+      firebase = Firebase::Client.new(base_uri)
+
+      response = firebase.push("votes", { yes_votes: @current_issue.get_yes_votes, no_votes: @current_issue.get_no_votes})
     else
       puts "User has delegated their vote."
     end
