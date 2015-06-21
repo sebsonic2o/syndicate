@@ -40,15 +40,16 @@ class IssuesController < ApplicationController
       puts "User has delegated their vote."
     end
 
-    render json: {
-      participant_count: @current_issue.participant_count,
-      yes_votes: @current_issue.yes_votes,
-      no_votes: @current_issue.no_votes,
-      yes_percentage: @current_issue.yes_percentage,
-      no_percentage: @current_issue.no_percentage,
-      vote_count: @current_issue.vote_count,
-      abstain_count: @current_issue.abstain_count
-    }
+    render json: {}
+    # render json: {
+    #   participant_count: @current_issue.participant_count,
+    #   yes_votes: @current_issue.yes_votes,
+    #   no_votes: @current_issue.no_votes,
+    #   yes_percentage: @current_issue.yes_percentage,
+    #   no_percentage: @current_issue.no_percentage,
+    #   vote_count: @current_issue.vote_count,
+    #   abstain_count: @current_issue.abstain_count
+    # }
   end
 
   def delegate
