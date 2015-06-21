@@ -13,8 +13,15 @@ class IssuesController < ApplicationController
     @representative_vote = @representative.votes.find_by(issue_id: params[:issue_id])
     @current_user_vote = current_user.votes.find_by(issue_id: params[:issue_id])
 
-    @current_user_vote.parent = @representative_vote
-    @current_user_vote.save
+    # Delegates or redelegates current user's vote to a parent
+    if @current_user_vote.parent != @representative_vote
+      @current_user_vote.parent = @representative_vote
+      @current_user_vote.save
+    # Undelegates vote of current user
+    else
+      @current_user_vote.parent = nil
+      @current_user_vote.save
+    end
 
     @representative_vote.descendants.each do |vote|
       vote.value = @representative_vote.value
