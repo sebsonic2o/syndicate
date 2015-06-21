@@ -1,3 +1,4 @@
+/* CSS crunched with Crunch - http://crunchapp.net/ */
 @import url(http://fonts.googleapis.com/css?family=Lora:400,700|Open+Sans:400,600,300,700,800|Roboto+Slab:400,300,700|Merriweather:400,300,700|Slabo+27px);
 /* ==========================================================================
    Styles
@@ -3024,17 +3025,17 @@ body.two-sidebars .region-below-content {
 .count-board {
   text-align: center;
   margin-left: 0px;
-  margin-top: 3em;
+  margin-top: 3.2em;
   margin-bottom: 3em;
 }
 .vote-button {
   margin-left: 3px;
   margin-right: 3px;
-  margin-top: 2em;
   margin-bottom: 5em;
   text-align: center;
 }
 #yes-button {
+  margin-top: 0.5em;
   background-color: white;
   border: 0;
   font-size: 30px;
@@ -3042,6 +3043,7 @@ body.two-sidebars .region-below-content {
   height: 120px;
 }
 #no-button {
+  margin-top: 1.5em;
   background-color: white;
   border: 0;
   font-size: 30px;

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  root 'issues#index'
+  root 'home#index'
+
 
   resources :issues
 
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
 
   patch '/issues/:issue_id/users/:id/delegate' => 'issues#delegate'
 
+  get '/home' => 'home#index'
   get '/issues/:id/live' => 'issues#live'
   get '/issues/:id/graph' => 'issues#graph'
 
