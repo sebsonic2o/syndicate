@@ -1,11 +1,5 @@
 <div class="grid-4" id="yes-board">
 
-
-
-    <div id='messagesDiv'></div>
-    <input type='text' id='nameInput' placeholder='Name'>
-    <input type='text' id='messageInput' placeholder='Message'>
-
   <h1>
     YES: <%= @current_issue.yes_votes %>
   </h1>
@@ -49,7 +43,7 @@
 
 
     <div class="avatar-holder">
-      <img class="participant-image" src="<%= participant.image_url %>" />
+      <img class="participant-image rep" src="<%= participant.image_url %>" />
 
       <div class="badge participant-vote-count <%= participant.get_vote_status(@current_issue.id) %> <%= participant.get_delegation_status(@current_issue.id) %>">
         <%= participant.get_vote_power(@current_issue.id) %>
