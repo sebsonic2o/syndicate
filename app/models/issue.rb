@@ -16,13 +16,13 @@ class Issue < ActiveRecord::Base
   def get_yes_votes
     @yes_votes = self.votes.where({value: "yes"}).count
     puts "YES VOTES " * 5
-    puts @yes_votes
+    p @yes_votes
   end
 
   def get_no_votes
     @no_votes = self.votes.where({value: "no"}).count
     puts "NO VOTES " * 5
-    puts @no_votes
+    p @no_votes
   end
 
   def get_vote_count

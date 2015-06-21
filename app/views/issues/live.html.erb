@@ -1,7 +1,7 @@
 <div class="grid-4" id="yes-board">
 
   <h1>
-    YES: <%= @current_issue.yes_votes %>
+    YES: <%= @current_issue.get_yes_votes %>
   </h1>
 
   <h2> (<%= @current_issue.get_yes_percentage %>%) </h2>
@@ -11,7 +11,7 @@
 </div>
 
 <div class="grid-4" id="no-board">
-  <h1> NO: <%= @current_issue.no_votes %></h1>
+  <h1> NO: <%= @current_issue.get_no_votes %></h1>
   <h2> (<%= @current_issue.get_no_percentage %>%) </h2>
 </div>
 
@@ -58,5 +58,9 @@
   </div>
 <% end %>
 </div>
+
+<script>
+  newDrawChart(<%= @current_issue.yes_votes %>, <%= @current_issue.no_votes %>);
+</script>
 
 
