@@ -46,6 +46,8 @@ var voteButton = function(buttonClass, voteValue) {
       console.log("SUCCESS!");
       console.log(data);
 
+      $('#yes-votes').html(data.yes_votes);
+      $('#no-votes').html(data.no_votes);
 
       myDoughnutChart.segments[0].value = data.no_votes;
       myDoughnutChart.segments[1].value = data.yes_votes;

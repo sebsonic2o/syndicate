@@ -1,7 +1,7 @@
 <div class="grid-4" id="yes-board">
 
-  <h1>
-    YES: <%= @current_issue.get_yes_votes %>
+  <h1 id="yes-votes">
+    YES: <span id="yes-votes"><%= @current_issue.get_yes_votes %></span>
   </h1>
 
   <h2> (<%= @current_issue.get_yes_percentage %>%) </h2>
@@ -11,7 +11,9 @@
 </div>
 
 <div class="grid-4" id="no-board">
-  <h1> NO: <%= @current_issue.get_no_votes %></h1>
+  <h1 id="no-votes">
+    NO: <span id="no-votes"><%= @current_issue.get_no_votes %></span>
+  </h1>
   <h2> (<%= @current_issue.get_no_percentage %>%) </h2>
 </div>
 
@@ -19,7 +21,7 @@
 
 
   <div class="grid-4 vote-button">
-    <button type="submit" id="yes-button" value="YES" method="POST" action="/issues/<%= @current_issue.id %>"><%= image_tag("thumbsup.png") %>
+    <button type="submit" id="yes-button" value="YES" method="POST" action="/issues/<%= @current_issue.id %>/vote?value=yes"><%= image_tag("thumbsup.png") %>
     </button>
   </div>
 
@@ -30,7 +32,7 @@
   </div>
 
   <div class="grid-4 vote-button">
-    <button type="submit" id="no-button" value="NO" method="POST" action="/issues/<%= @current_issue.id %>"><%= image_tag("thumbsdown.png") %>
+    <button type="submit" id="no-button" value="NO" method="POST" action="/issues/<%= @current_issue.id %>/vote?value=no"><%= image_tag("thumbsdown.png") %>
     </button>
   </div>
 

@@ -29,9 +29,7 @@ class IssuesController < ApplicationController
     render json: {
       vote: @vote,
       yes_votes: @current_issue.get_yes_votes,
-      yes_percentage: @current_issue.get_yes_percentage,
-      no_votes: @current_issue.get_no_votes,
-      no_percentage: @current_issue.get_no_percentage
+      no_votes: @current_issue.get_no_votes
     }
   end
 
