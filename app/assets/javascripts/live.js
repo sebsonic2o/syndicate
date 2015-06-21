@@ -16,9 +16,10 @@ $(document).ready(function() {
 
   myDataRef.on('child_added', function(snapshot) {
     var message = snapshot.val();
-    console.log("firebase snapshot")
     console.log(message)
     appendScore(message);
+    appendVoteStatus()
+    appendDelegatedStatus(message.current_user_id)
   });
 
 })
@@ -54,8 +55,6 @@ var voteButton = function(buttonClass, voteValue) {
 var delegateButton = function(){
   $(".participant").on('click', function(e){
     e.preventDefault();
-    console.log("delegate button!")
-
     // When we delegate our vote by clicking on another user they are our "representative"
     var representative = $(this)
     var issueId = $(".leaderboard").attr('id');
@@ -82,7 +81,6 @@ var delegateButton = function(){
 }
 
 var appendScore = function(message) {
-
   // console.log(target)
   console.log("Firebase Data")
   console.log("current_user_id: " + message.current_user_id)
@@ -93,6 +91,15 @@ var appendScore = function(message) {
   $('#' + message.representative_id).children().children(".badge").html(message.representative_vote_count)
   $('#' + message.former_representative_id).children().children(".badge").html(message.former_representative_vote_count)
 }
+
+var appendVoteStatus = function() {
+}
+
+var appendDelegatedStatus = function(current_user) {
+  $('#' + current_user).removeClass("delegated")
+  $('#' + current_user).addClass("delegated")
+}
+
 
 var drawChart = function(){
 

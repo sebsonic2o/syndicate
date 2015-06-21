@@ -16,6 +16,11 @@ class IssuesController < ApplicationController
       vote.value = "abstain"
       p vote.save
     end
+    base_uri = 'https://incandescent-heat-2238.firebaseio.com/'
+    firebase = Firebase::Client.new(base_uri)
+
+    # need to push
+    response = firebase.delete("delegates")
   end
 
   def delegate
@@ -108,6 +113,9 @@ class IssuesController < ApplicationController
   end
 
   def live
+    base_uri = 'https://incandescent-heat-2238.firebaseio.com/'
+    firebase = Firebase::Client.new(base_uri)
+    firebase.delete("delegates")
     @current_issue = Issue.find(params[:id])
     @current_issue.generate_leaderboard
     @participants = @current_issue.voters.order(id: :asc)

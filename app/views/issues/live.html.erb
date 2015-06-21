@@ -43,7 +43,6 @@
 
     <h3 class="participant-username"><a href="#"><%= participant.username %></a><em>User ID: <%= participant.id %></em> </h3>
 
-
     <div class="avatar-holder">
       <img class="participant-image rep" src="<%= participant.image_url %>" />
 
@@ -58,5 +57,7 @@
   </div>
 <% end %>
 </div>
+
+<a href="/issues/<%= @current_issue.id %>/clear">Clear Issue</a>
 
 
