@@ -2,6 +2,25 @@ $(document).ready(function() {
   listenButtons();
   drawChart();
   delegateButton();
+
+  var myDataRef = new Firebase('https://incandescent-heat-2238.firebaseio.com/delegates');
+
+  // $('#messageInput').keypress(function (e) {
+  //   if (e.keyCode == 13) {
+  //     var name = $('#nameInput').val();
+  //     var text = $('#messageInput').val();
+  //     myDataRef.push({name: name, text: text});
+  //     $('#messageInput').val('');
+  //   }
+  // });
+
+  myDataRef.on('child_added', function(snapshot) {
+    var message = snapshot.val();
+    console.log("firebase snapshot")
+    console.log(message)
+    appendScore(message.delegate_count, message.delegate_vote_id);
+  });
+
 })
 
 var listenButtons = function() {
@@ -52,9 +71,9 @@ var delegateButton = function(){
     });
 
     request.done(function(data) {
-      console.log("SUCCESS!");
-      console.log(data);
-      participant.children().children(".badge").html(data)
+      console.log("Ajax!");
+      // console.log(data);
+      // participant.children().children(".badge").html(data)
     });
 
     request.fail(function(response) {
@@ -63,6 +82,13 @@ var delegateButton = function(){
 
 
   })
+}
+
+var appendScore = function(count, id) {
+  console.log(id)
+  console.log(count)
+  var target = $('#' + id).children().children(".badge").html(count)
+  console.log(target)
 }
 
 var drawChart = function(){
@@ -110,3 +136,6 @@ var drawChart = function(){
     }
   });
 }
+
+
+

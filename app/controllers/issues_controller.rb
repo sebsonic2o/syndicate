@@ -26,21 +26,21 @@ class IssuesController < ApplicationController
 
     firebase = Firebase::Client.new(base_uri)
 
-    response = firebase.push("todos", { :name => 'Pick the milk', :priority => 1 })
+    response = firebase.push("delegates", { :delegate_count => @representative_vote.subtree.count, :delegate_vote_id => @representative.id})
+
     response.success? # => true
     response.code # => 200
     response.body # => { 'name' => "-INOQPH-aV_psbk3ZXEX" }
     response.raw_body # => '{"name":"-INOQPH-aV_psbk3ZXEX"}'
-
     #render json of two objects, both the
 
-    # p @representative_vote.descendants
-    # @delegate_vote.descendants.each do |vote|
-    #   vote.value = @delegate_vote.value
-    #   vote.save
-    # end
+    p @representative_vote.descendants
+    @representative_vote.descendants.each do |vote|
+      vote.value = @representative_vote.value
+      vote.save
+    end
 
-    render json: response.body
+    render json: @representative_vote.descendants
 
   end
 
