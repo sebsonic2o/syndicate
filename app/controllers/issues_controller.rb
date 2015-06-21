@@ -13,6 +13,14 @@ class IssuesController < ApplicationController
     @representative_vote = @representative.votes.find_by(issue_id: params[:issue_id])
     @current_user_vote = current_user.votes.find_by(issue_id: params[:issue_id])
 
+    @current_user_vote.parent = @representative_vote
+    @current_user_vote.save
+
+    @representative_vote.descendants.each do |vote|
+      vote.value = @representative_vote.value
+      vote.save
+    end
+
     base_uri = 'https://incandescent-heat-2238.firebaseio.com/'
 
     firebase = Firebase::Client.new(base_uri)
@@ -23,8 +31,6 @@ class IssuesController < ApplicationController
     response.code # => 200
     response.body # => { 'name' => "-INOQPH-aV_psbk3ZXEX" }
     response.raw_body # => '{"name":"-INOQPH-aV_psbk3ZXEX"}'
-
-    p @representative_vote.descendants
 
     render json: @representative_vote.descendants
   end
