@@ -8,57 +8,31 @@ class IssuesController < ApplicationController
     p @current_issue
   end
 
-  def vote
-    # p "Got here!"
-    # p params
-    @vote = current_user.votes.find_by(issue_id: params[:id])
-
-    if @vote.root?
-      @vote.update_attributes(value: params[:value])
-      @vote.save
-    else
-      puts "User has delegated their vote."
-    end
-
-    @vote.descendants.each do |vote|
-      vote.value = @vote.value
-      vote.save
-    end
-
-    render json: @vote
-  end
-
   def delegate
     @representative = User.find(params[:id])
     @representative_vote = @representative.votes.find_by(issue_id: params[:issue_id])
-
     @current_user_vote = current_user.votes.find_by(issue_id: params[:issue_id])
-    # @old_parent_vote = @current_user_vote.parent
-    # p '*'*80
-    # p @current_user_vote
-    # p @old_parent_vote
-    # p '*'*80
-    if @current_user_vote.parent != nil
-      @old_parent_vote = @current_user_vote.parent
-      @old_parent = User.find(@old_parent_vote.user_id)
-      # p '*'*80
-      # p @old_parent.get_vote_power(params[:issue_id])
-      # p '*'*80
-    end
+
     @current_user_vote.parent = @representative_vote
     @current_user_vote.save
 
+    @representative_vote.descendants.each do |vote|
+      vote.value = @representative_vote.value
+      vote.save
+    end
 
-      #render json of two objects, both the
+    base_uri = 'https://incandescent-heat-2238.firebaseio.com/'
 
-    # p @representative_vote.descendants
-    # @delegate_vote.descendants.each do |vote|
-    #   vote.value = @delegate_vote.value
-    #   vote.save
-    # end
+    firebase = Firebase::Client.new(base_uri)
 
-    render json: @representative.get_vote_power(params[:issue_id])
+    response = firebase.push("delegates", { :delegate_count => @representative_vote.subtree.count, :delegate_vote_id => @representative.id})
 
+    response.success? # => true
+    response.code # => 200
+    response.body # => { 'name' => "-INOQPH-aV_psbk3ZXEX" }
+    response.raw_body # => '{"name":"-INOQPH-aV_psbk3ZXEX"}'
+
+    render json: @representative_vote.descendants
   end
 
   def live

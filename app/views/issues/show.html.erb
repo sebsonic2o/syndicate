@@ -1,10 +1,22 @@
 <div id="issue-<%= @current_issue.id %>" class="issue view-mode-full">
-
   <div class="issue-body">
     <h1><%= @current_issue.title %></h1>
     <p><%= @current_issue.description %></p>
 	<a href="/issues/<%= @current_issue.id %>/live" id="vote_now" class="btn btn-primary btn-large">Vote now!</a>
   </div>
 
+  <input type='text' id='nameInput' placeholder='Name'>
+    <input type='text' id='messageInput' placeholder='Message'>
+    <script>
+      var myDataRef = new Firebase('https://incandescent-heat-2238.firebaseio.com/');
+      $('#messageInput').keypress(function (e) {
+        if (e.keyCode == 13) {
+          var name = $('#nameInput').val();
+          var text = $('#messageInput').val();
+          [ADD SET() HERE]
+          $('#messageInput').val('');
+        }
+      });
+    </script>
 
 </div>
