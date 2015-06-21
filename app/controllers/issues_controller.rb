@@ -8,44 +8,31 @@ class IssuesController < ApplicationController
     p @current_issue
   end
 
-  def vote
-    # p "Got here!"
-    # p params
-    @vote = current_user.votes.find_by(issue_id: params[:id])
-
-    if @vote.root?
-      @vote.update_attributes(value: params[:value])
-      @vote.save
-    else
-      puts "User has delegated their vote."
-    end
-
-    @vote.descendants.each do |vote|
-      vote.value = @vote.value
-      vote.save
-    end
-
-    render json: @vote
-  end
-
   def delegate
     @representative = User.find(params[:id])
     @representative_vote = @representative.votes.find_by(issue_id: params[:issue_id])
-
     @current_user_vote = current_user.votes.find_by(issue_id: params[:issue_id])
 
     @current_user_vote.parent = @representative_vote
     @current_user_vote.save
-
-    p @representative_vote.descendants
 
     @representative_vote.descendants.each do |vote|
       vote.value = @representative_vote.value
       vote.save
     end
 
-    render json: @representative.get_vote_power(params[:issue_id])
+    base_uri = 'https://incandescent-heat-2238.firebaseio.com/'
 
+    firebase = Firebase::Client.new(base_uri)
+
+    response = firebase.push("delegates", { :delegate_count => @representative_vote.subtree.count, :delegate_vote_id => @representative.id})
+
+    response.success? # => true
+    response.code # => 200
+    response.body # => { 'name' => "-INOQPH-aV_psbk3ZXEX" }
+    response.raw_body # => '{"name":"-INOQPH-aV_psbk3ZXEX"}'
+
+    render json: @representative_vote.descendants
   end
 
   def live
