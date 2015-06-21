@@ -45,7 +45,13 @@
 
 
     <div class="avatar-holder">
+    <% if @current_user.id == participant.id %>
+      <img class="participant-image current" src="<%= participant.image_url %>" />
+    <% elsif @representative_id == participant.id%>
       <img class="participant-image rep" src="<%= participant.image_url %>" />
+    <% else %>
+      <img class="participant-image" src="<%= participant.image_url %>" />
+    <% end %>
 
       <div class="badge participant-vote-count <%= participant.get_vote_status(@current_issue.id) %> <%= participant.get_delegation_status(@current_issue.id) %>">
         <%= participant.get_vote_power(@current_issue.id) %>
