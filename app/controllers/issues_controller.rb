@@ -27,15 +27,27 @@ class IssuesController < ApplicationController
 
       firebase = Firebase::Client.new(base_uri)
 
-      response = firebase.push("votes", { yes_votes: @current_issue.get_yes_votes, no_votes: @current_issue.get_no_votes})
+      response = firebase.push("votes", {
+        participant_count: @current_issue.participant_count,
+        yes_votes: @current_issue.yes_votes,
+        no_votes: @current_issue.no_votes,
+        yes_percentage: @current_issue.yes_percentage,
+        no_percentage: @current_issue.no_percentage,
+        vote_count: @current_issue.vote_count,
+        abstain_count: @current_issue.abstain_count
+      })
     else
       puts "User has delegated their vote."
     end
 
     render json: {
-      vote: @vote,
-      yes_votes: @current_issue.get_yes_votes,
-      no_votes: @current_issue.get_no_votes
+      participant_count: @current_issue.participant_count,
+      yes_votes: @current_issue.yes_votes,
+      no_votes: @current_issue.no_votes,
+      yes_percentage: @current_issue.yes_percentage,
+      no_percentage: @current_issue.no_percentage,
+      vote_count: @current_issue.vote_count,
+      abstain_count: @current_issue.abstain_count
     }
   end
 
@@ -68,7 +80,7 @@ class IssuesController < ApplicationController
 
   def live
     @current_issue = Issue.find(params[:id])
-    @current_issue.generate_leaderboard
+    # @current_issue.generate_leaderboard
     @participants = @current_issue.voters.order(id: :asc)
   end
 

@@ -1,10 +1,10 @@
 <div class="grid-4" id="yes-board">
 
   <h1 id="yes-votes">
-    YES: <span id="yes-votes"><%= @current_issue.get_yes_votes %></span>
+    YES: <span id="yes-votes"><%= @current_issue.yes_votes %></span>
   </h1>
 
-  <h2> (<%= @current_issue.get_yes_percentage %>%) </h2>
+  <h2> (<span id="yes-percentage"><%= @current_issue.yes_percentage %></span>%) </h2>
 </div>
 <div class="grid-4 min-height-300" id="vs-board">
   <canvas id="percent-donut" width="300" height="300"></canvas>
@@ -12,9 +12,9 @@
 
 <div class="grid-4" id="no-board">
   <h1 id="no-votes">
-    NO: <span id="no-votes"><%= @current_issue.get_no_votes %></span>
+    NO: <span id="no-votes"><%= @current_issue.no_votes %></span>
   </h1>
-  <h2> (<%= @current_issue.get_no_percentage %>%) </h2>
+  <h2> (<span id="no-percentage"><%= @current_issue.no_percentage %></span>%) </h2>
 </div>
 
 <div id="<%= @current_issue.id %>" class="leaderboard grid-12">
@@ -26,9 +26,9 @@
   </div>
 
   <div class="grid-4 count-board">
-    <h3>Total participants: <%= @current_issue.participant_count %></h3>
-    <h3>Total votes: <%= @current_issue.vote_count %></h3>
-    <h3>Abstain: <%= @current_issue.abstain_count %></h3>
+    <h3>Total participants: <span id="total-participants"><%= @current_issue.participant_count %></span></h3>
+    <h3>Total votes: <span id="total-votes"><%= @current_issue.vote_count %></span></h3>
+    <h3>Abstain: <span id="abstain"><%= @current_issue.abstain_count %></span></h3>
   </div>
 
   <div class="grid-4 vote-button">

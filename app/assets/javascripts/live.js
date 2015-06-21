@@ -28,7 +28,15 @@ $(document).ready(function() {
     var message = snapshot.val();
     console.log("firebase vote snapshot");
     console.log(message);
-    changeVoteDOM(message.yes_votes, message.no_votes);
+    changeVoteDOM(
+      message.participant_count,
+      message.yes_votes,
+      message.no_votes,
+      message.yes_percentage,
+      message.no_percentage,
+      message.vote_count,
+      message.abstain_count
+    );
   });
 
 });
@@ -63,12 +71,17 @@ var voteButton = function(buttonClass, voteValue) {
   });
 }
 
-var changeVoteDOM = function(yes_votes, no_votes) {
-  $('#yes-votes').html(yes_votes);
-  $('#no-votes').html(no_votes);
+var changeVoteDOM = function(participantCount, yesVotes, noVotes, yesPercentage, noPercentage, voteCount, abstainCount) {
+  $('#total-participants').html(participantCount);
+  $('#yes-votes').html(yesVotes);
+  $('#no-votes').html(noVotes);
+  $('#yes-percentage').html(yesPercentage);
+  $('#no-percentage').html(noPercentage);
+  $('#total-votes').html(voteCount);
+  $('#abstain').html(abstainCount);
 
-  myDoughnutChart.segments[0].value = no_votes;
-  myDoughnutChart.segments[1].value = yes_votes;
+  myDoughnutChart.segments[0].value = noVotes;
+  myDoughnutChart.segments[1].value = yesVotes;
   myDoughnutChart.update();
 }
 
