@@ -8,6 +8,50 @@ class IssuesController < ApplicationController
     p @current_issue
   end
 
+  def vote
+    # p "Got here!"
+    # p params
+    @current_issue = Issue.find(params[:id])
+    @vote = current_user.votes.find_by(issue_id: params[:id])
+
+    if @vote.root?
+      @vote.update_attributes(value: params[:value])
+      @vote.save
+
+      @vote.descendants.each do |vote|
+        vote.value = @vote.value
+        vote.save
+      end
+
+      base_uri = 'https://incandescent-heat-2238.firebaseio.com/'
+
+      firebase = Firebase::Client.new(base_uri)
+
+      response = firebase.push("votes", {
+        participant_count: @current_issue.participant_count,
+        yes_votes: @current_issue.yes_votes,
+        no_votes: @current_issue.no_votes,
+        yes_percentage: @current_issue.yes_percentage,
+        no_percentage: @current_issue.no_percentage,
+        vote_count: @current_issue.vote_count,
+        abstain_count: @current_issue.abstain_count
+      })
+    else
+      puts "User has delegated their vote."
+    end
+
+    render json: {}
+    # render json: {
+    #   participant_count: @current_issue.participant_count,
+    #   yes_votes: @current_issue.yes_votes,
+    #   no_votes: @current_issue.no_votes,
+    #   yes_percentage: @current_issue.yes_percentage,
+    #   no_percentage: @current_issue.no_percentage,
+    #   vote_count: @current_issue.vote_count,
+    #   abstain_count: @current_issue.abstain_count
+    # }
+  end
+
   def delegate
     @representative = User.find(params[:id])
     @representative_vote = @representative.votes.find_by(issue_id: params[:issue_id])
@@ -44,7 +88,7 @@ class IssuesController < ApplicationController
 
   def live
     @current_issue = Issue.find(params[:id])
-    @current_issue.generate_leaderboard
+    # @current_issue.generate_leaderboard
     @participants = @current_issue.voters.order(id: :asc)
 
     if logged_in?
@@ -62,10 +106,10 @@ class IssuesController < ApplicationController
 
   end
 
-  def graph
-    @current_issue = Issue.find(params[:id])
-    @yes_votes = @current_issue.votes.where({value: "yes"}).count
-    @no_votes = @current_issue.votes.where({value: "no"}).count
-    render json: {yes_votes: @yes_votes, no_votes: @no_votes}
-  end
+  # def graph
+  #   @current_issue = Issue.find(params[:id])
+  #   @yes_votes = @current_issue.votes.where({value: "yes"}).count
+  #   @no_votes = @current_issue.votes.where({value: "no"}).count
+  #   render json: {yes_votes: @yes_votes, no_votes: @no_votes}
+  # end
 end
