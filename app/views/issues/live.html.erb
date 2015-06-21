@@ -37,7 +37,7 @@
 </div>
 
 
-<div class="participants">
+<div class="participants" >
 <% @participants.each do |participant| %>
   <div id="<%= participant.id %>" class="participant <%= participant.get_vote_status(@current_issue.id) %> <%= participant.get_delegation_status(@current_issue.id) %>">
 

@@ -18,7 +18,7 @@ $(document).ready(function() {
     var message = snapshot.val();
     console.log("firebase snapshot")
     console.log(message)
-    appendScore(message.delegate_count, message.delegate_vote_id);
+    appendScore(message);
   });
 
 })
@@ -52,18 +52,15 @@ var voteButton = function(buttonClass, voteValue) {
 }
 
 var delegateButton = function(){
-  $(".participant-image").mouseenter(function() {
-    $(this).parent().siblings(".delegate-button").show();
-  })
-
   $(".participant").on('click', function(e){
     e.preventDefault();
     console.log("delegate button!")
 
-    var participant = $(this)
+    // When we delegate our vote by clicking on another user they are our "representative"
+    var representative = $(this)
     var issueId = $(".leaderboard").attr('id');
-    var participantId = $(this).attr('id');
-    var url = '/issues/' + issueId + '/users/' + participantId + '/delegate';
+    var representativeId = $(this).attr('id');
+    var url = '/issues/' + issueId + '/users/' + representativeId + '/delegate';
 
     var request = $.ajax({
       type: "PATCH",
@@ -84,11 +81,17 @@ var delegateButton = function(){
   })
 }
 
-var appendScore = function(count, id) {
-  console.log(id)
-  console.log(count)
-  var target = $('#' + id).children().children(".badge").html(count)
-  console.log(target)
+var appendScore = function(message) {
+
+  // console.log(target)
+  console.log("Firebase Data")
+  console.log("current_user_id: " + message.current_user_id)
+  console.log("former_representative_id: " + message.former_representative_id)
+  console.log("former_representative_vote_count: " + message.former_representative_vote_count)
+  console.log("representative_id: " + message.representative_id)
+  console.log("representative_vote_count: " + message.representative_vote_count)
+  $('#' + message.representative_id).children().children(".badge").html(message.representative_vote_count)
+  $('#' + message.former_representative_id).children().children(".badge").html(message.former_representative_vote_count)
 }
 
 var drawChart = function(){
