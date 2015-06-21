@@ -18,7 +18,8 @@
 
 
   <div class="grid-4 vote-button">
-    <button type="submit" id="yes-button" value="YES" method="POST" action="/issues/<%= @current_issue.id %>"><img src="http://s3.amazonaws.com/rapgenius/1368571083_Facebook_like_thumb.png"></button>
+    <button type="submit" id="yes-button" value="YES" method="POST" action="/issues/<%= @current_issue.id %>"><%= image_tag("thumbsup.png") %>
+    </button>
   </div>
 
   <div class="grid-4 count-board">
@@ -28,7 +29,8 @@
   </div>
 
   <div class="grid-4 vote-button">
-    <button type="submit" id="no-button" value="NO" method="POST" action="/issues/<%= @current_issue.id %>"><img src="http://bar-z.com/sites/default/files/styles/large/public/thumbsdown.png"</button>
+    <button type="submit" id="no-button" value="NO" method="POST" action="/issues/<%= @current_issue.id %>"><%= image_tag("thumbsdown.png") %>
+    </button>
   </div>
 
 </div>
