@@ -27,4 +27,8 @@ class User < ActiveRecord::Base
     end
   end
 
+  def get_votes(issue_id)
+    @votes = self.votes.find_by(issue_id)
+  end
+
 end

@@ -39,12 +39,11 @@
 </div>
 
 
-<div class="participants">
+<div class="participants" >
 <% @participants.each do |participant| %>
   <div id="<%= participant.id %>" class="participant <%= participant.get_vote_status(@current_issue.id) %> <%= participant.get_delegation_status(@current_issue.id) %>">
 
     <h3 class="participant-username"><a href="#"><%= participant.username %></a><em>User ID: <%= participant.id %></em> </h3>
-
 
     <div class="avatar-holder">
     <% if @current_user.id == participant.id %>
@@ -70,5 +69,7 @@
 <script>
   newDrawChart(<%= @current_issue.yes_votes %>, <%= @current_issue.no_votes %>);
 </script>
+
+<a href="/issues/<%= @current_issue.id %>/clear">Clear Issue</a>
 
 
