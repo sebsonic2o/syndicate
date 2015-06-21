@@ -39,6 +39,20 @@ class IssuesController < ApplicationController
     @current_issue = Issue.find(params[:id])
     @current_issue.generate_leaderboard
     @participants = @current_issue.voters.order(id: :asc)
+
+    if logged_in?
+      @current_user = current_user
+    else
+      @current_user = User.first
+    end
+
+    @current_user_vote = @current_user.votes.find_by(issue_id: @current_issue.id)
+
+    if !@current_user_vote.root?
+      representative_vote =@current_user_vote.parent
+      @representative_id = User.find(representative_vote.user_id).id
+    end
+
   end
 
   def graph
