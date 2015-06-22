@@ -163,7 +163,12 @@ class IssuesController < ApplicationController
     response.raw_body # => '{"name":"-INOQPH-aV_psbk3ZXEX"}'
 
     render json: @representative_vote.descendants
+
+
   end
+
+
+
 
   def live
     base_uri = 'https://vivid-torch-59.firebaseio.com/'
@@ -172,6 +177,9 @@ class IssuesController < ApplicationController
     @current_issue = Issue.find(params[:id])
     # @current_issue.generate_leaderboard
     @participants = @current_issue.voters.order(id: :asc)
+
+
+
 
     if logged_in?
       @current_user = current_user
