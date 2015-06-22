@@ -16,8 +16,9 @@
     <div class="region hero">
       <div id="region-inner">
         <div id="hero-text">
-          Make the world a better place.
-          <!-- Vote Rob off the island. -->
+          <!-- Join the Liquid Democracy. -->
+          <!-- Liquify your voting. -->
+          Don't think twice about voting.
         </div>
         <div id="home-search">
           <form class="form-wrapper cf">
@@ -29,45 +30,36 @@
     </div>
 
     <div class="region hot-issues">
-      <div class="region-inner">
-        <div id="title-thinger">
-          Hot Issues
-        </div>
+      <div id="title-thinger">
+        Hot Issues
+      </div>
 
+      <div class="region-inner"
         <div class="grid-container">
-          <div class="grid-4 issue-box debug">
-            1
-          </div>
-
-          <div class="hori-gutter">
-          </div>
-
-          <div class="grid-4 issue-box debug">
-            2
-          </div>
-
-          <div class="grid-4 issue-box debug">
-            3
-          </div>
-
-          <div class="grid-4 issue-box debug">
-            4
-          </div>
-
-          <div class="grid-4 issue-box debug">
-            5
-          </div>
+          <div class="issues">
+            <% @hot_issues.each do |issue| %>
+              <div id="issue-<%= issue.id %>" class="hot-issue">
 
 
+                <div class="issue-body">
 
-          <div class="grid-4 issue-box debug">
-            6
+
+                  <div class="issue-image">
+                    <a href="/issues/<%= issue.id %>">
+                      <%= image_tag(issue.image_url) %>
+                    </a>
+                  </div>
+
+                  <h2 class="hot-issue-heading">
+                    <%= link_to issue.title, issue %>
+                  </h2>
+                <!--   <p><%= issue.description %></p> -->
+                </div>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
     </div>
-
-
-
   </body>
 </html>
