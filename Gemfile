@@ -1,8 +1,12 @@
 source 'https://rubygems.org'
 
+
+gem 'dotenv-rails', :groups => [:development, :test]
+
 # gem 'therubyracer', group: :production
 gem 'ancestry'
 gem 'firebase'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 # Use postgresql as the database for Active Record

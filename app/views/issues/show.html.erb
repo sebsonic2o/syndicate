@@ -1,5 +1,6 @@
 <div id="issue-<%= @current_issue.id %>" class="issue view-mode-full">
   <div class="issue-body">
+    <%= image_tag(@current_issue.image_url) %>
     <h1><%= @current_issue.title %></h1>
     <p><%= @current_issue.description %></p>
 	<a href="/issues/<%= @current_issue.id %>/live" id="vote_now" class="btn btn-primary btn-large">Vote now!</a>
