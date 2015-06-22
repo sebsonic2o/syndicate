@@ -5,24 +5,26 @@ $(document).ready(function() {
   // drawChart();
   delegateButton();
 
-  var myDataRef = new Firebase('https://vivid-torch-59.firebaseio.com/delegates');
+  var myDataRef = new Firebase('https://crackling-inferno-2120.firebaseio.com/delegates');
   var myVoteRef = new Firebase('https://vivid-torch-59.firebaseio.com/votes');
 
-  // $('#messageInput').keypress(function (e) {
-  //   if (e.keyCode == 13) {
-  //     var name = $('#nameInput').val();
-  //     var text = $('#messageInput').val();
-  //     myDataRef.push({name: name, text: text});
-  //     $('#messageInput').val('');
-  //   }
-  // });
 
-  myDataRef.on('child_added', function(snapshot) {
+ myDataRef.on('child_added', function(snapshot) {
     var message = snapshot.val();
-    console.log(message);
-    appendScore(message);
-    appendVoteStatus();
-    appendDelegatedStatus(message.current_user_id);
+    console.log("firebase delegate snapshot")
+    // console.log(message)
+    if (message.incident === 1) { 
+      appendScore(message.old_delegate_count, message.old_delegate_id);
+      appendScore(message.new_delegate_count, message.new_delegate_id)
+    }
+    else if (message.incident === 2){
+      appendScore(0, message.current_user_id);
+      appendScore(message.new_delegate_count, message.new_delegate_id)
+    }
+    else {
+      appendScore(message.old_delegate_count, message.old_delegate_id);
+      appendScore(message.current_user_count, message.current_user_id)
+    }
   });
 
   myVoteRef.on('child_added', function(snapshot) {
@@ -114,25 +116,32 @@ var delegateButton = function(){
   })
 }
 
-var appendScore = function(message) {
-  // console.log(target)
-  console.log("Firebase Data")
-  console.log("current_user_id: " + message.current_user_id)
-  console.log("former_representative_id: " + message.former_representative_id)
-  console.log("former_representative_vote_count: " + message.former_representative_vote_count)
-  console.log("representative_id: " + message.representative_id)
-  console.log("representative_vote_count: " + message.representative_vote_count)
-  $('#' + message.representative_id).children().children(".badge").html(message.representative_vote_count)
-  $('#' + message.former_representative_id).children().children(".badge").html(message.former_representative_vote_count)
+var appendScore = function(count, id) {
+  console.log(id)
+  console.log(count)
+  var target = $('#' + id).children().children(".badge").html(count)
+  console.log(target)
 }
 
-var appendVoteStatus = function() {
-}
+// var appendScore = function(message) {
+//   // console.log(target)
+//   console.log("Firebase Data")
+//   console.log("current_user_id: " + message.current_user_id)
+//   console.log("former_representative_id: " + message.former_representative_id)
+//   console.log("former_representative_vote_count: " + message.former_representative_vote_count)
+//   console.log("representative_id: " + message.representative_id)
+//   console.log("representative_vote_count: " + message.representative_vote_count)
+//   $('#' + message.representative_id).children().children(".badge").html(message.representative_vote_count)
+//   $('#' + message.former_representative_id).children().children(".badge").html(message.former_representative_vote_count)
+// }
 
-var appendDelegatedStatus = function(current_user) {
-  $('#' + current_user).removeClass("delegated")
-  $('#' + current_user).addClass("delegated")
-}
+// var appendVoteStatus = function() {
+// }
+
+// var appendDelegatedStatus = function(current_user) {
+//   $('#' + current_user).removeClass("delegated")
+//   $('#' + current_user).addClass("delegated")
+// }
 
 var newDrawChart = function(yes_votes, no_votes) {
   // console.log("I am the new draw chart!");
