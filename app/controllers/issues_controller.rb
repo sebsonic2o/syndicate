@@ -60,7 +60,7 @@ class IssuesController < ApplicationController
       vote.value = "abstain"
       p vote.save
     end
-    base_uri = 'https://crackling-inferno-2120.firebaseio.com/'
+    base_uri = 'https://vivid-torch-59.firebaseio.com/'
     firebase = Firebase::Client.new(base_uri)
 
     # need to push
@@ -73,14 +73,16 @@ class IssuesController < ApplicationController
     @current_user = current_user
     @current_user_vote = @current_user.votes.find_by(issue_id: params[:issue_id])
 
-    base_uri = 'https://crackling-inferno-2120.firebaseio.com/'
+    base_uri = 'https://vivid-torch-59.firebaseio.com/'
     firebase = Firebase::Client.new(base_uri)
+
+  
 
    # Undelegates vote of current user by clicking on yourself 
     if @current_user == @target_representative
       puts "Undelegates vote of current user BY CLICKING ON SELF"
 
-      @old_representative_vote = @current_user_vote.parent
+      @old_representative_vote = @current_user_vote.root
       @old_representative = User.find(@old_representative_vote.user_id)
 
       @current_user_vote.parent = nil
@@ -91,7 +93,7 @@ class IssuesController < ApplicationController
     elsif !@current_user_vote.root? && @current_user_vote.parent != @target_representative_vote
 
       puts "Redelegates current user's vote to a new parent"
-      @old_representative_vote = @current_user_vote.parent
+      @old_representative_vote = @current_user_vote.root
       @old_representative = User.find(@old_representative_vote.user_id)
 
       @current_user_vote.parent = @target_representative_vote
@@ -100,20 +102,26 @@ class IssuesController < ApplicationController
       response = firebase.push("delegates", { :incident => 1, :old_delegate_count => @old_representative_vote.subtree.count, :old_delegate_id => @old_representative.id, :new_delegate_count => @target_representative_vote.subtree.count, :new_delegate_id => @target_representative.id})
 
     # Delegate's current user's vote, which is currently not designated
-    elsif @current_user_vote.root? && @current_user_vote.parent != @target_representative_vote
+    elsif @current_user_vote.root?
       puts "Delegate's current user's vote, which is currently not designated"
       @current_user_vote.parent = @target_representative_vote
       @current_user_vote.save
 
-      response = firebase.push("delegates", { :incident => 2, :new_delegate_count => @target_representative_vote.subtree.count, :new_delegate_id => @target_representative.id, :current_user_id => @current_user.id})
+      @target_root_vote = @target_representative_vote.root
+      @target_root = User.find(@target_root_vote.user_id)
+
+      response = firebase.push("delegates", { :incident => 2, :new_delegate_count => @target_root_vote.subtree.count, :new_delegate_id => @target_root.id, :current_user_id => @current_user.id})
 
     # Undelegates vote of current user by clicking on the rep
     elsif @current_user_vote.parent == @target_representative_vote
       puts "Undelegates vote of current user"
+      @old_representative_vote = @current_user_vote.root
+      @old_representative = User.find(@old_representative_vote.user_id)
+
       @current_user_vote.parent = nil
       @current_user_vote.save
 
-      response = firebase.push("delegates", { :incident => 3, :old_delegate_count => @target_representative_vote.subtree.count, :old_delegate_id => @target_representative.id, :current_user_count => @current_user_vote.subtree.count, :current_user_id => @current_user.id})
+      response = firebase.push("delegates", { :incident => 3, :old_delegate_count => @old_representative_vote.subtree.count, :old_delegate_id => @old_representative.id, :current_user_count => @current_user_vote.subtree.count, :current_user_id => @current_user.id})
     end
 
   

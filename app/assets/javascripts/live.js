@@ -5,7 +5,7 @@ $(document).ready(function() {
   // drawChart();
   delegateButton();
 
-  var myDataRef = new Firebase('https://crackling-inferno-2120.firebaseio.com/delegates');
+  var myDataRef = new Firebase('https://vivid-torch-59.firebaseio.com/delegates');
   var myVoteRef = new Firebase('https://vivid-torch-59.firebaseio.com/votes');
 
 
@@ -17,7 +17,7 @@ $(document).ready(function() {
       appendScore(message.old_delegate_count, message.old_delegate_id);
       appendScore(message.new_delegate_count, message.new_delegate_id)
     }
-    else if (message.incident === 2){
+    else if (message.incident === 2) {
       appendScore(0, message.current_user_id);
       appendScore(message.new_delegate_count, message.new_delegate_id)
     }
