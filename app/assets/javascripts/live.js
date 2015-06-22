@@ -5,8 +5,10 @@ $(document).ready(function() {
   // drawChart();
   delegateButton();
 
-  var myDataRef = new Firebase('https://vivid-torch-59.firebaseio.com/delegates');
-  var myVoteRef = new Firebase('https://vivid-torch-59.firebaseio.com/votes');
+  var firebaseUrl = $('body').data('env');
+
+  var myDataRef = new Firebase(firebaseUrl + 'delegates');
+  var myVoteRef = new Firebase(firebaseUrl + 'votes');
 
   // $('#messageInput').keypress(function (e) {
   //   if (e.keyCode == 13) {

@@ -23,7 +23,7 @@ class IssuesController < ApplicationController
         vote.save
       end
 
-      base_uri = 'https://vivid-torch-59.firebaseio.com/'
+      base_uri = ENV['FIREBASE_URL']
 
       firebase = Firebase::Client.new(base_uri)
 
@@ -60,7 +60,7 @@ class IssuesController < ApplicationController
       vote.value = "abstain"
       p vote.save
     end
-    base_uri = 'https://vivid-torch-59.firebaseio.com/'
+    base_uri = ENV['FIREBASE_URL']
     firebase = Firebase::Client.new(base_uri)
 
     # need to push
@@ -145,7 +145,7 @@ class IssuesController < ApplicationController
 
 
     # Firebase Ruby Connection Setup
-    base_uri = 'https://vivid-torch-59.firebaseio.com/'
+    base_uri = ENV['FIREBASE_URL']
     firebase = Firebase::Client.new(base_uri)
 
     # need to push
@@ -166,7 +166,7 @@ class IssuesController < ApplicationController
   end
 
   def live
-    base_uri = 'https://vivid-torch-59.firebaseio.com/'
+    base_uri = ENV['FIREBASE_URL']
     firebase = Firebase::Client.new(base_uri)
     firebase.delete("delegates")
     @current_issue = Issue.find(params[:id])
