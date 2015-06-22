@@ -25,6 +25,9 @@ $(document).ready(function() {
     appendScore(message);
     appendVoteStatus();
     appendDelegatedStatus(message.current_user_id);
+    nestParticipant(message.current_user_id, message.representative_id)
+
+    // message.current_user_id, message.former_representative_id, message.former_representative_vote_count, message.representative_id, message.representative_vote_count
   });
 
   myVoteRef.on('child_added', function(snapshot) {
@@ -90,7 +93,12 @@ var changeVoteDOM = function(participantCount, yesVotes, noVotes, yesPercentage,
 
 var delegateButton = function(){
   $(".participant").on('click', function(e){
+    e.stopPropagation();
     e.preventDefault();
+    console.log(this)
+    var array = []
+    array.push(this)
+    console.log(array)
     // When we delegate our vote by clicking on another user they are our "representative"
     var representative = $(this)
     var issueId = $(".leaderboard").attr('id');
@@ -127,6 +135,13 @@ var appendScore = function(message) {
   $('#' + message.representative_id).children().children(".badge").html(message.representative_vote_count)
   $('#' + message.former_representative_id).children().children(".badge").html(message.former_representative_vote_count)
 }
+
+
+var nestParticipant = function(current_user_id, representative_id) {
+  // Moves the delegate under the representative in the dom
+  var constituentDomTemplate = $('#' + current_user_id)
+  $('#' + representative_id).children(".constituents").append(constituentDomTemplate)
+};
 
 var appendVoteStatus = function() {
 }
