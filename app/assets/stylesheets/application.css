@@ -3064,6 +3064,13 @@ body.two-sidebars .region-below-content {
   opacity: 0.3;
   filter: alpha(opacity=30);
 }
+@media only screen and (max-width : 768px) {
+  .participant {
+    width: 18%;
+    float: left;
+    margin-right: 2%;
+  }
+}
 .participant .participant-image {
   box-sizing: border-box;
   border-radius: 100%;
