@@ -26,9 +26,13 @@
   </div>
 
   <div class="grid-4 count-board">
-    <h3>Total participants: <span id="total-participants"><%= @current_issue.participant_count %></span></h3>
-    <h3>Total votes: <span id="total-votes"><%= @current_issue.vote_count %></span></h3>
-    <h3>Abstain: <span id="abstain"><%= @current_issue.abstain_count %></span></h3>
+    <h3>Total participants: <%= @current_issue.participant_count %></h3>
+    <h3>Total votes: <%= @current_issue.vote_count %></h3>
+    <h3>Abstain: <%= @current_issue.abstain_count %></h3>
+
+    <button class="hidden" type="submit" id="abstain-button" value="NO" method="POST" action="/issues/<%= @current_issue.id %>">Abstain
+    </button>
+
   </div>
 
   <div class="grid-4 vote-button">

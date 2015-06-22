@@ -1,1 +1,56 @@
-get out
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Syndicate</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <%= render '/layouts/top' %>
+    <%= render '/layouts/header' %>
+
+    <div class="region hero">
+      <div id="region-inner">
+        <div id="hero-text">
+          Make the world a better place.
+          <!-- Vote Rob off the island. -->
+        </div>
+        <div id="home-search">
+          <form class="form-wrapper cf">
+            <input type="text" placeholder="Find an issue to vote on!" required>
+            <button type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="region hot-issues">
+      <div class="region-inner">
+        <div id="title-thinger">
+          Hot Issues
+        </div>
+
+        <div class="grid-container">
+          <div class="grid-4 issue-box debug">
+            1
+          </div>
+
+          <div class="grid-4 issue-box debug">
+            2
+          </div>
+
+          <div class="grid-4 issue-box debug">
+            3
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </body>
+</html>
