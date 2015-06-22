@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/home' => 'home#index'
   get '/issues/:id/live' => 'issues#live'
   get '/issues/:id/graph' => 'issues#graph'
+  get '/issues/:id/clear' => 'issues#clear'
 
   get    'signup'  => 'users#new'
   get    'login'   => 'sessions#new'

@@ -1,9 +1,14 @@
 $(document).ready(function() {
+  var myDoughnutChart;
+
   listenButtons();
-  drawChart();
+  // drawChart();
   delegateButton();
 
-  var myDataRef = new Firebase('https://incandescent-heat-2238.firebaseio.com/delegates');
+  var firebaseUrl = $('body').data('env');
+
+  var myDataRef = new Firebase(firebaseUrl + 'delegates');
+  var myVoteRef = new Firebase(firebaseUrl + 'votes');
 
   // $('#messageInput').keypress(function (e) {
   //   if (e.keyCode == 13) {
@@ -16,12 +21,31 @@ $(document).ready(function() {
 
   myDataRef.on('child_added', function(snapshot) {
     var message = snapshot.val();
-    console.log("firebase snapshot")
-    console.log(message)
-    appendScore(message.delegate_count, message.delegate_vote_id);
+    console.log(message);
+    appendScore(message);
+    appendVoteStatus();
+    appendDelegatedStatus(message.current_user_id);
+    nestParticipant(message.current_user_id, message.representative_id)
+
+    // message.current_user_id, message.former_representative_id, message.former_representative_vote_count, message.representative_id, message.representative_vote_count
   });
 
-})
+  myVoteRef.on('child_added', function(snapshot) {
+    var message = snapshot.val();
+    console.log("firebase vote snapshot");
+    console.log(message);
+    changeVoteDOM(
+      message.participant_count,
+      message.yes_votes,
+      message.no_votes,
+      message.yes_percentage,
+      message.no_percentage,
+      message.vote_count,
+      message.abstain_count
+    );
+  });
+
+});
 
 var listenButtons = function() {
   voteButton("#yes-button", "yes");
@@ -33,7 +57,7 @@ var voteButton = function(buttonClass, voteValue) {
     e.preventDefault();
 
     var issueId = $(".leaderboard").attr('id');
-    var url = '/issues/' + issueId + '/vote?value='+voteValue;
+    var url = '/issues/' + issueId + '/vote?value=' + voteValue;
 
     var request = $.ajax({
       type: "PATCH",
@@ -43,6 +67,8 @@ var voteButton = function(buttonClass, voteValue) {
     request.done(function(data) {
       console.log("SUCCESS!");
       console.log(data);
+
+      // changeVoteDOM(data.yes_votes, data.no_votes);
     });
 
     request.fail(function(response) {
@@ -51,19 +77,33 @@ var voteButton = function(buttonClass, voteValue) {
   });
 }
 
+var changeVoteDOM = function(participantCount, yesVotes, noVotes, yesPercentage, noPercentage, voteCount, abstainCount) {
+  $('#total-participants').html(participantCount);
+  $('#yes-votes').html(yesVotes);
+  $('#no-votes').html(noVotes);
+  $('#yes-percentage').html(yesPercentage);
+  $('#no-percentage').html(noPercentage);
+  $('#total-votes').html(voteCount);
+  $('#abstain').html(abstainCount);
+
+  myDoughnutChart.segments[0].value = noVotes;
+  myDoughnutChart.segments[1].value = yesVotes;
+  myDoughnutChart.update();
+}
+
 var delegateButton = function(){
-  $(".participant-image").mouseenter(function() {
-    $(this).parent().siblings(".delegate-button").show();
-  })
-
   $(".participant").on('click', function(e){
+    e.stopPropagation();
     e.preventDefault();
-    console.log("delegate button!")
-
-    var participant = $(this)
+    console.log(this)
+    var array = []
+    array.push(this)
+    console.log(array)
+    // When we delegate our vote by clicking on another user they are our "representative"
+    var representative = $(this)
     var issueId = $(".leaderboard").attr('id');
-    var participantId = $(this).attr('id');
-    var url = '/issues/' + issueId + '/users/' + participantId + '/delegate';
+    var representativeId = $(this).attr('id');
+    var url = '/issues/' + issueId + '/users/' + representativeId + '/delegate';
 
     var request = $.ajax({
       type: "PATCH",
@@ -84,57 +124,69 @@ var delegateButton = function(){
   })
 }
 
-var appendScore = function(count, id) {
-  console.log(id)
-  console.log(count)
-  var target = $('#' + id).children().children(".badge").html(count)
-  console.log(target)
+var appendScore = function(message) {
+  // console.log(target)
+  console.log("Firebase Data")
+  console.log("current_user_id: " + message.current_user_id)
+  console.log("former_representative_id: " + message.former_representative_id)
+  console.log("former_representative_vote_count: " + message.former_representative_vote_count)
+  console.log("representative_id: " + message.representative_id)
+  console.log("representative_vote_count: " + message.representative_vote_count)
+  $('#' + message.representative_id).children().children(".badge").html(message.representative_vote_count)
+  $('#' + message.former_representative_id).children().children(".badge").html(message.former_representative_vote_count)
 }
 
-var drawChart = function(){
 
-  console.log("drawChart firing")
+var nestParticipant = function(current_user_id, representative_id) {
+  // Moves the delegate under the representative in the dom
+  var constituentDomTemplate = $('#' + current_user_id)
+  $('#' + representative_id).children(".constituents").append(constituentDomTemplate)
+};
+
+var appendVoteStatus = function() {
+}
+
+var appendDelegatedStatus = function(current_user) {
+  $('#' + current_user).removeClass("delegated")
+  $('#' + current_user).addClass("delegated")
+}
+
+var newDrawChart = function(yes_votes, no_votes) {
+  // console.log("I am the new draw chart!");
+  // console.log(yes_votes);
+  // console.log(no_votes);
+
   var ctx = $("#percent-donut").get(0).getContext("2d");
-  var issueId = $(".leaderboard").attr('id');
-  var url = '/issues/' + issueId + '/graph'
 
-  var request = $.ajax({
-    type: 'GET',
-    url: url,
-    success: function (data) {
-      var yes_votes = data["yes_votes"]
-      var no_votes = data["no_votes"]
-
-      var data = [
-        {
-          value: no_votes,
-          color:"#F7464A",
-          highlight: "#FF5A5E",
-          label: "Red"
-        },
-        {
-          value: yes_votes,
-          color: "#46BFBD",
-          highlight: "#5AD3D1",
-          label: "Green"
-        },
-      ]
-
-      var options = {
-        segmentShowStroke : true,
-        segmentStrokeColor : "#fff",
-        segmentStrokeWidth : 2,
-        percentageInnerCutout : 50,
-        animationSteps : 100,
-        animationEasing : "easeOutExpo",
-        animateRotate : true,
-        animateScale : false,
-
-        legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
-      }
-      var myDoughnutChart = new Chart(ctx).Doughnut(data,options);
+  var data = [
+    {
+      value: no_votes,
+      color:"#F7464A",
+      highlight: "#FF5A5E",
+      label: "Red"
+    },
+    {
+      value: yes_votes,
+      color: "#46BFBD",
+      highlight: "#5AD3D1",
+      label: "Green"
     }
-  });
+  ];
+
+  var options = {
+    segmentShowStroke : true,
+    segmentStrokeColor : "#fff",
+    segmentStrokeWidth : 2,
+    percentageInnerCutout : 50,
+    animationSteps : 100,
+    animationEasing : "easeOutExpo",
+    animateRotate : true,
+    animateScale : false,
+
+    legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
+  };
+
+  myDoughnutChart = new Chart(ctx).Doughnut(data,options);
 }
 
 

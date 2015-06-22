@@ -1,0 +1,13 @@
+<h1>Issue <strong><%= @current_issue.id %></strong> has Been Cleared</h1>
+<ul>
+  <li>Sets each vote to NIL</li>
+  <li>Clears Firebase /delegates route</li>
+</ul>
+
+<a href="/issues/<%= @current_issue.id %>/live">Return to issue</a>
+
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>

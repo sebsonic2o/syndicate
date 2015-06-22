@@ -1,4 +1,3 @@
-/* CSS crunched with Crunch - http://crunchapp.net/ */
 @import url(http://fonts.googleapis.com/css?family=Lora:400,700|Open+Sans:400,600,300,700,800|Roboto+Slab:400,300,700|Merriweather:400,300,700|Slabo+27px);
 /* ==========================================================================
    Styles
@@ -2741,15 +2740,164 @@ body.two-sidebars .region-below-content {
 .user-profile .user-profile-username {
   font-weight: 700;
 }
+.issues {
+  position: relative;
+}
+@media only screen and (min-width : 1380px) {
+  .issues {
+    margin-left: -14px;
+    float: none;
+    display: block;
+    clear: both;
+    width: auto;
+  }
+  .issues:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+@media only screen and (min-width : 1024px) and (max-width : 1380px) {
+  .issues {
+    margin-left: -14px;
+    float: none;
+    display: block;
+    clear: both;
+    width: auto;
+  }
+  .issues:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+@media only screen and (min-width : 768px) and (max-width : 1024px) {
+  .issues {
+    margin-left: -12px;
+    float: none;
+    display: block;
+    clear: both;
+    width: auto;
+  }
+  .issues:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+@media only screen and (max-width : 768px) {
+  .issues {
+    margin: 0;
+    padding: 0;
+    height: auto;
+    display: block;
+    float: none;
+    width: auto;
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+}
+@media only screen and (min-width : 1380px) {
+  .issues {
+    margin-left: -14px;
+    float: none;
+    display: block;
+    clear: both;
+    width: auto;
+  }
+  .issues:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+@media only screen and (min-width : 1024px) and (max-width : 1380px) {
+  .issues {
+    margin-left: -14px;
+    float: none;
+    display: block;
+    clear: both;
+    width: auto;
+  }
+  .issues:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+@media only screen and (min-width : 768px) and (max-width : 1024px) {
+  .issues {
+    margin-left: -12px;
+    float: none;
+    display: block;
+    clear: both;
+    width: auto;
+  }
+  .issues:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+@media only screen and (max-width : 768px) {
+  .issues {
+    margin: 0;
+    padding: 0;
+    height: auto;
+    display: block;
+    float: none;
+    width: auto;
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+}
 .issue {
   border-bottom: 1px solid #CCC;
   padding-bottom: 14px;
   padding-top: 14px;
+  box-sizing: border-box;
 }
 .issue:after {
   content: "";
   display: table;
   clear: both;
+}
+@media only screen and (min-width : 1380px) {
+  .issue {
+    width: 402px;
+    display: inline-block;
+    float: left;
+    margin-left: 14px;
+    position: relative;
+  }
+}
+@media only screen and (min-width : 1024px) and (max-width : 1380px) {
+  .issue {
+    width: 346px;
+    display: inline-block;
+    float: left;
+    margin-left: 14px;
+    position: relative;
+  }
+}
+@media only screen and (min-width : 768px) and (max-width : 1024px) {
+  .issue {
+    width: 236px;
+    display: inline-block;
+    float: left;
+    margin-left: 12px;
+    position: relative;
+  }
+}
+@media only screen and (max-width : 768px) {
+  .issue {
+    width: auto;
+    display: block;
+    float: none;
+    position: relative;
+  }
 }
 .issue .issue-body {
   float: left;
@@ -2916,7 +3064,15 @@ body.two-sidebars .region-below-content {
   opacity: 0.3;
   filter: alpha(opacity=30);
 }
+@media only screen and (max-width : 768px) {
+  .participant {
+    width: 18%;
+    float: left;
+    margin-right: 2%;
+  }
+}
 .participant .participant-image {
+  box-sizing: border-box;
   border-radius: 100%;
   background: #DDD;
   opacity: 1;
@@ -2932,13 +3088,12 @@ body.two-sidebars .region-below-content {
   filter: alpha(opacity=70);
 }
 .participant .participant-image.current {
-  border: 4px solid blue;
+  border: 2px solid blue;
 }
-
 .participant .participant-image.rep {
-  border: 4px solid red;
+  border: 2px solid red;
 }
-.participant .avatar-holder {
+.participant .participant-avatar {
   position: relative;
 }
 .participant .participant-username {
@@ -2951,11 +3106,25 @@ body.two-sidebars .region-below-content {
   font-size: 12px;
   margin-bottom: 2px;
 }
-.participant .participant-vote-count {
-  font-size: 18px;
-  font-weight: 700;
+.participant .constituents:after {
+  content: "";
+  display: table;
+  clear: both;
 }
-.participant .badge {
+.participant .constituents .participant {
+  min-height: 0;
+  width: 21%;
+  margin-top: 4%;
+  margin-left: 4%;
+  margin-bottom: 0;
+}
+.participant .constituents .participant .participant-username {
+  display: none;
+}
+.participant .constituents .participant .participant-vote-count {
+  display: none;
+}
+.badge {
   position: absolute;
   top: 0;
   right: 0;
@@ -2972,17 +3141,14 @@ body.two-sidebars .region-below-content {
   background-color: #CCC;
   border-radius: 11px;
 }
-.participant .badge.yes {
+.badge.yes {
   background-color: green;
 }
-.participant .badge.no {
+.badge.no {
   background-color: red;
 }
-.participant .badge.abstain {
+.badge.abstain {
   background-color: #666;
-}
-.participant .badge.delegated {
-  display: none;
 }
 .vote {
   text-align: center;
