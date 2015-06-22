@@ -1,49 +1,41 @@
 $(document).on("ready, page:change", function() {
-  var myDoughnutChart;
 
-  listenButtons();
-  // drawChart();
-  delegateButton();
 
-  var firebaseUrl = $('body').data('env');
+  if ($('#live-dashboard').length) {
 
-  var myDataRef = new Firebase(firebaseUrl + 'delegates');
-  var myVoteRef = new Firebase(firebaseUrl + 'votes');
+    listenButtons();
+    delegateButton();
 
-  // $('#messageInput').keypress(function (e) {
-  //   if (e.keyCode == 13) {
-  //     var name = $('#nameInput').val();
-  //     var text = $('#messageInput').val();
-  //     myDataRef.push({name: name, text: text});
-  //     $('#messageInput').val('');
-  //   }
-  // });
+    var firebaseUrl = $('body').data('env');
+    var myDataRef = new Firebase(firebaseUrl + 'delegates');
+    var myVoteRef = new Firebase(firebaseUrl + 'votes');
 
-  myDataRef.on('child_added', function(snapshot) {
-    var message = snapshot.val();
-    console.log(message);
-    appendScore(message);
-    appendVoteStatus();
-    appendDelegatedStatus(message.current_user_id);
-    nestParticipant(message.current_user_id, message.representative_id)
+    myDataRef.on('child_added', function(snapshot) {
+      var message = snapshot.val();
+      console.log(message);
+      appendScore(message);
+      appendVoteStatus();
+      appendDelegatedStatus(message.current_user_id);
+      nestParticipant(message.current_user_id, message.representative_id)
 
-    // message.current_user_id, message.former_representative_id, message.former_representative_vote_count, message.representative_id, message.representative_vote_count
-  });
+      // message.current_user_id, message.former_representative_id, message.former_representative_vote_count, message.representative_id, message.representative_vote_count
+    });
 
-  myVoteRef.on('child_added', function(snapshot) {
-    var message = snapshot.val();
-    console.log("firebase vote snapshot");
-    console.log(message);
-    changeVoteDOM(
-      message.participant_count,
-      message.yes_votes,
-      message.no_votes,
-      message.yes_percentage,
-      message.no_percentage,
-      message.vote_count,
-      message.abstain_count
-    );
-  });
+    myVoteRef.on('child_added', function(snapshot) {
+      var message = snapshot.val();
+      console.log("firebase vote snapshot");
+      console.log(message);
+      changeVoteDOM(
+        message.participant_count,
+        message.yes_votes,
+        message.no_votes,
+        message.yes_percentage,
+        message.no_percentage,
+        message.vote_count,
+        message.abstain_count
+      );
+    });
+  }
 
 });
 
