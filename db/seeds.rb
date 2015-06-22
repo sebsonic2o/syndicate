@@ -27,7 +27,7 @@ User.create(
 26.times do
   User.create(
     username: Faker::Name.first_name,
-    image_url: Faker::Avatar.image
+    image_url: Faker::Avatar.image.gsub(/http/, "https")
   )
 end
 
@@ -102,7 +102,7 @@ issue6.voters = User.all
   issue = Issue.create(
       title: Faker::Lorem.sentence,
       description: Faker::Lorem.paragraph(3),
-      image_url: Faker::Avatar.image,
+      image_url: Faker::Avatar.image.gsub(/http/, "https"),
       start_date: Faker::Time.between(2.days.ago, Time.now, :all),
       finish_date: Faker::Time.forward(23, :all),
       creator_id: 1,

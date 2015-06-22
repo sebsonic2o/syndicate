@@ -1,9 +1,9 @@
-@import url(http://fonts.googleapis.com/css?family=Lora:400,700|Open+Sans:400,600,300,700,800|Roboto+Slab:400,300,700|Merriweather:400,300,700|Slabo+27px);
+@import url(https://fonts.googleapis.com/css?family=Lora:400,700|Open+Sans:400,600,300,700,800|Roboto+Slab:400,300,700|Merriweather:400,300,700|Slabo+27px);
 /* ==========================================================================
    Styles
    ========================================================================== */
 /* ==========================================================================
-   Global Reset - http://meyerweb.com/eric/tools/css/reset/ 
+   Global Reset - http://meyerweb.com/eric/tools/css/reset/
    ========================================================================== */
 /*html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -14,8 +14,8 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	margin: 0;
@@ -40,7 +40,7 @@ nav,
 section {
   display: block;
 }
-/* 
+/*
 body {
 	line-height: 1;
 }
@@ -4208,7 +4208,7 @@ input[value="Back"] {
   background-color: #181f23;
   color: #f20943;
 }
-/* 
+/*
    Shopping Cart Block
    ========================================================================== */
 #block-views-cart-badge-block {
@@ -4482,9 +4482,9 @@ input[value="Back"] {
 /* Shopping Cart Block
 ----------------------------------------------------------------------------------------------------*/
 #block-va-cart-utilities-cart-info {
-  /* 
-	background: @black url('../images/textures/subtlepatterns/classy_fabric.png') repeat; 
-	.border-radius-multiple(0,4px,4px,0);		
+  /*
+	background: @black url('../images/textures/subtlepatterns/classy_fabric.png') repeat;
+	.border-radius-multiple(0,4px,4px,0);
 	*/
   background: #c42e00 url('../images/textures/subtlepatterns/white_carbon_red.png') repeat;
   color: #ffffff;
@@ -5848,7 +5848,7 @@ select:focus {
 
 	MeanMenu 2.0.6
 	--------
-	
+
 	To be used with jquery.meanmenu.js by Chris Wharton (http://www.meanthemes.com/plugins/meanmenu/)
 
 ####################################################################### */
@@ -6171,7 +6171,7 @@ a.meanmenu-reveal {
   -moz-border-radius: 3px;
   border-radius: 3px;
 }
-/* 
+/*
    Responsive Image
    ========================================================================== */
 .img-normal {
@@ -6179,7 +6179,7 @@ a.meanmenu-reveal {
   width: auto;
   height: auto;
 }
-/* 
+/*
    Utility
    ========================================================================== */
 .left {
@@ -6259,7 +6259,7 @@ a.meanmenu-reveal {
 .nomargin {
   margin: 0 !important;
 }
-/* 
+/*
    Absolute Positioning
    ========================================================================== */
 .absolute-center {
@@ -6285,7 +6285,7 @@ a.meanmenu-reveal {
   right: 0;
 }
 /*
-* 	Owl Carousel Owl Demo Theme 
+* 	Owl Carousel Owl Demo Theme
 *	v1.3.3
 */
 .owl-wrapper {
@@ -6757,7 +6757,7 @@ a.meanmenu-reveal {
 }
 .socialmedia {
   margin: 8px 0 0 0;
-  /* --------------------------------------------------------------------------------------------------------------	
+  /* --------------------------------------------------------------------------------------------------------------
 All images are in folders as below:
 
 COLOUR SQUARES 	../images/social/squares/facebook.png
@@ -7403,7 +7403,7 @@ hr,
   border-bottom: 2px solid #c0c4c6;
   display: block;
 }
-/* 
+/*
    Vertical tabs used on product page ie "overview, accommodation, meals"
    ========================================================================== */
 div.vertical-tabs {
@@ -7523,7 +7523,7 @@ div.vertical-tabs .vertical-tabs-panes .field-label {
   }
 }
 div.vertical-tabs .vertical-tabs-panes .field-type-text-long {
-  /* 
+  /*
 			p:nth-child(1) {
 			    width: 46%;
 			    margin-right: 4%;
@@ -7539,7 +7539,7 @@ div.vertical-tabs .vertical-tabs-panes .field-type-text-long {
 /* ==========================================================================
    Slide Content Type & Fullwidth Video
    ========================================================================== */
-/* 
+/*
    View Using Display Suite Teaser Code Fields
    ========================================================================== */
 #block-views-homepage-slider-block-1 {
@@ -7719,7 +7719,7 @@ div.vertical-tabs .vertical-tabs-panes .field-type-text-long {
   position: absolute;
   z-index: 99;
 }
-/* 
+/*
    View Using View Fields
    ========================================================================== */
 .view-homepage-slider.view-display-id-block_0 {
@@ -7862,9 +7862,9 @@ div.mc-image {
   -o-transition: opacity 1s ease-in-out;
   transition: opacity 1s ease-in-out;
   /*If you are using horizontal slide transitions, use the following CSS:
-	-webkit-transition: left 1s ease-in-out; 
-	-moz-transition: left 1s ease-in-out; 
-	-o-transition: left 1s ease-in-out; 
+	-webkit-transition: left 1s ease-in-out;
+	-moz-transition: left 1s ease-in-out;
+	-o-transition: left 1s ease-in-out;
 	transition: left 1s ease-in-out;*/
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -8032,7 +8032,7 @@ div.mc-image {
   }
 }
 /*
-Back to top button 
+Back to top button
 */
 #back-top {
   position: fixed;
