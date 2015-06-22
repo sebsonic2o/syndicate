@@ -1,3 +1,5 @@
+<section id="live-dashboard">
+
 <div class="grid-4" id="yes-board">
 
   <h1>
@@ -96,10 +98,12 @@
 <% end %>
 </div>
 
+<a href="/issues/<%= @current_issue.id %>/clear">Clear Issue</a>
+
+</section>
+
 <script>
   newDrawChart(<%= @current_issue.yes_votes %>, <%= @current_issue.no_votes %>);
 </script>
-
-<a href="/issues/<%= @current_issue.id %>/clear">Clear Issue</a>
 
 

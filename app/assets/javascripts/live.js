@@ -1,55 +1,55 @@
 $(document).on("ready, page:change", function() {
-  var myDoughnutChart;
 
-  listenButtons();
-  // drawChart();
-  delegateButton();
+  if ($('#live-dashboard').length) {
 
-  var firebaseUrl = $('body').data('env');
+    listenButtons();
+    delegateButton();
 
-  var myDataRef = new Firebase(firebaseUrl + 'delegates');
-  var myVoteRef = new Firebase(firebaseUrl + 'votes');
+    var firebaseUrl = $('body').data('env');
+    var myDataRef = new Firebase(firebaseUrl + 'delegates');
+    var myVoteRef = new Firebase(firebaseUrl + 'votes');
 
 
- myDataRef.on('child_added', function(snapshot) {
-    var message = snapshot.val();
-    console.log("firebase delegate snapshot")
-    // console.log(message)
-    if (message.incident === "redelegate") { 
-      appendScore(message.old_delegate_count, message.old_delegate_id);
-      appendScore(message.new_delegate_count, message.new_delegate_id)
-      appendVoteStatus();
-      appendDelegatedStatus(message.current_user_id);
-      nestParticipant(message.current_user_id, message.new_delegate_id)
-    }
-    else if (message.incident === "new delegate") {
-      appendScore(0, message.current_user_id);
-      appendScore(message.new_delegate_count, message.new_delegate_id)
-      appendVoteStatus();
-      appendDelegatedStatus(message.current_user_id);
-      nestParticipant(message.current_user_id, message.new_delegate_id)
-    }
-    else if (message.incident === "undelegate") {
-      appendScore(message.old_delegate_count, message.old_delegate_id);
-      appendScore(message.current_user_count, message.current_user_id)
-      appendVoteStatus();
-    }
-  });
+   myDataRef.on('child_added', function(snapshot) {
+      var message = snapshot.val();
+      console.log("firebase delegate snapshot")
+      // console.log(message)
+      if (message.incident === "redelegate") {
+        appendScore(message.old_delegate_count, message.old_delegate_id);
+        appendScore(message.new_delegate_count, message.new_delegate_id)
+        appendVoteStatus();
+        appendDelegatedStatus(message.current_user_id);
+        nestParticipant(message.current_user_id, message.new_delegate_id)
+      }
+      else if (message.incident === "new delegate") {
+        appendScore(0, message.current_user_id);
+        appendScore(message.new_delegate_count, message.new_delegate_id)
+        appendVoteStatus();
+        appendDelegatedStatus(message.current_user_id);
+        nestParticipant(message.current_user_id, message.new_delegate_id)
+      }
+      else if (message.incident === "undelegate") {
+        appendScore(message.old_delegate_count, message.old_delegate_id);
+        appendScore(message.current_user_count, message.current_user_id)
+        appendVoteStatus();
+      }
+    });
 
-  myVoteRef.on('child_added', function(snapshot) {
-    var message = snapshot.val();
-    console.log("firebase vote snapshot");
-    console.log(message);
-    changeVoteDOM(
-      message.participant_count,
-      message.yes_votes,
-      message.no_votes,
-      message.yes_percentage,
-      message.no_percentage,
-      message.vote_count,
-      message.abstain_count
-    );
-  });
+    myVoteRef.on('child_added', function(snapshot) {
+      var message = snapshot.val();
+      console.log("firebase vote snapshot");
+      console.log(message);
+      changeVoteDOM(
+        message.participant_count,
+        message.yes_votes,
+        message.no_votes,
+        message.yes_percentage,
+        message.no_percentage,
+        message.vote_count,
+        message.abstain_count
+      );
+    });
+  }
 
 });
 
