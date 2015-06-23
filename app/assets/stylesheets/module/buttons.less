@@ -1,24 +1,25 @@
 // Button
 // --------------------------------------------------
 .btn {
-  background: #CCC;
+  background: #333;
   display: inline-block;
   padding: 4px 10px 4px;
   margin-bottom: 0;
   font-size: 12px;
-  line-height: normal;
-  color: #333;
+  color: #fff;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
   border: none;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 300;
+  .border-radius(3px);
+  .box-shadow();
   .transition(background,.15s,linear);
   &:hover {
-    color: #333;
+    color: #FFF;
     text-decoration: none;
-    background-color: darken(#CCC, 10%);
+    background-color: darken(#333, 10%);
     .transition(background .15s linear);
   }
 }
@@ -46,9 +47,9 @@
 }
 // Large
 .btn-large {
-  padding: 16px 28px;
+  padding: 12px 22px;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 400;
 }
 
 // Full-Width
@@ -144,7 +145,7 @@ input.form-submit.disabled {
   background-color: #EAEAEA;
 }
 
-input[value="Remove"]         { .btn-small(); } 
+input[value="Remove"]         { .btn-small(); }
 input[value="Update cart"]    {  margin: 0 10px 0 0; }
 input[value="Checkout"]       {  }
 input[value="Buy Cushions"]   {  }
@@ -158,8 +159,8 @@ input[value="Submit order"]   {  }
 // --------------------------------------------------
 .field-name-node-link {
   a {
-      .btn(); 
-      .btn-normal(); 
+      .btn();
+      .btn-normal();
       .btn-secondary();
     }
 }
