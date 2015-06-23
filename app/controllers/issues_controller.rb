@@ -36,11 +36,13 @@ class IssuesController < ApplicationController
         vote_count: @current_issue.vote_count,
         abstain_count: @current_issue.abstain_count
       })
+      render json: {}
     else
       puts "User has delegated their vote."
+      render json: {error: "You cannot vote if you are currently designated. Please undesignate if you would like to vote directly."}
     end
 
-    render json: {}
+    
     # render json: {
     #   participant_count: @current_issue.participant_count,
     #   yes_votes: @current_issue.yes_votes,
