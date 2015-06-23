@@ -1,13 +1,19 @@
 <div class="region header">
   <div class="region-inner">
 
-  	<div class="grid-container">
-	   <a href="/" class="logo">Syndicate</a>
-	   <ul class="menu">
-		  <li><a href="/issues">Issues</a></li>
-	   </ul>
-      <%= render "/layouts/debug" %>
-      <%= render "/layouts/user_profile" %>
-  	</div>
+	  <a href="/" class="header-logo">Syndicate</a>
+	  <div class="header-menu">
+		<a href="/issues">Issues</a>
+	</div>
+
+  <%= render "/layouts/user_profile" %>
+
+  <div class="header-search">
+    <form class="form-wrapper cf" method="get" action="/issues">
+      <input type="text" placeholder="Find an issue to vote on!" required>
+      <button type="submit">Search</button>
+    </form>
   </div>
+  <%= render "/layouts/debug" %>
+</div>
 </div>

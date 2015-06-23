@@ -20,7 +20,12 @@ class IssuesController < ApplicationController
         vote.save
       end
 
+      # @current_user_id = current_user.id
+      # @current_user_vote_value = @vote.value
+
       firebase_vote(params[:id])
+    else
+      puts "User has delegated their vote."
     end
 
     render json: {}
@@ -186,7 +191,9 @@ class IssuesController < ApplicationController
         yes_percentage: issue.yes_percentage,
         no_percentage: issue.no_percentage,
         vote_count: issue.vote_count,
-        abstain_count: issue.abstain_count
+        abstain_count: issue.abstain_count,
+        current_user_id: current_user.id,
+        current_user_vote_value: current_user.votes.find_by(issue_id: id).value
       }
 
       firebase = Firebase::Client.new(ENV['FIREBASE_URL'])

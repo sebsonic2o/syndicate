@@ -35,7 +35,7 @@
     .grid();
 }
 .webform-client-form {
-    
+
 }
 
 
@@ -52,7 +52,7 @@ body.one-sidebar {
     .region-content            { .grid(9); }
    .region-sidebar-second     { .grid(3); }
     .region-below-content    { .grid(12); }
-} 
+}
 // Two Sidebar
 body.two-sidebars{
     .region-above-content       { .grid(12); }
@@ -66,8 +66,7 @@ body.two-sidebars{
     .layout                     { .reset(); }
     .region                     { .reset(); }
     // Add padding to all regions in the Middle & Footer
-    .layout-middle .region      { .reset(); padding: @mobile-gutter * 1px; }
-    .layout-footer .region      { .reset(); padding: @mobile-gutter * 1px; }
+    .region.middle      { .reset(); padding: @mobile-gutter * 1px; }
     .block                      { .reset(); }
     .view                       { .reset(); }
     .node                       { .reset(); }
@@ -96,8 +95,8 @@ body.two-sidebars{
 .region-featured {
 }
 
-.region-content .block  { 
-  .grid-container(); 
+.region-content .block  {
+  .grid-container();
 }
 
 

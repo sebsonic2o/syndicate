@@ -1,106 +1,104 @@
 <section id="live-dashboard">
 
-<div class="grid-4" id="yes-board">
+<div id="issue-<%= @current_issue.id %>" class="issues grid-12">
+  <div class="leaderboard">
+    <h1><%= @current_issue.title %></h1>
+    <div id="yes-board">
+      <h1>YES: <span id="yes-votes"><%= @current_issue.yes_votes %></span></h1>
+      <h2> (<span id="yes-percentage"><%= @current_issue.yes_percentage %></span>%) </h2>
 
-  <h1>
-    YES: <span id="yes-votes"><%= @current_issue.yes_votes %></span>
-  </h1>
-
-  <h2> (<span id="yes-percentage"><%= @current_issue.yes_percentage %></span>%) </h2>
-</div>
-<div class="grid-4 min-height-300" id="vs-board">
-  <canvas id="percent-donut" width="300" height="300"></canvas>
-</div>
-
-<div class="grid-4" id="no-board">
-  <h1>
-    NO: <span id="no-votes"><%= @current_issue.no_votes %></span>
-  </h1>
-  <h2> (<span id="no-percentage"><%= @current_issue.no_percentage %></span>%) </h2>
-</div>
-
-<div id="issue-<%= @current_issue.id %>" class="leaderboard grid-12">
-
-
-  <div class="grid-4 vote-button">
-    <button type="submit" id="yes-button" value="YES" method="POST" action="/issues/<%= @current_issue.id %>/vote?value=yes"><%= image_tag("thumbsup.png") %>
-    </button>
-  </div>
-
-  <div class="grid-4 count-board">
-    <h3>Total participants: <span id="total-participants"><%= @current_issue.participant_count %></span></h3>
-    <h3>Total votes: <span id="total-votes"><%= @current_issue.vote_count %></span></h3>
-    <h3>Abstain: <span id="abstain"><%= @current_issue.abstain_count %></span></h3>
-
-    <button class="hidden" type="submit" id="abstain-button" value="NO" method="POST" action="/issues/<%= @current_issue.id %>">Abstain
-    </button>
-
-  </div>
-
-  <div class="grid-4 vote-button">
-    <button type="submit" id="no-button" value="NO" method="POST" action="/issues/<%= @current_issue.id %>/vote?value=no"><%= image_tag("thumbsdown.png") %>
-    </button>
-  </div>
-
-</div>
-
-
-<div class="participants" >
-<% @participants.each do |participant| %>
-  <% participant_votes = participant.votes.find_by(issue_id: @current_issue.id) %>
-  <% if participant_votes.root? == true %>
-
-    <div id="<%= participant.id %>" class="participant <%= participant.get_vote_status(@current_issue.id) %> <%= participant.get_delegation_status(@current_issue.id) %>">
-
-      <h3 class="participant-username"><a href="#"><%= participant.username %></a><em>User ID: <%= participant.id %></em> </h3>
-
-      <div class="participant-avatar">
-      <% if @current_user.id == participant.id %>
-        <img class="participant-image current" src="<%= participant.image_url %>" />
-      <% elsif @representative_id == participant.id%>
-        <img class="participant-image rep" src="<%= participant.image_url %>" />
-      <% else %>
-        <img class="participant-image" src="<%= participant.image_url %>" />
-      <% end %>
-
-        <div class="badge participant-vote-count <%= participant.get_vote_status(@current_issue.id) %> <%= participant.get_delegation_status(@current_issue.id) %>">
-          <%= participant.get_vote_power(@current_issue.id) %>
-        </div>
-
-      </div>
-
-      <div class="constituents">
-        <% participant_votes.descendants.each do |vote| %>
-
-          <% constituent = User.find(vote.user_id) %>
-          <div id="<%= constituent.id %>" class="participant <%= participant.get_vote_status(@current_issue.id) %> <%= participant.get_delegation_status(@current_issue.id) %>">
-
-            <h3 class="participant-username"><a href="#"><%= constituent.username %></a><em>User ID: <%= constituent.id %></em> </h3>
-
-            <div class="participant-avatar">
-              <% if @current_user.id == constituent.id %>
-                <img class="participant-image current" src="<%= constituent.image_url %>" />
-              <% elsif @representative_id == constituent.id%>
-                <img class="participant-image rep" src="<%= constituent.image_url %>" />
-              <% else %>
-                <img class="participant-image" src="<%= constituent.image_url %>" />
-              <% end %>
-
-              <div class="badge participant-vote-count <%= constituent.get_vote_status(@current_issue.id) %> <%= constituent.get_delegation_status(@current_issue.id) %>">
-                <%= constituent.get_vote_power(@current_issue.id) %>
-              </div>
-            </div>
-
-            <div class="constituents">
-            </div>
-
-          </div>
-        <% end %>
+      <div class="vote-button">
+        <button type="submit" class="vote-button-style" id="yes-button" value="YES" method="POST" action="/issues/<%= @current_issue.id %>/vote?value=yes">Vote YES
+        </button>
       </div>
     </div>
+
+    <div id="no-board">
+      <h1>NO: <span id="no-votes"><%= @current_issue.no_votes %></span></h1>
+      <h2> (<span id="no-percentage"><%= @current_issue.no_percentage %></span>%) </h2>
+
+      <div class="vote-button">
+        <button type="submit" class="vote-button-style" id="no-button" value="NO" method="POST" action="/issues/<%= @current_issue.id %>/vote?value=no">Vote NO
+        </button>
+      </div>
+    </div>
+
+    <div id="vs-board">
+      <canvas id="percent-donut"></canvas>
+    </div>
+
+    <div class="count-board">
+      <h3>Total participants: <span id="total-participants"><%= @current_issue.participant_count %></span></h3>
+      <h3>Total votes: <span id="total-votes"><%= @current_issue.vote_count %></span></h3>
+      <h3>Abstain: <span id="abstain"><%= @current_issue.abstain_count %></span></h3>
+    </div>
+  </div>
+
+
+  <div class="participants" >
+
+    <div class="zone-yes">
+    </div>
+
+    <div class="zone-no">
+    </div>
+
+    <% @participants.each do |participant| %>
+      <% participant_votes = participant.votes.find_by(issue_id: @current_issue.id) %>
+      <% if participant_votes.root? == true %>
+
+        <div id="<%= participant.id %>" class="participant <%= participant.get_vote_status(@current_issue.id) %> <%= participant.get_delegation_status(@current_issue.id) %>">
+
+          <h3 class="participant-username"><a href="#"><%= participant.username %></a><em>User ID: <%= participant.id %></em> </h3>
+
+          <div class="participant-avatar">
+            <% if @current_user.id == participant.id %>
+              <img class="participant-image current" src="<%= participant.image_url %>" />
+            <% elsif @representative_id == participant.id%>
+              <img class="participant-image rep" src="<%= participant.image_url %>" />
+            <% else %>
+              <img class="participant-image" src="<%= participant.image_url %>" />
+            <% end %>
+
+            <div class="badge participant-vote-count <%= participant.get_vote_status(@current_issue.id) %> <%= participant.get_delegation_status(@current_issue.id) %>">
+              <%= participant.get_vote_power(@current_issue.id) %>
+            </div>
+          </div>
+
+          <div class="constituents">
+            <% participant_votes.descendants.each do |vote| %>
+
+              <% constituent = User.find(vote.user_id) %>
+              <div id="<%= constituent.id %>" class="participant <%= participant.get_vote_status(@current_issue.id) %> <%= participant.get_delegation_status(@current_issue.id) %>">
+
+                <h3 class="participant-username"><a href="#"><%= constituent.username %></a><em>User ID: <%= constituent.id %></em> </h3>
+
+                <div class="participant-avatar">
+                  <% if @current_user.id == constituent.id %>
+                    <img class="participant-image current" src="<%= constituent.image_url %>" />
+                  <% elsif @representative_id == constituent.id%>
+                    <img class="participant-image rep" src="<%= constituent.image_url %>" />
+                  <% else %>
+                    <img class="participant-image" src="<%= constituent.image_url %>" />
+                  <% end %>
+
+                  <div class="badge participant-vote-count <%= constituent.get_vote_status(@current_issue.id) %> <%= constituent.get_delegation_status(@current_issue.id) %>">
+                    <%= constituent.get_vote_power(@current_issue.id) %>
+                  </div>
+                </div>
+
+                <div class="constituents">
+                </div>
+
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <% end %>
     <% end %>
-<% end %>
+  </div>
 </div>
+<!-- end issue div -->
 
 <a href="/issues/<%= @current_issue.id %>/clear">Clear Issue</a>
 

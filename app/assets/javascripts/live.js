@@ -33,6 +33,7 @@ $(document).on("ready, page:change", function() {
         appendVoteStatus();
         appendDelegatedStatus(message.current_user_id);
         nestParticipant(message.current_user_id, message.new_rep_id)
+
       }
       else if (message.incident === "undelegate") {
         appendScore(message.old_delegate_count, message.old_delegate_id);
@@ -65,7 +66,7 @@ var voteButton = function(buttonClass, voteValue) {
   $(".vote-button").on('click', buttonClass, function(e) {
     e.preventDefault();
 
-    var issueId = $(".leaderboard").attr('id').slice(6);
+    var issueId = $(".issues").attr('id').slice(6);
     var url = '/issues/' + issueId + '/vote?value=' + voteValue;
 
     var request = $.ajax({
@@ -100,6 +101,9 @@ var changeVoteDOM = function(message) {
   myDoughnutChart.segments[2].value = drawValues.abstain;
 
   myDoughnutChart.update();
+
+  appendVoteStatus(message.current_user_id, message.current_user_vote_value);
+  // appendVoteZone(message.current_user_id, message.current_user_vote_value);
 }
 
 var delegateButton = function(){
@@ -112,7 +116,7 @@ var delegateButton = function(){
     console.log(array)
     // When we delegate our vote by clicking on another user they are our "representative"
     var representative = $(this)
-    var issueId = $(".leaderboard").attr('id').slice(6);
+    var issueId = $(".issues").attr('id').slice(6);
     console.log(issueId)
     var representativeId = $(this).attr('id');
     var url = '/issues/' + issueId + '/users/' + representativeId + '/delegate';
@@ -150,13 +154,24 @@ var nestParticipant = function(current_user_id, new_rep_id) {
   $('#' + new_rep_id).children(".constituents").append(constituentDomTemplate)
 };
 
+var appendVoteZone = function(current_user, currentUserVoteValue) {
+  // Moves the delegate under the representative in the dom
+  var constituentDomTemplate = $('#' + current_user)
+  $('.zone-yes').append(constituentDomTemplate)
+};
+
+
 var unnestParticipant = function(current_user_id, new_rep_id) {
   var constituentDomTemplate = $('#' + current_user_id)
   $(".participants").append(constituentDomTemplate)
 };
 
-var appendVoteStatus = function() {
-
+var appendVoteStatus = function(current_user, currentUserVoteValue) {
+  console.log("Append Vote " + currentUserVoteValue)
+  $('#' + current_user).children().children(".badge").removeClass("abstain")
+  $('#' + current_user).children().children(".badge").removeClass("yes")
+  $('#' + current_user).children().children(".badge").removeClass("no")
+  $('#' + current_user).children().children(".badge").addClass(currentUserVoteValue)
 }
 
 var appendDelegatedStatus = function(current_user) {
@@ -177,14 +192,14 @@ var newDrawChart = function(yesVotes, noVotes, abstainCount) {
   var data = [
     {
       value: drawValues.no,
-      color: "#F7464A",
-      highlight: "#FF5A5E",
+      color: "#F5781E",
+      highlight: "#ff9042",
       label: "No"
     },
     {
       value: drawValues.yes,
-      color: "#46BFBD",
-      highlight: "#5AD3D1",
+      color: "#3abc95",
+      highlight: "#3bcea2",
       label: "Yes"
     },
     {
