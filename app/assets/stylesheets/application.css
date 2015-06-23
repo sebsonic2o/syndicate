@@ -251,7 +251,7 @@ body:after {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .grid-1 {
-    width: 50px;
+    width: 60px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -289,7 +289,7 @@ body:after {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .grid-2 {
-    width: 112px;
+    width: 132px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -327,7 +327,7 @@ body:after {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .grid-3 {
-    width: 174px;
+    width: 204px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -365,7 +365,7 @@ body:after {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .grid-4 {
-    width: 236px;
+    width: 276px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -403,7 +403,7 @@ body:after {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .grid-5 {
-    width: 298px;
+    width: 348px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -441,7 +441,7 @@ body:after {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .grid-6 {
-    width: 360px;
+    width: 420px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -479,7 +479,7 @@ body:after {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .grid-7 {
-    width: 422px;
+    width: 492px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -517,7 +517,7 @@ body:after {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .grid-8 {
-    width: 484px;
+    width: 564px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -555,7 +555,7 @@ body:after {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .grid-9 {
-    width: 546px;
+    width: 636px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -593,7 +593,7 @@ body:after {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .grid-10 {
-    width: 608px;
+    width: 708px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -631,7 +631,7 @@ body:after {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .grid-11 {
-    width: 670px;
+    width: 780px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -669,7 +669,7 @@ body:after {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .grid-12 {
-    width: 732px;
+    width: 852px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -707,7 +707,7 @@ body:after {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .grid-13 {
-    width: 794px;
+    width: 924px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -745,7 +745,7 @@ body:after {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .grid-14 {
-    width: 856px;
+    width: 996px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -783,7 +783,7 @@ body:after {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .grid-15 {
-    width: 918px;
+    width: 1068px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -821,7 +821,7 @@ body:after {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .grid-16 {
-    width: 980px;
+    width: 1140px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -841,7 +841,7 @@ body:after {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .grid-ipad-1 {
-    width: 50px;
+    width: 60px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -853,7 +853,7 @@ body:after {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .grid-ipad-2 {
-    width: 112px;
+    width: 132px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -865,7 +865,7 @@ body:after {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .grid-ipad-3 {
-    width: 174px;
+    width: 204px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -877,7 +877,7 @@ body:after {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .grid-ipad-4 {
-    width: 236px;
+    width: 276px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -889,7 +889,7 @@ body:after {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .grid-ipad-5 {
-    width: 298px;
+    width: 348px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -901,7 +901,7 @@ body:after {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .grid-ipad-6 {
-    width: 360px;
+    width: 420px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -913,7 +913,7 @@ body:after {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .grid-ipad-7 {
-    width: 422px;
+    width: 492px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -925,7 +925,7 @@ body:after {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .grid-ipad-8 {
-    width: 484px;
+    width: 564px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -937,7 +937,7 @@ body:after {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .grid-ipad-9 {
-    width: 546px;
+    width: 636px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -949,7 +949,7 @@ body:after {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .grid-ipad-10 {
-    width: 608px;
+    width: 708px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -961,7 +961,7 @@ body:after {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .grid-ipad-11 {
-    width: 670px;
+    width: 780px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -973,7 +973,7 @@ body:after {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .grid-ipad-12 {
-    width: 732px;
+    width: 852px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -985,7 +985,7 @@ body:after {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .grid-ipad-13 {
-    width: 794px;
+    width: 924px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -997,7 +997,7 @@ body:after {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .grid-ipad-14 {
-    width: 856px;
+    width: 996px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -1009,7 +1009,7 @@ body:after {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .grid-ipad-15 {
-    width: 918px;
+    width: 1068px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -1021,7 +1021,7 @@ body:after {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .grid-ipad-16 {
-    width: 980px;
+    width: 1140px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -1067,7 +1067,7 @@ body:after {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .container {
-    width: 732px;
+    width: 852px;
   }
 }
 .grid-container {
@@ -1355,7 +1355,7 @@ body:after {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .region-inner {
-    width: 732px;
+    width: 852px;
   }
 }
 @media only screen and (min-width : 1380px) {
@@ -1370,7 +1370,7 @@ body:after {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .region-inner {
-    width: 732px;
+    width: 852px;
   }
 }
 .content {
@@ -1392,7 +1392,7 @@ body:after {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .content {
-    width: 732px;
+    width: 852px;
   }
 }
 @media only screen and (min-width : 1380px) {
@@ -1407,7 +1407,7 @@ body:after {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .content {
-    width: 732px;
+    width: 852px;
   }
 }
 .content-inner {
@@ -1715,7 +1715,7 @@ body.no-sidebars .region-above-content {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   body.no-sidebars .region-above-content {
-    width: 732px;
+    width: 852px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -1753,7 +1753,7 @@ body.no-sidebars .region-content {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   body.no-sidebars .region-content {
-    width: 732px;
+    width: 852px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -1791,7 +1791,7 @@ body.no-sidebars .region-below-content {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   body.no-sidebars .region-below-content {
-    width: 732px;
+    width: 852px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -1829,7 +1829,7 @@ body.one-sidebar .region-above-content {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   body.one-sidebar .region-above-content {
-    width: 732px;
+    width: 852px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -1867,7 +1867,7 @@ body.one-sidebar .region-sidebar-first {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   body.one-sidebar .region-sidebar-first {
-    width: 174px;
+    width: 204px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -1905,7 +1905,7 @@ body.one-sidebar .region-content {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   body.one-sidebar .region-content {
-    width: 546px;
+    width: 636px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -1943,7 +1943,7 @@ body.one-sidebar .region-sidebar-second {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   body.one-sidebar .region-sidebar-second {
-    width: 174px;
+    width: 204px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -1981,7 +1981,7 @@ body.one-sidebar .region-below-content {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   body.one-sidebar .region-below-content {
-    width: 732px;
+    width: 852px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -2019,7 +2019,7 @@ body.two-sidebars .region-above-content {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   body.two-sidebars .region-above-content {
-    width: 732px;
+    width: 852px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -2057,7 +2057,7 @@ body.two-sidebars .region-sidebar-first {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   body.two-sidebars .region-sidebar-first {
-    width: 174px;
+    width: 204px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -2095,7 +2095,7 @@ body.two-sidebars .region-content {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   body.two-sidebars .region-content {
-    width: 360px;
+    width: 420px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -2133,7 +2133,7 @@ body.two-sidebars .region-sidebar-second {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   body.two-sidebars .region-sidebar-second {
-    width: 174px;
+    width: 204px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -2171,7 +2171,7 @@ body.two-sidebars .region-below-content {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   body.two-sidebars .region-below-content {
-    width: 732px;
+    width: 852px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -2209,19 +2209,7 @@ body.two-sidebars .region-below-content {
     top: 0;
     left: 0;
   }
-  .layout-middle .region {
-    margin: 0;
-    padding: 0;
-    height: auto;
-    display: block;
-    float: none;
-    width: auto;
-    position: relative;
-    top: 0;
-    left: 0;
-    padding: 14px;
-  }
-  .layout-footer .region {
+  .region.middle {
     margin: 0;
     padding: 0;
     height: auto;
@@ -2604,6 +2592,7 @@ body.two-sidebars .region-below-content {
   background: #d83c3c;
 }
 .header {
+  border-bottom: 1px solid #EAEAEA;
   margin-top: 1em;
   margin-bottom: 1em;
 }
@@ -2637,7 +2626,7 @@ body.two-sidebars .region-below-content {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .logo {
-    width: 174px;
+    width: 204px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -2812,7 +2801,7 @@ body.two-sidebars .region-below-content {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .issue {
-    width: 236px;
+    width: 276px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -2952,6 +2941,11 @@ body.two-sidebars .region-below-content {
     left: 0;
   }
 }
+.participants:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 .participant {
   box-sizing: border-box;
   margin-bottom: 20px;
@@ -2978,7 +2972,7 @@ body.two-sidebars .region-below-content {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .participant {
-    width: 50px;
+    width: 60px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -2993,16 +2987,27 @@ body.two-sidebars .region-below-content {
     position: relative;
   }
 }
-.participant.delegated {
-  opacity: 0.3;
-  filter: alpha(opacity=30);
+@media only screen and (min-width : 1024px) and (max-width : 1380px) {
+  .participant {
+    min-height: 160px;
+  }
+}
+@media only screen and (min-width : 1380px) {
+  .participant {
+    min-height: 200px;
+  }
 }
 @media only screen and (max-width : 768px) {
   .participant {
-    width: 18%;
+    width: 23%;
     float: left;
     margin-right: 2%;
+    min-height: 170px;
   }
+}
+.participant.delegated {
+  opacity: 0.3;
+  filter: alpha(opacity=30);
 }
 .participant .participant-image {
   box-sizing: border-box;
@@ -3045,17 +3050,110 @@ body.two-sidebars .region-below-content {
   clear: both;
 }
 .participant .constituents .participant {
+  margin: 0;
+  padding: 0;
+  height: auto;
+  display: block;
+  float: none;
+  width: auto;
+  position: relative;
+  top: 0;
+  left: 0;
   min-height: 0;
-  width: 21%;
+  width: 22%;
   margin-top: 4%;
-  margin-left: 4%;
+  float: left;
+  margin-right: 3%;
   margin-bottom: 0;
+}
+@media only screen and (max-width : 768px) {
+  .participant .constituents .participant {
+    width: 23%;
+    float: left;
+    margin-right: 2%;
+  }
 }
 .participant .constituents .participant .participant-username {
   display: none;
 }
 .participant .constituents .participant .participant-vote-count {
   display: none;
+}
+.zone-yes {
+  box-sizing: border-box;
+}
+@media only screen and (min-width : 1380px) {
+  .zone-yes {
+    width: 610px;
+    display: inline-block;
+    float: left;
+    margin-left: 14px;
+    position: relative;
+  }
+}
+@media only screen and (min-width : 1024px) and (max-width : 1380px) {
+  .zone-yes {
+    width: 526px;
+    display: inline-block;
+    float: left;
+    margin-left: 14px;
+    position: relative;
+  }
+}
+@media only screen and (min-width : 768px) and (max-width : 1024px) {
+  .zone-yes {
+    width: 420px;
+    display: inline-block;
+    float: left;
+    margin-left: 12px;
+    position: relative;
+  }
+}
+@media only screen and (max-width : 768px) {
+  .zone-yes {
+    width: auto;
+    display: block;
+    float: none;
+    position: relative;
+  }
+}
+.zone-no {
+  box-sizing: border-box;
+}
+@media only screen and (min-width : 1380px) {
+  .zone-no {
+    width: 610px;
+    display: inline-block;
+    float: left;
+    margin-left: 14px;
+    position: relative;
+  }
+}
+@media only screen and (min-width : 1024px) and (max-width : 1380px) {
+  .zone-no {
+    width: 526px;
+    display: inline-block;
+    float: left;
+    margin-left: 14px;
+    position: relative;
+  }
+}
+@media only screen and (min-width : 768px) and (max-width : 1024px) {
+  .zone-no {
+    width: 420px;
+    display: inline-block;
+    float: left;
+    margin-left: 12px;
+    position: relative;
+  }
+}
+@media only screen and (max-width : 768px) {
+  .zone-no {
+    width: auto;
+    display: block;
+    float: none;
+    position: relative;
+  }
 }
 .badge {
   position: absolute;
@@ -3075,10 +3173,10 @@ body.two-sidebars .region-below-content {
   border-radius: 11px;
 }
 .badge.yes {
-  background-color: green;
+  background-color: #3abc95;
 }
 .badge.no {
-  background-color: red;
+  background-color: #f5781e;
 }
 .badge.abstain {
   background-color: #666;
@@ -3105,53 +3203,164 @@ body.two-sidebars .region-below-content {
   width: 40px;
   height: 30px;
 }
-#vs-board {
-  text-align: center;
-  margin-left: 7px;
-  margin-right: 7px;
-}
-#yes-board {
-  text-align: center;
-  margin-left: 0px;
-  margin-right: 0px;
-  margin-top: 7em;
-}
-#no-board {
-  text-align: center;
-  margin-left: 7px;
-  margin-right: 7px;
-  margin-top: 7em;
-}
 .leaderboard {
-  margin-left: 0px;
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
-.count-board {
+.leaderboard:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+@media only screen and (max-width : 768px) {
+  .leaderboard {
+    margin-top: 0;
+  }
+}
+.leaderboard h1 {
   text-align: center;
-  margin-left: 0px;
-  margin-top: 3.2em;
-  margin-bottom: 3em;
+  font-size: 38px;
+  margin-bottom: 20px;
 }
-.vote-button {
-  margin-left: 3px;
-  margin-right: 3px;
-  margin-bottom: 5em;
+@media only screen and (max-width : 768px) {
+  .leaderboard h1 {
+    margin-top: 0;
+    font-size: 30px;
+    line-height: 34px;
+  }
+}
+.leaderboard #vs-board {
+  width: 50%;
+  float: left;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.leaderboard #vs-board:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.leaderboard #vs-board #percent-donut {
+  width: 200px;
+  height: 200px;
+}
+@media only screen and (max-width : 768px) {
+  .leaderboard #vs-board #percent-donut {
+    width: 100px;
+    height: 100px;
+  }
+}
+.leaderboard #yes-board {
+  width: 25%;
+  float: left;
   text-align: center;
 }
-#yes-button {
-  margin-top: 0.5em;
-  background-color: white;
-  border: 0;
-  font-size: 30px;
-  width: 120px;
-  height: 120px;
+.leaderboard #yes-board h1 {
+  font-family: "open sans", "helvetica", "arial";
+  color: #666;
+  margin-bottom: 5px;
+  font-size: 32px;
 }
-#no-button {
-  margin-top: 1.5em;
-  background-color: white;
-  border: 0;
-  font-size: 30px;
-  width: 120px;
-  height: 120px;
+@media only screen and (max-width : 768px) {
+  .leaderboard #yes-board h1 {
+    font-size: 26px;
+  }
+}
+.leaderboard #yes-board #yes-votes {
+  font-weight: 400;
+  color: #333;
+}
+.leaderboard #yes-board h2 {
+  color: #3abc95;
+  margin-bottom: 25px;
+}
+.leaderboard #no-board {
+  width: 25%;
+  float: right;
+  text-align: center;
+}
+.leaderboard #no-board h1 {
+  font-family: "open sans", "helvetica", "arial";
+  color: #666;
+  margin-bottom: 5px;
+  font-size: 32px;
+}
+@media only screen and (max-width : 768px) {
+  .leaderboard #no-board h1 {
+    font-size: 26px;
+  }
+}
+.leaderboard #no-board #no-votes {
+  font-weight: 400;
+  color: #333;
+}
+.leaderboard #no-board h2 {
+  color: #f5781e;
+  margin-bottom: 25px;
+}
+.leaderboard .count-board {
+  display: block;
+  clear: both;
+  border-top: 1px solid #EAEAEA;
+  border-bottom: 1px solid #EAEAEA;
+  text-align: center;
+  padding: 6px 0 6px 0;
+}
+@media only screen and (max-width : 768px) {
+  .leaderboard .count-board {
+    clear: both;
+  }
+}
+.leaderboard .count-board h3 {
+  font-family: "open sans", "helvetica", "arial";
+  font-weight: 400;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  margin-right: 10px;
+}
+.leaderboard .vote-button-style {
+  background: #333;
+  display: inline-block;
+  padding: 4px 10px 4px;
+  margin-bottom: 0;
+  font-size: 12px;
+  color: #fff;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  border: none;
+  text-transform: uppercase;
+  font-weight: 300;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  -moz-transition: background 0.15s linear 0s;
+  -webkit-transition: background 0.15s linear 0s;
+  -o-transition: background 0.15s linear 0s;
+  transition: background 0.15s linear 0s;
+  padding: 12px 22px;
+  font-size: 16px;
+  font-weight: 400;
+}
+.leaderboard .vote-button-style:hover {
+  color: #FFF;
+  text-decoration: none;
+  background-color: #1a1a1a;
+  -moz-transition: background 0.15s linear 2s linear 0s;
+  -webkit-transition: background 0.15s linear 2s linear 0s;
+  -o-transition: background 0.15s linear 2s linear 0s;
+  transition: background 0.15s linear 2s linear 0s;
+}
+@media only screen and (max-width : 768px) {
+  .leaderboard .vote-button-style {
+    padding: 5px 10px;
+    font-size: 11px;
+    margin-bottom: 20px;
+  }
 }
 .hero {
   margin-bottom: 15em;
@@ -3299,7 +3508,7 @@ body.two-sidebars .region-below-content {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .hot-issue {
-    width: 236px;
+    width: 276px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -3424,33 +3633,38 @@ body.two-sidebars .region-below-content {
   clear: both;
 }
 .view-footer a {
-  background: #CCC;
+  background: #333;
   display: inline-block;
   padding: 4px 10px 4px;
   margin-bottom: 0;
   font-size: 12px;
-  line-height: normal;
-  color: #333;
+  color: #fff;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
   border: none;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 300;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
   -moz-transition: background 0.15s linear 0s;
   -webkit-transition: background 0.15s linear 0s;
   -o-transition: background 0.15s linear 0s;
   transition: background 0.15s linear 0s;
   background-color: #d83c3c;
   color: #FFF;
-  padding: 16px 28px;
+  padding: 12px 22px;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 400;
 }
 .view-footer a:hover {
-  color: #333;
+  color: #FFF;
   text-decoration: none;
-  background-color: #b3b3b3;
+  background-color: #1a1a1a;
   -moz-transition: background 0.15s linear 2s linear 0s;
   -webkit-transition: background 0.15s linear 2s linear 0s;
   -o-transition: background 0.15s linear 2s linear 0s;
@@ -3594,19 +3808,24 @@ div.warning {
   margin: 0 5px 0 0;
 }
 .node-article ul.links .comment-add a {
-  background: #CCC;
+  background: #333;
   display: inline-block;
   padding: 4px 10px 4px;
   margin-bottom: 0;
   font-size: 12px;
-  line-height: normal;
-  color: #333;
+  color: #fff;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
   border: none;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 300;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
   -moz-transition: background 0.15s linear 0s;
   -webkit-transition: background 0.15s linear 0s;
   -o-transition: background 0.15s linear 0s;
@@ -3617,9 +3836,9 @@ div.warning {
   color: #FFF;
 }
 .node-article ul.links .comment-add a:hover {
-  color: #333;
+  color: #FFF;
   text-decoration: none;
-  background-color: #b3b3b3;
+  background-color: #1a1a1a;
   -moz-transition: background 0.15s linear 2s linear 0s;
   -webkit-transition: background 0.15s linear 2s linear 0s;
   -o-transition: background 0.15s linear 2s linear 0s;
@@ -3659,19 +3878,24 @@ div.warning {
   list-style: none;
 }
 .node-article .field-name-field-tags ul.links li a {
-  background: #CCC;
+  background: #333;
   display: inline-block;
   padding: 4px 10px 4px;
   margin-bottom: 0;
   font-size: 12px;
-  line-height: normal;
-  color: #333;
+  color: #fff;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
   border: none;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 300;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
   -moz-transition: background 0.15s linear 0s;
   -webkit-transition: background 0.15s linear 0s;
   -o-transition: background 0.15s linear 0s;
@@ -3680,9 +3904,9 @@ div.warning {
   font-size: 11px;
 }
 .node-article .field-name-field-tags ul.links li a:hover {
-  color: #333;
+  color: #FFF;
   text-decoration: none;
-  background-color: #b3b3b3;
+  background-color: #1a1a1a;
   -moz-transition: background 0.15s linear 2s linear 0s;
   -webkit-transition: background 0.15s linear 2s linear 0s;
   -o-transition: background 0.15s linear 2s linear 0s;
@@ -4115,28 +4339,33 @@ div.warning {
   display: none;
 }
 .btn {
-  background: #CCC;
+  background: #333;
   display: inline-block;
   padding: 4px 10px 4px;
   margin-bottom: 0;
   font-size: 12px;
-  line-height: normal;
-  color: #333;
+  color: #fff;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
   border: none;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 300;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
   -moz-transition: background 0.15s linear 0s;
   -webkit-transition: background 0.15s linear 0s;
   -o-transition: background 0.15s linear 0s;
   transition: background 0.15s linear 0s;
 }
 .btn:hover {
-  color: #333;
+  color: #FFF;
   text-decoration: none;
-  background-color: #b3b3b3;
+  background-color: #1a1a1a;
   -moz-transition: background 0.15s linear 2s linear 0s;
   -webkit-transition: background 0.15s linear 2s linear 0s;
   -o-transition: background 0.15s linear 2s linear 0s;
@@ -4157,9 +4386,9 @@ div.warning {
   font-weight: 700;
 }
 .btn-large {
-  padding: 16px 28px;
+  padding: 12px 22px;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 400;
 }
 .btn-full {
   padding: 13px 24px;
@@ -4231,19 +4460,24 @@ div.warning {
   color: #FFF;
 }
 input.form-submit {
-  background: #CCC;
+  background: #333;
   display: inline-block;
   padding: 4px 10px 4px;
   margin-bottom: 0;
   font-size: 12px;
-  line-height: normal;
-  color: #333;
+  color: #fff;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
   border: none;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 300;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
   -moz-transition: background 0.15s linear 0s;
   -webkit-transition: background 0.15s linear 0s;
   -o-transition: background 0.15s linear 0s;
@@ -4254,9 +4488,9 @@ input.form-submit {
   text-indent: 0;
 }
 input.form-submit:hover {
-  color: #333;
+  color: #FFF;
   text-decoration: none;
-  background-color: #b3b3b3;
+  background-color: #1a1a1a;
   -moz-transition: background 0.15s linear 2s linear 0s;
   -webkit-transition: background 0.15s linear 2s linear 0s;
   -o-transition: background 0.15s linear 2s linear 0s;
@@ -4285,19 +4519,24 @@ input[value="Back"] {
   margin: 0 10px 0 0;
 }
 .field-name-node-link a {
-  background: #CCC;
+  background: #333;
   display: inline-block;
   padding: 4px 10px 4px;
   margin-bottom: 0;
   font-size: 12px;
-  line-height: normal;
-  color: #333;
+  color: #fff;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
   border: none;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 300;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
   -moz-transition: background 0.15s linear 0s;
   -webkit-transition: background 0.15s linear 0s;
   -o-transition: background 0.15s linear 0s;
@@ -4309,9 +4548,9 @@ input[value="Back"] {
   color: #d83c3c;
 }
 .field-name-node-link a:hover {
-  color: #333;
+  color: #FFF;
   text-decoration: none;
-  background-color: #b3b3b3;
+  background-color: #1a1a1a;
   -moz-transition: background 0.15s linear 2s linear 0s;
   -webkit-transition: background 0.15s linear 2s linear 0s;
   -o-transition: background 0.15s linear 2s linear 0s;
@@ -4348,7 +4587,7 @@ input[value="Back"] {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   #block-views-cart-badge-block {
-    width: 112px;
+    width: 132px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -4780,19 +5019,24 @@ h2.comment-title {
   display: block;
 }
 .comment ul.links li.comment-reply a {
-  background: #CCC;
+  background: #333;
   display: inline-block;
   padding: 4px 10px 4px;
   margin-bottom: 0;
   font-size: 12px;
-  line-height: normal;
-  color: #333;
+  color: #fff;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
   border: none;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 300;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
   -moz-transition: background 0.15s linear 0s;
   -webkit-transition: background 0.15s linear 0s;
   -o-transition: background 0.15s linear 0s;
@@ -4801,9 +5045,9 @@ h2.comment-title {
   color: #FFF;
 }
 .comment ul.links li.comment-reply a:hover {
-  color: #333;
+  color: #FFF;
   text-decoration: none;
-  background-color: #b3b3b3;
+  background-color: #1a1a1a;
   -moz-transition: background 0.15s linear 2s linear 0s;
   -webkit-transition: background 0.15s linear 2s linear 0s;
   -o-transition: background 0.15s linear 2s linear 0s;
@@ -5444,7 +5688,7 @@ select:focus {
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .block-ds-extras-headline .block-inner,
   .block-ds-extras-contact-headline .block-inner {
-    width: 732px;
+    width: 852px;
   }
 }
 @media only screen and (min-width : 1380px) {
@@ -5462,7 +5706,7 @@ select:focus {
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   .block-ds-extras-headline .block-inner,
   .block-ds-extras-contact-headline .block-inner {
-    width: 732px;
+    width: 852px;
   }
 }
 .block-ds-extras-headline .field-name-title h1,
@@ -5565,7 +5809,7 @@ select:focus {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   #block-blockify-blockify-logo {
-    width: 174px;
+    width: 204px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -5656,7 +5900,7 @@ select:focus {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   #block-menu-block-1 {
-    width: 484px;
+    width: 564px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -5723,7 +5967,7 @@ select:focus {
   .region.top ul.menu,
   .region.header ul.menu,
   .region.sub-header ul.menu {
-    width: 298px;
+    width: 348px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -6763,7 +7007,7 @@ a.meanmenu-reveal {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   #block-search-form {
-    width: 50px;
+    width: 60px;
     display: inline-block;
     float: left;
     margin-left: 12px;
@@ -7551,12 +7795,12 @@ div.vertical-tabs .vertical-tabs-list {
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   div.vertical-tabs .vertical-tabs-list {
-    width: 174px;
+    width: 204px;
   }
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   div.vertical-tabs .vertical-tabs-list {
-    width: 236px;
+    width: 276px;
   }
 }
 @media only screen and (min-width : 1380px) {
@@ -7572,7 +7816,7 @@ div.vertical-tabs .vertical-tabs-list {
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   div.vertical-tabs .vertical-tabs-list {
     top: 306px;
-    right: -248px;
+    right: -288px;
   }
 }
 @media only screen and (max-width : 768px) {
@@ -7771,34 +8015,39 @@ div.vertical-tabs .vertical-tabs-panes .field-type-text-long {
   }
 }
 #block-views-homepage-slider-block-1 a.button-link {
-  background: #CCC;
+  background: #333;
   display: inline-block;
   padding: 4px 10px 4px;
   margin-bottom: 0;
   font-size: 12px;
-  line-height: normal;
-  color: #333;
+  color: #fff;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
   border: none;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 300;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
   -moz-transition: background 0.15s linear 0s;
   -webkit-transition: background 0.15s linear 0s;
   -o-transition: background 0.15s linear 0s;
   transition: background 0.15s linear 0s;
-  padding: 16px 28px;
+  padding: 12px 22px;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 400;
   background-color: #d83c3c;
   color: #FFF;
   float: right;
 }
 #block-views-homepage-slider-block-1 a.button-link:hover {
-  color: #333;
+  color: #FFF;
   text-decoration: none;
-  background-color: #b3b3b3;
+  background-color: #1a1a1a;
   -moz-transition: background 0.15s linear 2s linear 0s;
   -webkit-transition: background 0.15s linear 2s linear 0s;
   -o-transition: background 0.15s linear 2s linear 0s;
