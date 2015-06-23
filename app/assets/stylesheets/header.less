@@ -1,14 +1,13 @@
 .top {
   height: 8px;
   background: @primarycolor;
-  margin-bottom: 20px;
-
+  // margin-bottom: 20px;
 }
 
 .header {
-  padding: 8px 0 8px 0;
-  margin-bottom: 20px;
-
+  margin-top: 1em;
+  margin-bottom: 1em;
+  // vertical-align: middle;
 }
 
 .logo {
@@ -17,7 +16,6 @@
   display: block;
   float: left;
   font-size: 20px;
-  line-height: 20px;
   text-transform: uppercase;
   font-family: @customfont;
   color: #333;
@@ -26,16 +24,17 @@
 
 // Session Dropdown
 .session-dropdown {
-  .float-right();
-
+  float: left;
+  height: 30px;
 }
 
 // User Profile
 .user-profile {
-  .grid(4);
-  .float-right();
-  line-height: 15px;
-  font-size: 12px;
+  // .grid(4);
+  float: right;
+  height:30px;
+  line-height: 2.2em;
+  font-size: 14px;
   form {
     display: inline-block;
   }
