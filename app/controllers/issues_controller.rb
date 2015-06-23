@@ -12,8 +12,9 @@ class IssuesController < ApplicationController
     # p "Got here!"
     # p params
     @current_issue = Issue.find(params[:id])
-    @vote = current_user.votes.find_by(issue_id: params[:id])
 
+    @vote = current_user.votes.find_by(issue_id: params[:id])
+    p @vote
     if @vote.root?
       @vote.update_attributes(value: params[:value])
       @vote.save
@@ -22,6 +23,9 @@ class IssuesController < ApplicationController
         vote.value = @vote.value
         vote.save
       end
+
+      @current_user_id = current_user.id
+      @current_user_vote_value = @vote.value
 
       base_uri = ENV['FIREBASE_URL']
 
@@ -34,7 +38,9 @@ class IssuesController < ApplicationController
         yes_percentage: @current_issue.yes_percentage,
         no_percentage: @current_issue.no_percentage,
         vote_count: @current_issue.vote_count,
-        abstain_count: @current_issue.abstain_count
+        abstain_count: @current_issue.abstain_count,
+        current_user_id: @current_user_id,
+        current_user_vote_value: @current_user_vote_value
       })
     else
       puts "User has delegated their vote."
