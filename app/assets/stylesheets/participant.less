@@ -1,11 +1,24 @@
 .participants {
 	.grid-container();
+  .clearfix();
 }
 .participant {
   .grid(1);
   margin-bottom: 20px;
   text-align: center;
   min-height: 180px;
+  @media @desktop {
+    min-height: 160px;
+  }
+  @media @desktop-xl {
+    min-height: 200px;
+  }
+  @media @mobile {
+    width: 23%;
+    float: left;
+    margin-right: 2%;
+    min-height: 170px;
+  }
   &.yes {
   }
   &.no {
@@ -13,11 +26,6 @@
   &.delegated {
     .opacity(30);
 
-  }
-  @media @mobile {
-    width: 18%;
-    float: left;
-    margin-right: 2%
   }
   .participant-image {
     box-sizing: border-box;
@@ -59,11 +67,18 @@
   .constituents {
     .clearfix();
     .participant {
+      .reset();
       min-height: 0;
-      width: 21%;
+      width: 22%;
       margin-top: 4%;
-      margin-left: 4%;
+      float: left;
+      margin-right: 3%;
       margin-bottom: 0;
+      @media @mobile {
+        width: 23%;
+        float: left;
+        margin-right: 2%
+      }
       .participant-username {
         display: none;
       }
@@ -75,7 +90,14 @@
 
 }
 
+.zone-yes {
+  .grid(6);
 
+}
+
+.zone-no {
+  .grid(6);
+}
 
 .badge {
     position: absolute;
@@ -94,10 +116,10 @@
     background-color: #CCC;
     border-radius: 11px;
     &.yes {
-      background-color: green;
+      background-color: @yes;
     }
     &.no {
-      background-color: red;
+      background-color: @no;
     }
     &.abstain {
       background-color:#666;
