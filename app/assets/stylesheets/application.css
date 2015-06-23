@@ -2597,6 +2597,11 @@ body.two-sidebars .region-below-content {
   margin-top: 1em;
   padding-bottom: 1em;
 }
+@media only screen and (max-width : 768px) {
+  .header {
+    padding-bottom: 3em;
+  }
+}
 .header-logo {
   width: 120px;
   margin-right: 50px;
@@ -2613,15 +2618,28 @@ body.two-sidebars .region-below-content {
   text-transform: uppercase;
   font: bold 1.1em "open sans", "helvetica", "arial";
   height: 30px;
-  width: 200px;
   margin: 0px;
   line-height: 2.2em;
+}
+@media only screen and (max-width : 768px) {
+  .header-menu {
+    float: right;
+  }
 }
 .session-dropdown {
   float: right;
   height: 30px;
   margin-right: 20px;
   padding: 0px;
+}
+@media only screen and (max-width : 768px) {
+  .session-dropdown {
+    float: none;
+    width: 100px;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+  }
 }
 .user-profile {
   float: right;
@@ -2630,7 +2648,8 @@ body.two-sidebars .region-below-content {
   font-size: 15px;
 }
 .user-profile form {
-  display: inline-block;
+  display: block;
+  float: right;
 }
 .user-profile .user-profile-username {
   font-weight: 700;
@@ -3359,6 +3378,14 @@ body.two-sidebars .region-below-content {
 .hero {
   margin-bottom: 15em;
 }
+@media only screen and (max-width : 768px) {
+  .hero {
+    /*margin-top: 5em;*/
+    margin-bottom: 2em;
+    overflow: hidden;
+    height: 21.3em;
+  }
+}
 .banner {
   background-size: cover;
   vertical-align: middle;
@@ -3376,22 +3403,58 @@ body.two-sidebars .region-below-content {
   overflow: hidden;
   left: -100px;
   width: 150%;
-  height: 40em;
+  height: 21.3em;
   box-shadow: inset 0px 0px 40px 8px #000000;
+}
+@media only screen and (max-width : 768px) {
+  .shadow-box {
+    left: 0px;
+    width: 100%;
+  }
 }
 #hero-text {
   font-family: "roboto slab", "helvetica", "arial";
-  padding-top: 4.5em;
+  padding-top: 0em;
   color: white;
   text-align: center;
   font-size: 3em;
   z-index: 100;
 }
-.form-wrapper {
+@media only screen and (max-width : 768px) {
+  #hero-text {
+    padding-top: 20px;
+    /*padding-bottom: 4.5em;*/
+  }
+}
+.header-search {
   float: right;
+  margin: 0;
+  height: 30px;
+  width: 320px;
+}
+@media only screen and (max-width : 768px) {
+  .header-search {
+    float: none;
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+.form-wrapper {
+  /*float: right;*/
   width: 320px;
   margin-right: 20px;
   padding-top: 2px;
+}
+@media only screen and (max-width : 768px) {
+  .form-wrapper {
+    padding-top: 3em;
+    margin-left: auto;
+    margin-right: auto;
+    /*display: block;*/
+  }
 }
 /* Form text input */
 .form-wrapper input {
@@ -3428,8 +3491,6 @@ body.two-sidebars .region-below-content {
   color: #fff;
   text-transform: uppercase;
   background: #d83c3c;
-  /*#d83c3c*/
-  /*border-radius: 0 0px 3px 0;*/
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
 }
 .form-wrapper button:hover {
@@ -3462,16 +3523,16 @@ body.two-sidebars .region-below-content {
   border: 0;
   padding: 0;
 }
-.header-search {
-  float: right;
-  margin: 0;
-  height: 30px;
-}
 #title-thinger {
-  margin-top: 12em;
+  margin-top: 8em;
   margin-bottom: 1em;
   text-align: center;
   font-size: 2em;
+}
+@media only screen and (max-width : 768px) {
+  #title-thinger {
+    margin-top: 0em;
+  }
 }
 .issue-box {
   height: 20em;
