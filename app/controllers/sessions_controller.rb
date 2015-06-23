@@ -6,19 +6,33 @@ class SessionsController < ApplicationController
 
   # Login
   def create
-    p params
-    @user = User.find_by(id: params[:user_id])
-    p @user.username
-    session[:username] = nil
-    session[:username] = @user.username
-    p session[:username]
-    redirect_to request.referer
+
+    if request.xhr?
+      p params
+      @user = User.find_by(username: params["email"])
+
+      if @user.nil?
+        @user = User.new(username: params["email"], image_url: params["imageUrl"])
+        @user.voted_issues = Issue.all
+        @user.save
+      end
+
+      session[:username] = @user.username
+
+      render json: {}
+    else
+      @user = User.find_by(id: params[:user_id])
+
+      session[:username] = nil
+      session[:username] = @user.username
+
+      redirect_to request.referer
+    end
   end
 
   def destroy
-    p session
     session[:username] = nil
-    redirect_to "/"
+    redirect_to request.referer
   end
 
   def clear
