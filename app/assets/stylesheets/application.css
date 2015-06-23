@@ -1,3 +1,4 @@
+/* CSS crunched with Crunch - http://crunchapp.net/ */
 @import "vendor/animate.css";
 @import url(https://fonts.googleapis.com/css?family=Lora:400,700|Open+Sans:400,600,300,700,800|Roboto+Slab:400,300,700|Merriweather:400,300,700|Slabo+27px);
 /* ==========================================================================
@@ -2599,7 +2600,9 @@ body.two-sidebars .region-below-content {
 }
 @media only screen and (max-width : 768px) {
   .header {
-    padding-bottom: 3em;
+    height: 50px;
+    margin-bottom: 0em;
+    padding-bottom: 0em;
   }
 }
 .header-logo {
@@ -2644,15 +2647,24 @@ body.two-sidebars .region-below-content {
 .user-profile {
   float: right;
   height: 30px;
-  line-height: 2.1em;
   font-size: 15px;
+  line-height: 2.1em;
 }
 .user-profile form {
-  display: block;
-  float: right;
+  margin-right: 0px;
+  display: inline-block;
 }
 .user-profile .user-profile-username {
   font-weight: 700;
+  height: 30px;
+}
+@media only screen and (max-width : 768px) {
+  .user-profile {
+    float: none;
+    display: inline-block;
+    margin-right: auto;
+    margin-left: auto;
+  }
 }
 .profile-clear {
   background: none;
@@ -2660,15 +2672,21 @@ body.two-sidebars .region-below-content {
   -webkit-appearance: none;
   margin: 0;
   padding: 0;
-  height: auto;
+  height: 30px;
   text-indent: 0;
   font-size: 15px;
+  line-height: 2.1em;
   color: #d83c3c;
   vertical-align: baseline;
   cursor: pointer;
 }
 .profile-clear:hover {
   text-decoration: underline;
+}
+@media only screen and (max-width : 768px) {
+  .profile-clear {
+    display: inline;
+  }
 }
 .issues {
   position: relative;
@@ -3424,7 +3442,7 @@ body.two-sidebars .region-below-content {
 }
 @media only screen and (max-width : 768px) {
   #hero-text {
-    padding-top: 20px;
+    padding-top: 50px;
   }
 }
 .header-search {

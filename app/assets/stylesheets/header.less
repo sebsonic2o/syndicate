@@ -10,7 +10,9 @@
   padding-bottom: 1em;
 
   @media @mobile {
-    padding-bottom: 3em;
+    height: 50px;
+    margin-bottom: 0em;
+    padding-bottom: 0em;
   }
 }
 
@@ -59,17 +61,34 @@
 .user-profile {
   float: right;
   height:30px;
-  line-height: 2.1em;
   font-size: 15px;
+  line-height: 2.1em;
+  @media @mobile {
+  }
+
   form {
-    display: block;
-    float: right;
+    margin-right: 0px;
+    display: inline-block;
+    @media @mobile {
+      // margin-right: 140px;
+    }
   }
 
   .user-profile-username {
     font-weight: 700;
+    height: 30px;
   }
+  @media @mobile {
+    // float: right;
+    // display: inline-block;
+    // width: 400px;
 
+    float: none;
+    display: inline-block;
+    margin-right: auto;
+    margin-left: auto;
+
+  }
 
 }
 
@@ -79,13 +98,17 @@
   -webkit-appearance: none;
   margin: 0;
   padding: 0;
-  height: auto;
+  height: 30px;
   text-indent: 0;
   font-size: 15px;
+  line-height: 2.1em;
   color: @primarycolor;
   vertical-align: baseline;
   cursor: pointer;
   &:hover {
     text-decoration: underline;
+  }
+  @media @mobile{
+    display: inline;
   }
 }
