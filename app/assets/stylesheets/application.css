@@ -1,4 +1,5 @@
 /* CSS crunched with Crunch - http://crunchapp.net/ */
+@import "vendor/animate.css";
 @import url(https://fonts.googleapis.com/css?family=Lora:400,700|Open+Sans:400,600,300,700,800|Roboto+Slab:400,300,700|Merriweather:400,300,700|Slabo+27px);
 /* ==========================================================================
    Styles
@@ -2479,6 +2480,13 @@ body.two-sidebars .region-below-content {
   margin-top: 1em;
   padding-bottom: 1em;
 }
+@media only screen and (max-width : 768px) {
+  .header {
+    height: 50px;
+    margin-bottom: 0em;
+    padding-bottom: 0em;
+  }
+}
 .header-logo {
   width: 120px;
   margin-right: 50px;
@@ -2495,9 +2503,13 @@ body.two-sidebars .region-below-content {
   text-transform: uppercase;
   font: bold 1.1em "open sans", "helvetica", "arial";
   height: 30px;
-  width: 200px;
   margin: 0px;
   line-height: 2.2em;
+}
+@media only screen and (max-width : 768px) {
+  .header-menu {
+    float: right;
+  }
 }
 .session-dropdown {
   float: right;
@@ -2505,17 +2517,36 @@ body.two-sidebars .region-below-content {
   margin-right: 20px;
   padding: 0px;
 }
+@media only screen and (max-width : 768px) {
+  .session-dropdown {
+    float: none;
+    width: 100px;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+  }
+}
 .user-profile {
   float: right;
   height: 30px;
-  line-height: 2.1em;
   font-size: 15px;
+  line-height: 2.1em;
 }
 .user-profile form {
+  margin-right: 0px;
   display: inline-block;
 }
 .user-profile .user-profile-username {
   font-weight: 700;
+  height: 30px;
+}
+@media only screen and (max-width : 768px) {
+  .user-profile {
+    float: none;
+    display: inline-block;
+    margin-right: auto;
+    margin-left: auto;
+  }
 }
 .profile-clear {
   background: none;
@@ -2523,15 +2554,21 @@ body.two-sidebars .region-below-content {
   -webkit-appearance: none;
   margin: 0;
   padding: 0;
-  height: auto;
+  height: 30px;
   text-indent: 0;
   font-size: 15px;
+  line-height: 2.1em;
   color: #d83c3c;
   vertical-align: baseline;
   cursor: pointer;
 }
 .profile-clear:hover {
   text-decoration: underline;
+}
+@media only screen and (max-width : 768px) {
+  .profile-clear {
+    display: inline;
+  }
 }
 .issues {
   position: relative;
@@ -3079,6 +3116,11 @@ body.two-sidebars .region-below-content {
   width: 40px;
   height: 30px;
 }
+@media only screen and (max-width : 768px) {
+  .header {
+    height: 200px;
+  }
+}
 .leaderboard {
   margin-top: 20px;
   margin-bottom: 40px;
@@ -3241,6 +3283,13 @@ body.two-sidebars .region-below-content {
 .hero {
   margin-bottom: 15em;
 }
+@media only screen and (max-width : 768px) {
+  .hero {
+    margin-bottom: 2em;
+    overflow: hidden;
+    height: 21.3em;
+  }
+}
 .banner {
   background-size: cover;
   vertical-align: middle;
@@ -3251,6 +3300,7 @@ body.two-sidebars .region-below-content {
   height: 40em;
 }
 .shadow-box {
+  height: 40em;
   background-size: cover;
   vertical-align: middle;
   position: absolute;
@@ -3258,8 +3308,11 @@ body.two-sidebars .region-below-content {
   overflow: hidden;
   left: -100px;
   width: 150%;
-  height: 40em;
-  box-shadow: inset 0px 0px 40px 8px #000000;
+}
+@media only screen and (max-width : 768px) {
+  .shadow-box {
+    height: 21.3em;
+  }
 }
 #hero-text {
   font-family: "roboto slab", "helvetica", "arial";
@@ -3269,11 +3322,41 @@ body.two-sidebars .region-below-content {
   font-size: 3em;
   z-index: 100;
 }
-.form-wrapper {
+@media only screen and (max-width : 768px) {
+  #hero-text {
+    padding-top: 50px;
+  }
+}
+.header-search {
   float: right;
+  margin: 0;
+  height: 30px;
+  width: 320px;
+  display: inline-block;
+}
+@media only screen and (max-width : 768px) {
+  .header-search {
+    float: none;
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+.form-wrapper {
+  /*float: right;*/
   width: 320px;
   margin-right: 20px;
   padding-top: 2px;
+}
+@media only screen and (max-width : 768px) {
+  .form-wrapper {
+    padding-top: 3em;
+    margin-left: auto;
+    margin-right: auto;
+    /*display: block;*/
+  }
 }
 /* Form text input */
 .form-wrapper input {
@@ -3310,8 +3393,6 @@ body.two-sidebars .region-below-content {
   color: #fff;
   text-transform: uppercase;
   background: #d83c3c;
-  /*#d83c3c*/
-  /*border-radius: 0 0px 3px 0;*/
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
 }
 .form-wrapper button:hover {
@@ -3344,16 +3425,16 @@ body.two-sidebars .region-below-content {
   border: 0;
   padding: 0;
 }
-.header-search {
-  float: right;
-  margin: 0;
-  height: 30px;
-}
 #title-thinger {
-  margin-top: 12em;
+  margin-top: 8em;
   margin-bottom: 1em;
   text-align: center;
   font-size: 2em;
+}
+@media only screen and (max-width : 768px) {
+  #title-thinger {
+    margin-top: 0em;
+  }
 }
 .issue-box {
   height: 20em;

@@ -26,7 +26,6 @@ $(document).on("ready, page:change", function() {
         appendScore(message.old_rep_root_count, message.old_rep_root_id);
         console.log("new_root_info")
         appendScore(message.new_rep_root_count, message.new_rep_root_id)
-        appendVoteStatus();
         appendDelegatedStatus(message.current_user_id);
         nestParticipant(message.current_user_id, message.new_rep_id)
       }
@@ -36,15 +35,12 @@ $(document).on("ready, page:change", function() {
         appendScore(0, message.current_user_id);
         console.log("new_root_info")
         appendScore(message.root_count, message.root_user_id)
-        appendVoteStatus();
         appendDelegatedStatus(message.current_user_id);
         nestParticipant(message.current_user_id, message.new_rep_id)
-
       }
       else if (message.incident === "undelegate") {
         appendScore(message.old_delegate_count, message.old_delegate_id);
         appendScore(message.current_user_count, message.current_user_id)
-        appendVoteStatus();
         appendUndelegatedStatus(message.current_user_id);
         unnestParticipant(message.current_user_id)
       }
@@ -125,6 +121,7 @@ var changeVoteDOM = function(message) {
   myDoughnutChart.update();
 
   appendVoteStatus(message.current_user_id, message.current_user_vote_value);
+  animateBadge(message.current_user_id)
   // appendVoteZone(message.current_user_id, message.current_user_vote_value);
 }
 
@@ -168,7 +165,6 @@ var delegateButton = function(){
 var appendScore = function(count, id) {
   console.log("count: " + count)
   console.log("id: " + id)
-
   var target = $('#' + id).children().children(".badge").html(count)
   console.log(target)
 };
@@ -176,20 +172,22 @@ var appendScore = function(count, id) {
 var nestParticipant = function(current_user_id, new_rep_id) {
   // Moves the delegate under the representative in the dom
   var constituentDomTemplate = $('#' + current_user_id)
-  $('#' + new_rep_id).children(".constituents").append(constituentDomTemplate)
+  $('#' + new_rep_id).children(".constituents").append(constituentDomTemplate);
+  // Animation
+  var animate = $('#' + new_rep_id).toggleClass("animated bounceIn");
+  setTimeout(function () {
+      animate.toggleClass("animated bounceIn");
+  }, 2000)
 };
-
-var appendVoteZone = function(current_user, currentUserVoteValue) {
-  // Moves the delegate under the representative in the dom
-  var constituentDomTemplate = $('#' + current_user)
-  $('.zone-yes').append(constituentDomTemplate)
-};
-
 
 var unnestParticipant = function(current_user_id, new_rep_id) {
   console.log("Getting here!!!!!!")
   var constituentDomTemplate = $('#' + current_user_id)
-  $(".participants").append(constituentDomTemplate)
+  $(".participants").prepend(constituentDomTemplate)
+  var animate = $('#' + current_user_id).toggleClass("animated fadeIn");
+  setTimeout(function () {
+      animate.toggleClass("animated fadeIn");
+  }, 2000)
 };
 
 var appendVoteStatus = function(current_user, currentUserVoteValue) {
@@ -198,16 +196,32 @@ var appendVoteStatus = function(current_user, currentUserVoteValue) {
   $('#' + current_user).children().children(".badge").removeClass("yes")
   $('#' + current_user).children().children(".badge").removeClass("no")
   $('#' + current_user).children().children(".badge").addClass(currentUserVoteValue)
-}
+};
 
 var appendDelegatedStatus = function(current_user) {
   $('#' + current_user).removeClass("delegated")
   $('#' + current_user).addClass("delegated")
-}
+  // Adding the delegated class sets the badge to display: none
+};
+
+var animateBadge = function(current_user) {
+  var animate = $('#' + current_user).children().children(".badge").toggleClass("animated fadeInDown");
+  setTimeout(function () {
+      animate.toggleClass("animated fadeInDown");
+  }, 1000)
+};
 
 var appendUndelegatedStatus = function(current_user) {
   $('#' + current_user).removeClass("delegated")
 }
+
+var appendVoteZone = function(current_user, currentUserVoteValue) {
+  // Moves the delegate under the representative in the dom
+  var constituentDomTemplate = $('#' + current_user)
+  $('.zone-yes').append(constituentDomTemplate)
+
+};
+
 
 var newDrawChart = function(yesVotes, noVotes, abstainCount) {
 
