@@ -143,22 +143,28 @@
   visibility: hidden;
 }
 
+.hero-button {
+}
+
 .hero-button button {
   overflow: visible;
-  /*position: relative;*/
-  margin-left: auto;
+  height: 40px;
+  width: 160px;
+  display: block;
+  margin-top: 4em;
   margin-right: auto;
+  margin-left: auto;
   border: 0;
   padding: 0;
   cursor: pointer;
-  height: 26px;
-  width: 80px;
-  font: 1em @basefont;
+  font: 1.3em @basefont;
   color: #fff;
   text-transform: uppercase;
   background: @primarycolor;   /*#d83c3c*/
   /*border-radius: 0 0px 3px 0;*/
   text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
+  position: relative;
+  z-index: 1000;
 }
 
 .hero-button button:hover{
