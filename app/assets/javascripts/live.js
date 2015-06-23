@@ -103,8 +103,12 @@ var changeVoteDOM = function(participantCount, yesVotes, noVotes, yesPercentage,
   $('#total-votes').html(voteCount);
   $('#abstain').html(abstainCount);
 
-  myDoughnutChart.segments[0].value = noVotes;
-  myDoughnutChart.segments[1].value = yesVotes;
+  var drawValues = setDrawValues(yesVotes, noVotes, abstainCount);
+
+  myDoughnutChart.segments[0].value = drawValues.no;
+  myDoughnutChart.segments[1].value = drawValues.yes;
+  myDoughnutChart.segments[2].value = drawValues.abstain;
+
   myDoughnutChart.update();
 
   appendVoteStatus(currentUser, currentUserVoteValue)
@@ -189,25 +193,33 @@ var appendUndelegatedStatus = function(current_user) {
   $('#' + current_user).removeClass("delegated")
 }
 
-var newDrawChart = function(yes_votes, no_votes) {
+var newDrawChart = function(yesVotes, noVotes, abstainCount) {
   // console.log("I am the new draw chart!");
   // console.log(yes_votes);
   // console.log(no_votes);
 
   var ctx = $("#percent-donut").get(0).getContext("2d");
 
+  var drawValues = setDrawValues(yesVotes, noVotes, abstainCount);
+
   var data = [
     {
-      value: no_votes,
-      color:"#F5781E",
+      value: drawValues.no,
+      color: "#F5781E",
       highlight: "#ff9042",
-      label: "Red"
+      label: "No"
     },
     {
-      value: yes_votes,
+      value: drawValues.yes,
       color: "#3abc95",
       highlight: "#3bcea2",
-      label: "Green"
+      label: "Yes"
+    },
+    {
+      value: drawValues.abstain,
+      color: "#C6C6C6",
+      highlight: "#D8D8D8",
+      label: "Abstain"
     }
   ];
 
@@ -224,8 +236,15 @@ var newDrawChart = function(yes_votes, no_votes) {
     legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
   };
 
-  myDoughnutChart = new Chart(ctx).Doughnut(data,options);
+  myDoughnutChart = new Chart(ctx).Doughnut(data, options);
 }
 
+var setDrawValues = function(yesVotes, noVotes, abstainCount) {
 
-
+  if (noVotes == 0 && yesVotes == 0) {
+    return {no: 0, yes: 0, abstain: abstainCount};
+  }
+  else {
+    return {no: noVotes, yes: yesVotes, abstain: 0};
+  }
+}
