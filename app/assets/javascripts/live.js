@@ -2,6 +2,12 @@ $(document).on("ready, page:change", function() {
 
   if ($('#live-dashboard').length) {
 
+    var clock = $('.clock').FlipClock(3600 * 24 * 3, {
+      clockFace: 'MinuteCounter',
+      countdown: true,
+      // showSeconds: false
+    });
+
     listenButtons();
     delegateButton();
   
@@ -9,7 +15,6 @@ $(document).on("ready, page:change", function() {
     var firebaseUrl = $('body').data('env');
     var myDelegateRef = new Firebase(firebaseUrl + 'delegates');
     var myVoteRef = new Firebase(firebaseUrl + 'votes');
-
 
     myDelegateRef.on('child_added', function(snapshot) {
       var message = snapshot.val();
