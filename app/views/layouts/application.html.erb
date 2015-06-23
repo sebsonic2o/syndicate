@@ -16,13 +16,16 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
+  <body data-env="<%= ENV['FIREBASE_URL'] %>">
     <%= render '/layouts/top' %>
     <%= render '/layouts/header' %>
 
-    <div id="middle" class="container">
-        <%= yield %>
-    </div>
+    <div id="middle" class="region middle">
+      <div class="region-inner">
+
+            <%= yield %>
+        </div>
+      </div>
 
     <div id="footer">
 
