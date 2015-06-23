@@ -4,6 +4,7 @@ $(document).on("ready, page:change", function() {
 
     listenButtons();
     delegateButton();
+    clearErrors();
 
     var firebaseUrl = $('body').data('env');
     var myDataRef = new Firebase(firebaseUrl + 'delegates');
@@ -61,6 +62,14 @@ $(document).on("ready, page:change", function() {
 
 });
 
+var clearErrors = function(){
+  $(document).on("click", function (e){
+    e.preventDefault();
+    console.log("Is this working???");
+    $('#errors').empty();
+  }) 
+}
+
 var listenButtons = function() {
   voteButton("#yes-button", "yes");
   voteButton("#no-button", "no");
@@ -81,6 +90,7 @@ var voteButton = function(buttonClass, voteValue) {
     request.done(function(data) {
       console.log("SUCCESS!");
       console.log(data);
+      $('#errors').append("<p>"+data.error+"</p>")
 
       // changeVoteDOM(data.yes_votes, data.no_votes);
     });
@@ -155,6 +165,7 @@ var nestParticipant = function(current_user_id, new_rep_id) {
 };
 
 var unnestParticipant = function(current_user_id, new_rep_id) {
+  console.log("Getting here!!!!!!")
   var constituentDomTemplate = $('#' + current_user_id)
   $(".participants").append(constituentDomTemplate)
 };
