@@ -1,4 +1,4 @@
-/* CSS crunched with Crunch - http://crunchapp.net/ */
+@import "vendor/animate.css";
 @import url(https://fonts.googleapis.com/css?family=Lora:400,700|Open+Sans:400,600,300,700,800|Roboto+Slab:400,300,700|Merriweather:400,300,700|Slabo+27px);
 /* ==========================================================================
    Styles
@@ -3180,6 +3180,11 @@ body.two-sidebars .region-below-content {
   background-position: 0 -220px;
   width: 40px;
   height: 30px;
+}
+@media only screen and (max-width : 768px) {
+  .header {
+    height: 200px;
+  }
 }
 .leaderboard {
   margin-top: 20px;
