@@ -13,16 +13,6 @@ class SessionsController < ApplicationController
     session[:username] = @user.username
     p session[:username]
     redirect_to request.referer
-    # p params
-    # @user = User.find_by(username: params[:session][:username].downcase)
-    # p @user
-    # if @user && @user.authenticate(params[:session][:password])
-    #   session[:username] = @user.username
-    #   redirect_to @user
-    # else
-    #   # Create an error message.
-    #   render 'new'
-    # end
   end
 
   def destroy
