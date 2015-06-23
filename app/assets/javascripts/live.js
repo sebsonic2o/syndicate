@@ -91,8 +91,8 @@ var voteButton = function(buttonClass, voteValue) {
       console.log("SUCCESS!");
       console.log(data);
 
-      if (data.hasOwnProperty('error')) {
-        $('#errors').append("<p>"+data.error+"</p>")
+      if (data.hasOwnProperty('delegated_vote_error')) {
+        $('#errors').append("<p>"+data.delegated_vote_error+"</p>")
       }
     });
 
@@ -125,10 +125,6 @@ var changeVoteDOM = function(message) {
 
 var delegateButton = function(){
   $(".participant").on('click', function(e){
-    // if ($('#errors').children().length > 0) {
-    //   console.log("Clearing errors div");
-    //   $('#errors').empty();
-    // }
     clearErrors();
     e.stopPropagation();
     e.preventDefault();
@@ -149,9 +145,11 @@ var delegateButton = function(){
     });
 
     request.done(function(data) {
-      console.log("Ajax!");
-      // console.log(data);
-      // participant.children().children(".badge").html(data)
+      console.log("Ajax - delegate button!");
+      console.log(data);
+      if (data.hasOwnProperty('hierachy_error')) {
+        $('#errors').append("<p>"+data.hierachy_error+"</p>")
+      }
     });
 
     request.fail(function(response) {
