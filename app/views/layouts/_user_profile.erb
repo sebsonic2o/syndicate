@@ -4,7 +4,7 @@
     <a href="/users/<%= current_user.id %>">My Profile</a> |
 
     <%= form_for(:session, url: logout_path, method: "delete" ) do |f| %>
-      <%= f.submit "Logout", class: "btn-clear" %>
+      <%= f.submit "Logout", class: "profile-clear" %>
     <% end %>
 
   </div>

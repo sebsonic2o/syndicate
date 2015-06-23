@@ -2595,7 +2595,7 @@ body.two-sidebars .region-below-content {
 .header {
   border-bottom: 1px solid #EAEAEA;
   margin-top: 1em;
-  margin-bottom: 1em;
+  padding-bottom: 1em;
 }
 .header-logo {
   width: 120px;
@@ -2634,6 +2634,22 @@ body.two-sidebars .region-below-content {
 }
 .user-profile .user-profile-username {
   font-weight: 700;
+}
+.profile-clear {
+  background: none;
+  border: none;
+  -webkit-appearance: none;
+  margin: 0;
+  padding: 0;
+  height: auto;
+  text-indent: 0;
+  font-size: 15px;
+  color: #d83c3c;
+  vertical-align: baseline;
+  cursor: pointer;
+}
+.profile-clear:hover {
+  text-decoration: underline;
 }
 .issues {
   position: relative;
@@ -3466,6 +3482,35 @@ body.two-sidebars .region-below-content {
 }
 .hidden {
   visibility: hidden;
+}
+.hero-button button {
+  overflow: visible;
+  height: 40px;
+  width: 160px;
+  display: block;
+  margin-top: 4em;
+  margin-right: auto;
+  margin-left: auto;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  font: 1.3em "open sans", "helvetica", "arial";
+  color: #fff;
+  text-transform: uppercase;
+  background: #d83c3c;
+  /*#d83c3c*/
+  /*border-radius: 0 0px 3px 0;*/
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1000;
+}
+.hero-button button:hover {
+  background: #e54040;
+}
+.hero-button button:active,
+.hero-button button:focus {
+  background: #c42f2f;
+  outline: 0;
 }
 .hot-issue {
   color: #d83c3c;
