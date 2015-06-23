@@ -14,22 +14,18 @@
     <%= render '/layouts/header' %>
 
     <div class="region hero">
-      <div class="banner">
-        <%= image_tag("wood.jpg") %>
-      </div>
+        <div class="banner">
+          <%= image_tag("wood.jpg") %>
+        </div>
+        <div class="shadow-box"></div>
       <div id="region-inner">
         <div id="hero-text">
-          Vote for a better world.
+          Vote to make your world better.
           <!-- Join the Liquid Democracy. -->
           <!-- Liquify your voting. -->
           <!-- Don't think twice about voting. -->
         </div>
-        <div id="home-search">
-          <form class="form-wrapper cf">
-            <input type="text" placeholder="Find an issue to vote on!" required>
-            <button type="submit">Search</button>
-          </form>
-        </div>
+
       </div>
     </div>
 
@@ -44,9 +40,7 @@
             <% @hot_issues.each do |issue| %>
               <div id="issue-<%= issue.id %>" class="hot-issue">
 
-
                 <div class="issue-body">
-
 
                   <div class="issue-image">
                     <a href="/issues/<%= issue.id %>">
