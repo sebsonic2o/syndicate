@@ -24,11 +24,11 @@ class IssuesController < ApplicationController
       # @current_user_vote_value = @vote.value
 
       firebase_vote(params[:id])
+      render json: {}
     else
       puts "User has delegated their vote."
+      render json: {error: "You cannot vote if you are currently designated. Please undesignate if you would like to vote directly."}
     end
-
-    render json: {}
   end
 
   def clear

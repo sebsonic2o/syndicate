@@ -4,6 +4,7 @@ $(document).on("ready, page:change", function() {
 
     listenButtons();
     delegateButton();
+  
 
     var firebaseUrl = $('body').data('env');
     var myDelegateRef = new Firebase(firebaseUrl + 'delegates');
@@ -55,7 +56,19 @@ $(document).on("ready, page:change", function() {
     });
   }
 
+    clearErrorsOnClick();
 });
+
+var clearErrors = function(){
+  if ($('#errors').children().length > 0) {
+    console.log("Clearing errors div");
+    $('#errors').empty();
+  }
+}
+
+var clearErrorsOnClick = function(){
+  $(document).on("click", clearErrors)
+}
 
 var listenButtons = function() {
   voteButton("#yes-button", "yes");
@@ -77,6 +90,10 @@ var voteButton = function(buttonClass, voteValue) {
     request.done(function(data) {
       console.log("SUCCESS!");
       console.log(data);
+
+      if (data.hasOwnProperty('error')) {
+        $('#errors').append("<p>"+data.error+"</p>")
+      }
     });
 
     request.fail(function(response) {
@@ -108,6 +125,11 @@ var changeVoteDOM = function(message) {
 
 var delegateButton = function(){
   $(".participant").on('click', function(e){
+    // if ($('#errors').children().length > 0) {
+    //   console.log("Clearing errors div");
+    //   $('#errors').empty();
+    // }
+    clearErrors();
     e.stopPropagation();
     e.preventDefault();
     console.log(this)
@@ -162,6 +184,7 @@ var appendVoteZone = function(current_user, currentUserVoteValue) {
 
 
 var unnestParticipant = function(current_user_id, new_rep_id) {
+  console.log("Getting here!!!!!!")
   var constituentDomTemplate = $('#' + current_user_id)
   $(".participants").append(constituentDomTemplate)
 };
