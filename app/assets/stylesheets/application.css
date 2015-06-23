@@ -1,3 +1,4 @@
+/* CSS crunched with Crunch - http://crunchapp.net/ */
 @import url(https://fonts.googleapis.com/css?family=Lora:400,700|Open+Sans:400,600,300,700,800|Roboto+Slab:400,300,700|Merriweather:400,300,700|Slabo+27px);
 /* ==========================================================================
    Styles
@@ -2596,8 +2597,9 @@ body.two-sidebars .region-below-content {
   margin-top: 1em;
   margin-bottom: 1em;
 }
-.logo {
-  box-sizing: border-box;
+.header-logo {
+  width: 120px;
+  margin-right: 50px;
   display: block;
   float: left;
   font-size: 20px;
@@ -2606,50 +2608,26 @@ body.two-sidebars .region-below-content {
   color: #333;
   font-weight: 600;
 }
-@media only screen and (min-width : 1380px) {
-  .logo {
-    width: 298px;
-    display: inline-block;
-    float: left;
-    margin-left: 14px;
-    position: relative;
-  }
-}
-@media only screen and (min-width : 1024px) and (max-width : 1380px) {
-  .logo {
-    width: 256px;
-    display: inline-block;
-    float: left;
-    margin-left: 14px;
-    position: relative;
-  }
-}
-@media only screen and (min-width : 768px) and (max-width : 1024px) {
-  .logo {
-    width: 204px;
-    display: inline-block;
-    float: left;
-    margin-left: 12px;
-    position: relative;
-  }
-}
-@media only screen and (max-width : 768px) {
-  .logo {
-    width: auto;
-    display: block;
-    float: none;
-    position: relative;
-  }
+.header-menu {
+  display: inline-block;
+  text-transform: uppercase;
+  font: bold 1.1em "open sans", "helvetica", "arial";
+  height: 30px;
+  width: 200px;
+  margin: 0px;
+  line-height: 2.2em;
 }
 .session-dropdown {
-  float: left;
+  float: right;
   height: 30px;
+  margin-right: 20px;
+  padding: 0px;
 }
 .user-profile {
   float: right;
   height: 30px;
-  line-height: 2.2em;
-  font-size: 14px;
+  line-height: 2.1em;
+  font-size: 15px;
 }
 .user-profile form {
   display: inline-block;
@@ -3374,30 +3352,39 @@ body.two-sidebars .region-below-content {
   width: 100%;
   height: 40em;
 }
+.shadow-box {
+  background-size: cover;
+  vertical-align: middle;
+  position: absolute;
+  z-index: 10;
+  overflow: hidden;
+  left: -100px;
+  width: 150%;
+  height: 40em;
+  box-shadow: inset 0px 0px 40px 8px #000000;
+}
 #hero-text {
   font-family: "roboto slab", "helvetica", "arial";
   padding-top: 4.5em;
   color: white;
   text-align: center;
   font-size: 3em;
+  z-index: 100;
 }
 .form-wrapper {
-  width: 450px;
-  padding: 15px;
-  margin-top: 4em;
-  margin-left: auto;
-  margin-right: auto;
+  float: right;
+  width: 320px;
+  margin-right: 20px;
+  padding-top: 2px;
 }
 /* Form text input */
 .form-wrapper input {
-  width: 340px;
-  height: 40px;
-  padding: 10px 5px;
+  width: 240px;
+  height: 26px;
   float: left;
-  font: bold 1.5em 'lucida sans', 'trebuchet MS', 'Tahoma';
+  font: 1.1em "open sans", "helvetica", "arial";
   border: 0;
   background: #eee;
-  border-radius: 3px 0 0 3px;
 }
 .form-wrapper input::-webkit-input-placeholder {
   color: #999;
@@ -3419,14 +3406,14 @@ body.two-sidebars .region-below-content {
   border: 0;
   padding: 0;
   cursor: pointer;
-  height: 40px;
-  width: 110px;
-  font: bold 15px/40px 'lucida sans', 'trebuchet MS', 'Tahoma';
+  height: 26px;
+  width: 80px;
+  font: 1em "open sans", "helvetica", "arial";
   color: #fff;
   text-transform: uppercase;
   background: #d83c3c;
   /*#d83c3c*/
-  border-radius: 0 3px 3px 0;
+  /*border-radius: 0 0px 3px 0;*/
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
 }
 .form-wrapper button:hover {
@@ -3444,7 +3431,7 @@ body.two-sidebars .region-below-content {
   border-width: 8px 8px 8px 0;
   border-style: solid solid solid none;
   border-color: transparent #d83c3c transparent;
-  top: 12px;
+  top: 5px;
   left: -6px;
 }
 .form-wrapper button:hover:before {
@@ -3459,8 +3446,13 @@ body.two-sidebars .region-below-content {
   border: 0;
   padding: 0;
 }
+.header-search {
+  float: right;
+  margin: 0;
+  height: 30px;
+}
 #title-thinger {
-  margin-top: 1em;
+  margin-top: 12em;
   margin-bottom: 1em;
   text-align: center;
   font-size: 2em;
@@ -3479,8 +3471,6 @@ body.two-sidebars .region-below-content {
   color: #d83c3c;
   margin-left: 0px;
   margin-bottom: 14px;
-  /*padding-bottom: 14px;*/
-  /*padding-top: 14px;*/
   box-sizing: border-box;
 }
 .hot-issue:after {
@@ -3530,18 +3520,10 @@ body.two-sidebars .region-below-content {
 .hot-issue .issue-body .issue-image {
   height: 200px;
   overflow: hidden;
-  /*margin-bottom: 8px; */
 }
 .hot-issue.view-mode-full {
   border-bottom: none;
 }
-/*.hot-issue-heading {
-  color: @primarycolor;
-  font-weight: 400;
-  position: absolute;
-  padding-left: 8px;
-  padding-top: 4px;
-}*/
 .item-list .pager {
   list-style: none;
   text-align: center;

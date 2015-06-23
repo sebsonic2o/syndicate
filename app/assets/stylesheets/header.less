@@ -11,9 +11,9 @@
   margin-bottom: 1em;
 }
 
-.logo {
-  // background-image: asset-url("logo.png");
-  .grid(3);
+.header-logo {
+  width: 120px;
+  margin-right: 50px;
   display: block;
   float: left;
   font-size: 20px;
@@ -23,10 +23,22 @@
   font-weight: 600;
 }
 
+.header-menu {
+  display: inline-block;
+  text-transform: uppercase;
+  font: bold 1.1em @basefont;
+  height: 30px;
+  width: 200px;
+  margin: 0px;
+ line-height: 2.2em;
+}
+
 // Session Dropdown
 .session-dropdown {
-  float: left;
+  float: right;
   height: 30px;
+  margin-right: 20px;
+  padding: 0px;
 }
 
 // User Profile
@@ -34,8 +46,8 @@
   // .grid(4);
   float: right;
   height:30px;
-  line-height: 2.2em;
-  font-size: 14px;
+  line-height: 2.1em;
+  font-size: 15px;
   form {
     display: inline-block;
   }
