@@ -3467,6 +3467,32 @@ body.two-sidebars .region-below-content {
 .hidden {
   visibility: hidden;
 }
+.hero-button button {
+  overflow: visible;
+  /*position: relative;*/
+  margin-left: auto;
+  margin-right: auto;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  height: 26px;
+  width: 80px;
+  font: 1em "open sans", "helvetica", "arial";
+  color: #fff;
+  text-transform: uppercase;
+  background: #d83c3c;
+  /*#d83c3c*/
+  /*border-radius: 0 0px 3px 0;*/
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
+}
+.hero-button button:hover {
+  background: #e54040;
+}
+.hero-button button:active,
+.hero-button button:focus {
+  background: #c42f2f;
+  outline: 0;
+}
 .hot-issue {
   color: #d83c3c;
   margin-left: 0px;
