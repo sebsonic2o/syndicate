@@ -7,11 +7,11 @@ $(document).on("ready, page:change", function() {
   
 
     var firebaseUrl = $('body').data('env');
-    var myDataRef = new Firebase(firebaseUrl + 'delegates');
+    var myDelegateRef = new Firebase(firebaseUrl + 'delegates');
     var myVoteRef = new Firebase(firebaseUrl + 'votes');
 
 
-   myDataRef.on('child_added', function(snapshot) {
+    myDelegateRef.on('child_added', function(snapshot) {
       var message = snapshot.val();
       console.log("firebase delegate snapshot")
       // console.log(message)
@@ -49,17 +49,10 @@ $(document).on("ready, page:change", function() {
       var message = snapshot.val();
       console.log("firebase vote snapshot");
       console.log(message);
-      changeVoteDOM(
-        message.participant_count,
-        message.yes_votes,
-        message.no_votes,
-        message.yes_percentage,
-        message.no_percentage,
-        message.vote_count,
-        message.abstain_count,
-        message.current_user_id,
-        message.current_user_vote_value
-      );
+
+      if ($('#issue-' + message.issue_id).length) {
+        changeVoteDOM(message);
+      }
     });
   }
 
@@ -97,11 +90,10 @@ var voteButton = function(buttonClass, voteValue) {
     request.done(function(data) {
       console.log("SUCCESS!");
       console.log(data);
+
       if (data.hasOwnProperty('error')) {
         $('#errors').append("<p>"+data.error+"</p>")
       }
-
-      // changeVoteDOM(data.yes_votes, data.no_votes);
     });
 
     request.fail(function(response) {
@@ -110,16 +102,16 @@ var voteButton = function(buttonClass, voteValue) {
   });
 }
 
-var changeVoteDOM = function(participantCount, yesVotes, noVotes, yesPercentage, noPercentage, voteCount, abstainCount, currentUser, currentUserVoteValue ) {
-  $('#total-participants').html(participantCount);
-  $('#yes-votes').html(yesVotes);
-  $('#no-votes').html(noVotes);
-  $('#yes-percentage').html(yesPercentage);
-  $('#no-percentage').html(noPercentage);
-  $('#total-votes').html(voteCount);
-  $('#abstain').html(abstainCount);
+var changeVoteDOM = function(message) {
+  $('#total-participants').html(message.participant_count);
+  $('#yes-votes').html(message.yes_votes);
+  $('#no-votes').html(message.no_votes);
+  $('#yes-percentage').html(message.yes_percentage);
+  $('#no-percentage').html(message.no_percentage);
+  $('#total-votes').html(message.vote_count);
+  $('#abstain').html(message.abstain_count);
 
-  var drawValues = setDrawValues(yesVotes, noVotes, abstainCount);
+  var drawValues = setDrawValues(message.yes_votes, message.no_votes, message.abstain_count);
 
   myDoughnutChart.segments[0].value = drawValues.no;
   myDoughnutChart.segments[1].value = drawValues.yes;
@@ -127,8 +119,8 @@ var changeVoteDOM = function(participantCount, yesVotes, noVotes, yesPercentage,
 
   myDoughnutChart.update();
 
-  appendVoteStatus(currentUser, currentUserVoteValue)
-  appendVoteZone(currentUser, currentUserVoteValue)
+  appendVoteStatus(message.current_user_id, message.current_user_vote_value);
+  // appendVoteZone(message.current_user_id, message.current_user_vote_value);
 }
 
 var delegateButton = function(){
@@ -178,7 +170,6 @@ var appendScore = function(count, id) {
   console.log(target)
 };
 
-
 var nestParticipant = function(current_user_id, new_rep_id) {
   // Moves the delegate under the representative in the dom
   var constituentDomTemplate = $('#' + current_user_id)
@@ -216,9 +207,6 @@ var appendUndelegatedStatus = function(current_user) {
 }
 
 var newDrawChart = function(yesVotes, noVotes, abstainCount) {
-  // console.log("I am the new draw chart!");
-  // console.log(yes_votes);
-  // console.log(no_votes);
 
   var ctx = $("#percent-donut").get(0).getContext("2d");
 
@@ -263,7 +251,7 @@ var newDrawChart = function(yesVotes, noVotes, abstainCount) {
 
 var setDrawValues = function(yesVotes, noVotes, abstainCount) {
 
-  if (noVotes == 0 && yesVotes == 0) {
+  if (noVotes === 0 && yesVotes === 0) {
     return {no: 0, yes: 0, abstain: abstainCount};
   }
   else {

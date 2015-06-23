@@ -11,33 +11,43 @@
   height: 40em;
 }
 
+.shadow-box {
+  background-size: cover;
+  vertical-align: middle;
+  position: absolute;
+  z-index: 10;
+  overflow: hidden;
+  left: -100px;
+  width: 150%;
+  height: 40em;
+  box-shadow: inset 0px 0px 40px 8px rgba(0, 0, 0, 1.0);
+}
+
 #hero-text{
   font-family: @customfont;
   padding-top: 4.5em;
   color: white;
   text-align: center;
   font-size: 3em;
+  z-index: 100;
 }
 
 .form-wrapper {
-  width: 450px;
-  padding: 15px;
-  margin-top: 4em;
-  margin-left: auto;
-  margin-right: auto;
+  float: right;
+  width: 320px;
+  margin-right: 20px;
+  padding-top: 2px;
 }
 
 /* Form text input */
 
 .form-wrapper input {
-  width: 340px;
-  height: 40px;
-  padding: 10px 5px;
+  width: 240px;
+  height: 26px;
   float: left;
-  font: bold 1.5em 'lucida sans', 'trebuchet MS', 'Tahoma';
+  font: 1.1em @basefont;
   border: 0;
   background: #eee;
-  border-radius: 3px 0 0 3px;
 }
 
 .form-wrapper input::-webkit-input-placeholder {
@@ -56,6 +66,7 @@
 }
 
 /* Form submit button */
+
 .form-wrapper button {
   overflow: visible;
   position: relative;
@@ -63,13 +74,13 @@
   border: 0;
   padding: 0;
   cursor: pointer;
-  height: 40px;
-  width: 110px;
-  font: bold 15px/40px 'lucida sans', 'trebuchet MS', 'Tahoma';
+  height: 26px;
+  width: 80px;
+  font: 1em @basefont;
   color: #fff;
   text-transform: uppercase;
   background: @primarycolor;   /*#d83c3c*/
-  border-radius: 0 3px 3px 0;
+  /*border-radius: 0 0px 3px 0;*/
   text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
 }
 
@@ -89,7 +100,7 @@
   border-width: 8px 8px 8px 0;
   border-style: solid solid solid none;
   border-color: transparent @primarycolor transparent;
-  top: 12px;
+  top: 5px;
   left: -6px;
 }
 
@@ -107,8 +118,14 @@
   padding: 0;
 }
 
+.header-search {
+  float: right;
+  margin: 0;
+  height: 30px;
+}
+
 #title-thinger {
-  margin-top: 1em;
+  margin-top: 12em;
   margin-bottom: 1em;
   text-align: center;
   font-size: 2em;
@@ -126,14 +143,46 @@
   visibility: hidden;
 }
 
+.hero-button {
+}
+
+.hero-button button {
+  overflow: visible;
+  height: 40px;
+  width: 160px;
+  display: block;
+  margin-top: 4em;
+  margin-right: auto;
+  margin-left: auto;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  font: 1.3em @basefont;
+  color: #fff;
+  text-transform: uppercase;
+  background: @primarycolor;   /*#d83c3c*/
+  /*border-radius: 0 0px 3px 0;*/
+  text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
+  position: relative;
+  z-index: 1000;
+}
+
+.hero-button button:hover{
+  background: #e54040;
+}
+
+.hero-button button:active,
+.hero-button button:focus{
+  background: #c42f2f;
+  outline: 0;
+}
+
 .hot-issue {
   .clearfix();
   color: @primarycolor;
   margin-left: 0px;
   margin-bottom: 14px;
 
-  /*padding-bottom: 14px;*/
-  /*padding-top: 14px;*/
   .grid(4);
   .issue-body {
     float: left;
@@ -141,7 +190,6 @@
     .issue-image{
       height: 200px;
       overflow: hidden;
-      /*margin-bottom: 8px; */
     }
   }
 
@@ -153,11 +201,4 @@
   }
 }
 
-/*.hot-issue-heading {
-  color: @primarycolor;
-  font-weight: 400;
-  position: absolute;
-  padding-left: 8px;
-  padding-top: 4px;
-}*/
 
