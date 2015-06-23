@@ -1,7 +1,6 @@
 .top {
   height: 8px;
   background: @primarycolor;
-  // margin-bottom: 20px;
 }
 
 .header {
@@ -9,6 +8,10 @@
   border-bottom: 1px solid #EAEAEA;
   margin-top: 1em;
   padding-bottom: 1em;
+
+  @media @mobile {
+    padding-bottom: 3em;
+  }
 }
 
 .header-logo {
@@ -28,9 +31,12 @@
   text-transform: uppercase;
   font: bold 1.1em @basefont;
   height: 30px;
-  width: 200px;
   margin: 0px;
- line-height: 2.2em;
+  line-height: 2.2em;
+
+  @media @mobile {
+    float: right;
+  }
 }
 
 // Session Dropdown
@@ -39,22 +45,32 @@
   height: 30px;
   margin-right: 20px;
   padding: 0px;
+  @media @mobile {
+    float: none;
+    width: 100px;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+
+  }
 }
 
 // User Profile
 .user-profile {
-  // .grid(4);
   float: right;
   height:30px;
   line-height: 2.1em;
   font-size: 15px;
   form {
-    display: inline-block;
+    display: block;
+    float: right;
   }
 
   .user-profile-username {
     font-weight: 700;
   }
+
+
 }
 
 .profile-clear {
