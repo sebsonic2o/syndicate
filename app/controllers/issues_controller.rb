@@ -28,6 +28,7 @@ class IssuesController < ApplicationController
       firebase = Firebase::Client.new(base_uri)
 
       response = firebase.push("votes", {
+        issue_id: @current_issue.id,
         participant_count: @current_issue.participant_count,
         yes_votes: @current_issue.yes_votes,
         no_votes: @current_issue.no_votes,

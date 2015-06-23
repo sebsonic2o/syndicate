@@ -47,15 +47,18 @@ $(document).on("ready, page:change", function() {
       var message = snapshot.val();
       console.log("firebase vote snapshot");
       console.log(message);
-      changeVoteDOM(
-        message.participant_count,
-        message.yes_votes,
-        message.no_votes,
-        message.yes_percentage,
-        message.no_percentage,
-        message.vote_count,
-        message.abstain_count
-      );
+
+      if ($('#issue-' + message.issue_id).length) {
+        changeVoteDOM(
+          message.participant_count,
+          message.yes_votes,
+          message.no_votes,
+          message.yes_percentage,
+          message.no_percentage,
+          message.vote_count,
+          message.abstain_count
+        );
+      }
     });
   }
 
