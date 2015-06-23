@@ -28,77 +28,77 @@
     </div>
 
     <div class="count-board">
-      <h3>Total participants: <strong><%= @current_issue.participant_count %></strong></h3>
-      <h3>Total votes: <strong><%= @current_issue.vote_count %></strong></h3>
-      <h3>Abstain: <strong><%= @current_issue.abstain_count %></strong></h3>
+      <h3>Total participants: <span id="total-participants"><%= @current_issue.participant_count %></span></h3>
+      <h3>Total votes: <span id="total-votes"><%= @current_issue.vote_count %></span></h3>
+      <h3>Abstain: <span id="abstain"><%= @current_issue.abstain_count %></span></h3>
+    </div>
+  </div>
+
+
+  <div class="participants" >
+
+    <div class="zone-yes">
     </div>
 
-</div>
+    <div class="zone-no">
+    </div>
 
+    <% @participants.each do |participant| %>
+      <% participant_votes = participant.votes.find_by(issue_id: @current_issue.id) %>
+      <% if participant_votes.root? == true %>
 
-<div class="participants" >
+        <div id="<%= participant.id %>" class="participant <%= participant.get_vote_status(@current_issue.id) %> <%= participant.get_delegation_status(@current_issue.id) %>">
 
-<div class="zone-yes">
-</div>
+          <h3 class="participant-username"><a href="#"><%= participant.username %></a><em>User ID: <%= participant.id %></em> </h3>
 
-<div class="zone-no">
-</div>
+          <div class="participant-avatar">
+            <% if @current_user.id == participant.id %>
+              <img class="participant-image current" src="<%= participant.image_url %>" />
+            <% elsif @representative_id == participant.id%>
+              <img class="participant-image rep" src="<%= participant.image_url %>" />
+            <% else %>
+              <img class="participant-image" src="<%= participant.image_url %>" />
+            <% end %>
 
-<% @participants.each do |participant| %>
-  <% participant_votes = participant.votes.find_by(issue_id: @current_issue.id) %>
-  <% if participant_votes.root? == true %>
-
-    <div id="<%= participant.id %>" class="participant <%= participant.get_vote_status(@current_issue.id) %> <%= participant.get_delegation_status(@current_issue.id) %>">
-
-      <h3 class="participant-username"><a href="#"><%= participant.username %></a><em>User ID: <%= participant.id %></em> </h3>
-
-      <div class="participant-avatar">
-      <% if @current_user.id == participant.id %>
-        <img class="participant-image current" src="<%= participant.image_url %>" />
-      <% elsif @representative_id == participant.id%>
-        <img class="participant-image rep" src="<%= participant.image_url %>" />
-      <% else %>
-        <img class="participant-image" src="<%= participant.image_url %>" />
-      <% end %>
-
-        <div class="badge participant-vote-count <%= participant.get_vote_status(@current_issue.id) %> <%= participant.get_delegation_status(@current_issue.id) %>">
-          <%= participant.get_vote_power(@current_issue.id) %>
-        </div>
-
-      </div>
-
-      <div class="constituents">
-        <% participant_votes.descendants.each do |vote| %>
-
-          <% constituent = User.find(vote.user_id) %>
-          <div id="<%= constituent.id %>" class="participant <%= participant.get_vote_status(@current_issue.id) %> <%= participant.get_delegation_status(@current_issue.id) %>">
-
-            <h3 class="participant-username"><a href="#"><%= constituent.username %></a><em>User ID: <%= constituent.id %></em> </h3>
-
-            <div class="participant-avatar">
-              <% if @current_user.id == constituent.id %>
-                <img class="participant-image current" src="<%= constituent.image_url %>" />
-              <% elsif @representative_id == constituent.id%>
-                <img class="participant-image rep" src="<%= constituent.image_url %>" />
-              <% else %>
-                <img class="participant-image" src="<%= constituent.image_url %>" />
-              <% end %>
-
-              <div class="badge participant-vote-count <%= constituent.get_vote_status(@current_issue.id) %> <%= constituent.get_delegation_status(@current_issue.id) %>">
-                <%= constituent.get_vote_power(@current_issue.id) %>
-              </div>
+            <div class="badge participant-vote-count <%= participant.get_vote_status(@current_issue.id) %> <%= participant.get_delegation_status(@current_issue.id) %>">
+              <%= participant.get_vote_power(@current_issue.id) %>
             </div>
-
-            <div class="constituents">
-            </div>
-
           </div>
+
+          <div class="constituents">
+            <% participant_votes.descendants.each do |vote| %>
+
+              <% constituent = User.find(vote.user_id) %>
+              <div id="<%= constituent.id %>" class="participant <%= participant.get_vote_status(@current_issue.id) %> <%= participant.get_delegation_status(@current_issue.id) %>">
+
+                <h3 class="participant-username"><a href="#"><%= constituent.username %></a><em>User ID: <%= constituent.id %></em> </h3>
+
+                <div class="participant-avatar">
+                  <% if @current_user.id == constituent.id %>
+                    <img class="participant-image current" src="<%= constituent.image_url %>" />
+                  <% elsif @representative_id == constituent.id%>
+                    <img class="participant-image rep" src="<%= constituent.image_url %>" />
+                  <% else %>
+                    <img class="participant-image" src="<%= constituent.image_url %>" />
+                  <% end %>
+
+                  <div class="badge participant-vote-count <%= constituent.get_vote_status(@current_issue.id) %> <%= constituent.get_delegation_status(@current_issue.id) %>">
+                    <%= constituent.get_vote_power(@current_issue.id) %>
+                  </div>
+                </div>
+
+                <div class="constituents">
+                </div>
+
+              </div>
+            <% end %>
+          </div>
+        </div>
         <% end %>
-      </div>
-    </div>
     <% end %>
-<% end %>
+  </div>
 </div>
+<!-- end issue div -->
 
 <a href="/issues/<%= @current_issue.id %>/clear">Clear Issue</a>
 

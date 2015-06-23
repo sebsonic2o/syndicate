@@ -1,20 +1,16 @@
 class IssuesController < ApplicationController
+
   def index
     @issues = Issue.all
   end
 
   def show
     @current_issue = Issue.find(params[:id])
-    p @current_issue
   end
 
   def vote
-    # p "Got here!"
-    # p params
-    @current_issue = Issue.find(params[:id])
-
     @vote = current_user.votes.find_by(issue_id: params[:id])
-    p @vote
+
     if @vote.root?
       @vote.update_attributes(value: params[:value])
       @vote.save
@@ -24,38 +20,15 @@ class IssuesController < ApplicationController
         vote.save
       end
 
-      @current_user_id = current_user.id
-      @current_user_vote_value = @vote.value
+      # @current_user_id = current_user.id
+      # @current_user_vote_value = @vote.value
 
-      base_uri = ENV['FIREBASE_URL']
-
-      firebase = Firebase::Client.new(base_uri)
-
-      response = firebase.push("votes", {
-        participant_count: @current_issue.participant_count,
-        yes_votes: @current_issue.yes_votes,
-        no_votes: @current_issue.no_votes,
-        yes_percentage: @current_issue.yes_percentage,
-        no_percentage: @current_issue.no_percentage,
-        vote_count: @current_issue.vote_count,
-        abstain_count: @current_issue.abstain_count,
-        current_user_id: @current_user_id,
-        current_user_vote_value: @current_user_vote_value
-      })
+      firebase_vote(params[:id])
     else
       puts "User has delegated their vote."
     end
 
     render json: {}
-    # render json: {
-    #   participant_count: @current_issue.participant_count,
-    #   yes_votes: @current_issue.yes_votes,
-    #   no_votes: @current_issue.no_votes,
-    #   yes_percentage: @current_issue.yes_percentage,
-    #   no_percentage: @current_issue.no_percentage,
-    #   vote_count: @current_issue.vote_count,
-    #   abstain_count: @current_issue.abstain_count
-    # }
   end
 
   def clear
@@ -170,6 +143,7 @@ class IssuesController < ApplicationController
       vote.save
     end
 
+    firebase_vote(params[:issue_id])
 
     # response.success? # => true
     # response.code # => 200
@@ -179,9 +153,6 @@ class IssuesController < ApplicationController
     render json: @target_representative_vote.descendants
   end
 
-
-
-
   def live
     base_uri = ENV['FIREBASE_URL']
     firebase = Firebase::Client.new(base_uri)
@@ -190,8 +161,6 @@ class IssuesController < ApplicationController
     @current_issue = Issue.find(params[:id])
     # @current_issue.generate_leaderboard
     @participants = @current_issue.voters.order(id: :asc)
-
-
 
 
     if logged_in?
@@ -209,10 +178,26 @@ class IssuesController < ApplicationController
 
   end
 
-  # def graph
-  #   @current_issue = Issue.find(params[:id])
-  #   @yes_votes = @current_issue.votes.where({value: "yes"}).count
-  #   @no_votes = @current_issue.votes.where({value: "no"}).count
-  #   render json: {yes_votes: @yes_votes, no_votes: @no_votes}
-  # end
+  private
+
+    def firebase_vote(id)
+      issue = Issue.find(id)
+
+      data = {
+        issue_id: issue.id,
+        participant_count: issue.participant_count,
+        yes_votes: issue.yes_votes,
+        no_votes: issue.no_votes,
+        yes_percentage: issue.yes_percentage,
+        no_percentage: issue.no_percentage,
+        vote_count: issue.vote_count,
+        abstain_count: issue.abstain_count,
+        current_user_id: current_user.id,
+        current_user_vote_value: current_user.votes.find_by(issue_id: id).value
+      }
+
+      firebase = Firebase::Client.new(ENV['FIREBASE_URL'])
+
+      firebase.push("votes", data)
+    end
 end
