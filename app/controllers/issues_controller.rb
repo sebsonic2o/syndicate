@@ -190,7 +190,7 @@ class IssuesController < ApplicationController
   def live
     @current_issue = Issue.find(params[:id])
     @participants = @current_issue.voters.order(id: :asc)
-    @finish_time = @current_issue.finish_date
+    @finish_time = @current_issue.finish_date.utc
 
     if logged_in?
       @current_user = current_user
@@ -199,7 +199,7 @@ class IssuesController < ApplicationController
     end
 
     if @current_issue.closed?
-      puts "Issue is not open."
+      puts "Issue is closed!"
 
     else
       puts "Issue is open!"
