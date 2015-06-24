@@ -49,7 +49,7 @@
 
         <div id="<%= participant.id %>" class="participant <%= participant.get_vote_status(@current_issue.id) %> <%= participant.get_delegation_status(@current_issue.id) %>">
 
-          <h3 class="participant-username"><a href="#"><%= participant.username %></a><em>User ID: <%= participant.id %></em> </h3>
+          <h3 class="participant-username"><a href="#"><%= participant.first_name %></a><em>User ID: <%= participant.id %></em> </h3>
 
           <div class="participant-avatar">
             <% if @current_user.id == participant.id %>
@@ -71,7 +71,7 @@
               <% constituent = User.find(vote.user_id) %>
               <div id="<%= constituent.id %>" class="participant <%= participant.get_vote_status(@current_issue.id) %> <%= participant.get_delegation_status(@current_issue.id) %>">
 
-                <h3 class="participant-username"><a href="#"><%= constituent.username %></a><em>User ID: <%= constituent.id %></em> </h3>
+                <h3 class="participant-username"><a href="#"><%= constituent.first_name %></a><em>User ID: <%= constituent.id %></em> </h3>
 
                 <div class="participant-avatar">
                   <% if @current_user.id == constituent.id %>

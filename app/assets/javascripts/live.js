@@ -127,7 +127,7 @@ var changeUserDOM = function(message) {
     '<div class="constituents"></div>\n' +
     '</div>';
 
-    $('.participants').append(participantTemplate);
+    $('.participants').append(participantTemplate).children(':last').hide().fadeIn(2000);
 }
 
 var delegateButton = function(){
