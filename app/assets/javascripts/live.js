@@ -35,8 +35,9 @@ $(document).on("ready, page:change", function() {
           appendScore(message.old_rep_root_count, message.old_rep_root_id);
           console.log("new_root_info")
           appendScore(message.new_rep_root_count, message.new_rep_root_id)
-          appendDelegatedStatus(message.current_user_id);
+          appendDelegatedStatus(message.current_user_id, message.new_rep_id, message.old_rep_id);
           nestParticipant(message.current_user_id, message.new_rep_id)
+
         }
         else if (message.incident === "new delegate") {
           console.log("new delegate")
@@ -44,14 +45,14 @@ $(document).on("ready, page:change", function() {
           appendScore(0, message.current_user_id);
           console.log("new_root_info")
           appendScore(message.root_count, message.root_user_id)
-          appendDelegatedStatus(message.current_user_id);
+          appendDelegatedStatus(message.current_user_id, message.new_rep_id);
           nestParticipant(message.current_user_id, message.new_rep_id)
         }
         else if (message.incident === "undelegate") {
           appendScore(message.old_delegate_count, message.old_delegate_id);
           appendScore(message.current_user_count, message.current_user_id)
-          appendUndelegatedStatus(message.current_user_id);
-          unnestParticipant(message.current_user_id)
+          appendUndelegatedStatus(message.current_user_id, message.old_delegate_id);
+          // unnestParticipant(message.current_user_id)
         }
       }
     });
@@ -73,6 +74,7 @@ $(document).on("ready, page:change", function() {
 
       changeUserDOM(message);
     });
+
   }
 
     clearErrorsOnClick();
@@ -98,7 +100,7 @@ var voteButton = function(buttonClass, voteValue) {
   $(".vote-button").on('click', buttonClass, function(e) {
     e.preventDefault();
 
-    var issueId = $(".issues").attr('id').slice(6);
+    var issueId = $(".dashboard").attr('id').slice(6);
     var url = '/issues/' + issueId + '/vote?value=' + voteValue;
 
     var request = $.ajax({
@@ -134,6 +136,8 @@ var changeVoteDOM = function(message) {
   $('#no-percentage').html(message.no_percentage);
   $('#total-votes').html(message.vote_count);
   $('#abstain').html(message.abstain_count);
+  // message.current_user_vote_value
+  // message.current_user_id
 
   var drawValues = setDrawValues(message.yes_votes, message.no_votes, message.abstain_count);
 
@@ -142,10 +146,18 @@ var changeVoteDOM = function(message) {
   myDoughnutChart.segments[2].value = drawValues.abstain;
 
   myDoughnutChart.update();
+// Move to the correct vote zone
+  if (message.move_to_vote_zone == true) {
+    moveVoteZone(message.current_user_id, message.current_user_vote_value);
+  }
+  else {
+    console.log("no move");
+  }
 
+  // Update the vote count on the users badge
   appendVoteStatus(message.current_user_id, message.current_user_vote_value);
-  animateBadge(message.current_user_id)
-  // appendVoteZone(message.current_user_id, message.current_user_vote_value);
+  // Animate the badge
+  animateBadge(message.current_user_id);
 }
 
 var changeUserDOM = function(message) {
@@ -172,7 +184,7 @@ var changeUserDOM = function(message) {
     $('#abstain').html(abstain);
     $('#abstain').fadeIn(1000);
 
-    $('.participants').append(participantTemplate).children(':last').hide().fadeIn(1000);
+    $('.zone-abstain .zone-inner').append(participantTemplate).children(':last').hide().fadeIn(1000);
 }
 
 var delegateButton = function(){
@@ -186,7 +198,7 @@ var delegateButton = function(){
     console.log(array)
     // When we delegate our vote by clicking on another user they are our "representative"
     var representative = $(this)
-    var issueId = $(".issues").attr('id').slice(6);
+    var issueId = $(".dashboard").attr('id').slice(6);
     console.log(issueId)
     var representativeId = $(this).attr('id');
     var url = '/issues/' + issueId + '/users/' + representativeId + '/delegate';
@@ -236,7 +248,7 @@ var nestParticipant = function(current_user_id, new_rep_id) {
 };
 
 var unnestParticipant = function(current_user_id, new_rep_id) {
-  console.log("Getting here!!!!!!")
+  console.log("Unest Participants")
   var constituentDomTemplate = $('#' + current_user_id)
   $(".participants").prepend(constituentDomTemplate)
   var animate = $('#' + current_user_id).toggleClass("animated fadeIn");
@@ -253,9 +265,11 @@ var appendVoteStatus = function(current_user, currentUserVoteValue) {
   $('#' + current_user).children().children(".badge").addClass(currentUserVoteValue)
 };
 
-var appendDelegatedStatus = function(current_user) {
+var appendDelegatedStatus = function(current_user, new_rep_id, old_rep_id) {
   $('#' + current_user).removeClass("delegated")
   $('#' + current_user).addClass("delegated")
+  $('#' + new_rep_id).children().children(".participant-image").addClass("rep")
+  $('#' + old_rep_id).children().children(".participant-image").removeClass("rep")
   // Adding the delegated class sets the badge to display: none
 };
 
@@ -266,15 +280,20 @@ var animateBadge = function(current_user) {
   }, 1000)
 };
 
-var appendUndelegatedStatus = function(current_user) {
+var appendUndelegatedStatus = function(current_user, old_delegate_id) {
   $('#' + current_user).removeClass("delegated")
+  $('#' + old_delegate_id).children().children(".participant-image").removeClass("rep")
 }
 
-var appendVoteZone = function(current_user, currentUserVoteValue) {
+var moveVoteZone = function(current_user_id, current_user_vote_value) {
+  console.log("move zone")
   // Moves the delegate under the representative in the dom
-  var constituentDomTemplate = $('#' + current_user)
-  $('.zone-yes').append(constituentDomTemplate)
-
+  var constituentDomTemplate = $('#' + current_user_id)
+  $('.zone-' + current_user_vote_value + ' .zone-inner').append(constituentDomTemplate)
+  var animate = $('#' + current_user_id).toggleClass("animated fadeIn");
+  setTimeout(function () {
+      animate.toggleClass("animated fadeIn");
+  }, 2000)
 };
 
 
