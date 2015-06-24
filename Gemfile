@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'puma'
 
 gem 'dotenv-rails', :groups => [:development, :test]
 
