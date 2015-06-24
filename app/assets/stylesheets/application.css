@@ -1,4 +1,3 @@
-/* CSS crunched with Crunch - http://crunchapp.net/ */
 @import "vendor/animate.css";
 @import url(https://fonts.googleapis.com/css?family=Lora:400,700|Open+Sans:400,600,300,700,800|Roboto+Slab:400,300,700|Merriweather:400,300,700|Slabo+27px);
 /* ==========================================================================
@@ -2924,7 +2923,7 @@ body.two-sidebars .region-below-content {
 }
 .participant {
   box-sizing: border-box;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   text-align: center;
   min-height: 180px;
 }
@@ -2965,7 +2964,7 @@ body.two-sidebars .region-below-content {
 }
 @media only screen and (min-width : 1024px) and (max-width : 1380px) {
   .participant {
-    min-height: 160px;
+    min-height: 140px;
   }
 }
 @media only screen and (min-width : 1380px) {
@@ -3002,23 +3001,26 @@ body.two-sidebars .region-below-content {
   filter: alpha(opacity=70);
 }
 .participant .participant-image.current {
-  border: 2px solid blue;
+  border: 2px solid #333 !important;
 }
 .participant .participant-image.rep {
-  border: 2px solid red;
+  border: 2px solid #CCC !important;
 }
 .participant .participant-avatar {
   position: relative;
 }
 .participant .participant-username {
   margin: 0px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 400;
 }
 .participant .participant-username em {
   display: block;
-  font-size: 12px;
+  font-size: 11px;
   margin-bottom: 2px;
+  font-family: "open sans", "helvetica", "arial";
+  font-weight: 400;
+  font-style: normal;
 }
 .participant .constituents:after {
   content: "";
@@ -3055,11 +3057,12 @@ body.two-sidebars .region-below-content {
 .participant .constituents .participant .participant-vote-count {
   display: none;
 }
-.zone-yes {
+.zone.zone-yes {
   box-sizing: border-box;
+  min-height: 20px;
 }
 @media only screen and (min-width : 1380px) {
-  .zone-yes {
+  .zone.zone-yes {
     width: 610px;
     display: inline-block;
     float: left;
@@ -3068,7 +3071,7 @@ body.two-sidebars .region-below-content {
   }
 }
 @media only screen and (min-width : 1024px) and (max-width : 1380px) {
-  .zone-yes {
+  .zone.zone-yes {
     width: 526px;
     display: inline-block;
     float: left;
@@ -3077,7 +3080,7 @@ body.two-sidebars .region-below-content {
   }
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
-  .zone-yes {
+  .zone.zone-yes {
     width: 420px;
     display: inline-block;
     float: left;
@@ -3086,18 +3089,24 @@ body.two-sidebars .region-below-content {
   }
 }
 @media only screen and (max-width : 768px) {
-  .zone-yes {
+  .zone.zone-yes {
     width: auto;
     display: block;
     float: none;
     position: relative;
   }
 }
-.zone-no {
+.zone.zone-yes:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.zone.zone-no {
   box-sizing: border-box;
+  min-height: 20px;
 }
 @media only screen and (min-width : 1380px) {
-  .zone-no {
+  .zone.zone-no {
     width: 610px;
     display: inline-block;
     float: left;
@@ -3106,7 +3115,7 @@ body.two-sidebars .region-below-content {
   }
 }
 @media only screen and (min-width : 1024px) and (max-width : 1380px) {
-  .zone-no {
+  .zone.zone-no {
     width: 526px;
     display: inline-block;
     float: left;
@@ -3115,7 +3124,7 @@ body.two-sidebars .region-below-content {
   }
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
-  .zone-no {
+  .zone.zone-no {
     width: 420px;
     display: inline-block;
     float: left;
@@ -3124,11 +3133,39 @@ body.two-sidebars .region-below-content {
   }
 }
 @media only screen and (max-width : 768px) {
-  .zone-no {
+  .zone.zone-no {
     width: auto;
     display: block;
     float: none;
     position: relative;
+  }
+}
+.zone.zone-no:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.zone.zone-no .participant {
+  float: right;
+}
+.zone .zone-inner {
+  margin-left: 20px;
+}
+.zone .participant {
+  margin-left: -20px;
+  margin-top: -20px;
+}
+.zone .participant .participant-image {
+  border: 2px solid #FFF;
+}
+.zone-abstain {
+  clear: both;
+  border-top: 1px dashed #CCC;
+  padding-top: 20px;
+}
+@media only screen and (max-width : 768px) {
+  .zone-abstain {
+    clear: both;
   }
 }
 .badge {
@@ -3834,7 +3871,7 @@ div.warning {
   display: none;
 }
 .errors {
-  width: 200px;
+  width: 180px;
   height: 20px;
   height: auto;
   position: absolute;
