@@ -70,6 +70,13 @@ class Issue < ActiveRecord::Base
     self.finish_date < Time.now
   end
 
+  def status
+    if self.finish_date < Time.now
+      return "closed"
+    else
+      return "open"
+    end
+  end
 
   # def generate_leaderboard
   #   get_participants_count
