@@ -57,6 +57,8 @@ class IssuesController < ApplicationController
     base_uri = ENV['FIREBASE_URL']
     firebase = Firebase::Client.new(base_uri)
 
+    @issue = Issue.find(params[:issue_id])
+
     # Send error if user tries to delegate to someone in their subtree
     if @current_user_vote.descendants.include?(@target_representative_vote)
       puts "Hierachy error: cannot delegate to a user that is one of your descendants."
@@ -78,7 +80,8 @@ class IssuesController < ApplicationController
         :old_delegate_count => @old_representative_vote.subtree.count,
         :old_delegate_id => @old_representative.id,
         :current_user_count => @current_user_vote.subtree.count,
-        :current_user_id => @current_user.id
+        :current_user_id => @current_user.id,
+        :issue_id => @issue.id
         })
 
       render json: {}
@@ -97,7 +100,9 @@ class IssuesController < ApplicationController
         :old_delegate_count => @old_representative_vote.subtree.count,
         :old_delegate_id => @old_representative.id,
         :current_user_count => @current_user_vote.subtree.count,
-        :current_user_id => @current_user.id})
+        :current_user_id => @current_user.id,
+        :issue_id => @issue.id
+      })
 
       render json: {}
 
@@ -122,8 +127,9 @@ class IssuesController < ApplicationController
         :new_rep_id => @target_representative.id,
         :current_user_id => @current_user.id,
         :new_rep_root_count => @new_root_vote.subtree.count,
-        :new_rep_root_id => @new_root_rep.id
-        })
+        :new_rep_root_id => @new_root_rep.id,
+        :issue_id => @issue.id
+      })
 
       render json: {}
 
@@ -144,8 +150,9 @@ class IssuesController < ApplicationController
         :root_count => @root_vote.subtree.count,
         :root_user_id => @root.id,
         :new_rep_id => @new_rep.id,
-        :current_user_id => @current_user.id
-        })
+        :current_user_id => @current_user.id,
+        :issue_id => @issue.id
+      })
 
       render json: {}
     end
