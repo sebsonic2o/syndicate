@@ -9,11 +9,11 @@ $(document).on("ready, page:change", function() {
       });
     }
     else {
-      var clock = new $('.clock').FlipClock(2, {
+      var clock = new $('.clock').FlipClock(timeRemaining, {
         countdown: true,
         callbacks: {
           stop: function() {
-            closeIssue()
+            console.log("timer countdown reached");
           }
         }
       });
