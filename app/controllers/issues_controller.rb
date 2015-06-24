@@ -1,6 +1,10 @@
 class IssuesController < ApplicationController
 
   def index
+    base_uri = ENV['FIREBASE_URL']
+    firebase = Firebase::Client.new(base_uri)
+    firebase.delete("votes")
+
     @issues = Issue.all
   end
 
