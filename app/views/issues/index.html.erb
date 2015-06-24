@@ -1,21 +1,26 @@
 <div id="issues-dashboard">
   <div class="issues">
-    <% @issues.each_with_index do |issue, index| %>
+    <% @issues.each do |issue| %>
       <div id="issue-<%= issue.id %>" class="issue">
         <div class="issue-body">
           <div class="shadow-glass">
 
             <div class="issue-info">
-              <div class="part-info" id="part-<%= index+1 %>">
-                Participants: <%= issue.participant_count %>  |
+              <div class="part-info">
+                Participants: <span id="part-<%= issue.id %>"><%= issue.participant_count %></span>  |
               </div>
-              <div class="vote-info" id="vote-<%= index+1 %>">
-                Total votes: <%= issue.vote_count %>
+
+              <div class="vote-info">
+                Total votes: <span id="vote-<%= issue.id %>"><%= issue.vote_count %></span>
               </div>
 
               <div class="little-donut">
-
+                <canvas id="little-<%= issue.id %>"></canvas>
               </div>
+
+              <script>
+                newLittleDrawChart(<%= issue.yes_votes %>, <%= issue.no_votes %>, <%= issue.abstain_count %>, <%= issue.id %>);
+              </script>
             </div>
 
           </div>
