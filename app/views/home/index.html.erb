@@ -9,7 +9,7 @@
     <%= csrf_meta_tags %>
   </head>
 
-  <body>
+  <body data-env="<%= ENV['FIREBASE_URL'] %>">
     <%= render '/layouts/top' %>
     <%= render '/layouts/header' %>
 
@@ -26,7 +26,7 @@
           <!-- Don't think twice about voting. -->
         </div>
         <div class="hero-button">
-          <button class="signup">Sign up!</button>
+          <button id="google-oauth" class="signup">Sign up!</button>
         </div>
       </div>
     </div>
