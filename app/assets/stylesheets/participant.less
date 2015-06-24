@@ -3,6 +3,9 @@
   .clearfix();
 }
 .participant {
+  // -ms-transform: translate(50px,100px); /* IE 9 */
+  //   -webkit-transform: translate(50px,100px); /* Safari */
+  //   transform: translate(50px,100px); /* Standard syntax */
   .grid(1);
   margin-bottom: 20px;
   text-align: center;
@@ -34,10 +37,11 @@
     .img-glow();
     cursor: pointer;
     &.current {
-      border: 2px solid blue;
+      border: 3px solid #333;
+      .box-shadow();
     }
     &.rep {
-      border: 2px solid red;
+      border: 3px solid #CCC;
     }
   }
 

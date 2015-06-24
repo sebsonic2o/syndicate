@@ -2934,10 +2934,13 @@ body.two-sidebars .region-below-content {
   filter: alpha(opacity=70);
 }
 .participant .participant-image.current {
-  border: 2px solid blue;
+  border: 3px solid #333;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 .participant .participant-image.rep {
-  border: 2px solid red;
+  border: 3px solid #CCC;
 }
 .participant .participant-avatar {
   position: relative;
