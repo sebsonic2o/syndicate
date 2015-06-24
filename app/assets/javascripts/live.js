@@ -158,7 +158,7 @@ var changeUserDOM = function(message) {
 }
 
 var delegateButton = function(){
-  $(".participant").on('click', function(e){
+  $(".participants").on('click', ".participant", function(e){
     clearErrors();
     e.stopPropagation();
     e.preventDefault();
