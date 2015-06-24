@@ -3,15 +3,12 @@
   .clearfix();
 }
 .participant {
-  // -ms-transform: translate(50px,100px); /* IE 9 */
-  //   -webkit-transform: translate(50px,100px); /* Safari */
-  //   transform: translate(50px,100px); /* Standard syntax */
   .grid(1);
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   text-align: center;
   min-height: 180px;
   @media @desktop {
-    min-height: 160px;
+    min-height: 140px;
   }
   @media @desktop-xl {
     min-height: 200px;
@@ -28,7 +25,6 @@
   }
   &.delegated {
     .opacity(30);
-
   }
   .participant-image {
     box-sizing: border-box;
@@ -37,37 +33,33 @@
     .img-glow();
     cursor: pointer;
     &.current {
-      border: 3px solid #333;
-      .box-shadow();
+      border: 2px solid #333 !important;
+      // .box-shadow();
     }
     &.rep {
-      border: 3px solid #CCC;
+      border: 2px solid #CCC !important;
     }
   }
-
   .participant-avatar {
     position: relative;
   }
-
   .participant-username {
     margin: 0px;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 400;
     em {
       display: block;
-      font-size: 12px;
+      font-size: 11px;
       margin-bottom: 2px;
+      font-family: @basefont;
+      font-weight: 400;
+      font-style: normal;
     }
   }
-
   .participant-vote-count {
-
   }
-
   .participant-badge {
-
   }
-
   .constituents {
     .clearfix();
     .participant {
@@ -91,16 +83,42 @@
       }
     }
   }
-
 }
 
-.zone-yes {
-  .grid(6);
-
+.zone {
+  &.zone-yes {
+    .grid(6);
+    .clearfix();
+    min-height: 20px;
+  }
+  &.zone-no {
+    .grid(6);
+    .clearfix();
+    min-height: 20px;
+    .participant {
+      float: right;
+    }
+  }
+  .zone-inner {
+    margin-left: 20px;
+  }
+  .participant {
+    margin-left: -20px;
+    margin-top: -20px;
+    .participant-image {
+      // .box-shadow(0 0px 7px #CCC);
+      border: 2px solid #FFF;
+    }
+  }
 }
 
-.zone-no {
-  .grid(6);
+.zone-abstain {
+   clear: both;
+   border-top: 1px dashed #CCC;
+   padding-top: 20px;
+  @media @mobile {
+    clear: both;
+  }
 }
 
 .badge {
@@ -128,7 +146,4 @@
     &.abstain {
       background-color:#666;
     }
-    //  &.delegated {
-    //   display: none;
-    // }
   }

@@ -23,7 +23,7 @@ class IssuesController < ApplicationController
       # @current_user_id = current_user.id
       # @current_user_vote_value = @vote.value
 
-      firebase_vote(params[:id])
+      firebase_vote(params[:id], true)
       render json: {}
     else
       puts "User has delegated their vote."
@@ -85,6 +85,7 @@ class IssuesController < ApplicationController
         :issue_id => @issue.id
         })
 
+      move = true
       render json: {}
 
     # Undelegates vote of current user by clicking on the rep
@@ -105,6 +106,7 @@ class IssuesController < ApplicationController
         :issue_id => @issue.id
       })
 
+      move = true
       render json: {}
 
     # Redelegates current user's vote to a new parent
@@ -135,6 +137,7 @@ class IssuesController < ApplicationController
         :issue_id => @issue.id
       })
 
+      move = false
       render json: {}
 
     # Delegate's current user's vote, which is currently not designated
@@ -157,7 +160,7 @@ class IssuesController < ApplicationController
         :current_user_id => @current_user.id,
         :issue_id => @issue.id
       })
-
+      move = false
       render json: {}
     end
 
@@ -166,7 +169,7 @@ class IssuesController < ApplicationController
       vote.save
     end
 
-    firebase_vote(params[:issue_id])
+    firebase_vote(params[:issue_id], move)
 
     # response.success? # => true
     # response.code # => 200
@@ -184,7 +187,8 @@ class IssuesController < ApplicationController
     firebase.delete("users")
     @current_issue = Issue.find(params[:id])
     # @current_issue.generate_leaderboard
-    @participants = @current_issue.voters.order(id: :asc)
+
+
 
 
     if logged_in?
@@ -200,11 +204,13 @@ class IssuesController < ApplicationController
       @representative_id = User.find(representative_vote.user_id).id
     end
 
+    @participants = @current_issue.voters.order(id: :asc)
+
   end
 
   private
 
-    def firebase_vote(id)
+    def firebase_vote(id, move)
       issue = Issue.find(id)
 
       data = {
@@ -217,7 +223,8 @@ class IssuesController < ApplicationController
         vote_count: issue.vote_count,
         abstain_count: issue.abstain_count,
         current_user_id: current_user.id,
-        current_user_vote_value: current_user.votes.find_by(issue_id: id).value
+        current_user_vote_value: current_user.votes.find_by(issue_id: id).value,
+        move_to_vote_zone: move
       }
 
       firebase = Firebase::Client.new(ENV['FIREBASE_URL'])
