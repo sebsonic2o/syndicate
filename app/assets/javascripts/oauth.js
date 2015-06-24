@@ -16,7 +16,12 @@ $(document).on("ready, page:change", function() {
         var request = $.ajax({
           type: "POST",
           url: "/login",
-          data: { email: authData.google.email, imageUrl: authData.google.cachedUserProfile.picture }
+          data: {
+            email: authData.google.email,
+            imageUrl: authData.google.cachedUserProfile.picture,
+            givenName: authData.google.cachedUserProfile.given_name,
+            familyName: authData.google.cachedUserProfile.family_name
+          }
         });
 
         request.done(function(data) {
