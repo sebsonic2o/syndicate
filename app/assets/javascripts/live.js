@@ -10,39 +10,42 @@ $(document).on("ready, page:change", function() {
 
     listenButtons();
     delegateButton();
-  
+
 
     var firebaseUrl = $('body').data('env');
     var myDelegateRef = new Firebase(firebaseUrl + 'delegates');
     var myVoteRef = new Firebase(firebaseUrl + 'votes');
+    var myUserRef = new Firebase(firebaseUrl + 'users');
 
     myDelegateRef.on('child_added', function(snapshot) {
       var message = snapshot.val();
       console.log("firebase delegate snapshot")
-      // console.log(message)
-      if (message.incident === "redelegate") {
-        console.log("redelegate")
-        console.log("old_root_info")
-        appendScore(message.old_rep_root_count, message.old_rep_root_id);
-        console.log("new_root_info")
-        appendScore(message.new_rep_root_count, message.new_rep_root_id)
-        appendDelegatedStatus(message.current_user_id);
-        nestParticipant(message.current_user_id, message.new_rep_id)
-      }
-      else if (message.incident === "new delegate") {
-        console.log("new delegate")
-        console.log("current_user_info")
-        appendScore(0, message.current_user_id);
-        console.log("new_root_info")
-        appendScore(message.root_count, message.root_user_id)
-        appendDelegatedStatus(message.current_user_id);
-        nestParticipant(message.current_user_id, message.new_rep_id)
-      }
-      else if (message.incident === "undelegate") {
-        appendScore(message.old_delegate_count, message.old_delegate_id);
-        appendScore(message.current_user_count, message.current_user_id)
-        appendUndelegatedStatus(message.current_user_id);
-        unnestParticipant(message.current_user_id)
+
+      if ($('#issue-' + message.issue_id).length) {
+        if (message.incident === "redelegate") {
+          console.log("redelegate")
+          console.log("old_root_info")
+          appendScore(message.old_rep_root_count, message.old_rep_root_id);
+          console.log("new_root_info")
+          appendScore(message.new_rep_root_count, message.new_rep_root_id)
+          appendDelegatedStatus(message.current_user_id);
+          nestParticipant(message.current_user_id, message.new_rep_id)
+        }
+        else if (message.incident === "new delegate") {
+          console.log("new delegate")
+          console.log("current_user_info")
+          appendScore(0, message.current_user_id);
+          console.log("new_root_info")
+          appendScore(message.root_count, message.root_user_id)
+          appendDelegatedStatus(message.current_user_id);
+          nestParticipant(message.current_user_id, message.new_rep_id)
+        }
+        else if (message.incident === "undelegate") {
+          appendScore(message.old_delegate_count, message.old_delegate_id);
+          appendScore(message.current_user_count, message.current_user_id)
+          appendUndelegatedStatus(message.current_user_id);
+          unnestParticipant(message.current_user_id)
+        }
       }
     });
 
@@ -54,6 +57,14 @@ $(document).on("ready, page:change", function() {
       if ($('#issue-' + message.issue_id).length) {
         changeVoteDOM(message);
       }
+    });
+
+    myUserRef.on('child_added', function(snapshot) {
+      var message = snapshot.val();
+      console.log("firebase user snapshot");
+      console.log(message);
+
+      changeUserDOM(message);
     });
   }
 
@@ -93,7 +104,12 @@ var voteButton = function(buttonClass, voteValue) {
       console.log(data);
 
       if (data.hasOwnProperty('delegated_vote_error')) {
-        $('#errors').append("<p>"+data.delegated_vote_error+"</p>")
+        $('.errors').html(data.delegated_vote_error)
+        $('.errors').removeClass("show hide animated fadeIn fadeOut wobble");
+        var animate = $('.errors').addClass("show animated wobble");
+        setTimeout(function () {
+            animate.addClass("fadeOut");
+        }, 2000)
       }
     });
 
@@ -125,8 +141,24 @@ var changeVoteDOM = function(message) {
   // appendVoteZone(message.current_user_id, message.current_user_vote_value);
 }
 
+var changeUserDOM = function(message) {
+  var participantTemplate =
+    '<div id="' + message.id + '" class="participant abstain">\n' +
+    '<h3 class="participant-username"><a href="#">' + message.first_name + '</a><em>User ID:' + message.id + '</em></h3>\n' +
+    '<div class="participant-avatar">\n' +
+    // '<img class="participant-image current" src="' + message.image_url + '" />'
+    // '<img class="participant-image rep" src="' + message.image_url + '" />'
+    '<img class="participant-image" src="' + message.image_url + '" />\n' +
+    '<div class="badge participant-vote-count abstain ">1</div>\n' +
+    '</div>\n' +
+    '<div class="constituents"></div>\n' +
+    '</div>';
+
+    $('.participants').append(participantTemplate).children(':last').hide().fadeIn(2000);
+}
+
 var delegateButton = function(){
-  $(".participant").on('click', function(e){
+  $(".participants").on('click', ".participant", function(e){
     clearErrors();
     e.stopPropagation();
     e.preventDefault();
@@ -150,7 +182,12 @@ var delegateButton = function(){
       console.log("Ajax - delegate button!");
       console.log(data);
       if (data.hasOwnProperty('hierachy_error')) {
-        $('#errors').append("<p>"+data.hierachy_error+"</p>")
+        $('.errors').html(data.hierachy_error)
+        $('.errors').removeClass("show hide animated fadeIn fadeOut wobble");
+        var animate = $('.errors').addClass("show animated wobble");
+        setTimeout(function () {
+            animate.addClass("fadeOut");
+        }, 2000)
       }
     });
 

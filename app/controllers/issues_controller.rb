@@ -27,7 +27,7 @@ class IssuesController < ApplicationController
       render json: {}
     else
       puts "User has delegated their vote."
-      render json: {delegated_vote_error: "You cannot vote if you are currently designated. Please undesignate if you would like to vote directly."}
+      render json: {delegated_vote_error: "You have already delegated your vote. "}
     end
   end
 
@@ -45,6 +45,7 @@ class IssuesController < ApplicationController
     # need to push
     response = firebase.delete("delegates")
     response = firebase.delete("votes")
+    response = firebase.delete("users")
   end
 
   def delegate
@@ -57,8 +58,10 @@ class IssuesController < ApplicationController
     base_uri = ENV['FIREBASE_URL']
     firebase = Firebase::Client.new(base_uri)
 
+    @issue = Issue.find(params[:issue_id])
+
     # Send error if user tries to delegate to someone in their subtree
-    if @current_user_vote.descendants.include?(@target_representative_vote) 
+    if @current_user_vote.descendants.include?(@target_representative_vote)
       puts "Hierachy error: cannot delegate to a user that is one of your descendants."
 
       render json: {hierachy_error: "You cannot delegate to a user who is directly or indirectly delegated to you."}
@@ -78,7 +81,8 @@ class IssuesController < ApplicationController
         :old_delegate_count => @old_representative_vote.subtree.count,
         :old_delegate_id => @old_representative.id,
         :current_user_count => @current_user_vote.subtree.count,
-        :current_user_id => @current_user.id
+        :current_user_id => @current_user.id,
+        :issue_id => @issue.id
         })
 
       render json: {}
@@ -97,7 +101,9 @@ class IssuesController < ApplicationController
         :old_delegate_count => @old_representative_vote.subtree.count,
         :old_delegate_id => @old_representative.id,
         :current_user_count => @current_user_vote.subtree.count,
-        :current_user_id => @current_user.id})
+        :current_user_id => @current_user.id,
+        :issue_id => @issue.id
+      })
 
       render json: {}
 
@@ -122,8 +128,9 @@ class IssuesController < ApplicationController
         :new_rep_id => @target_representative.id,
         :current_user_id => @current_user.id,
         :new_rep_root_count => @new_root_vote.subtree.count,
-        :new_rep_root_id => @new_root_rep.id
-        })
+        :new_rep_root_id => @new_root_rep.id,
+        :issue_id => @issue.id
+      })
 
       render json: {}
 
@@ -144,8 +151,9 @@ class IssuesController < ApplicationController
         :root_count => @root_vote.subtree.count,
         :root_user_id => @root.id,
         :new_rep_id => @new_rep.id,
-        :current_user_id => @current_user.id
-        })
+        :current_user_id => @current_user.id,
+        :issue_id => @issue.id
+      })
 
       render json: {}
     end
@@ -170,6 +178,7 @@ class IssuesController < ApplicationController
     firebase = Firebase::Client.new(base_uri)
     firebase.delete("delegates")
     firebase.delete("votes")
+    firebase.delete("users")
     @current_issue = Issue.find(params[:id])
     # @current_issue.generate_leaderboard
     @participants = @current_issue.voters.order(id: :asc)

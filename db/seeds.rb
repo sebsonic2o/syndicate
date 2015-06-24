@@ -6,27 +6,29 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create(
-  username: "Rob",
-  image_url: "https://secure.gravatar.com/avatar/18bb2e449dc97f0fe668484d81019402.png?r=PG&d=mm&s=150"
-)
-User.create(
-  username: "Sebastien",
-  image_url: "https://secure.gravatar.com/avatar/3220ca30faecef1688c8e23801aab58e.png?r=PG&d=mm&s=150"
-)
-User.create(
-  username: "Tania",
-  image_url: "https://secure.gravatar.com/avatar/4a534bf489347b3327c0f8a5492070c0.png?r=PG&d=mm&s=150"
-)
-User.create(
-  username: "Jonathan",
-  image_url: "https://secure.gravatar.com/avatar/53b0c49cbb13f2837215b6b0ab6ee45d.png?r=PG&d=mm&s=150"
-)
+# User.create(
+#   username: "Rob",
+#   image_url: "https://secure.gravatar.com/avatar/18bb2e449dc97f0fe668484d81019402.png?r=PG&d=mm&s=150"
+# )
+# User.create(
+#   username: "Sebastien",
+#   image_url: "https://secure.gravatar.com/avatar/3220ca30faecef1688c8e23801aab58e.png?r=PG&d=mm&s=150"
+# )
+# User.create(
+#   username: "Tania",
+#   image_url: "https://secure.gravatar.com/avatar/4a534bf489347b3327c0f8a5492070c0.png?r=PG&d=mm&s=150"
+# )
+# User.create(
+#   username: "Jonathan",
+#   image_url: "https://secure.gravatar.com/avatar/53b0c49cbb13f2837215b6b0ab6ee45d.png?r=PG&d=mm&s=150"
+# )
 
 
-26.times do
+30.times do
   User.create(
-    username: Faker::Name.first_name,
+    username: Faker::Internet.email,
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
     image_url: Faker::Avatar.image.gsub(/http/, "https")
   )
 end
@@ -100,18 +102,18 @@ issue6 = Issue.create(
 )
 issue6.voters = User.all
 
-47.times do
-  issue = Issue.create(
-      title: Faker::Lorem.sentence,
-      description: Faker::Lorem.paragraph(3),
-      image_url: Faker::Avatar.image.gsub(/http/, "https"),
-      start_date: Faker::Time.between(2.days.ago, Time.now, :all),
-      finish_date: Faker::Time.forward(23, :all),
-      creator_id: 1,
-      group_id: 1
-  )
+# 47.times do
+#   issue = Issue.create(
+#       title: Faker::Lorem.sentence,
+#       description: Faker::Lorem.paragraph(3),
+#       image_url: Faker::Avatar.image.gsub(/http/, "https"),
+#       start_date: Faker::Time.between(2.days.ago, Time.now, :all),
+#       finish_date: Faker::Time.forward(23, :all),
+#       creator_id: 1,
+#       group_id: 1
+#   )
 
-  issue.voters = User.all
-end
+#   issue.voters = User.all
+# end
 
 
