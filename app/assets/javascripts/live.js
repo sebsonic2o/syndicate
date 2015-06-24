@@ -161,7 +161,18 @@ var changeUserDOM = function(message) {
     '<div class="constituents"></div>\n' +
     '</div>';
 
-    $('.participants').append(participantTemplate).children(':last').hide().fadeIn(2000);
+    var total = parseInt($('#total-participants').html(), 10) + 1;
+    var abstain = parseInt($('#abstain').html(), 10) + 1;
+
+    $('#total-participants').hide();
+    $('#total-participants').html(total);
+    $('#total-participants').fadeIn(1000);
+
+    $('#abstain').hide();
+    $('#abstain').html(abstain);
+    $('#abstain').fadeIn(1000);
+
+    $('.participants').append(participantTemplate).children(':last').hide().fadeIn(1000);
 }
 
 var delegateButton = function(){
