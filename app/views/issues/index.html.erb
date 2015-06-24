@@ -3,6 +3,11 @@
     <% @issues.each do |issue| %>
       <div id="issue-<%= issue.id %>" class="issue">
         <div class="issue-body">
+
+          <div class="issue-image">
+              <div class="little-donut">
+                <canvas class="little-class" id="little-<%= issue.id %>"></canvas>
+              </div>
           <div class="shadow-glass">
 
             <div class="issue-info">
@@ -14,9 +19,6 @@
                 Total votes: <span id="vote-<%= issue.id %>"><%= issue.vote_count %></span>
               </div>
 
-              <div class="little-donut">
-                <canvas id="little-<%= issue.id %>"></canvas>
-              </div>
 
               <script>
                 newLittleDrawChart(<%= issue.yes_votes %>, <%= issue.no_votes %>, <%= issue.abstain_count %>, <%= issue.id %>);
@@ -25,11 +27,12 @@
 
           </div>
 
-            <div class="issue-image">
-              <a href="/issues/<%= issue.id %>">
-                <%= image_tag(issue.image_url) %>
-              </a>
-            </div>
+
+
+            <a href="/issues/<%= issue.id %>">
+              <%= image_tag(issue.image_url) %>
+            </a>
+          </div>
           <h2 class="issue-heading"><%= link_to issue.title, issue %></h2>
           <p><%= issue.description %></p>
         </div>

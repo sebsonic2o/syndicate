@@ -2733,7 +2733,13 @@ body.two-sidebars .region-below-content {
 .issue .issue-body .issue-image {
   height: 200px;
   overflow: hidden;
+  position: relative;
   margin-bottom: 8px;
+}
+@media only screen and (max-width : 768px) {
+  .issue .issue-body .issue-image {
+    height: 140px;
+  }
 }
 .issue.view-mode-full {
   border-bottom: none;
@@ -2744,6 +2750,7 @@ body.two-sidebars .region-below-content {
     border-bottom: 1px solid #CCC;
     top: 0px;
     height: auto;
+    margin-bottom: 1em;
   }
 }
 .shadow-glass {
@@ -2751,9 +2758,11 @@ body.two-sidebars .region-below-content {
   position: absolute;
   display: inline-block;
   z-index: 100;
+  padding-left: 5px;
   width: 100%;
   height: 30px;
-  margin-top: 170px;
+  bottom: 0;
+  left: 0;
 }
 .issue-info {
   color: white;
@@ -2766,10 +2775,30 @@ body.two-sidebars .region-below-content {
   width: 35%;
   float: left;
 }
+@media only screen and (max-width : 768px) {
+  .part-info {
+    width: 45%;
+  }
+}
 .vote-info {
   width: 32%;
   display: inline;
   float: left;
+}
+@media only screen and (max-width : 768px) {
+  .vote-info {
+    width: 45%;
+  }
+}
+.little-donut {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 200;
+}
+.little-class {
+  width: 50px;
+  height: 50px;
 }
 .no-borders {
   border-top: none;

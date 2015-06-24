@@ -68,9 +68,9 @@ var newLittleDrawChart = function(yesVotes, noVotes, abstainCount, issueId) {
   ];
 
   var options = {
-    segmentShowStroke : true,
+    segmentShowStroke : false,
     segmentStrokeColor : "#fff",
-    segmentStrokeWidth : 2,
+    segmentStrokeWidth : 0,
     percentageInnerCutout : 50,
     animationSteps : 100,
     animationEasing : "easeOutExpo",
