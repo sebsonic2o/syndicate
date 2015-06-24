@@ -3374,6 +3374,28 @@ body.two-sidebars .region-below-content {
     margin-bottom: 20px;
   }
 }
+.dashboard.closed .vote-button {
+  display: none;
+}
+.victory {
+  padding: 20px;
+  width: 300px;
+  margin: 0 auto;
+  background: #d83c3c;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.victory h2 {
+  color: #FFF;
+  margin: 0;
+}
+.dashboard.closed .participant {
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+}
 .hero {
   margin-bottom: 15em;
 }

@@ -1,6 +1,6 @@
 <div id="live-dashboard">
 
-  <div id="issue-<%= @current_issue.id %>" class="dashboard">
+  <div id="issue-<%= @current_issue.id %>" class="dashboard <%= @current_issue.status %>">
 
   <%= javascript_tag do %>
     var finishTime = '<%= @finish_time %>'
@@ -9,6 +9,9 @@
 
     <div class="leaderboard">
       <h1><%= @current_issue.title %></h1>
+      <div class="victory">
+        <h2>This issue is closed</h2>
+      </div>
       <div class="clock"></div>
 
       <div id="yes-board">
