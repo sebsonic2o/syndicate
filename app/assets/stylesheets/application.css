@@ -3374,9 +3374,6 @@ body.two-sidebars .region-below-content {
     margin-bottom: 20px;
   }
 }
-.dashboard.closed .vote-button {
-  display: none;
-}
 .victory {
   padding: 20px;
   width: 300px;
@@ -3395,6 +3392,15 @@ body.two-sidebars .region-below-content {
 .dashboard.closed .participant {
   opacity: 0.4;
   filter: alpha(opacity=40);
+}
+.dashboard.closed .vote-button {
+  display: none;
+}
+.dashboard.closed .victory {
+  display: block;
+}
+.dashboard.open .victory {
+  display: none;
 }
 .hero {
   margin-bottom: 15em;
