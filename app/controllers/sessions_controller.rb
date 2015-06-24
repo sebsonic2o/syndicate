@@ -6,29 +6,35 @@ class SessionsController < ApplicationController
 
   # Login
   def create
-    p params
-    @user = User.find_by(id: params[:user_id])
-    p @user.username
-    session[:username] = nil
-    session[:username] = @user.username
-    p session[:username]
-    redirect_to request.referer
-    # p params
-    # @user = User.find_by(username: params[:session][:username].downcase)
-    # p @user
-    # if @user && @user.authenticate(params[:session][:password])
-    #   session[:username] = @user.username
-    #   redirect_to @user
-    # else
-    #   # Create an error message.
-    #   render 'new'
-    # end
+
+    if request.xhr?
+      p params
+      @user = User.find_by(username: params["email"])
+
+      if @user.nil?
+        @user = User.new(username: params["email"], image_url: params["imageUrl"], first_name: params["givenName"], last_name: params["familyName"])
+        @user.voted_issues = Issue.all
+        @user.save
+
+        firebase_user
+      end
+
+      session[:username] = @user.username
+
+      render json: {}
+    else
+      @user = User.find_by(id: params[:user_id])
+
+      session[:username] = nil
+      session[:username] = @user.username
+
+      redirect_to request.referer
+    end
   end
 
   def destroy
-    p session
     session[:username] = nil
-    redirect_to "/"
+    redirect_to request.referer
   end
 
   def clear
@@ -36,4 +42,21 @@ class SessionsController < ApplicationController
     p session[:username]
     redirect_to "/"
   end
+
+  private
+
+    def firebase_user
+
+      data = {
+        id: @user.id,
+        username: @user.username,
+        first_name: @user.first_name,
+        last_name: @user.last_name,
+        image_url: @user.image_url
+      }
+
+      firebase = Firebase::Client.new(ENV['FIREBASE_URL'])
+
+      firebase.push("users", data)
+    end
 end

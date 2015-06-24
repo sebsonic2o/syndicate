@@ -1,8 +1,13 @@
 <section id="live-dashboard">
 
 <div id="issue-<%= @current_issue.id %>" class="issues grid-12">
+
+
+
   <div class="leaderboard">
     <h1><%= @current_issue.title %></h1>
+    <div class="clock"></div>
+
     <div id="yes-board">
       <h1>YES: <span id="yes-votes"><%= @current_issue.yes_votes %></span></h1>
       <h2> (<span id="yes-percentage"><%= @current_issue.yes_percentage %></span>%) </h2>
@@ -49,7 +54,7 @@
 
         <div id="<%= participant.id %>" class="participant <%= participant.get_vote_status(@current_issue.id) %> <%= participant.get_delegation_status(@current_issue.id) %>">
 
-          <h3 class="participant-username"><a href="#"><%= participant.username %></a><em>User ID: <%= participant.id %></em> </h3>
+          <h3 class="participant-username"><a href="#"><%= participant.first_name %></a><em>User ID: <%= participant.id %></em> </h3>
 
           <div class="participant-avatar">
             <% if @current_user.id == participant.id %>
@@ -71,7 +76,7 @@
               <% constituent = User.find(vote.user_id) %>
               <div id="<%= constituent.id %>" class="participant <%= participant.get_vote_status(@current_issue.id) %> <%= participant.get_delegation_status(@current_issue.id) %>">
 
-                <h3 class="participant-username"><a href="#"><%= constituent.username %></a><em>User ID: <%= constituent.id %></em> </h3>
+                <h3 class="participant-username"><a href="#"><%= constituent.first_name %></a><em>User ID: <%= constituent.id %></em> </h3>
 
                 <div class="participant-avatar">
                   <% if @current_user.id == constituent.id %>
