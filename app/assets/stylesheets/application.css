@@ -3804,6 +3804,65 @@ div.warning {
 .messages img {
   width: auto;
 }
+.show {
+  display: block;
+}
+.hide {
+  display: none;
+}
+.errors {
+  width: 200px;
+  height: 20px;
+  height: auto;
+  position: absolute;
+  left: 50%;
+  margin-left: -100px;
+  top: 240px;
+  background-color: #d83c3c;
+  color: #FFF;
+  font-size: 14px;
+  padding: 10px;
+  text-align: center;
+  border-radius: 2px;
+  -webkit-box-shadow: 0px 0px 12px -1px #383838;
+  -moz-box-shadow: 0px 0px 12px -1px #383838;
+  box-shadow: 0px 0px 24px -1px #383838;
+  z-index: 100;
+}
+.errors p {
+  color: #FFF;
+  font-size: 14px;
+  margin: 0;
+}
+.message span {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.error {
+  background: #ffecec;
+  border: 1px solid #f5aca6;
+}
+.success {
+  background: #e9ffd9;
+  border: 1px solid #a6ca8a;
+}
+.warning {
+  /*background:#CCC;
+    border:1px solid #f2c779;*/
+}
+.notice {
+  background: #e3f7fc;
+  border: 1px solid #8ed9f6;
+}
+.highlight {
+  background: #EAEAEA;
+}
+.preloader {
+  background-image: url("/images/ajax-loader.gif");
+  background-repeat: no-repeat;
+  background-position: top center;
+  padding-top: 20px;
+}
 .views-field-picture,
 .field-name-ds-user-picture {
   float: left;
