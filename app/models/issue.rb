@@ -67,7 +67,7 @@ class Issue < ActiveRecord::Base
   end
 
   def closed?
-    self.finish_date < Time.now 
+    self.finish_date < Time.now
   end
 
 
