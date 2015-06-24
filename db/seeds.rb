@@ -36,8 +36,10 @@ issue1 = Issue.create(
   title: "Should fog be banned fron San Francisco?",
   description: "Fog can contain lots of pollution that ails the air around our beautiful San Francsico, and also cause problems with visibility - both in covering up our beautiful landmarks, and causing problems for our motorists.  Also, it's wet.",
   image_url: "golden.jpg",
-  start_date: Faker::Time.between(2.days.ago, Time.now, :all),
-  finish_date: Faker::Time.forward(23, :all),
+  # start_date: Faker::Time.between(2.days.ago, Time.now, :all),
+  # finish_date: Faker::Time.forward(23, :all),
+  start_date: DateTime.now,
+  finish_date: "2015-06-24 4:00:00 -0000",
   creator_id: 1,
   group_id: 1
 )

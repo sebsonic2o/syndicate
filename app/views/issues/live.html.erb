@@ -1,5 +1,9 @@
 <section id="live-dashboard">
 
+<%= javascript_tag do %>
+  var finishTime = '<%= @finish_time %>'
+<% end %>
+
 <div id="issue-<%= @current_issue.id %>" class="issues grid-12">
 <div class="clock"></div>
 

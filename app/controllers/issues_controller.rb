@@ -173,6 +173,8 @@ class IssuesController < ApplicationController
     @current_issue = Issue.find(params[:id])
     # @current_issue.generate_leaderboard
     @participants = @current_issue.voters.order(id: :asc)
+    @finish_time = @current_issue.finish_date
+
 
 
     if logged_in?
@@ -187,6 +189,8 @@ class IssuesController < ApplicationController
       representative_vote =@current_user_vote.parent
       @representative_id = User.find(representative_vote.user_id).id
     end
+
+
 
   end
 
