@@ -1,8 +1,9 @@
 <div class="issues">
-  <% @issues.each do |issue| %>
+  <% @issues[0..5].each do |issue| %>
     <div id="issue-<%= issue.id %>"class="issue">
 
       <div class="issue-body">
+        <!-- <div class="issue-" -->
         <div class="issue-image">
           <%= image_tag(issue.image_url) %>
         </div>

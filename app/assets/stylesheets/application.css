@@ -2600,7 +2600,6 @@ body.two-sidebars .region-below-content {
 }
 @media only screen and (max-width : 768px) {
   .header {
-    height: 50px;
     margin-bottom: 0em;
     padding-bottom: 0em;
   }
@@ -2641,7 +2640,6 @@ body.two-sidebars .region-below-content {
     width: 100px;
     margin-right: auto;
     margin-left: auto;
-    display: block;
   }
 }
 .user-profile {
@@ -2660,10 +2658,8 @@ body.two-sidebars .region-below-content {
 }
 @media only screen and (max-width : 768px) {
   .user-profile {
-    float: none;
-    display: inline-block;
-    margin-right: auto;
-    margin-left: auto;
+    float: right;
+    margin-right: 5px;
   }
 }
 .profile-clear {
@@ -3234,11 +3230,6 @@ body.two-sidebars .region-below-content {
   width: 40px;
   height: 30px;
 }
-@media only screen and (max-width : 768px) {
-  .header {
-    height: 200px;
-  }
-}
 .leaderboard {
   margin-top: 20px;
   margin-bottom: 40px;
@@ -3417,6 +3408,12 @@ body.two-sidebars .region-below-content {
   width: 100%;
   height: 40em;
 }
+@media only screen and (max-width : 768px) {
+  .banner {
+    background-size: initial;
+    background-position: center;
+  }
+}
 .shadow-box {
   height: 40em;
   background-size: cover;
@@ -3450,7 +3447,7 @@ body.two-sidebars .region-below-content {
   margin: 0;
   height: 30px;
   width: 320px;
-  display: inline-block;
+  display: none;
 }
 @media only screen and (max-width : 768px) {
   .header-search {
@@ -3467,6 +3464,7 @@ body.two-sidebars .region-below-content {
   width: 320px;
   margin-right: 20px;
   padding-top: 2px;
+  display: none;
 }
 @media only screen and (max-width : 768px) {
   .form-wrapper {
