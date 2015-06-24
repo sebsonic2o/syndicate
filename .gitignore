@@ -4,4 +4,3 @@ tmp/**/*
 .DS_Store
 .env
 .bundle
-Gemfile.lock
