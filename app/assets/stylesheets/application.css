@@ -2680,7 +2680,8 @@ body.two-sidebars .region-below-content {
   }
 }
 .issue {
-  border-bottom: 1px solid #CCC;
+  border-top: 1px solid #CCC;
+  top: -1px;
   padding-bottom: 14px;
   padding-top: 14px;
   box-sizing: border-box;
@@ -2727,14 +2728,26 @@ body.two-sidebars .region-below-content {
 }
 .issue .issue-body {
   float: left;
-  width: 90%;
+  width: 100%;
 }
 .issue .issue-body .issue-image {
-  height: 181px;
+  height: 200px;
   overflow: hidden;
   margin-bottom: 8px;
 }
 .issue.view-mode-full {
+  border-bottom: none;
+}
+@media only screen and (max-width : 768px) {
+  .issue {
+    border-top: none;
+    border-bottom: 1px solid #CCC;
+    top: 0px;
+    height: auto;
+  }
+}
+.no-borders {
+  border-top: none;
   border-bottom: none;
 }
 .participants {

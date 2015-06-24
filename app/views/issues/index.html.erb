@@ -4,7 +4,10 @@
 
       <div class="issue-body">
         <div class="issue-image">
-          <%= image_tag(issue.image_url) %>
+<!--           <%= image_tag(issue.image_url) %> -->
+          <a href="/issues/<%= issue.id %>">
+            <%= image_tag(issue.image_url) %>
+          </a>
         </div>
         <h2 class="issue-heading"><%= link_to issue.title, issue %></h2>
         <p><%= issue.description %></p>

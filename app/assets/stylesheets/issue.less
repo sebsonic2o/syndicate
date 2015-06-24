@@ -3,15 +3,17 @@
 }
 .issue {
   .clearfix();
-  border-bottom: 1px solid #CCC;
+  border-top: 1px solid #CCC;
+  top: -1px;
   padding-bottom: 14px;
   padding-top: 14px;
+  // height: 410px;
   .grid(4);
   .issue-body {
    float: left;
-   width: 90%;
+   width: 100%;
     .issue-image{
-      height: 181px;
+      height: 200px;
       overflow: hidden;
       margin-bottom: 8px;
     }
@@ -23,4 +25,16 @@
   &.view-mode-full {
     border-bottom: none;
   }
+
+  @media @mobile {
+    border-top: none;
+    border-bottom: 1px solid #CCC;
+    top: 0px;
+    height: auto;
+  }
+}
+
+.no-borders {
+  border-top: none;
+  border-bottom: none;
 }
