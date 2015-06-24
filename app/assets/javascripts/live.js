@@ -23,7 +23,6 @@ $(document).on("ready, page:change", function() {
     var myDelegateRef = new Firebase(firebaseUrl + 'delegates');
     var myVoteRef = new Firebase(firebaseUrl + 'votes');
     var myUserRef = new Firebase(firebaseUrl + 'users');
-    var myIssueRef = new Firebase(firebaseUrl + 'issues');
 
     myDelegateRef.on('child_added', function(snapshot) {
       var message = snapshot.val();
@@ -76,12 +75,6 @@ $(document).on("ready, page:change", function() {
       changeUserDOM(message);
     });
 
-    myIssueRef.on('child_added', function(snapshot) {
-      var message = snapshot.val();
-      console.log("firebase issue snapshot");
-      console.log(message);
-      changeUserDOM(message);
-    });
   }
 
     clearErrorsOnClick();
@@ -191,7 +184,7 @@ var changeUserDOM = function(message) {
     $('#abstain').html(abstain);
     $('#abstain').fadeIn(1000);
 
-    $('.participants').append(participantTemplate).children(':last').hide().fadeIn(1000);
+    $('.zone-abstain .zone-inner').append(participantTemplate).children(':last').hide().fadeIn(1000);
 }
 
 var delegateButton = function(){
