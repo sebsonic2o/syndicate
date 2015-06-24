@@ -15,6 +15,7 @@ $(document).on("ready, page:change", function() {
     var firebaseUrl = $('body').data('env');
     var myDelegateRef = new Firebase(firebaseUrl + 'delegates');
     var myVoteRef = new Firebase(firebaseUrl + 'votes');
+    var myUserRef = new Firebase(firebaseUrl + 'users');
 
     myDelegateRef.on('child_added', function(snapshot) {
       var message = snapshot.val();
@@ -56,6 +57,14 @@ $(document).on("ready, page:change", function() {
       if ($('#issue-' + message.issue_id).length) {
         changeVoteDOM(message);
       }
+    });
+
+    myUserRef.on('child_added', function(snapshot) {
+      var message = snapshot.val();
+      console.log("firebase user snapshot");
+      console.log(message);
+
+      changeUserDOM(message);
     });
   }
 
@@ -132,8 +141,24 @@ var changeVoteDOM = function(message) {
   // appendVoteZone(message.current_user_id, message.current_user_vote_value);
 }
 
+var changeUserDOM = function(message) {
+  var participantTemplate =
+    '<div id="' + message.id + '" class="participant abstain">\n' +
+    '<h3 class="participant-username"><a href="#">' + message.first_name + '</a><em>User ID:' + message.id + '</em></h3>\n' +
+    '<div class="participant-avatar">\n' +
+    // '<img class="participant-image current" src="' + message.image_url + '" />'
+    // '<img class="participant-image rep" src="' + message.image_url + '" />'
+    '<img class="participant-image" src="' + message.image_url + '" />\n' +
+    '<div class="badge participant-vote-count abstain ">1</div>\n' +
+    '</div>\n' +
+    '<div class="constituents"></div>\n' +
+    '</div>';
+
+    $('.participants').append(participantTemplate).children(':last').hide().fadeIn(2000);
+}
+
 var delegateButton = function(){
-  $(".participant").on('click', function(e){
+  $(".participants").on('click', ".participant", function(e){
     clearErrors();
     e.stopPropagation();
     e.preventDefault();

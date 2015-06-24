@@ -45,6 +45,7 @@ class IssuesController < ApplicationController
     # need to push
     response = firebase.delete("delegates")
     response = firebase.delete("votes")
+    response = firebase.delete("users")
   end
 
   def delegate
@@ -177,6 +178,7 @@ class IssuesController < ApplicationController
     firebase = Firebase::Client.new(base_uri)
     firebase.delete("delegates")
     firebase.delete("votes")
+    firebase.delete("users")
     @current_issue = Issue.find(params[:id])
     # @current_issue.generate_leaderboard
     @participants = @current_issue.voters.order(id: :asc)
