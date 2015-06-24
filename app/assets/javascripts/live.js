@@ -3,10 +3,17 @@ $(document).on("ready, page:change", function() {
 
     var timeRemaining = (Date.parse(finishTime) - Date.now())/1000;
 
+    if (timeRemaining < 0) {
+      var clock = $('.clock').FlipClock(0, {
+        countdown: true,
+      });
+    }
 
-    var clock = $('.clock').FlipClock(timeRemaining, {
-      countdown: true,
-    });
+    else {
+      var clock = $('.clock').FlipClock(timeRemaining, {
+        countdown: true,
+      });
+    }
 
     listenButtons();
     delegateButton();
