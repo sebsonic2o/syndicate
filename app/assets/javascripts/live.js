@@ -280,6 +280,8 @@ var appendVoteZone = function(current_user, currentUserVoteValue) {
 
 var newDrawChart = function(yesVotes, noVotes, abstainCount) {
 
+  console.log("big doughnut!");
+
   var ctx = $("#percent-donut").get(0).getContext("2d");
 
   var drawValues = setDrawValues(yesVotes, noVotes, abstainCount);
