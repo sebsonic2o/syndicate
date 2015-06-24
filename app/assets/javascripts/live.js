@@ -3,6 +3,7 @@ $(document).on("ready, page:change", function() {
 
     var timeRemaining = (Date.parse(finishTime) - Date.now())/1000;
     console.log(timeRemaining)
+
     if (timeRemaining < 0) {
       var clock = new $('.clock').FlipClock(0, {
         countdown: false
