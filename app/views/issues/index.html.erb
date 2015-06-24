@@ -1,12 +1,30 @@
 <div id="issues-dashboard">
   <div class="issues">
-    <% @issues.each do |issue| %>
+    <% @issues.each_with_index do |issue, index| %>
       <div id="issue-<%= issue.id %>" class="issue">
-        <%= issue.participant_count %>
         <div class="issue-body">
-          <div class="issue-image">
-            <%= image_tag(issue.image_url) %>
+          <div class="shadow-glass">
+
+            <div class="issue-info">
+              <div class="part-info" id="part-<%= index+1 %>">
+                Participants: <%= issue.participant_count %>  |
+              </div>
+              <div class="vote-info" id="vote-<%= index+1 %>">
+                Total votes: <%= issue.vote_count %>
+              </div>
+
+              <div class="little-donut">
+
+              </div>
+            </div>
+
           </div>
+
+            <div class="issue-image">
+              <a href="/issues/<%= issue.id %>">
+                <%= image_tag(issue.image_url) %>
+              </a>
+            </div>
           <h2 class="issue-heading"><%= link_to issue.title, issue %></h2>
           <p><%= issue.description %></p>
         </div>

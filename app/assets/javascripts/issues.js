@@ -14,6 +14,12 @@ $(document).on("ready, page:change", function() {
   };
 });
 
-var changeIssuesDOM = function() {
+var changeIssuesDOM = function(message) {
+  var selector = message.issue_id;
+
+  $("#part-" + selector).html("Participants: " + message.participant_count + "  |");
+  $("#vote-" + selector).html("Total votes: " + message.vote_count);
+
+  var drawValues = setDrawValues(message.participant_count, message.vote_count);
 
 }
