@@ -2,6 +2,11 @@
 
   <div id="issue-<%= @current_issue.id %>" class="dashboard">
 
+  <%= javascript_tag do %>
+    var finishTime = '<%= @finish_time %>'
+  <% end %>
+
+
     <div class="leaderboard">
       <h1><%= @current_issue.title %></h1>
       <div class="clock"></div>

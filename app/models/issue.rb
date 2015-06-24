@@ -66,6 +66,10 @@ class Issue < ActiveRecord::Base
     # p @no_percentage.round(2)
   end
 
+  def closed?
+    self.finish_date < Time.now 
+  end
+
 
   # def generate_leaderboard
   #   get_participants_count
