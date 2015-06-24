@@ -1,12 +1,19 @@
 $(document).on("ready, page:change", function() {
-
   if ($('#live-dashboard').length) {
 
-    var clock = $('.clock').FlipClock(3600 * 24 * 3, {
-      clockFace: 'MinuteCounter',
-      countdown: true,
-      // showSeconds: false
-    });
+    var timeRemaining = (Date.parse(finishTime) - Date.now())/1000;
+
+    if (timeRemaining < 0) {
+      var clock = $('.clock').FlipClock(0, {
+        countdown: true,
+      });
+    }
+
+    else {
+      var clock = $('.clock').FlipClock(timeRemaining, {
+        countdown: true,
+      });
+    }
 
     listenButtons();
     delegateButton();
@@ -154,7 +161,18 @@ var changeUserDOM = function(message) {
     '<div class="constituents"></div>\n' +
     '</div>';
 
-    $('.participants').append(participantTemplate).children(':last').hide().fadeIn(2000);
+    var total = parseInt($('#total-participants').html(), 10) + 1;
+    var abstain = parseInt($('#abstain').html(), 10) + 1;
+
+    $('#total-participants').hide();
+    $('#total-participants').html(total);
+    $('#total-participants').fadeIn(1000);
+
+    $('#abstain').hide();
+    $('#abstain').html(abstain);
+    $('#abstain').fadeIn(1000);
+
+    $('.participants').append(participantTemplate).children(':last').hide().fadeIn(1000);
 }
 
 var delegateButton = function(){
