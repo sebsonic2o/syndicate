@@ -35,7 +35,7 @@ end
 
 #custom seeds
 issue1 = Issue.create(
-  title: "Should fog be banned fron San Francisco?",
+  title: "Should fog be banned from San Francisco?",
   description: "Fog can contain lots of pollution that ails the air around our beautiful San Francsico, and also cause problems with visibility - both in covering up our beautiful landmarks, and causing problems for our motorists.  Also, it's wet.",
   image_url: "golden.jpg",
   # start_date: Faker::Time.between(2.days.ago, Time.now, :all),
