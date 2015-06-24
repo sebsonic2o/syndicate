@@ -1,12 +1,19 @@
 $(document).on("ready, page:change", function() {
-
   if ($('#live-dashboard').length) {
 
-    var clock = $('.clock').FlipClock(3600 * 24 * 3, {
-      clockFace: 'MinuteCounter',
-      countdown: true,
-      // showSeconds: false
-    });
+    var timeRemaining = (Date.parse(finishTime) - Date.now())/1000;
+
+    if (timeRemaining < 0) {
+      var clock = $('.clock').FlipClock(0, {
+        countdown: true,
+      });
+    }
+
+    else {
+      var clock = $('.clock').FlipClock(timeRemaining, {
+        countdown: true,
+      });
+    }
 
     listenButtons();
     delegateButton();
