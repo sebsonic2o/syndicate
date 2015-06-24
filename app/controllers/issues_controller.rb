@@ -27,7 +27,7 @@ class IssuesController < ApplicationController
       render json: {}
     else
       puts "User has delegated their vote."
-      render json: {delegated_vote_error: "You cannot vote if you are currently designated. Please undesignate if you would like to vote directly."}
+      render json: {delegated_vote_error: "You have already delegated your vote. "}
     end
   end
 
@@ -58,7 +58,7 @@ class IssuesController < ApplicationController
     firebase = Firebase::Client.new(base_uri)
 
     # Send error if user tries to delegate to someone in their subtree
-    if @current_user_vote.descendants.include?(@target_representative_vote) 
+    if @current_user_vote.descendants.include?(@target_representative_vote)
       puts "Hierachy error: cannot delegate to a user that is one of your descendants."
 
       render json: {hierachy_error: "You cannot delegate to a user who is directly or indirectly delegated to you."}

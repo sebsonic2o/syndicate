@@ -10,7 +10,7 @@ $(document).on("ready, page:change", function() {
 
     listenButtons();
     delegateButton();
-  
+
 
     var firebaseUrl = $('body').data('env');
     var myDelegateRef = new Firebase(firebaseUrl + 'delegates');
@@ -93,7 +93,12 @@ var voteButton = function(buttonClass, voteValue) {
       console.log(data);
 
       if (data.hasOwnProperty('delegated_vote_error')) {
-        $('#errors').append("<p>"+data.delegated_vote_error+"</p>")
+        $('.errors').html(data.delegated_vote_error)
+        $('.errors').removeClass("show hide animated fadeIn fadeOut wobble");
+        var animate = $('.errors').addClass("show animated wobble");
+        setTimeout(function () {
+            animate.addClass("fadeOut");
+        }, 2000)
       }
     });
 
@@ -150,7 +155,12 @@ var delegateButton = function(){
       console.log("Ajax - delegate button!");
       console.log(data);
       if (data.hasOwnProperty('hierachy_error')) {
-        $('#errors').append("<p>"+data.hierachy_error+"</p>")
+        $('.errors').html(data.hierachy_error)
+        $('.errors').removeClass("show hide animated fadeIn fadeOut wobble");
+        var animate = $('.errors').addClass("show animated wobble");
+        setTimeout(function () {
+            animate.addClass("fadeOut");
+        }, 2000)
       }
     });
 
