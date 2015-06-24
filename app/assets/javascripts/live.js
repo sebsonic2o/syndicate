@@ -2,8 +2,15 @@ $(document).on("ready, page:change", function() {
 
   if ($('#live-dashboard').length) {
 
+    var clock = $('.clock').FlipClock(3600 * 24 * 3, {
+      clockFace: 'MinuteCounter',
+      countdown: true,
+      // showSeconds: false
+    });
+
     listenButtons();
     delegateButton();
+
 
     var firebaseUrl = $('body').data('env');
     var myDelegateRef = new Firebase(firebaseUrl + 'delegates');
@@ -13,34 +20,32 @@ $(document).on("ready, page:change", function() {
     myDelegateRef.on('child_added', function(snapshot) {
       var message = snapshot.val();
       console.log("firebase delegate snapshot")
-      // console.log(message)
-      if (message.incident === "redelegate") {
-        console.log("redelegate")
-        console.log("old_root_info")
-        appendScore(message.old_rep_root_count, message.old_rep_root_id);
-        console.log("new_root_info")
-        appendScore(message.new_rep_root_count, message.new_rep_root_id)
-        appendVoteStatus();
-        appendDelegatedStatus(message.current_user_id);
-        nestParticipant(message.current_user_id, message.new_rep_id)
-      }
-      else if (message.incident === "new delegate") {
-        console.log("new delegate")
-        console.log("current_user_info")
-        appendScore(0, message.current_user_id);
-        console.log("new_root_info")
-        appendScore(message.root_count, message.root_user_id)
-        appendVoteStatus();
-        appendDelegatedStatus(message.current_user_id);
-        nestParticipant(message.current_user_id, message.new_rep_id)
 
-      }
-      else if (message.incident === "undelegate") {
-        appendScore(message.old_delegate_count, message.old_delegate_id);
-        appendScore(message.current_user_count, message.current_user_id)
-        appendVoteStatus();
-        appendUndelegatedStatus(message.current_user_id);
-        unnestParticipant(message.current_user_id)
+      if ($('#issue-' + message.issue_id).length) {
+        if (message.incident === "redelegate") {
+          console.log("redelegate")
+          console.log("old_root_info")
+          appendScore(message.old_rep_root_count, message.old_rep_root_id);
+          console.log("new_root_info")
+          appendScore(message.new_rep_root_count, message.new_rep_root_id)
+          appendDelegatedStatus(message.current_user_id);
+          nestParticipant(message.current_user_id, message.new_rep_id)
+        }
+        else if (message.incident === "new delegate") {
+          console.log("new delegate")
+          console.log("current_user_info")
+          appendScore(0, message.current_user_id);
+          console.log("new_root_info")
+          appendScore(message.root_count, message.root_user_id)
+          appendDelegatedStatus(message.current_user_id);
+          nestParticipant(message.current_user_id, message.new_rep_id)
+        }
+        else if (message.incident === "undelegate") {
+          appendScore(message.old_delegate_count, message.old_delegate_id);
+          appendScore(message.current_user_count, message.current_user_id)
+          appendUndelegatedStatus(message.current_user_id);
+          unnestParticipant(message.current_user_id)
+        }
       }
     });
 
@@ -63,7 +68,19 @@ $(document).on("ready, page:change", function() {
     });
   }
 
+    clearErrorsOnClick();
 });
+
+var clearErrors = function(){
+  if ($('#errors').children().length > 0) {
+    console.log("Clearing errors div");
+    $('#errors').empty();
+  }
+}
+
+var clearErrorsOnClick = function(){
+  $(document).on("click", clearErrors)
+}
 
 var listenButtons = function() {
   voteButton("#yes-button", "yes");
@@ -85,6 +102,15 @@ var voteButton = function(buttonClass, voteValue) {
     request.done(function(data) {
       console.log("SUCCESS!");
       console.log(data);
+
+      if (data.hasOwnProperty('delegated_vote_error')) {
+        $('.errors').html(data.delegated_vote_error)
+        $('.errors').removeClass("show hide animated fadeIn fadeOut wobble");
+        var animate = $('.errors').addClass("show animated wobble");
+        setTimeout(function () {
+            animate.addClass("fadeOut");
+        }, 2000)
+      }
     });
 
     request.fail(function(response) {
@@ -111,6 +137,7 @@ var changeVoteDOM = function(message) {
   myDoughnutChart.update();
 
   appendVoteStatus(message.current_user_id, message.current_user_vote_value);
+  animateBadge(message.current_user_id)
   // appendVoteZone(message.current_user_id, message.current_user_vote_value);
 }
 
@@ -132,6 +159,7 @@ var changeUserDOM = function(message) {
 
 var delegateButton = function(){
   $(".participant").on('click', function(e){
+    clearErrors();
     e.stopPropagation();
     e.preventDefault();
     console.log(this)
@@ -151,9 +179,16 @@ var delegateButton = function(){
     });
 
     request.done(function(data) {
-      console.log("Ajax!");
-      // console.log(data);
-      // participant.children().children(".badge").html(data)
+      console.log("Ajax - delegate button!");
+      console.log(data);
+      if (data.hasOwnProperty('hierachy_error')) {
+        $('.errors').html(data.hierachy_error)
+        $('.errors').removeClass("show hide animated fadeIn fadeOut wobble");
+        var animate = $('.errors').addClass("show animated wobble");
+        setTimeout(function () {
+            animate.addClass("fadeOut");
+        }, 2000)
+      }
     });
 
     request.fail(function(response) {
@@ -167,7 +202,6 @@ var delegateButton = function(){
 var appendScore = function(count, id) {
   console.log("count: " + count)
   console.log("id: " + id)
-
   var target = $('#' + id).children().children(".badge").html(count)
   console.log(target)
 };
@@ -175,19 +209,22 @@ var appendScore = function(count, id) {
 var nestParticipant = function(current_user_id, new_rep_id) {
   // Moves the delegate under the representative in the dom
   var constituentDomTemplate = $('#' + current_user_id)
-  $('#' + new_rep_id).children(".constituents").append(constituentDomTemplate)
+  $('#' + new_rep_id).children(".constituents").append(constituentDomTemplate);
+  // Animation
+  var animate = $('#' + new_rep_id).toggleClass("animated bounceIn");
+  setTimeout(function () {
+      animate.toggleClass("animated bounceIn");
+  }, 2000)
 };
-
-var appendVoteZone = function(current_user, currentUserVoteValue) {
-  // Moves the delegate under the representative in the dom
-  var constituentDomTemplate = $('#' + current_user)
-  $('.zone-yes').append(constituentDomTemplate)
-};
-
 
 var unnestParticipant = function(current_user_id, new_rep_id) {
+  console.log("Getting here!!!!!!")
   var constituentDomTemplate = $('#' + current_user_id)
-  $(".participants").append(constituentDomTemplate)
+  $(".participants").prepend(constituentDomTemplate)
+  var animate = $('#' + current_user_id).toggleClass("animated fadeIn");
+  setTimeout(function () {
+      animate.toggleClass("animated fadeIn");
+  }, 2000)
 };
 
 var appendVoteStatus = function(current_user, currentUserVoteValue) {
@@ -196,16 +233,32 @@ var appendVoteStatus = function(current_user, currentUserVoteValue) {
   $('#' + current_user).children().children(".badge").removeClass("yes")
   $('#' + current_user).children().children(".badge").removeClass("no")
   $('#' + current_user).children().children(".badge").addClass(currentUserVoteValue)
-}
+};
 
 var appendDelegatedStatus = function(current_user) {
   $('#' + current_user).removeClass("delegated")
   $('#' + current_user).addClass("delegated")
-}
+  // Adding the delegated class sets the badge to display: none
+};
+
+var animateBadge = function(current_user) {
+  var animate = $('#' + current_user).children().children(".badge").toggleClass("animated fadeInDown");
+  setTimeout(function () {
+      animate.toggleClass("animated fadeInDown");
+  }, 1000)
+};
 
 var appendUndelegatedStatus = function(current_user) {
   $('#' + current_user).removeClass("delegated")
 }
+
+var appendVoteZone = function(current_user, currentUserVoteValue) {
+  // Moves the delegate under the representative in the dom
+  var constituentDomTemplate = $('#' + current_user)
+  $('.zone-yes').append(constituentDomTemplate)
+
+};
+
 
 var newDrawChart = function(yesVotes, noVotes, abstainCount) {
 

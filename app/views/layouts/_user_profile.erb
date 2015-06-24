@@ -1,20 +1,14 @@
-<% if current_user %>
-  <div class="user-profile">
-    Hello <span class="user-profile-username">"<%= current_user.id %>"</span> |
-    <a href="/users/<%= current_user.id %>">My Profile</a> |
-
-    <%= form_for(:session, url: logout_path, method: "delete" ) do |f| %>
-      <%= f.submit "Logout", class: "profile-clear" %>
-    <% end %>
-
-  </div>
-<% end %>
-
-<% if session[:username] == nil %>
-
 <div class="user-profile">
-  <a href="/signup">Create Account</a> |
-  <a href="/login">Login</a>
+  <% if current_user %>
+    Hello
+    <span class="user-profile-username">"<%= current_user.id %>"
+    </span>
+    | <%= form_for(:session, url: logout_path, method: "delete" ) do |f| %>
+      <%= f.submit " Logout", class: "profile-clear" %>
+    <% end %>
+  <% end %>
+
 </div>
 
+<% if session[:username] == nil %>
 <% end %>

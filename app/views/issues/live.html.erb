@@ -1,8 +1,13 @@
 <section id="live-dashboard">
 
 <div id="issue-<%= @current_issue.id %>" class="issues grid-12">
+
+
+
   <div class="leaderboard">
     <h1><%= @current_issue.title %></h1>
+    <div class="clock"></div>
+
     <div id="yes-board">
       <h1>YES: <span id="yes-votes"><%= @current_issue.yes_votes %></span></h1>
       <h2> (<span id="yes-percentage"><%= @current_issue.yes_percentage %></span>%) </h2>
