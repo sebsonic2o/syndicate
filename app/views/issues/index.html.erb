@@ -1,17 +1,16 @@
-<div class="issues">
-  <% @issues.each do |issue| %>
-    <div id="issue-<%= issue.id %>" class="issue">
-
-      <div class="issue-body">
-        <div class="issue-image">
-          <a href="/issues/<%= issue.id %>">
+<div id="issues-dashboard">
+  <div class="issues">
+    <% @issues.each do |issue| %>
+      <div id="issue-<%= issue.id %>" class="issue">
+        <%= issue.participant_count %>
+        <div class="issue-body">
+          <div class="issue-image">
             <%= image_tag(issue.image_url) %>
-          </a>
+          </div>
+          <h2 class="issue-heading"><%= link_to issue.title, issue %></h2>
+          <p><%= issue.description %></p>
         </div>
-        <h2 class="issue-heading"><%= link_to issue.title, issue %></h2>
-        <p><%= issue.description %></p>
-      </div>
+    </div>
+    <% end %>
   </div>
-  <% end %>
 </div>
-

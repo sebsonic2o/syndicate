@@ -19,30 +19,32 @@ $(document).on("ready, page:change", function() {
     myDelegateRef.on('child_added', function(snapshot) {
       var message = snapshot.val();
       console.log("firebase delegate snapshot")
-      // console.log(message)
-      if (message.incident === "redelegate") {
-        console.log("redelegate")
-        console.log("old_root_info")
-        appendScore(message.old_rep_root_count, message.old_rep_root_id);
-        console.log("new_root_info")
-        appendScore(message.new_rep_root_count, message.new_rep_root_id)
-        appendDelegatedStatus(message.current_user_id);
-        nestParticipant(message.current_user_id, message.new_rep_id)
-      }
-      else if (message.incident === "new delegate") {
-        console.log("new delegate")
-        console.log("current_user_info")
-        appendScore(0, message.current_user_id);
-        console.log("new_root_info")
-        appendScore(message.root_count, message.root_user_id)
-        appendDelegatedStatus(message.current_user_id);
-        nestParticipant(message.current_user_id, message.new_rep_id)
-      }
-      else if (message.incident === "undelegate") {
-        appendScore(message.old_delegate_count, message.old_delegate_id);
-        appendScore(message.current_user_count, message.current_user_id)
-        appendUndelegatedStatus(message.current_user_id);
-        unnestParticipant(message.current_user_id)
+
+      if ($('#issue-' + message.issue_id).length) {
+        if (message.incident === "redelegate") {
+          console.log("redelegate")
+          console.log("old_root_info")
+          appendScore(message.old_rep_root_count, message.old_rep_root_id);
+          console.log("new_root_info")
+          appendScore(message.new_rep_root_count, message.new_rep_root_id)
+          appendDelegatedStatus(message.current_user_id);
+          nestParticipant(message.current_user_id, message.new_rep_id)
+        }
+        else if (message.incident === "new delegate") {
+          console.log("new delegate")
+          console.log("current_user_info")
+          appendScore(0, message.current_user_id);
+          console.log("new_root_info")
+          appendScore(message.root_count, message.root_user_id)
+          appendDelegatedStatus(message.current_user_id);
+          nestParticipant(message.current_user_id, message.new_rep_id)
+        }
+        else if (message.incident === "undelegate") {
+          appendScore(message.old_delegate_count, message.old_delegate_id);
+          appendScore(message.current_user_count, message.current_user_id)
+          appendUndelegatedStatus(message.current_user_id);
+          unnestParticipant(message.current_user_id)
+        }
       }
     });
 
