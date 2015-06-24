@@ -98,18 +98,18 @@ issue6 = Issue.create(
 )
 issue6.voters = User.all
 
-47.times do
-  issue = Issue.create(
-      title: Faker::Lorem.sentence,
-      description: Faker::Lorem.paragraph(3),
-      image_url: Faker::Avatar.image.gsub(/http/, "https"),
-      start_date: Faker::Time.between(2.days.ago, Time.now, :all),
-      finish_date: Faker::Time.forward(23, :all),
-      creator_id: 1,
-      group_id: 1
-  )
+# 47.times do
+#   issue = Issue.create(
+#       title: Faker::Lorem.sentence,
+#       description: Faker::Lorem.paragraph(3),
+#       image_url: Faker::Avatar.image.gsub(/http/, "https"),
+#       start_date: Faker::Time.between(2.days.ago, Time.now, :all),
+#       finish_date: Faker::Time.forward(23, :all),
+#       creator_id: 1,
+#       group_id: 1
+#   )
 
-  issue.voters = User.all
-end
+#   issue.voters = User.all
+# end
 
 
