@@ -79,8 +79,7 @@ class IssuesController < ApplicationController
 
         @target_representative = User.find(params[:id])
         @target_representative_vote = @target_representative.votes.find_by(issue_id: params[:issue_id])
-        @current_user = current_user
-        @current_user_vote = @current_user.votes.find_by(issue_id: params[:issue_id])
+        @current_user_vote = current_user.votes.find_by(issue_id: params[:issue_id])
 
      # Firebase Ruby Connection Setup
         base_uri = ENV['FIREBASE_URL']
@@ -93,7 +92,7 @@ class IssuesController < ApplicationController
           render json: {hierachy_error: "You cannot delegate to a user who is directly or indirectly delegated to you."}
 
        # Undelegates vote of current user by clicking on yourself
-        elsif @current_user == @target_representative
+        elsif current_user == @target_representative
           puts "Undelegates vote of current user BY CLICKING ON SELF"
 
           @old_representative_vote = @current_user_vote.root
@@ -107,7 +106,7 @@ class IssuesController < ApplicationController
             :old_delegate_count => @old_representative_vote.subtree.count,
             :old_delegate_id => @old_representative.id,
             :current_user_count => @current_user_vote.subtree.count,
-            :current_user_id => @current_user.id,
+            :current_user_id => current_user.id,
             :issue_id => @issue.id
             })
 
@@ -128,7 +127,7 @@ class IssuesController < ApplicationController
             :old_delegate_count => @old_representative_vote.subtree.count,
             :old_delegate_id => @old_representative.id,
             :current_user_count => @current_user_vote.subtree.count,
-            :current_user_id => @current_user.id,
+            :current_user_id => current_user.id,
             :issue_id => @issue.id
           })
 
@@ -154,7 +153,7 @@ class IssuesController < ApplicationController
             :old_rep_root_id => @old_rep_root.id,
             :new_rep_count => @target_representative_vote.subtree.count,
             :new_rep_id => @target_representative.id,
-            :current_user_id => @current_user.id,
+            :current_user_id => current_user.id,
             :new_rep_root_count => @new_root_vote.subtree.count,
             :new_rep_root_id => @new_root_rep.id,
             :issue_id => @issue.id
@@ -180,7 +179,7 @@ class IssuesController < ApplicationController
             :root_count => @root_vote.subtree.count,
             :root_user_id => @root.id,
             :new_rep_id => @new_rep.id,
-            :current_user_id => @current_user.id,
+            :current_user_id => current_user.id,
             :issue_id => @issue.id
           })
 
