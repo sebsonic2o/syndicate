@@ -2719,6 +2719,7 @@ body.two-sidebars .region-below-content {
   top: -1px;
   padding-bottom: 14px;
   padding-top: 14px;
+  min-height: 400px;
   box-sizing: border-box;
 }
 .issue:after {
@@ -2781,6 +2782,7 @@ body.two-sidebars .region-below-content {
 }
 @media only screen and (max-width : 768px) {
   .issue {
+    min-height: 200px;
     border-top: none;
     border-bottom: 1px solid #CCC;
     top: 0px;
