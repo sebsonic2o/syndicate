@@ -59,7 +59,7 @@ issue2 = Issue.create(
 issue2.voters = User.all
 
 issue3 = Issue.create(
-  title: "SHERIF ABUSHADI FOR PRESIDENT",
+  title: "Should Sherif Abushadi be the next President of the United States?",
   description: "A man who has truly embranced his internal ball of intense, white hot confusion.  Writes the most brilliant web apps and destroys them before anyone else can see, FOR FUN.  Never afraid to announce the bullshit he sees.  He doesn't know what the hell he's doing, and neither does anyone else.",
   image_url: "sherif.jpg",
   start_date: Faker::Time.between(2.days.ago, Time.now, :all),
