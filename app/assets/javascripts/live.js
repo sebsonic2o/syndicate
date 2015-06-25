@@ -130,6 +130,15 @@ var voteButton = function(buttonClass, voteValue) {
             animate.addClass("fadeOut");
         }, 2000)
       }
+
+      if (data.hasOwnProperty('log_in_error')) {
+        $('.errors').html(data.log_in_error)
+        $('.errors').removeClass("show hide animated fadeIn fadeOut wobble");
+        var animate = $('.errors').addClass("show animated wobble");
+        setTimeout(function () {
+            animate.addClass("fadeOut");
+        }, 2000)
+      }
     });
 
     request.fail(function(response) {
@@ -223,6 +232,14 @@ var delegateButton = function(){
       console.log(data);
       if (data.hasOwnProperty('hierachy_error')) {
         $('.errors').html(data.hierachy_error)
+        $('.errors').removeClass("show hide animated fadeIn fadeOut wobble");
+        var animate = $('.errors').addClass("show animated wobble");
+        setTimeout(function () {
+            animate.addClass("fadeOut");
+        }, 2000)
+      }
+      if (data.hasOwnProperty('log_in_error')) {
+        $('.errors').html(data.log_in_error)
         $('.errors').removeClass("show hide animated fadeIn fadeOut wobble");
         var animate = $('.errors').addClass("show animated wobble");
         setTimeout(function () {
