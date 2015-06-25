@@ -5,7 +5,6 @@
 body:after {
   background: red;
   color: #ffffff;
-  content: "undefined";
   opacity: 0.8;
   filter: alpha(opacity=80);
   padding: .5em 1em;
@@ -18,25 +17,21 @@ body:after {
 @media only screen and (max-width : 768px) {
   body:after {
     background: orange;
-    content: "mobile";
   }
 }
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
   body:after {
     background: purple;
-    content: "ipad";
   }
 }
 @media only screen and (min-width : 1024px) and (max-width : 1380px) {
   body:after {
     background: green;
-    content: "desktop";
   }
 }
 @media only screen and (min-width : 1380px) {
   body:after {
     background: blue;
-    content: "desktop-xl";
   }
 }
 /* ==========================================================================
@@ -2769,7 +2764,7 @@ body.two-sidebars .region-below-content {
   width: 100%;
 }
 .issue .issue-body .issue-image {
-  height: 200px;
+  height: 170px;
   overflow: hidden;
   position: relative;
   margin-bottom: 8px;
@@ -2821,10 +2816,16 @@ body.two-sidebars .region-below-content {
 .part-info {
   float: left;
 }
+.part-info span {
+  font-weight: 700;
+}
 .vote-info {
   display: inline;
   float: left;
   margin-left: 3px;
+}
+.vote-info span {
+  font-weight: 700;
 }
 .little-donut {
   position: absolute;

@@ -12,10 +12,10 @@
 
 
 body {
-    &:after { 
+    &:after {
     background: red;
     color: @white;
-    content: "undefined";
+    // content: "undefined";
     .opacity(80);
     padding: .5em 1em;
     position: fixed;
@@ -25,19 +25,19 @@ body {
     z-index: 999;
     @media @mobile {
       background: orange;
-      content: "mobile";
+      // content: "mobile";
     }
     @media @ipad {
       background: purple;
-      content: "ipad";
+      // content: "ipad";
     }
     @media @desktop {
       background: green;
-      content: "desktop";
+      // content: "desktop";
     }
     @media @desktop-xl {
       background: blue;
-      content: "desktop-xl";
+      // content: "desktop-xl";
     }
   }
 }

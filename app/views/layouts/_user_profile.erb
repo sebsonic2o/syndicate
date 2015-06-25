@@ -1,11 +1,13 @@
 <div class="user-profile">
   <% if current_user %>
-    Hello
-    <span class="user-profile-username">"<%= current_user.first_name %>"
-    </span>
-    | <%= form_for(:session, url: logout_path, method: "delete" ) do |f| %>
-      <%= f.submit "Logout", class: "profile-clear" %>
-    <% end %>
+    <div class="logged-in">
+      Hello
+      <span class="user-profile-username">"<%= current_user.first_name %>"
+      </span>
+      | <%= form_for(:session, url: logout_path, method: "delete" ) do |f| %>
+        <%= f.submit "Logout", class: "profile-clear" %>
+      <% end %>
+    </div>
   <% end %>
 
   <% if session[:username] == nil %>
