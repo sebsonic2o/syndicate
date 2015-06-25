@@ -104,6 +104,7 @@ var clearErrorsOnClick = function(){
 var listenButtons = function() {
   voteButton("#yes-button", "yes");
   voteButton("#no-button", "no");
+  voteButton(".abstain-button", "abstain")
 }
 
 var voteButton = function(buttonClass, voteValue) {
