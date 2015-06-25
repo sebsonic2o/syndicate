@@ -66,6 +66,13 @@ class IssuesController < ApplicationController
     response = firebase.delete("users")
   end
 
+  def set_time 
+    current_issue = Issue.find(params[:id])
+    current_issue.finish_date = Time.now + params[:minutes].to_i.minutes
+    current_issue.save 
+    redirect_to action: "live", id: params[:id]
+  end
+
   def delegate
     @issue = Issue.find(params[:issue_id])
 
