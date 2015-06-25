@@ -26,6 +26,8 @@ $(document).on("ready, page:change", function() {
 
         request.done(function(data) {
           console.log("USER SUCCESS!");
+          console.log(data)
+          switchUserProfileDOM(data)
         });
 
         request.fail(function(response) {
@@ -38,3 +40,8 @@ $(document).on("ready, page:change", function() {
 
   });
 });
+
+var switchUserProfileDOM = function(data) {
+  console.log("Updating User Profile Area")
+  location.reload();
+}
