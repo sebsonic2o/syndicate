@@ -78,7 +78,18 @@ class Issue < ActiveRecord::Base
     end
   end
 
+  def time_remaining
+    raw = self.finish_date.utc - Time.now
+    minutes = raw / 60
+    hours = (minutes / 60).to_i
+    minutes_after_hours = (minutes % 60).to_i
 
+    if raw < 0
+      return "Voting finished"
+    else
+      return "Time remaining: #{hours}h #{minutes_after_hours}m"
+    end
+  end
   # def generate_leaderboard
   #   get_participants_count
   #   get_yes_votes
