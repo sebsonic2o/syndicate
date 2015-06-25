@@ -1,5 +1,5 @@
 .hero{
-  margin-bottom: 15em;
+
   @media @mobile {
     // top: -80px;
     margin-bottom: 2em;
@@ -7,16 +7,16 @@
     height: 21.3em;
   }
 }
-.banner{
+.region.hero {
+  background-image: url('/assets/113h-size2.jpg');
   background-size: cover;
+  background-repeat: no-repeat;
   vertical-align: middle;
-  position: absolute;
-  z-index: -1;
-  overflow: hidden;
-  width: 100%;
-  height: 40em;
+  height: 500px;
+  margin-bottom: 30px;
   @media @mobile {
-    background-size: initial;
+    background-image: url('/assets/113H-resize.jpg');
+    background-size: cover;
     background-position: center;
   }
 }
@@ -37,14 +37,36 @@
 }
 
 #hero-text{
-  font-family: @customfont;
-  padding-top: 4.5em;
-  color: white;
+  .clearfix();
   text-align: center;
-  font-size: 3em;
-  z-index: 100;
-  @media @mobile{
-    padding-top: 50px;
+  h1 {
+    font-family: @customfont;
+    padding-top: 3em;
+    color: @primarycolor;
+    text-align: center;
+    font-size: 38px;
+    font-weight: 400;
+    text-transform: capitalize;
+    z-index: 100;
+    @media @mobile{
+      padding-top: 30px;
+      font-size: 32px;
+    }
+  }
+  p {
+    width: 600px;
+    text-transform: inherit;
+    font-size: 16px;
+    line-height: 24px;
+    color: #333;
+    font-weight: 400;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    @media @mobile {
+      width: auto;
+      font-size: 14px;
+    }
   }
 }
 
@@ -164,10 +186,10 @@
 
 
 #title-thinger {
-  margin-top: 8em;
-  margin-bottom: 1em;
+  margin-bottom: 20px;
   text-align: center;
-  font-size: 2em;
+  font-size: 30px;
+  font-family: @customfont;
   @media @mobile {
     margin-top: 0em;
   }
@@ -189,20 +211,23 @@
 }
 
 .hero-button button {
-  overflow: visible;
-  height: 40px;
-  width: 160px;
   display: block;
-  margin-top: 4em;
+  margin-top: 2em;
   margin-right: auto;
   margin-left: auto;
   border: 0;
-  padding: 0;
+  padding: 20px 26px 20px 44px;
+  background-image: url("/assets/google-plus.png");
+  background-position: 13px 20px;
+  background-size: 30px;
+  background-repeat: no-repeat;
+  .border-radius(3px);
+  .box-shadow();
   cursor: pointer;
   font: 1.3em @basefont;
   color: #fff;
   text-transform: uppercase;
-  background: @primarycolor;   /*#d83c3c*/
+  background-color: @primarycolor;   /*#d83c3c*/
   /*border-radius: 0 0px 3px 0;*/
   text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
   position: relative;
@@ -210,7 +235,7 @@
 }
 
 .hero-button button:hover{
-  background: #e54040;
+  background-color: #e54040;
 }
 
 .hero-button button:active,
@@ -224,17 +249,19 @@
   color: @primarycolor;
   margin-left: 0px;
   margin-bottom: 14px;
-
   .grid(4);
   .issue-body {
     float: left;
     width: 100%;
     .issue-image{
-      height: 200px;
+      height: 160px;
       overflow: hidden;
+      margin-bottom: 5px;
     }
   }
-
+  h2 {
+    font-weight: 400;
+  }
   &.view-mode-teaser {
 
   }

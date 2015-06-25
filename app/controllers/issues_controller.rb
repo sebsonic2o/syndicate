@@ -19,25 +19,32 @@ class IssuesController < ApplicationController
       render json: {closed_message: "This issue is closed and cannot be voted on."}
 
     else
-      @vote = current_user.votes.find_by(issue_id: params[:id])
 
-      if @vote.root?
-        @vote.update_attributes(value: params[:value])
-        @vote.save
+      if !logged_in?
+        render json: {log_in_error: "You must be logged in to vote."}
+      else
 
-        @vote.descendants.each do |vote|
-          vote.value = @vote.value
-          vote.save
+        @vote = current_user.votes.find_by(issue_id: params[:id])
+
+        if @vote.root?
+          @vote.update_attributes(value: params[:value])
+          @vote.save
+
+          @vote.descendants.each do |vote|
+            vote.value = @vote.value
+            vote.save
+          end
+
+          # @current_user_id = current_user.id
+          # @current_user_vote_value = @vote.value
+
+          firebase_vote(params[:id], true)
+          render json: {}
+        else
+          puts "User has delegated their vote."
+          render json: {delegated_vote_error: "You have already delegated your vote. "}
         end
 
-        # @current_user_id = current_user.id
-        # @current_user_vote_value = @vote.value
-
-        firebase_vote(params[:id])
-        render json: {}
-      else
-        puts "User has delegated their vote."
-        render json: {delegated_vote_error: "You have already delegated your vote. "}
       end
     end
   end
@@ -64,123 +71,132 @@ class IssuesController < ApplicationController
 
     if @issue.closed?
       render json: {closed_message: "This issue is closed and votes can no longer be delegated."}
+    else
 
-    else 
+      if !logged_in?
+        render json: {log_in_error: "You must be logged in to delegate your vote."}
+      else
 
-      @target_representative = User.find(params[:id])
-      @target_representative_vote = @target_representative.votes.find_by(issue_id: params[:issue_id])
-      @current_user = current_user
-      @current_user_vote = @current_user.votes.find_by(issue_id: params[:issue_id])
+        @target_representative = User.find(params[:id])
+        @target_representative_vote = @target_representative.votes.find_by(issue_id: params[:issue_id])
+        @current_user_vote = current_user.votes.find_by(issue_id: params[:issue_id])
 
-   # Firebase Ruby Connection Setup
-      base_uri = ENV['FIREBASE_URL']
-      firebase = Firebase::Client.new(base_uri)
+     # Firebase Ruby Connection Setup
+        base_uri = ENV['FIREBASE_URL']
+        firebase = Firebase::Client.new(base_uri)
 
-      # Send error if user tries to delegate to someone in their subtree
-      if @current_user_vote.descendants.include?(@target_representative_vote)
-        puts "Hierachy error: cannot delegate to a user that is one of your descendants."
+        # Send error if user tries to delegate to someone in their subtree
+        if @current_user_vote.descendants.include?(@target_representative_vote)
+          puts "Hierachy error: cannot delegate to a user that is one of your descendants."
 
-        render json: {hierachy_error: "You cannot delegate to a user who is directly or indirectly delegated to you."}
+          render json: {hierachy_error: "You cannot delegate to a user who is directly or indirectly delegated to you."}
 
-     # Undelegates vote of current user by clicking on yourself
-      elsif @current_user == @target_representative
-        puts "Undelegates vote of current user BY CLICKING ON SELF"
+       # Undelegates vote of current user by clicking on yourself
+        elsif current_user == @target_representative
+          puts "Undelegates vote of current user BY CLICKING ON SELF"
 
-        @old_representative_vote = @current_user_vote.root
-        @old_representative = User.find(@old_representative_vote.user_id)
+          @old_representative_vote = @current_user_vote.root
+          @old_representative = User.find(@old_representative_vote.user_id)
 
-        @current_user_vote.parent = nil
-        @current_user_vote.save
+          @current_user_vote.parent = nil
+          @current_user_vote.save
 
-        response = firebase.push("delegates", {
-          :incident => "undelegate",
-          :old_delegate_count => @old_representative_vote.subtree.count,
-          :old_delegate_id => @old_representative.id,
-          :current_user_count => @current_user_vote.subtree.count,
-          :current_user_id => @current_user.id,
-          :issue_id => @issue.id
+          response = firebase.push("delegates", {
+            :incident => "undelegate",
+            :old_delegate_count => @old_representative_vote.subtree.count,
+            :old_delegate_id => @old_representative.id,
+            :current_user_count => @current_user_vote.subtree.count,
+            :current_user_id => current_user.id,
+            :issue_id => @issue.id
+            })
+
+          move = true
+          render json: {}
+
+        # Undelegates vote of current user by clicking on the rep
+        elsif @current_user_vote.parent == @target_representative_vote
+          puts "Undelegates vote of current user"
+          @old_representative_vote = @current_user_vote.root
+          @old_representative = User.find(@old_representative_vote.user_id)
+
+          @current_user_vote.parent = nil
+          @current_user_vote.save
+
+          response = firebase.push("delegates", {
+            :incident => "undelegate",
+            :old_delegate_count => @old_representative_vote.subtree.count,
+            :old_delegate_id => @old_representative.id,
+            :current_user_count => @current_user_vote.subtree.count,
+            :current_user_id => current_user.id,
+            :issue_id => @issue.id
           })
 
-        render json: {}
+          move = true
+          render json: {}
 
-      # Undelegates vote of current user by clicking on the rep
-      elsif @current_user_vote.parent == @target_representative_vote
-        puts "Undelegates vote of current user"
-        @old_representative_vote = @current_user_vote.root
-        @old_representative = User.find(@old_representative_vote.user_id)
+         # Redelegates current user's vote to a new parent
+        elsif !@current_user_vote.root? && @current_user_vote.parent != @target_representative_vote
 
-        @current_user_vote.parent = nil
-        @current_user_vote.save
+          puts "Redelegates current user's vote to a new parent"
+          @old_root_vote = @current_user_vote.root
+          @old_rep_root = User.find(@old_root_vote.user_id)
 
-        response = firebase.push("delegates", {
-          :incident => "undelegate",
-          :old_delegate_count => @old_representative_vote.subtree.count,
-          :old_delegate_id => @old_representative.id,
-          :current_user_count => @current_user_vote.subtree.count,
-          :current_user_id => @current_user.id,
-          :issue_id => @issue.id
-        })
+          @old_rep_id = @current_user_vote.parent.user_id
 
-        render json: {}
+          @current_user_vote.parent = @target_representative_vote
+          @current_user_vote.save
 
-      # Redelegates current user's vote to a new parent
-      elsif !@current_user_vote.root? && @current_user_vote.parent != @target_representative_vote
+          @new_root_vote = @current_user_vote.root
+          @new_root_rep = User.find(@new_root_vote.user_id)
 
-        puts "Redelegates current user's vote to a new parent"
-        @old_root_vote = @current_user_vote.root
-        @old_rep_root = User.find(@old_root_vote.user_id)
+          response = firebase.push("delegates", {
+            :incident => "redelegate",
+            :old_rep_root_count => @old_root_vote.subtree.count,
+            :old_rep_root_id => @old_rep_root.id,
+            :old_rep_id => @old_rep_id,
+            :new_rep_count => @target_representative_vote.subtree.count,
+            :new_rep_id => @target_representative.id,
+            :current_user_id => current_user.id,
+            :new_rep_root_count => @new_root_vote.subtree.count,
+            :new_rep_root_id => @new_root_rep.id,
+            :issue_id => @issue.id
+          })
 
-        @current_user_vote.parent = @target_representative_vote
-        @current_user_vote.save
+          move = false
+          render json: {}
 
-        @new_root_vote = @current_user_vote.root
-        @new_root_rep = User.find(@new_root_vote.user_id)
+        # Delegate's current user's vote, which is currently not designated
+        elsif @current_user_vote.root?
+          puts "Delegate's current user's vote, which is currently not designated"
+          @current_user_vote.parent = @target_representative_vote
+          @current_user_vote.save
 
-        response = firebase.push("delegates", {
-          :incident => "redelegate",
-          :old_rep_root_count => @old_root_vote.subtree.count,
-          :old_rep_root_id => @old_rep_root.id,
-          :new_rep_count => @target_representative_vote.subtree.count,
-          :new_rep_id => @target_representative.id,
-          :current_user_id => @current_user.id,
-          :new_rep_root_count => @new_root_vote.subtree.count,
-          :new_rep_root_id => @new_root_rep.id,
-          :issue_id => @issue.id
-        })
+          @new_rep_vote = @current_user_vote.parent
+          @new_rep = User.find(@new_rep_vote.user_id)
 
-        render json: {}
+          @root_vote = @target_representative_vote.root
+          @root = User.find(@root_vote.user_id)
 
-      # Delegate's current user's vote, which is currently not designated
-      elsif @current_user_vote.root?
-        puts "Delegate's current user's vote, which is currently not designated"
-        @current_user_vote.parent = @target_representative_vote
-        @current_user_vote.save
+          response = firebase.push("delegates", {
+            :incident => "new delegate",
+            :root_count => @root_vote.subtree.count,
+            :root_user_id => @root.id,
+            :new_rep_id => @new_rep.id,
+            :current_user_id => current_user.id,
+            :issue_id => @issue.id
+          })
 
-        @new_rep_vote = @current_user_vote.parent
-        @new_rep = User.find(@new_rep_vote.user_id)
+          move = false
+          render json: {}
+        end
 
-        @root_vote = @target_representative_vote.root
-        @root = User.find(@root_vote.user_id)
+        @target_representative_vote.descendants.each do |vote|
+          vote.value = @target_representative_vote.value
+          vote.save
+        end
 
-        response = firebase.push("delegates", {
-          :incident => "new delegate",
-          :root_count => @root_vote.subtree.count,
-          :root_user_id => @root.id,
-          :new_rep_id => @new_rep.id,
-          :current_user_id => @current_user.id,
-          :issue_id => @issue.id
-        })
-
-        render json: {}
+        firebase_vote(params[:issue_id], move)
       end
-
-      @target_representative_vote.descendants.each do |vote|
-        vote.value = @target_representative_vote.value
-        vote.save
-      end
-
-      firebase_vote(params[:issue_id])
-
     end
 
     # response.success? # => true
@@ -192,34 +208,29 @@ class IssuesController < ApplicationController
   end
 
   def live
+
     @current_issue = Issue.find(params[:id])
     @participants = @current_issue.voters.order(id: :asc)
-    @finish_time = @current_issue.finish_date
+    @finish_time = @current_issue.finish_date.utc
 
-    if logged_in?
-      @current_user = current_user
-    else
-      @current_user = User.first
-    end
+    base_uri = ENV['FIREBASE_URL']
+    firebase = Firebase::Client.new(base_uri)
+    firebase.delete("delegates")
+    firebase.delete("votes")
+    firebase.delete("users")
 
     if @current_issue.closed?
-      puts "Issue is not open."
-
+      puts "Issue is closed!"
     else
       puts "Issue is open!"
-      base_uri = ENV['FIREBASE_URL']
-      firebase = Firebase::Client.new(base_uri)
-      firebase.delete("delegates")
-      firebase.delete("votes")
-      firebase.delete("users")
-      # @current_issue.generate_leaderboard
 
+      if logged_in?
+        @current_user_vote = current_user.votes.find_by(issue_id: @current_issue.id)
 
-      @current_user_vote = @current_user.votes.find_by(issue_id: @current_issue.id)
-
-      if !@current_user_vote.root?
-        representative_vote =@current_user_vote.parent
-        @representative_id = User.find(representative_vote.user_id).id
+        if !@current_user_vote.root?
+          representative_vote = @current_user_vote.parent
+          @representative_id = User.find(representative_vote.user_id).id
+        end
       end
 
     end
@@ -227,7 +238,7 @@ class IssuesController < ApplicationController
 
   private
 
-    def firebase_vote(id)
+    def firebase_vote(id, move)
       issue = Issue.find(id)
 
       data = {
@@ -240,7 +251,8 @@ class IssuesController < ApplicationController
         vote_count: issue.vote_count,
         abstain_count: issue.abstain_count,
         current_user_id: current_user.id,
-        current_user_vote_value: current_user.votes.find_by(issue_id: id).value
+        current_user_vote_value: current_user.votes.find_by(issue_id: id).value,
+        move_to_vote_zone: move
       }
 
       firebase = Firebase::Client.new(ENV['FIREBASE_URL'])

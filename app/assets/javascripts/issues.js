@@ -68,6 +68,7 @@ var newLittleDrawChart = function(yesVotes, noVotes, abstainCount, issueId) {
   ];
 
   var options = {
+    showTooltips : false,
     segmentShowStroke : false,
     segmentStrokeColor : "#fff",
     segmentStrokeWidth : 0,

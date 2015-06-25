@@ -1,0 +1,35 @@
+// Issue is closed, lock down the dashboard
+.victory {
+  padding: 20px;
+  width: 300px;
+  margin: 0 auto;
+  background: @primarycolor;
+  .border-radius(4px);
+  text-align: center;
+  margin-bottom: 20px;
+  h2 {
+    color: #FFF;
+    margin: 0;
+  }
+  @media @mobile {
+    width: auto;
+  }
+}
+
+.dashboard.closed {
+  .participant {
+    .opacity(40);
+  }
+  .vote-button {
+    display: none;
+  }
+  .victory {
+    display: block;
+  }
+}
+
+.dashboard.open {
+  .victory {
+    display: none;
+  }
+}
