@@ -8,14 +8,10 @@
         <%= f.submit "Logout", class: "profile-clear" %>
       <% end %>
     </div>
+  <% else %>
+    <div class="google-oauth">
+      <a href="#">Login With Google+</a>
+    </div>
   <% end %>
-
-  <% if session[:username] == nil %>
-  <div class="google-oauth">
-    <a href="#">Login With Google+</a>
-  </div>
-<% end %>
-
-
 </div>
 

@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
   def create
 
     if request.xhr?
+
       @user = User.find_by(username: params["email"])
 
       if @user.nil?

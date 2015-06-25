@@ -1,7 +1,8 @@
 $(document).on("ready, page:change", function() {
   if ($('#live-dashboard').length) {
-
-    var timeRemaining = (Date.parse(finishTime) - Date.now());
+    //Replace '-' with '/' so date can be parsed by Safari 
+    var updatedFinishTime = new Date(finishTime.replace(/-/g, "/"));
+    var timeRemaining = (Date.parse(updatedFinishTime) - Date.now());
 
     if (timeRemaining < 0) {
       var clock = $('.clock').FlipClock(0, {
@@ -76,7 +77,7 @@ $(document).on("ready, page:change", function() {
       console.log("firebase user snapshot");
       console.log(message);
 
-      if ($('.dashboard.closed').length === 0) {
+      if ($('.dashboard.closed').length === 0 && $('.participant#' + message.id).length === 0) {
         changeUserDOM(message);
       }
     });
