@@ -4,7 +4,7 @@
     <span class="user-profile-username">"<%= current_user.first_name %>"
     </span>
     | <%= form_for(:session, url: logout_path, method: "delete" ) do |f| %>
-      <%= f.submit " Logout", class: "profile-clear" %>
+      <%= f.submit "Logout", class: "profile-clear" %>
     <% end %>
   <% end %>
 
