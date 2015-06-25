@@ -2534,9 +2534,9 @@ body.two-sidebars .region-below-content {
   display: inline-block;
   text-transform: uppercase;
   font: bold 1.1em "open sans", "helvetica", "arial";
-  height: 30px;
+  height: 40px;
   margin: 0px;
-  line-height: 2.2em;
+  line-height: 42px;
 }
 @media only screen and (max-width : 768px) {
   .header-menu {
@@ -3461,7 +3461,7 @@ body.two-sidebars .region-below-content {
   }
 }
 .region.hero {
-  background-image: url('/assets/113H-resize.jpg');
+  background-image: url('/assets/113h-size2.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   vertical-align: middle;
@@ -3470,6 +3470,7 @@ body.two-sidebars .region-below-content {
 }
 @media only screen and (max-width : 768px) {
   .region.hero {
+    background-image: url('/assets/113H-resize.jpg');
     background-size: cover;
     background-position: center;
   }
