@@ -1,24 +1,24 @@
 $(document).on("ready, page:change", function() {
   if ($('#live-dashboard').length) {
 
-    var timeRemaining = (Date.parse(finishTime) - Date.now())/1000;
-    console.log(timeRemaining)
+    var timeRemaining = (Date.parse(finishTime) - Date.now());
 
     if (timeRemaining < 0) {
-      var clock = new $('.clock').FlipClock(0, {
-        countdown: false
+      var clock = $('.clock').FlipClock(0, {
+        countdown: true,
       });
     }
     else {
-      var clock = new $('.clock').FlipClock(timeRemaining, {
-        countdown: true,
-        callbacks: {
-          stop: function() {
-            console.log("timer countdown reached");
-          }
-        }
-      });
-    }
+       var clock = new $('.clock').FlipClock(timeRemaining/1000, {
+         countdown: true,
+         callbacks: {
+           stop: function() {
+             closeIssue();
+           }
+         }
+       });
+     }
+
 
     listenButtons();
     delegateButton();
@@ -84,6 +84,11 @@ $(document).on("ready, page:change", function() {
 
     clearErrorsOnClick();
 });
+
+
+var closeIssue = function() {
+  $('.clock').replaceWith("<p>This issue is closed</p>")
+}
 
 var clearErrors = function(){
   if ($('#errors').children().length > 0) {
