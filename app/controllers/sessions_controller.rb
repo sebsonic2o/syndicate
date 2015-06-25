@@ -13,7 +13,13 @@ class SessionsController < ApplicationController
 
       if @user.nil?
         @user = User.new(username: params["email"], image_url: params["imageUrl"], first_name: params["givenName"], last_name: params["familyName"])
-        @user.voted_issues = Issue.all
+
+        Issue.all.each do |issue|
+          if !issue.closed?
+            @user.voted_issues << issue
+          end
+        end
+
         @user.save
 
         firebase_user

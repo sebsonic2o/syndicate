@@ -207,32 +207,28 @@ class IssuesController < ApplicationController
   def live
 
     @current_issue = Issue.find(params[:id])
-
     @participants = @current_issue.voters.order(id: :asc)
     @finish_time = @current_issue.finish_date.utc
 
+    base_uri = ENV['FIREBASE_URL']
+    firebase = Firebase::Client.new(base_uri)
+    firebase.delete("delegates")
+    firebase.delete("votes")
+    firebase.delete("users")
+
     if @current_issue.closed?
       puts "Issue is closed!"
-
     else
       puts "Issue is open!"
 
       if logged_in?
-        base_uri = ENV['FIREBASE_URL']
-        firebase = Firebase::Client.new(base_uri)
-        firebase.delete("delegates")
-        firebase.delete("votes")
-        firebase.delete("users")
-      # @current_issue.generate_leaderboard
-
         @current_user_vote = current_user.votes.find_by(issue_id: @current_issue.id)
 
         if !@current_user_vote.root?
-          representative_vote =@current_user_vote.parent
+          representative_vote = @current_user_vote.parent
           @representative_id = User.find(representative_vote.user_id).id
         end
       end
-
 
     end
   end
