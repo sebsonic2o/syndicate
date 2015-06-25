@@ -2127,6 +2127,18 @@ body.two-sidebars .region-below-content {
     left: 0;
     padding: 14px;
   }
+  .region.hero {
+    margin: 0;
+    padding: 0;
+    height: auto;
+    display: block;
+    float: none;
+    width: auto;
+    position: relative;
+    top: 0;
+    left: 0;
+    padding: 14px;
+  }
   .block {
     margin: 0;
     padding: 0;
@@ -2494,7 +2506,6 @@ body.two-sidebars .region-below-content {
   left: 0;
 }
 .top {
-  height: 8px;
   background: #d83c3c;
 }
 .header {
@@ -2551,6 +2562,7 @@ body.two-sidebars .region-below-content {
   height: 30px;
   font-size: 15px;
   line-height: 2.1em;
+  color: #FFF;
 }
 .user-profile form {
   margin-right: 0px;
@@ -3259,8 +3271,8 @@ body.two-sidebars .region-below-content {
 @media only screen and (max-width : 768px) {
   .leaderboard h1 {
     margin-top: 0;
-    font-size: 30px;
-    line-height: 34px;
+    font-size: 24px;
+    line-height: 28px;
   }
 }
 .leaderboard #vs-board {
@@ -3332,6 +3344,14 @@ body.two-sidebars .region-below-content {
   color: #f5781e;
   margin-bottom: 25px;
 }
+.leaderboard .abstain-button {
+  display: block;
+  margin-top: 8px;
+  color: #666;
+  text-decoration: underline;
+  font-size: 12px;
+  margin-bottom: 20px;
+}
 .leaderboard .count-board {
   display: block;
   clear: both;
@@ -3393,7 +3413,7 @@ body.two-sidebars .region-below-content {
   .leaderboard .vote-button-style {
     padding: 5px 10px;
     font-size: 11px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 }
 .victory {
@@ -3411,6 +3431,11 @@ body.two-sidebars .region-below-content {
   color: #FFF;
   margin: 0;
 }
+@media only screen and (max-width : 768px) {
+  .victory {
+    width: auto;
+  }
+}
 .dashboard.closed .participant {
   opacity: 0.4;
   filter: alpha(opacity=40);
@@ -3424,9 +3449,6 @@ body.two-sidebars .region-below-content {
 .dashboard.open .victory {
   display: none;
 }
-.hero {
-  margin-bottom: 15em;
-}
 @media only screen and (max-width : 768px) {
   .hero {
     margin-bottom: 2em;
@@ -3434,18 +3456,17 @@ body.two-sidebars .region-below-content {
     height: 21.3em;
   }
 }
-.banner {
+.region.hero {
+  background-image: url('/assets/113H-resize.jpg');
   background-size: cover;
+  background-repeat: no-repeat;
   vertical-align: middle;
-  position: absolute;
-  z-index: -1;
-  overflow: hidden;
-  width: 100%;
-  height: 40em;
+  height: 500px;
+  margin-bottom: 30px;
 }
 @media only screen and (max-width : 768px) {
-  .banner {
-    background-size: initial;
+  .region.hero {
+    background-size: cover;
     background-position: center;
   }
 }
@@ -3467,19 +3488,25 @@ body.two-sidebars .region-below-content {
 #hero-text {
   text-align: center;
 }
+#hero-text:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 #hero-text h1 {
   font-family: "roboto slab", "helvetica", "arial";
   padding-top: 3em;
   color: #d83c3c;
   text-align: center;
-  font-size: 3em;
+  font-size: 38px;
   font-weight: 400;
   text-transform: capitalize;
   z-index: 100;
 }
 @media only screen and (max-width : 768px) {
   #hero-text h1 {
-    padding-top: 50px;
+    padding-top: 30px;
+    font-size: 32px;
   }
 }
 #hero-text p {
@@ -3492,6 +3519,12 @@ body.two-sidebars .region-below-content {
   display: block;
   margin: 0 auto;
   margin-bottom: 20px;
+}
+@media only screen and (max-width : 768px) {
+  #hero-text p {
+    width: auto;
+    font-size: 14px;
+  }
 }
 .header-search {
   float: right;
@@ -3593,10 +3626,10 @@ body.two-sidebars .region-below-content {
   padding: 0;
 }
 #title-thinger {
-  margin-top: 8em;
-  margin-bottom: 1em;
+  margin-bottom: 20px;
   text-align: center;
-  font-size: 2em;
+  font-size: 30px;
+  font-family: "roboto slab", "helvetica", "arial";
 }
 @media only screen and (max-width : 768px) {
   #title-thinger {
@@ -3614,13 +3647,16 @@ body.two-sidebars .region-below-content {
   visibility: hidden;
 }
 .hero-button button {
-  overflow: visible;
   display: block;
   margin-top: 2em;
   margin-right: auto;
   margin-left: auto;
   border: 0;
-  padding: 20px;
+  padding: 20px 26px 20px 44px;
+  background-image: url("/assets/google-plus.png");
+  background-position: 13px 20px;
+  background-size: 30px;
+  background-repeat: no-repeat;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
@@ -3631,7 +3667,7 @@ body.two-sidebars .region-below-content {
   font: 1.3em "open sans", "helvetica", "arial";
   color: #fff;
   text-transform: uppercase;
-  background: #d83c3c;
+  background-color: #d83c3c;
   /*#d83c3c*/
   /*border-radius: 0 0px 3px 0;*/
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
@@ -3639,7 +3675,7 @@ body.two-sidebars .region-below-content {
   z-index: 1000;
 }
 .hero-button button:hover {
-  background: #e54040;
+  background-color: #e54040;
 }
 .hero-button button:active,
 .hero-button button:focus {
@@ -3697,8 +3733,12 @@ body.two-sidebars .region-below-content {
   width: 100%;
 }
 .hot-issue .issue-body .issue-image {
-  height: 200px;
+  height: 160px;
   overflow: hidden;
+  margin-bottom: 5px;
+}
+.hot-issue h2 {
+  font-weight: 400;
 }
 .hot-issue.view-mode-full {
   border-bottom: none;
@@ -4780,7 +4820,7 @@ input[value="Back"] {
   background-color: #181f23;
   color: #d83c3c;
 }
-/*
+/* 
    Shopping Cart Block
    ========================================================================== */
 #block-views-cart-badge-block {
@@ -5054,9 +5094,9 @@ input[value="Back"] {
 /* Shopping Cart Block
 ----------------------------------------------------------------------------------------------------*/
 #block-va-cart-utilities-cart-info {
-  /*
-	background: @black url('../images/textures/subtlepatterns/classy_fabric.png') repeat;
-	.border-radius-multiple(0,4px,4px,0);
+  /* 
+	background: @black url('../images/textures/subtlepatterns/classy_fabric.png') repeat; 
+	.border-radius-multiple(0,4px,4px,0);		
 	*/
   background: #c42e00 url('../images/textures/subtlepatterns/white_carbon_red.png') repeat;
   color: #ffffff;
@@ -6426,7 +6466,7 @@ select:focus {
 
 	MeanMenu 2.0.6
 	--------
-
+	
 	To be used with jquery.meanmenu.js by Chris Wharton (http://www.meanthemes.com/plugins/meanmenu/)
 
 ####################################################################### */
@@ -6749,7 +6789,7 @@ a.meanmenu-reveal {
   -moz-border-radius: 3px;
   border-radius: 3px;
 }
-/*
+/* 
    Responsive Image
    ========================================================================== */
 .img-normal {
@@ -6757,7 +6797,7 @@ a.meanmenu-reveal {
   width: auto;
   height: auto;
 }
-/*
+/* 
    Utility
    ========================================================================== */
 .left {
@@ -6837,7 +6877,7 @@ a.meanmenu-reveal {
 .nomargin {
   margin: 0 !important;
 }
-/*
+/* 
    Absolute Positioning
    ========================================================================== */
 .absolute-center {
@@ -6863,7 +6903,7 @@ a.meanmenu-reveal {
   right: 0;
 }
 /*
-* 	Owl Carousel Owl Demo Theme
+* 	Owl Carousel Owl Demo Theme 
 *	v1.3.3
 */
 .owl-wrapper {
@@ -7335,7 +7375,7 @@ a.meanmenu-reveal {
 }
 .socialmedia {
   margin: 8px 0 0 0;
-  /* --------------------------------------------------------------------------------------------------------------
+  /* --------------------------------------------------------------------------------------------------------------	
 All images are in folders as below:
 
 COLOUR SQUARES 	../images/social/squares/facebook.png
@@ -7981,7 +8021,7 @@ hr,
   border-bottom: 2px solid #c0c4c6;
   display: block;
 }
-/*
+/* 
    Vertical tabs used on product page ie "overview, accommodation, meals"
    ========================================================================== */
 div.vertical-tabs {
@@ -8101,7 +8141,7 @@ div.vertical-tabs .vertical-tabs-panes .field-label {
   }
 }
 div.vertical-tabs .vertical-tabs-panes .field-type-text-long {
-  /*
+  /* 
 			p:nth-child(1) {
 			    width: 46%;
 			    margin-right: 4%;
@@ -8117,7 +8157,7 @@ div.vertical-tabs .vertical-tabs-panes .field-type-text-long {
 /* ==========================================================================
    Slide Content Type & Fullwidth Video
    ========================================================================== */
-/*
+/* 
    View Using Display Suite Teaser Code Fields
    ========================================================================== */
 #block-views-homepage-slider-block-1 {
@@ -8302,7 +8342,7 @@ div.vertical-tabs .vertical-tabs-panes .field-type-text-long {
   position: absolute;
   z-index: 99;
 }
-/*
+/* 
    View Using View Fields
    ========================================================================== */
 .view-homepage-slider.view-display-id-block_0 {
@@ -8445,9 +8485,9 @@ div.mc-image {
   -o-transition: opacity 1s ease-in-out;
   transition: opacity 1s ease-in-out;
   /*If you are using horizontal slide transitions, use the following CSS:
-	-webkit-transition: left 1s ease-in-out;
-	-moz-transition: left 1s ease-in-out;
-	-o-transition: left 1s ease-in-out;
+	-webkit-transition: left 1s ease-in-out; 
+	-moz-transition: left 1s ease-in-out; 
+	-o-transition: left 1s ease-in-out; 
 	transition: left 1s ease-in-out;*/
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -8615,7 +8655,7 @@ div.mc-image {
   }
 }
 /*
-Back to top button
+Back to top button 
 */
 #back-top {
   position: fixed;

@@ -14,11 +14,10 @@
     <%= render '/layouts/header' %>
 
     <div class="region hero">
-        <div class="banner">
-          <%= image_tag("113H-resize.jpg") %>
-        </div>
-        <div class="shadow-box"></div>
       <div id="region-inner">
+        <div class="banner">
+        </div>
+        <!-- <div class="shadow-box"></div> -->
         <div id="hero-text">
           <!-- Who Will Build The Roads? -->
           <h1>Can we change the way we Vote?</h1>
@@ -28,17 +27,17 @@
           <!-- Join the Liquid Democracy. -->
           <!-- Liquify your voting. -->
           <!-- Don't think twice about voting. -->
+           <div class="hero-button">
+          <button id="google-oauth" class="signup">Signin To Vote</button>
         </div>
-        <div class="hero-button">
-
-          <button id="google-oauth" class="signup">Your Vote Counts</button>
-
         </div>
+
       </div>
     </div>
     <div class="region hot-issues">
       <div id="title-thinger">
-        Hot Issues
+        Recent Issues
+        <p>View recent issues and cast your vote</p>
       </div>
       <div class="region-inner"
         <div class="grid-container">
@@ -54,8 +53,10 @@
                   <h2 class="hot-issue-heading">
                     <a href="/issues/<%= issue.id %>/live">
                       <%= issue.title %>
+
                     </a>
                   </h2>
+                  <p><%= issue.description %></p>
                 <!--   <p><%= issue.description %></p> -->
                 </div>
               </div>
