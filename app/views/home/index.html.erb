@@ -13,14 +13,14 @@
     <%= render '/layouts/top' %>
     <%= render '/layouts/header' %>
 
-    <div class="region hero">
+    <div class="region hero" style="background-image: url(<%= asset_path '113h-size2.jpg' %>);">
       <div id="region-inner">
 
         <!-- <div class="shadow-box"></div> -->
         <div id="hero-text">
           <!-- Who Will Build The Roads? -->
           <h1>Can we change the way we Vote?</h1>
-          <p>To change our political habits we need to fundamentally change the way we vote. Technology has been transformative in so many areas of our lives, yet politics remains unchanged.</p>
+          <p>To change our political habits we need to fundamentally change the way we vote. Technology has been transformative in so many areas of our lives, yet politics remain unchanged.</p>
           <p><strong>Syndicate</strong> is an experimental platform where voters use either direct or representative democracy to vote on individual issues.</p>
 
           <!-- Join the Liquid Democracy. -->
@@ -29,7 +29,7 @@
         </div>
 
         <div class="hero-button">
-          <button class="signup google-oauth">Sign in with Google</button>
+          <button class="signup google-oauth" style="background-image: url(<%= asset_path 'google-plus.png' %>);">Sign in with Google</button>
         </div>
 
       </div>
