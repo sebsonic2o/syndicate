@@ -30,8 +30,8 @@ class IssuesController < ApplicationController
           vote.save
         end
 
-        # current_user_id = current_user.id
-        # current_user_vote_value = @vote.value
+        # @current_user_id = current_user.id
+        # @current_user_vote_value = @vote.value
 
         firebase_vote(params[:id], true)
         render json: {}
@@ -157,7 +157,7 @@ class IssuesController < ApplicationController
         @current_user_vote.parent = @target_representative_vote
         @current_user_vote.save
 
-        @new_rep_vote = current_user_vote.parent
+        @new_rep_vote = @current_user_vote.parent
         @new_rep = User.find(@new_rep_vote.user_id)
 
         @root_vote = @target_representative_vote.root
