@@ -1,0 +1,43 @@
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Syndicate</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body data-env="<%= ENV['FIREBASE_URL'] %>">
+    <%= render '/layouts/top' %>
+    <%= render '/layouts/header' %>
+
+    <div class="region middle" style="margin-top: 30px;">
+      <div class="region-inner">
+        <h1>About Syndicate</h1>
+
+        <h1>Technology</h1>
+        <h3>Rails</h3>
+        <p>Coupled Rails app</p>
+
+        <h3>Firebase</h3>
+        <p>To build the live dashboard we needed an effective way to push live DOM updates to multiple clients on the same screen. We investigated a REDIS/Socket.io implementation and Firebase. Firebase was selected for it's ease of use and it's pre-bundled event listener.
+
+          <pre>
+            myDelegateRef.on('child_added', function(snapshot) {
+      var message = snapshot.val();
+      console.log("firebase delegate snapshot")
+          </pre>
+
+        <h3>HTML/CSS - Rob's Custom Framework</h3>
+
+        <h3>Heroku</h3>
+        <p>
+
+
+      </div>
+    </div>
+
+  </body>
+</html>

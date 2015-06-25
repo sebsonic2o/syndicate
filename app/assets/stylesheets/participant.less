@@ -6,9 +6,9 @@
   .grid(1);
   margin-bottom: 10px;
   text-align: center;
-  min-height: 180px;
+  min-height: 130px;
   @media @desktop {
-    min-height: 140px;
+    min-height: 130px;
   }
   @media @desktop-xl {
     min-height: 200px;
@@ -17,7 +17,7 @@
     width: 23%;
     float: left;
     margin-right: 2%;
-    min-height: 170px;
+    min-height: 136px;
   }
   &.yes {
   }
@@ -37,7 +37,7 @@
       // .box-shadow();
     }
     &.rep {
-      border: 2px solid #CCC !important;
+      border: 2px solid @primarycolor !important;
     }
   }
   .participant-avatar {
@@ -45,6 +45,7 @@
   }
   .participant-username {
     margin: 0px;
+    margin-bottom: 4px;
     font-size: 13px;
     font-weight: 400;
     em {
@@ -54,6 +55,7 @@
       font-family: @basefont;
       font-weight: 400;
       font-style: normal;
+      display: none;
     }
   }
   .participant-vote-count {

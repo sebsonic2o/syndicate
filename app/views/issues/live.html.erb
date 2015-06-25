@@ -22,6 +22,7 @@
           <button type="submit" class="vote-button-style" id="yes-button" value="YES" method="POST" action="/issues/<%= @current_issue.id %>/vote?value=yes">Vote YES
           </button>
           <a href="#" class="abstain-button">Abstain</a>
+
         </div>
       </div>
 
@@ -94,8 +95,6 @@
     <!-- end participants -->
   </div>
   <!-- end dashboard div -->
-
-  <a href="/issues/<%= @current_issue.id %>/clear">Clear Issue</a>
 
 </div>
 
