@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   patch '/issues/:issue_id/users/:id/delegate' => 'issues#delegate'
 
   get '/home' => 'home#index'
+  get '/about' => 'home#about'
+
   get '/issues/:id/live' => 'issues#live'
   get '/issues/:id/graph' => 'issues#graph'
   get '/issues/:id/clear' => 'issues#clear'

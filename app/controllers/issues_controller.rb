@@ -42,7 +42,7 @@ class IssuesController < ApplicationController
           render json: {}
         else
           puts "User has delegated their vote."
-          render json: {delegated_vote_error: "You have already delegated your vote. "}
+          render json: {delegated_vote_error: "You have already delegated your vote. If you wish to vote directly, first undelegate your vote. "}
         end
 
       end
@@ -116,16 +116,22 @@ class IssuesController < ApplicationController
         # Undelegates vote of current user by clicking on the rep
         elsif @current_user_vote.parent == @target_representative_vote
           puts "Undelegates vote of current user"
-          @old_representative_vote = @current_user_vote.root
-          @old_representative = User.find(@old_representative_vote.user_id)
+          # @old_representative_vote = @current_user_vote.root
+          # @old_representative = User.find(@old_representative_vote.user_id)
+
+          @old_root_vote = @current_user_vote.root
+          @old_rep_root = User.find(@old_root_vote.user_id)
+
+          @old_rep_id = @current_user_vote.parent.user_id
 
           @current_user_vote.parent = nil
           @current_user_vote.save
 
           response = firebase.push("delegates", {
             :incident => "undelegate",
-            :old_delegate_count => @old_representative_vote.subtree.count,
-            :old_delegate_id => @old_representative.id,
+            :old_root_vote_count => @old_root_vote.subtree.count,
+            :old_rep_root_id => @old_rep_root.id,
+            :old_rep_id => @old_rep_id,
             :current_user_count => @current_user_vote.subtree.count,
             :current_user_id => current_user.id,
             :issue_id => @issue.id
