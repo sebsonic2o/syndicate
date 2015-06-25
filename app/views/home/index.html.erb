@@ -30,26 +30,21 @@
         </div>
       </div>
     </div>
-
     <div class="region hot-issues">
       <div id="title-thinger">
         Hot Issues
       </div>
-
       <div class="region-inner"
         <div class="grid-container">
           <div class="issues">
             <% @hot_issues.each do |issue| %>
               <div id="issue-<%= issue.id %>" class="hot-issue">
-
                 <div class="issue-body">
-
                   <div class="issue-image">
                     <a href="/issues/<%= issue.id %>">
                       <%= image_tag(issue.image_url) %>
                     </a>
                   </div>
-
                   <h2 class="hot-issue-heading">
                     <%= link_to issue.title, issue %>
                   </h2>
