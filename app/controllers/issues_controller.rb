@@ -66,10 +66,10 @@ class IssuesController < ApplicationController
     response = firebase.delete("users")
   end
 
-  def set_time 
+  def set_time
     current_issue = Issue.find(params[:id])
     current_issue.finish_date = Time.now + params[:minutes].to_i.minutes
-    current_issue.save 
+    current_issue.save
     redirect_to action: "live", id: params[:id]
   end
 
@@ -102,20 +102,23 @@ class IssuesController < ApplicationController
         elsif current_user == @target_representative
           puts "Undelegates vote of current user BY CLICKING ON SELF"
 
-          @old_representative_vote = @current_user_vote.root
-          @old_representative = User.find(@old_representative_vote.user_id)
+          @old_root_vote = @current_user_vote.root
+          @old_rep_root = User.find(@old_root_vote.user_id)
+
+          @old_rep_id = @current_user_vote.parent.user_id
 
           @current_user_vote.parent = nil
           @current_user_vote.save
 
           response = firebase.push("delegates", {
             :incident => "undelegate",
-            :old_delegate_count => @old_representative_vote.subtree.count,
-            :old_delegate_id => @old_representative.id,
+            :old_rep_root_count => @old_root_vote.subtree.count,
+            :old_rep_root_id => @old_rep_root.id,
+            :old_rep_id => @old_rep_id,
             :current_user_count => @current_user_vote.subtree.count,
             :current_user_id => current_user.id,
             :issue_id => @issue.id
-            })
+          })
 
           move = true
           render json: {}
@@ -136,7 +139,7 @@ class IssuesController < ApplicationController
 
           response = firebase.push("delegates", {
             :incident => "undelegate",
-            :old_root_vote_count => @old_root_vote.subtree.count,
+            :old_rep_root_count => @old_root_vote.subtree.count,
             :old_rep_root_id => @old_rep_root.id,
             :old_rep_id => @old_rep_id,
             :current_user_count => @current_user_vote.subtree.count,
