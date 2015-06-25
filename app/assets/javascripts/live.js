@@ -76,7 +76,7 @@ $(document).on("ready, page:change", function() {
       console.log("firebase user snapshot");
       console.log(message);
 
-      if ($('.dashboard.closed').length === 0) {
+      if ($('.dashboard.closed').length === 0 && $('.participant#' + message.id).length === 0) {
         changeUserDOM(message);
       }
     });
