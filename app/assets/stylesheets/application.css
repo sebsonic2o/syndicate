@@ -1,5 +1,3 @@
-/* CSS crunched with Crunch - http://crunchapp.net/ */
-@charset "UTF-8";
 @import url(https://fonts.googleapis.com/css?family=Lora:400,700|Open+Sans:400,600,300,700,800|Roboto+Slab:400,300,700|Merriweather:400,300,700|Slabo+27px);
 /* ==========================================================================
    Styles
@@ -2719,6 +2717,7 @@ body.two-sidebars .region-below-content {
   top: -1px;
   padding-bottom: 14px;
   padding-top: 14px;
+  min-height: 400px;
   box-sizing: border-box;
 }
 .issue:after {
@@ -2781,6 +2780,7 @@ body.two-sidebars .region-below-content {
 }
 @media only screen and (max-width : 768px) {
   .issue {
+    min-height: 200px;
     border-top: none;
     border-bottom: 1px solid #CCC;
     top: 0px;
@@ -2965,7 +2965,7 @@ body.two-sidebars .region-below-content {
   box-sizing: border-box;
   margin-bottom: 10px;
   text-align: center;
-  min-height: 180px;
+  min-height: 130px;
 }
 @media only screen and (min-width : 1380px) {
   .participant {
@@ -3004,7 +3004,7 @@ body.two-sidebars .region-below-content {
 }
 @media only screen and (min-width : 1024px) and (max-width : 1380px) {
   .participant {
-    min-height: 140px;
+    min-height: 130px;
   }
 }
 @media only screen and (min-width : 1380px) {
@@ -3017,7 +3017,7 @@ body.two-sidebars .region-below-content {
     width: 23%;
     float: left;
     margin-right: 2%;
-    min-height: 170px;
+    min-height: 136px;
   }
 }
 .participant.delegated {
@@ -3044,13 +3044,14 @@ body.two-sidebars .region-below-content {
   border: 2px solid #333 !important;
 }
 .participant .participant-image.rep {
-  border: 2px solid #CCC !important;
+  border: 2px solid #d83c3c !important;
 }
 .participant .participant-avatar {
   position: relative;
 }
 .participant .participant-username {
   margin: 0px;
+  margin-bottom: 4px;
   font-size: 13px;
   font-weight: 400;
 }
@@ -3061,6 +3062,7 @@ body.two-sidebars .region-below-content {
   font-family: "open sans", "helvetica", "arial";
   font-weight: 400;
   font-style: normal;
+  display: none;
 }
 .participant .constituents:after {
   content: "";
@@ -3272,8 +3274,8 @@ body.two-sidebars .region-below-content {
 }
 .leaderboard h1 {
   text-align: center;
-  font-size: 38px;
-  margin-bottom: 20px;
+  font-size: 34px;
+  margin-bottom: 14px;
 }
 @media only screen and (max-width : 768px) {
   .leaderboard h1 {
@@ -8868,6 +8870,7 @@ Back to top button
 #cboxClose:hover {
   background-position: -25px -25px;
 }
+@charset "UTF-8";
 /*!
 Animate.css - http://daneden.me/animate
 Licensed under the MIT license - http://opensource.org/licenses/MIT
