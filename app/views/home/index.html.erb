@@ -14,25 +14,31 @@
     <%= render '/layouts/header' %>
 
     <div class="region hero">
-        <div class="banner">
-          <%= image_tag("wood.jpg") %>
-        </div>
-        <div class="shadow-box"></div>
       <div id="region-inner">
+
+        <!-- <div class="shadow-box"></div> -->
         <div id="hero-text">
-          Vote to make your world better.
+          <!-- Who Will Build The Roads? -->
+          <h1>Can we change the way we Vote?</h1>
+          <p>To change our political habits we need to fundamentally change the way we vote. Technology has been transformative in so many areas of our lives, yet politics remains unchanged.</p>
+          <p><strong>Syndicate</strong> is an experimental platform where voters use either direct or representative democracy to vote on individual issues.</p>
+
           <!-- Join the Liquid Democracy. -->
           <!-- Liquify your voting. -->
           <!-- Don't think twice about voting. -->
         </div>
+
         <div class="hero-button">
-          <button id="google-oauth" class="signup">Sign up!</button>
+          <button class="signup google-oauth">Sign in with Google</button>
         </div>
+
       </div>
     </div>
+
     <div class="region hot-issues">
       <div id="title-thinger">
-        Hot Issues
+        Recent Issues
+        <p>View recent issues and cast your vote</p>
       </div>
       <div class="region-inner"
         <div class="grid-container">
@@ -41,13 +47,17 @@
               <div id="issue-<%= issue.id %>" class="hot-issue">
                 <div class="issue-body">
                   <div class="issue-image">
-                    <a href="/issues/<%= issue.id %>">
+                    <a href="/issues/<%= issue.id %>/live">
                       <%= image_tag(issue.image_url) %>
                     </a>
                   </div>
                   <h2 class="hot-issue-heading">
-                    <%= link_to issue.title, issue %>
+                    <a href="/issues/<%= issue.id %>/live">
+                      <%= issue.title %>
+
+                    </a>
                   </h2>
+                  <p><%= issue.description %></p>
                 <!--   <p><%= issue.description %></p> -->
                 </div>
               </div>

@@ -1,17 +1,21 @@
 $(document).on("ready, page:change", function() {
   if ($('#live-dashboard').length) {
 
-    var timeRemaining = (Date.parse(finishTime) - Date.now())/1000;
+    var timeRemaining = (Date.parse(finishTime) - Date.now());
 
     if (timeRemaining < 0) {
       var clock = $('.clock').FlipClock(0, {
         countdown: true,
       });
     }
-
     else {
-      var clock = $('.clock').FlipClock(timeRemaining, {
-        countdown: true,
+       var clock = new $('.clock').FlipClock(timeRemaining/1000, {
+         countdown: true,
+         callbacks: {
+           stop: function() {
+            closeIssue();
+          }
+        }
       });
     }
 
@@ -72,13 +76,24 @@ $(document).on("ready, page:change", function() {
       console.log("firebase user snapshot");
       console.log(message);
 
-      changeUserDOM(message);
+      if ($('.dashboard.closed').length === 0) {
+        changeUserDOM(message);
+      }
     });
 
   }
 
     clearErrorsOnClick();
 });
+
+
+var closeIssue = function() {
+  var animate = $('.victory').addClass("show animated fadeIn");
+  setTimeout(function () {
+      $('.dashboard').removeClass("open");
+      $('.dashboard').addClass("closed");
+  }, 1000)
+}
 
 var clearErrors = function(){
   if ($('#errors').children().length > 0) {
@@ -94,6 +109,7 @@ var clearErrorsOnClick = function(){
 var listenButtons = function() {
   voteButton("#yes-button", "yes");
   voteButton("#no-button", "no");
+  voteButton(".abstain-button", "abstain")
 }
 
 var voteButton = function(buttonClass, voteValue) {
@@ -114,6 +130,15 @@ var voteButton = function(buttonClass, voteValue) {
 
       if (data.hasOwnProperty('delegated_vote_error')) {
         $('.errors').html(data.delegated_vote_error)
+        $('.errors').removeClass("show hide animated fadeIn fadeOut wobble");
+        var animate = $('.errors').addClass("show animated wobble");
+        setTimeout(function () {
+            animate.addClass("fadeOut");
+        }, 2000)
+      }
+
+      if (data.hasOwnProperty('log_in_error')) {
+        $('.errors').html(data.log_in_error)
         $('.errors').removeClass("show hide animated fadeIn fadeOut wobble");
         var animate = $('.errors').addClass("show animated wobble");
         setTimeout(function () {
@@ -219,6 +244,14 @@ var delegateButton = function(){
             animate.addClass("fadeOut");
         }, 2000)
       }
+      if (data.hasOwnProperty('log_in_error')) {
+        $('.errors').html(data.log_in_error)
+        $('.errors').removeClass("show hide animated fadeIn fadeOut wobble");
+        var animate = $('.errors').addClass("show animated wobble");
+        setTimeout(function () {
+            animate.addClass("fadeOut");
+        }, 2000)
+      }
     });
 
     request.fail(function(response) {
@@ -266,6 +299,7 @@ var appendVoteStatus = function(current_user, currentUserVoteValue) {
 };
 
 var appendDelegatedStatus = function(current_user, new_rep_id, old_rep_id) {
+  console.log("append delegate status: " + old_rep_id)
   $('#' + current_user).removeClass("delegated")
   $('#' + current_user).addClass("delegated")
   $('#' + new_rep_id).children().children(".participant-image").addClass("rep")
@@ -281,6 +315,7 @@ var animateBadge = function(current_user) {
 };
 
 var appendUndelegatedStatus = function(current_user, old_delegate_id) {
+  console.log("old_delegate_id: " +old_delegate_id)
   $('#' + current_user).removeClass("delegated")
   $('#' + old_delegate_id).children().children(".participant-image").removeClass("rep")
 }

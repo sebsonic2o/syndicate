@@ -1,6 +1,6 @@
 $(document).on("ready, page:change", function() {
 
-  $('#google-oauth').on('click', function(e) {
+  $('.google-oauth').on('click', function(e) {
     e.preventDefault();
 
     var firebaseUrl = $('body').data('env');
@@ -26,6 +26,8 @@ $(document).on("ready, page:change", function() {
 
         request.done(function(data) {
           console.log("USER SUCCESS!");
+          console.log(data)
+          switchUserProfileDOM(data)
         });
 
         request.fail(function(response) {
@@ -38,3 +40,8 @@ $(document).on("ready, page:change", function() {
 
   });
 });
+
+var switchUserProfileDOM = function(data) {
+  console.log("Updating User Profile Area")
+  location.reload();
+}
