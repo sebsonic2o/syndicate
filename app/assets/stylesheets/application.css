@@ -3466,7 +3466,6 @@ body.two-sidebars .region-below-content {
   }
 }
 .region.hero {
-  background-image: url('/assets/113h-size2.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   vertical-align: middle;
@@ -3475,7 +3474,6 @@ body.two-sidebars .region-below-content {
 }
 @media only screen and (max-width : 768px) {
   .region.hero {
-    background-image: url('/assets/113H-resize.jpg');
     background-size: cover;
     background-position: center;
   }
@@ -3663,7 +3661,6 @@ body.two-sidebars .region-below-content {
   margin-left: auto;
   border: 0;
   padding: 20px 26px 20px 44px;
-  background-image: url("/assets/google-plus.png");
   background-position: 13px 20px;
   background-size: 30px;
   background-repeat: no-repeat;
