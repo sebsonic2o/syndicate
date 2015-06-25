@@ -3,7 +3,7 @@
   <h3 class="participant-username"><a href="#"><%= participant.first_name %></a><em>User ID: <%= participant.id %></em> </h3>
 
   <div class="participant-avatar">
-    <% if @current_user.id == participant.id %>
+    <% if current_user.id == participant.id %>
       <img class="participant-image current" src="<%= participant.image_url %>" />
     <% elsif @representative_id == participant.id%>
       <img class="participant-image rep" src="<%= participant.image_url %>" />
@@ -25,7 +25,7 @@
         <h3 class="participant-username"><a href="#"><%= constituent.first_name %></a><em>User ID: <%= constituent.id %></em> </h3>
 
         <div class="participant-avatar">
-          <% if @current_user.id == constituent.id %>
+          <% if current_user.id == constituent.id %>
             <img class="participant-image current" src="<%= constituent.image_url %>" />
           <% elsif @representative_id == constituent.id%>
             <img class="participant-image rep" src="<%= constituent.image_url %>" />
