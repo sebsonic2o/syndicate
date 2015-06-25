@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
 
   has_many :created_issues, foreign_key: :creator_id, class_name: 'Issue'
 
+  validates :username, uniqueness: true
+
   attr_reader :total_vote_power
 
   def get_vote_power(issue_id)

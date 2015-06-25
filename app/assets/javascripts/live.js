@@ -54,9 +54,9 @@ $(document).on("ready, page:change", function() {
           nestParticipant(message.current_user_id, message.new_rep_id)
         }
         else if (message.incident === "undelegate") {
-          appendScore(message.old_delegate_count, message.old_delegate_id);
+          appendScore(message.old_rep_root_count, message.old_rep_root_id);
           appendScore(message.current_user_count, message.current_user_id)
-          appendUndelegatedStatus(message.current_user_id, message.old_delegate_id);
+          appendUndelegatedStatus(message.current_user_id, message.old_rep_id);
           // unnestParticipant(message.current_user_id)
         }
       }
@@ -132,6 +132,7 @@ var voteButton = function(buttonClass, voteValue) {
       if (data.hasOwnProperty('delegated_vote_error')) {
         $('.errors').html(data.delegated_vote_error)
         $('.errors').removeClass("show hide animated fadeIn fadeOut wobble");
+        $('html,body').scrollTop(0);
         var animate = $('.errors').addClass("show animated wobble");
         setTimeout(function () {
             animate.addClass("fadeOut");
@@ -139,7 +140,9 @@ var voteButton = function(buttonClass, voteValue) {
       }
 
       if (data.hasOwnProperty('log_in_error')) {
+        console.log("login error")
         $('.errors').html(data.log_in_error)
+        $('html,body').scrollTop(0);
         $('.errors').removeClass("show hide animated fadeIn fadeOut wobble");
         var animate = $('.errors').addClass("show animated wobble");
         setTimeout(function () {
@@ -238,6 +241,7 @@ var delegateButton = function(){
       console.log("Ajax - delegate button!");
       console.log(data);
       if (data.hasOwnProperty('hierachy_error')) {
+        $('html,body').scrollTop(0);
         $('.errors').html(data.hierachy_error)
         $('.errors').removeClass("show hide animated fadeIn fadeOut wobble");
         var animate = $('.errors').addClass("show animated wobble");
@@ -246,6 +250,7 @@ var delegateButton = function(){
         }, 2000)
       }
       if (data.hasOwnProperty('log_in_error')) {
+        $('html,body').scrollTop(0);
         $('.errors').html(data.log_in_error)
         $('.errors').removeClass("show hide animated fadeIn fadeOut wobble");
         var animate = $('.errors').addClass("show animated wobble");
@@ -315,10 +320,10 @@ var animateBadge = function(current_user) {
   }, 1000)
 };
 
-var appendUndelegatedStatus = function(current_user, old_delegate_id) {
-  console.log("old_delegate_id: " +old_delegate_id)
+var appendUndelegatedStatus = function(current_user, old_rep_id) {
+  console.log("old_delegate_id: " + old_rep_id)
   $('#' + current_user).removeClass("delegated")
-  $('#' + old_delegate_id).children().children(".participant-image").removeClass("rep")
+  $('#' + old_rep_id).children().children(".participant-image").removeClass("rep")
 }
 
 var moveVoteZone = function(current_user_id, current_user_vote_value) {
