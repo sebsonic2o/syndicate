@@ -1,6 +1,6 @@
 $(document).on("ready, page:change", function() {
 
-  $('#google-oauth').on('click', function(e) {
+  $('.google-oauth').on('click', function(e) {
     e.preventDefault();
 
     var firebaseUrl = $('body').data('env');

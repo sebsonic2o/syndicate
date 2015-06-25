@@ -1,14 +1,19 @@
 <div class="user-profile">
   <% if current_user %>
     Hello
-    <span class="user-profile-username">"<%= current_user.id %>"
+    <span class="user-profile-username">"<%= current_user.first_name %>"
     </span>
     | <%= form_for(:session, url: logout_path, method: "delete" ) do |f| %>
       <%= f.submit " Logout", class: "profile-clear" %>
     <% end %>
   <% end %>
 
+  <% if session[:username] == nil %>
+  <div class="google-oauth">
+    <a href="#">Login With Google+</a>
+  </div>
+<% end %>
+
+
 </div>
 
-<% if session[:username] == nil %>
-<% end %>

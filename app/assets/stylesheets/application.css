@@ -2567,6 +2567,10 @@ body.two-sidebars .region-below-content {
 .user-profile form {
   margin-right: 0px;
   display: inline-block;
+  color: #FFF;
+}
+.user-profile a {
+  color: #FFF;
 }
 .user-profile .user-profile-username {
   font-weight: 700;
@@ -2588,7 +2592,7 @@ body.two-sidebars .region-below-content {
   text-indent: 0;
   font-size: 15px;
   line-height: 2.1em;
-  color: #d83c3c;
+  color: #FFF;
   vertical-align: baseline;
   cursor: pointer;
 }
