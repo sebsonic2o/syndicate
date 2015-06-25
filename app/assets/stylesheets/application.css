@@ -1,3 +1,5 @@
+/* CSS crunched with Crunch - http://crunchapp.net/ */
+@charset "UTF-8";
 @import url(https://fonts.googleapis.com/css?family=Lora:400,700|Open+Sans:400,600,300,700,800|Roboto+Slab:400,300,700|Merriweather:400,300,700|Slabo+27px);
 /* ==========================================================================
    Styles
@@ -2717,6 +2719,7 @@ body.two-sidebars .region-below-content {
   top: -1px;
   padding-bottom: 14px;
   padding-top: 14px;
+  min-height: 400px;
   box-sizing: border-box;
 }
 .issue:after {
@@ -2779,6 +2782,7 @@ body.two-sidebars .region-below-content {
 }
 @media only screen and (max-width : 768px) {
   .issue {
+    min-height: 200px;
     border-top: none;
     border-bottom: 1px solid #CCC;
     top: 0px;
@@ -8869,7 +8873,6 @@ Back to top button
 #cboxClose:hover {
   background-position: -25px -25px;
 }
-@charset "UTF-8";
 /*!
 Animate.css - http://daneden.me/animate
 Licensed under the MIT license - http://opensource.org/licenses/MIT
