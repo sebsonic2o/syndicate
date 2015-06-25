@@ -41,12 +41,14 @@
               <div id="issue-<%= issue.id %>" class="hot-issue">
                 <div class="issue-body">
                   <div class="issue-image">
-                    <a href="/issues/<%= issue.id %>">
+                    <a href="/issues/<%= issue.id %>/live">
                       <%= image_tag(issue.image_url) %>
                     </a>
                   </div>
                   <h2 class="hot-issue-heading">
-                    <%= link_to issue.title, issue %>
+                    <a href="/issues/<%= issue.id %>/live">
+                      <%= issue.title %>
+                    </a>
                   </h2>
                 <!--   <p><%= issue.description %></p> -->
                 </div>

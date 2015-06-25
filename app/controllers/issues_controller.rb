@@ -64,7 +64,6 @@ class IssuesController < ApplicationController
 
     if @issue.closed?
       render json: {closed_message: "This issue is closed and votes can no longer be delegated."}
-
     else
 
       @target_representative = User.find(params[:id])
@@ -150,7 +149,7 @@ class IssuesController < ApplicationController
           :issue_id => @issue.id
         })
 
-        move = true
+        move = false
         render json: {}
 
       # Delegate's current user's vote, which is currently not designated
@@ -199,7 +198,7 @@ class IssuesController < ApplicationController
     @current_issue = Issue.find(params[:id])
 
     @participants = @current_issue.voters.order(id: :asc)
-    @finish_time = @current_issue.finish_date
+    @finish_time = @current_issue.finish_date.utc
 
     if logged_in?
       @current_user = current_user
@@ -208,7 +207,7 @@ class IssuesController < ApplicationController
     end
 
     if @current_issue.closed?
-      puts "Issue is not open."
+      puts "Issue is closed!"
 
     else
       puts "Issue is open!"
