@@ -25,12 +25,12 @@
 
 
 # 30.times do
-#   User.create(
-#     username: Faker::Internet.email,
-#     first_name: Faker::Name.first_name,
-#     last_name: Faker::Name.last_name,
-#     image_url: Faker::Avatar.image.gsub(/http/, "https")
-#   )
+User.create(
+  username: Faker::Internet.email,
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  image_url: Faker::Avatar.image.gsub(/http/, "https")
+)
 # end
 
 #custom seeds
@@ -45,7 +45,7 @@ issue1 = Issue.create(
   creator_id: 1,
   group_id: 1
 )
-# issue1.voters = User.all
+issue1.voters = User.all
 
 issue2 = Issue.create(
   title: "Should we paint the skies?",
@@ -56,7 +56,7 @@ issue2 = Issue.create(
   creator_id: 1,
   group_id: 1
 )
-# issue2.voters = User.all
+issue2.voters = User.all
 
 issue3 = Issue.create(
   title: "Should Sherif Abushadi be the next President of the United States?",
@@ -67,7 +67,7 @@ issue3 = Issue.create(
   creator_id: 1,
   group_id: 1
 )
-# issue3.voters = User.all
+issue3.voters = User.all
 
 issue4 = Issue.create(
   title: "Should dogs replace cats?",
@@ -78,7 +78,7 @@ issue4 = Issue.create(
   creator_id: 1,
   group_id: 1
 )
-# issue4.voters = User.all
+issue4.voters = User.all
 
 issue5 = Issue.create(
   title: "Should we melt this mountain to solve California's water crisis?",
@@ -89,7 +89,7 @@ issue5 = Issue.create(
   creator_id: 1,
   group_id: 1
 )
-# issue5.voters = User.all
+issue5.voters = User.all
 
 issue6 = Issue.create(
   title: "Should the Leaning Tower of Pisa be corrected?",
@@ -100,7 +100,7 @@ issue6 = Issue.create(
   creator_id: 1,
   group_id: 1
 )
-# issue6.voters = User.all
+issue6.voters = User.all
 
 # 47.times do
 #   issue = Issue.create(
