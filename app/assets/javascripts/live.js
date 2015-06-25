@@ -13,12 +13,11 @@ $(document).on("ready, page:change", function() {
          countdown: true,
          callbacks: {
            stop: function() {
-             closeIssue();
-           }
-         }
-       });
-     }
-
+            closeIssue();
+          }
+        }
+      });
+    }
 
     listenButtons();
     delegateButton();
@@ -87,7 +86,11 @@ $(document).on("ready, page:change", function() {
 
 
 var closeIssue = function() {
-  $('.clock').replaceWith("<p>This issue is closed</p>")
+  var animate = $('.victory').addClass("show animated fadeIn");
+  setTimeout(function () {
+      $('.dashboard').removeClass("open");
+      $('.dashboard').addClass("closed");
+  }, 1000)
 }
 
 var clearErrors = function(){
@@ -276,6 +279,7 @@ var appendVoteStatus = function(current_user, currentUserVoteValue) {
 };
 
 var appendDelegatedStatus = function(current_user, new_rep_id, old_rep_id) {
+  console.log("append delegate status: " + old_rep_id)
   $('#' + current_user).removeClass("delegated")
   $('#' + current_user).addClass("delegated")
   $('#' + new_rep_id).children().children(".participant-image").addClass("rep")
@@ -291,6 +295,7 @@ var animateBadge = function(current_user) {
 };
 
 var appendUndelegatedStatus = function(current_user, old_delegate_id) {
+  console.log("old_delgate_id: " +old_delgate_id)
   $('#' + current_user).removeClass("delegated")
   $('#' + old_delegate_id).children().children(".participant-image").removeClass("rep")
 }
