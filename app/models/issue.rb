@@ -70,6 +70,14 @@ class Issue < ActiveRecord::Base
     self.finish_date < Time.now
   end
 
+  def status
+    if self.closed?
+      return "closed"
+    else
+      return "open"
+    end
+  end
+
   def time_remaining
     raw = self.finish_date.utc - Time.now
     minutes = raw / 60
