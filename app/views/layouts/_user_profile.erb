@@ -8,7 +8,12 @@
     <% end %>
   <% end %>
 
+  <% if session[:username] == nil %>
+  <div class="google-oauth">
+    <a href="#">Login With Google+</a>
+  </div>
+<% end %>
+
+
 </div>
 
-<% if session[:username] == nil %>
-<% end %>

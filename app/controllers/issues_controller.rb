@@ -134,12 +134,14 @@ class IssuesController < ApplicationController
           move = true
           render json: {}
 
-        # Redelegates current user's vote to a new parent
+         # Redelegates current user's vote to a new parent
         elsif !@current_user_vote.root? && @current_user_vote.parent != @target_representative_vote
 
           puts "Redelegates current user's vote to a new parent"
           @old_root_vote = @current_user_vote.root
           @old_rep_root = User.find(@old_root_vote.user_id)
+
+          @old_rep_id = @current_user_vote.parent.user_id
 
           @current_user_vote.parent = @target_representative_vote
           @current_user_vote.save
@@ -151,6 +153,7 @@ class IssuesController < ApplicationController
             :incident => "redelegate",
             :old_rep_root_count => @old_root_vote.subtree.count,
             :old_rep_root_id => @old_rep_root.id,
+            :old_rep_id => @old_rep_id,
             :new_rep_count => @target_representative_vote.subtree.count,
             :new_rep_id => @target_representative.id,
             :current_user_id => current_user.id,
