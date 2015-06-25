@@ -200,35 +200,32 @@ class IssuesController < ApplicationController
     @participants = @current_issue.voters.order(id: :asc)
     @finish_time = @current_issue.finish_date.utc
 
-    if logged_in?
-      @current_user = current_user
-    else
-      @current_user = User.first
-    end
-
     if @current_issue.closed?
       puts "Issue is closed!"
 
     else
       puts "Issue is open!"
-      base_uri = ENV['FIREBASE_URL']
-      firebase = Firebase::Client.new(base_uri)
-      firebase.delete("delegates")
-      firebase.delete("votes")
-      firebase.delete("users")
+
+      if logged_in?
+        base_uri = ENV['FIREBASE_URL']
+        firebase = Firebase::Client.new(base_uri)
+        firebase.delete("delegates")
+        firebase.delete("votes")
+        firebase.delete("users")
       # @current_issue.generate_leaderboard
 
-      @participants = @current_issue.voters.order(id: :asc)
+        @current_user_vote = current_user.votes.find_by(issue_id: @current_issue.id)
 
-      @current_user_vote = @current_user.votes.find_by(issue_id: @current_issue.id)
-
-      if !@current_user_vote.root?
-        representative_vote =@current_user_vote.parent
-        @representative_id = User.find(representative_vote.user_id).id
+        if !@current_user_vote.root?
+          representative_vote =@current_user_vote.parent
+          @representative_id = User.find(representative_vote.user_id).id
+        end
+      else
+        # render json: {delegated_vote_error: "You have already delegated your vote. "}
       end
 
-    end
 
+    end
   end
 
   private
