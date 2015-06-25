@@ -13,12 +13,14 @@ Rails.application.routes.draw do
   get '/issues/:id/live' => 'issues#live'
   get '/issues/:id/graph' => 'issues#graph'
   get '/issues/:id/clear' => 'issues#clear'
+  get '/issues/:id/set-time/:minutes' => 'issues#set_time'
 
   get    'signup'  => 'users#new'
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
   get    'clear'  => 'sessions#clear'
+
 
   # resources :users
 
