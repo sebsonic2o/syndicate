@@ -21,6 +21,7 @@
         <div class="vote-button">
           <button type="submit" class="vote-button-style" id="yes-button" value="YES" method="POST" action="/issues/<%= @current_issue.id %>/vote?value=yes">Vote YES
           </button>
+          <a href="#" class="abstain-button">Abstain</a>
         </div>
       </div>
 
@@ -31,6 +32,7 @@
         <div class="vote-button">
           <button type="submit" class="vote-button-style" id="no-button" value="NO" method="POST" action="/issues/<%= @current_issue.id %>/vote?value=no">Vote NO
           </button>
+          <a href="#" class="abstain-button">Abstain</a>
         </div>
       </div>
 
