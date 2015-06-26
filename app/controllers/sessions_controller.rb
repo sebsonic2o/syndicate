@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
   def create
 
     if request.xhr?
-      p params
+
       @user = User.find_by(username: params["email"])
 
       if @user.nil?
@@ -20,9 +20,9 @@ class SessionsController < ApplicationController
           end
         end
 
-        @user.save
-
-        firebase_user
+        if @user.save
+          firebase_user
+        end
       end
 
       session[:username] = @user.username

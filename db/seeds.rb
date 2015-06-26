@@ -24,14 +24,14 @@
 # )
 
 
-30.times do
-  User.create(
-    username: Faker::Internet.email,
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    image_url: Faker::Avatar.image.gsub(/http/, "https")
-  )
-end
+# 30.times do
+User.create(
+  username: Faker::Internet.email,
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  image_url: Faker::Avatar.image.gsub(/http/, "https")
+)
+# end
 
 #custom seeds
 issue1 = Issue.create(
