@@ -1,11 +1,9 @@
-$(document).on("ready, page:change", function() {
+var controlIssues = function() {
 
   if ($('#issues-dashboard').length) {
     console.log("issues dashboard fire")
-    var firebaseUrl = $('body').data('env');
-    var myVoteRef = new Firebase(firebaseUrl + 'votes');
 
-    myVoteRef.on('child_added', function(snapshot) {
+    firebaseVoteRef.on('child_added', function(snapshot) {
       var message = snapshot.val();
       console.log("firebase vote snapshot");
       console.log(message);
@@ -13,7 +11,7 @@ $(document).on("ready, page:change", function() {
       changeIssuesDOM(message);
     });
   };
-});
+}
 
 var changeIssuesDOM = function(message) {
   console.log("issues firebase vote snapshot");
