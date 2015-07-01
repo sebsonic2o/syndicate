@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
     current_user != nil
   end
 
+  def firebase_client
+    @firebase_client ||= Firebase::Client.new(ENV['FIREBASE_URL'])
+  end
+
 end
