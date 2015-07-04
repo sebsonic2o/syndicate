@@ -2770,6 +2770,11 @@ body.two-sidebars .region-below-content {
   position: relative;
   margin-bottom: 8px;
 }
+@media only screen and (min-width : 768px) and (max-width : 1024px) {
+  .issue .issue-body .issue-image {
+    height: 130px;
+  }
+}
 @media only screen and (max-width : 768px) {
   .issue .issue-body .issue-image {
     height: 140px;
@@ -3259,6 +3264,7 @@ body.two-sidebars .region-below-content {
   height: 30px;
 }
 .leaderboard {
+  text-align: center;
   margin-top: 20px;
   margin-bottom: 40px;
 }
@@ -3688,67 +3694,6 @@ body.two-sidebars .region-below-content {
 .hero-button button:focus {
   background: #c42f2f;
   outline: 0;
-}
-.hot-issue {
-  color: #d83c3c;
-  margin-left: 0px;
-  margin-bottom: 14px;
-  box-sizing: border-box;
-}
-.hot-issue:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-@media only screen and (min-width : 1380px) {
-  .hot-issue {
-    width: 402px;
-    display: inline-block;
-    float: left;
-    margin-left: 14px;
-    position: relative;
-  }
-}
-@media only screen and (min-width : 1024px) and (max-width : 1380px) {
-  .hot-issue {
-    width: 346px;
-    display: inline-block;
-    float: left;
-    margin-left: 14px;
-    position: relative;
-  }
-}
-@media only screen and (min-width : 768px) and (max-width : 1024px) {
-  .hot-issue {
-    width: 276px;
-    display: inline-block;
-    float: left;
-    margin-left: 12px;
-    position: relative;
-  }
-}
-@media only screen and (max-width : 768px) {
-  .hot-issue {
-    width: auto;
-    display: block;
-    float: none;
-    position: relative;
-  }
-}
-.hot-issue .issue-body {
-  float: left;
-  width: 100%;
-}
-.hot-issue .issue-body .issue-image {
-  height: 160px;
-  overflow: hidden;
-  margin-bottom: 5px;
-}
-.hot-issue h2 {
-  font-weight: 400;
-}
-.hot-issue.view-mode-full {
-  border-bottom: none;
 }
 .item-list .pager {
   list-style: none;
@@ -4827,7 +4772,7 @@ input[value="Back"] {
   background-color: #181f23;
   color: #d83c3c;
 }
-/*
+/* 
    Shopping Cart Block
    ========================================================================== */
 #block-views-cart-badge-block {
@@ -5101,9 +5046,9 @@ input[value="Back"] {
 /* Shopping Cart Block
 ----------------------------------------------------------------------------------------------------*/
 #block-va-cart-utilities-cart-info {
-  /*
-	background: @black url('../images/textures/subtlepatterns/classy_fabric.png') repeat;
-	.border-radius-multiple(0,4px,4px,0);
+  /* 
+	background: @black url('../images/textures/subtlepatterns/classy_fabric.png') repeat; 
+	.border-radius-multiple(0,4px,4px,0);		
 	*/
   background: #c42e00 url('../images/textures/subtlepatterns/white_carbon_red.png') repeat;
   color: #ffffff;
@@ -6473,7 +6418,7 @@ select:focus {
 
 	MeanMenu 2.0.6
 	--------
-
+	
 	To be used with jquery.meanmenu.js by Chris Wharton (http://www.meanthemes.com/plugins/meanmenu/)
 
 ####################################################################### */
@@ -6796,7 +6741,7 @@ a.meanmenu-reveal {
   -moz-border-radius: 3px;
   border-radius: 3px;
 }
-/*
+/* 
    Responsive Image
    ========================================================================== */
 .img-normal {
@@ -6804,7 +6749,7 @@ a.meanmenu-reveal {
   width: auto;
   height: auto;
 }
-/*
+/* 
    Utility
    ========================================================================== */
 .left {
@@ -6884,7 +6829,7 @@ a.meanmenu-reveal {
 .nomargin {
   margin: 0 !important;
 }
-/*
+/* 
    Absolute Positioning
    ========================================================================== */
 .absolute-center {
@@ -6910,7 +6855,7 @@ a.meanmenu-reveal {
   right: 0;
 }
 /*
-* 	Owl Carousel Owl Demo Theme
+* 	Owl Carousel Owl Demo Theme 
 *	v1.3.3
 */
 .owl-wrapper {
@@ -7382,7 +7327,7 @@ a.meanmenu-reveal {
 }
 .socialmedia {
   margin: 8px 0 0 0;
-  /* --------------------------------------------------------------------------------------------------------------
+  /* --------------------------------------------------------------------------------------------------------------	
 All images are in folders as below:
 
 COLOUR SQUARES 	../images/social/squares/facebook.png
@@ -8028,7 +7973,7 @@ hr,
   border-bottom: 2px solid #c0c4c6;
   display: block;
 }
-/*
+/* 
    Vertical tabs used on product page ie "overview, accommodation, meals"
    ========================================================================== */
 div.vertical-tabs {
@@ -8148,7 +8093,7 @@ div.vertical-tabs .vertical-tabs-panes .field-label {
   }
 }
 div.vertical-tabs .vertical-tabs-panes .field-type-text-long {
-  /*
+  /* 
 			p:nth-child(1) {
 			    width: 46%;
 			    margin-right: 4%;
@@ -8164,7 +8109,7 @@ div.vertical-tabs .vertical-tabs-panes .field-type-text-long {
 /* ==========================================================================
    Slide Content Type & Fullwidth Video
    ========================================================================== */
-/*
+/* 
    View Using Display Suite Teaser Code Fields
    ========================================================================== */
 #block-views-homepage-slider-block-1 {
@@ -8349,7 +8294,7 @@ div.vertical-tabs .vertical-tabs-panes .field-type-text-long {
   position: absolute;
   z-index: 99;
 }
-/*
+/* 
    View Using View Fields
    ========================================================================== */
 .view-homepage-slider.view-display-id-block_0 {
@@ -8492,9 +8437,9 @@ div.mc-image {
   -o-transition: opacity 1s ease-in-out;
   transition: opacity 1s ease-in-out;
   /*If you are using horizontal slide transitions, use the following CSS:
-	-webkit-transition: left 1s ease-in-out;
-	-moz-transition: left 1s ease-in-out;
-	-o-transition: left 1s ease-in-out;
+	-webkit-transition: left 1s ease-in-out; 
+	-moz-transition: left 1s ease-in-out; 
+	-o-transition: left 1s ease-in-out; 
 	transition: left 1s ease-in-out;*/
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -8662,7 +8607,7 @@ div.mc-image {
   }
 }
 /*
-Back to top button
+Back to top button 
 */
 #back-top {
   position: fixed;
@@ -12184,9 +12129,9 @@ Copyright (c) 2015 Daniel Eden
   }
 }
 .flip-clock-wrapper {
-  width: 213px !important;
-  margin: 0 auto 0 auto;
+  width: auto;
   margin-bottom: 10px;
+  display: inline-block;
 }
 body {
   margin: 0;
