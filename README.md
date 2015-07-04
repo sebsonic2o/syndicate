@@ -16,4 +16,13 @@ Syndicate is an experimental voting app where voters use either direct or repres
 6. create pull request on github from feature-branch to test-master
 7. wait for another member of the team to merge pull request
 
+
+## ENV File
+
+Remember to re-create your .env file locally otherwise you will not be able to access firebase.
+
+* create a .env file "touch .env" - in the root of the project
+* add the line FIREBASE_URL=https://your-firebase-url.firebaseio.com/
+
+
 ![Our Schema](schema.png)
