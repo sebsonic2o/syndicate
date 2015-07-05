@@ -2717,7 +2717,7 @@ body.two-sidebars .region-below-content {
   top: -1px;
   padding-bottom: 14px;
   padding-top: 14px;
-  min-height: 400px;
+  min-height: 420px;
   box-sizing: border-box;
 }
 .issue:after {
@@ -2769,6 +2769,11 @@ body.two-sidebars .region-below-content {
   overflow: hidden;
   position: relative;
   margin-bottom: 8px;
+}
+@media only screen and (min-width : 768px) and (max-width : 1024px) {
+  .issue .issue-body .issue-image {
+    height: 130px;
+  }
 }
 @media only screen and (max-width : 768px) {
   .issue .issue-body .issue-image {
@@ -3259,6 +3264,7 @@ body.two-sidebars .region-below-content {
   height: 30px;
 }
 .leaderboard {
+  text-align: center;
   margin-top: 20px;
   margin-bottom: 40px;
 }
@@ -3688,67 +3694,6 @@ body.two-sidebars .region-below-content {
 .hero-button button:focus {
   background: #c42f2f;
   outline: 0;
-}
-.hot-issue {
-  color: #d83c3c;
-  margin-left: 0px;
-  margin-bottom: 14px;
-  box-sizing: border-box;
-}
-.hot-issue:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-@media only screen and (min-width : 1380px) {
-  .hot-issue {
-    width: 402px;
-    display: inline-block;
-    float: left;
-    margin-left: 14px;
-    position: relative;
-  }
-}
-@media only screen and (min-width : 1024px) and (max-width : 1380px) {
-  .hot-issue {
-    width: 346px;
-    display: inline-block;
-    float: left;
-    margin-left: 14px;
-    position: relative;
-  }
-}
-@media only screen and (min-width : 768px) and (max-width : 1024px) {
-  .hot-issue {
-    width: 276px;
-    display: inline-block;
-    float: left;
-    margin-left: 12px;
-    position: relative;
-  }
-}
-@media only screen and (max-width : 768px) {
-  .hot-issue {
-    width: auto;
-    display: block;
-    float: none;
-    position: relative;
-  }
-}
-.hot-issue .issue-body {
-  float: left;
-  width: 100%;
-}
-.hot-issue .issue-body .issue-image {
-  height: 160px;
-  overflow: hidden;
-  margin-bottom: 5px;
-}
-.hot-issue h2 {
-  font-weight: 400;
-}
-.hot-issue.view-mode-full {
-  border-bottom: none;
 }
 .item-list .pager {
   list-style: none;
@@ -12184,9 +12129,9 @@ Copyright (c) 2015 Daniel Eden
   }
 }
 .flip-clock-wrapper {
-  width: 213px !important;
-  margin: 0 auto 0 auto;
+  width: auto;
   margin-bottom: 10px;
+  display: inline-block;
 }
 body {
   margin: 0;

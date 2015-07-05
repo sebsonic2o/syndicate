@@ -45,7 +45,6 @@ class SessionsController < ApplicationController
 
   def clear
     session[:username] = nil
-    p session[:username]
     redirect_to "/"
   end
 
@@ -61,8 +60,6 @@ class SessionsController < ApplicationController
         image_url: @user.image_url
       }
 
-      firebase = Firebase::Client.new(ENV['FIREBASE_URL'])
-
-      firebase.push("users", data)
+      firebase_client.push("users", data)
     end
 end
