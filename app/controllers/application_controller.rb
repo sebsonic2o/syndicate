@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   end
 
   def firebase_client
-    @firebase_client ||= Firebase::Client.new(ENV['FIREBASE_URL'])
+    @firebase_client ||= Firebase::Client.new(ENV['FIREBASE_URL'], ENV['FIREBASE_SECRET'])
   end
 
 end
