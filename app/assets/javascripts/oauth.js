@@ -1,10 +1,7 @@
-$(document).on("ready, page:change", function() {
+var controlOAuth = function() {
 
   $('.google-oauth').on('click', function(e) {
     e.preventDefault();
-
-    var firebaseUrl = $('body').data('env');
-    var firebaseRef = new Firebase(firebaseUrl);
 
     firebaseRef.authWithOAuthPopup("google", function(error, authData) {
       if (error) {
@@ -39,7 +36,7 @@ $(document).on("ready, page:change", function() {
     });
 
   });
-});
+}
 
 var switchUserProfileDOM = function(data) {
   console.log("Updating User Profile Area")

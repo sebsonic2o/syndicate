@@ -1,6 +1,7 @@
-$(document).on("ready, page:change", function() {
+var controlLive = function() {
+
   if ($('#live-dashboard').length) {
-    //Replace '-' with '/' so date can be parsed by Safari 
+    // Replace '-' with '/' so date can be parsed by Safari
     var updatedFinishTime = new Date(finishTime.replace(/-/g, "/"));
     var timeRemaining = (Date.parse(updatedFinishTime) - Date.now());
 
@@ -23,13 +24,7 @@ $(document).on("ready, page:change", function() {
     listenButtons();
     delegateButton();
 
-
-    var firebaseUrl = $('body').data('env');
-    var myDelegateRef = new Firebase(firebaseUrl + 'delegates');
-    var myVoteRef = new Firebase(firebaseUrl + 'votes');
-    var myUserRef = new Firebase(firebaseUrl + 'users');
-
-    myDelegateRef.on('child_added', function(snapshot) {
+    firebaseDelegateRef.on('child_added', function(snapshot) {
       var message = snapshot.val();
       console.log("firebase delegate snapshot")
 
@@ -62,7 +57,7 @@ $(document).on("ready, page:change", function() {
       }
     });
 
-    myVoteRef.on('child_added', function(snapshot) {
+    firebaseVoteRef.on('child_added', function(snapshot) {
       var message = snapshot.val();
       console.log("firebase vote snapshot");
       console.log(message);
@@ -72,7 +67,7 @@ $(document).on("ready, page:change", function() {
       }
     });
 
-    myUserRef.on('child_added', function(snapshot) {
+    firebaseUserRef.on('child_added', function(snapshot) {
       var message = snapshot.val();
       console.log("firebase user snapshot");
       console.log(message);
@@ -84,9 +79,8 @@ $(document).on("ready, page:change", function() {
 
   }
 
-    clearErrorsOnClick();
-});
-
+  clearErrorsOnClick();
+}
 
 var closeIssue = function() {
   var animate = $('.victory').addClass("show animated fadeIn");
