@@ -41,13 +41,13 @@ A user can select an issue to watch.
 
 ## Vote
 
-A user can start voting on a live issue after signing in with his Google account.
+A user can start voting directly on a live issue after signing in with his Google account.
 
 ![vote](vote.png)
 
 ## Delegate
 
-A voter can delegate to anyone by clicking on his representative.
+Or a voter can delegate to anyone by clicking on his representative.
 
 ![delegate](delegate.png)
 
