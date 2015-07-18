@@ -2,7 +2,7 @@
 
 Syndicate is an experimental online voting platform for small teams and groups of people.
 
-With a back-end built on Ruby on Rails and using PostgreSQL, Syndicate seeks to implement the idea of Liquid Democracy where voters can choose to either vote directly on individual issues, or delegate their vote to a representative. It does so with an intuitive and responsive web design. The interface and results are updated live for all users watching the votes, leveraging jQuery, AJAX, and Firebase.
+With a back-end built on Ruby on Rails and using PostgreSQL, Syndicate seeks to implement the idea of Liquid Democracy where voters can choose to either vote directly on individual issues, or delegate their vote to a representative. It does so with an intuitive and responsive web design, leveraging Rob's very own LESS framework. With jQuery, AJAX, and Firebase, the interface and results are updated live for all users watching the votes.
 
 The first MVP of Syndicate was completed in one week.
 
