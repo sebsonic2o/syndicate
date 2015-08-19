@@ -1,7 +1,10 @@
 class User < ActiveRecord::Base
+
+  has_many :group_users
+  has_many :groups, through: :group_users, source: :group
+
   has_many :votes, dependent: :destroy
   has_many :voted_issues, through: :votes, source: :issue
-
   has_many :created_issues, foreign_key: :creator_id, class_name: 'Issue'
 
   validates :username, uniqueness: true

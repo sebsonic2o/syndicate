@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="PostgreSQL - syndicate-app_development@localhost" uuid="02e17e66-1730-4a0e-b3ca-567c0d9d84ec">
+      <secret-storage>memory</secret-storage>
+      <schema-pattern>syndicate-app_development.*</schema-pattern>
+      <default-schemas>syndicate-app_development.*</default-schemas>
+    </data-source>
+  </component>
+</project>

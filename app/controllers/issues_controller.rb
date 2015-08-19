@@ -233,6 +233,28 @@ class IssuesController < ApplicationController
     end
   end
 
+  def new
+
+  end
+
+  def create
+    p "Create Issue POST path"
+    group = current_user.groups
+
+    issue = Issue.new(
+        title: params[:title],
+        description: params[:description],
+        start_date: params[:start_date],
+        finish_date: params[:finish_date],
+        image_url: params[:image_url],
+        group_id: current_user.groups.first.id,
+        created_id: current_user
+    )
+    issue.save
+
+    render json: params[:issue].inspect
+  end
+
   private
 
     def firebase_vote(id, move)

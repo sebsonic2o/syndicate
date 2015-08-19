@@ -61,5 +61,6 @@ class SessionsController < ApplicationController
       }
 
       firebase_client.push("users", data)
+
     end
 end

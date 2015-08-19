@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="3126874531">
+    <data-source source="LOCAL" name="PostgreSQL - syndicate-app_development@localhost" uuid="02e17e66-1730-4a0e-b3ca-567c0d9d84ec">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/syndicate-app_development</jdbc-url>
+      <libraries />
+    </data-source>
+  </component>
+</project>

@@ -5,10 +5,10 @@ class Vote < ActiveRecord::Base
 
   def count_votes(issue_id, user)
     if user == self
-      p "wtf"
+      p 'wtf'
     else
      p self.subtree.count
-     return self.subtree.count
+     self.subtree.count
     end
   end
 
