@@ -1,0 +1,9 @@
+<div ng-controller="StoreController as store">
+    <h1 class="text-center h2">Results</h1>
+
+    <section ng-repeat="issue in issues" >
+        <h2>{{issue.title}}</h2>
+        <p>{{issue.description}}</p>
+    </section>
+
+</div>

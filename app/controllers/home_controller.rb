@@ -7,6 +7,9 @@ class HomeController < ApplicationController
     render :layout => false
   end
 
+  def angular
+  end
+
   def about
     render :layout => false
   end

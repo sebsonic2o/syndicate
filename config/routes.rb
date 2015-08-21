@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   get '/home' => 'home#index'
   get '/about' => 'home#about'
+  get '/angular' => 'home#angular'
 
   get '/issues/:id/live' => 'issues#live'
   get '/issues/:id/graph' => 'issues#graph'

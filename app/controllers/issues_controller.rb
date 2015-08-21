@@ -4,10 +4,12 @@ class IssuesController < ApplicationController
     firebase_client.delete("votes")
 
     @issues = Issue.all
+    render json: @issues
   end
 
   def show
     @current_issue = Issue.find(params[:id])
+    render json: @current_issue
   end
 
   def vote
