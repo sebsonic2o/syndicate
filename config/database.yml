@@ -29,7 +29,7 @@ development:
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  #username: syndicate-app
+  #username: syndicate-angular
 
   # The password associated with the postgres role (username).
   #password:
@@ -64,7 +64,7 @@ test:
 # ever seen by anyone, they now have access to your database.
 #
 # Instead, provide the password as a unix environment variable when you boot
-# the app. Read http://guides.rubyonrails.org/configuring.html#configuring-a-database
+# the angular. Read http://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full rundown on how to provide these environment variables in a
 # production deployment.
 #
@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: syndicate-app_production
-  username: syndicate-app
+  username: syndicate-angular
   password: <%= ENV['SYNDICATE-APP_DATABASE_PASSWORD'] %>

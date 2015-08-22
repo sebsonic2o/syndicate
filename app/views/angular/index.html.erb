@@ -1,0 +1,54 @@
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Syndicate</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body data-env="<%= ENV['FIREBASE_URL'] %>" ng-app="syndicate">
+    <%= render '/layouts/top' %>
+    <%= render '/layouts/header' %>
+
+    <div class="region hero" style="background-image: url(<%= asset_path '113h-size2.jpg' %>);">
+      <div id="region-inner">
+
+        <div id="hero-text">
+          <!-- Who Will Build The Roads? -->
+          <h1>Angular Syndicate</h1>
+          <p>To change our political habits we need to fundamentally change the way we vote. Technology has been transformative in so many areas of our lives, yet politics remain unchanged.</p>
+          <p><strong>Syndicate</strong> is an experimental platform where voters use either direct or representative democracy to vote on individual issues.</p>
+        </div>
+
+        <div class="hero-button">
+          <button class="signup google-oauth" style="background-image: url(<%= asset_path 'google-plus.png' %>);">Sign in with Google</button>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="region hot-issues">
+      <div id="title-thinger">
+        Recent Issues
+        <p>View recent issues and cast your vote</p>
+      </div>
+      <div class="region-inner">
+        <div class="grid-container">
+          <div class="issues">
+
+            <h1>Angular</h1>
+            {{name}}
+
+            <div class="view-container">
+              <div ng-view class="view-frame animate-view"></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

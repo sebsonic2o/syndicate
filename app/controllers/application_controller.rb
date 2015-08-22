@@ -5,13 +5,13 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :logged_in?
 
-  def current_user
-    @current_user ||= User.find_by(username: session[:username])
-  end
-
-  def logged_in?
-    current_user != nil
-  end
+  # def current_user
+  #   @current_user ||= User.find_by(username: session[:username])
+  # end
+  #
+  # def logged_in?
+  #   current_user != nil
+  # end
 
   def firebase_client
     @firebase_client ||= Firebase::Client.new(ENV['FIREBASE_URL'])

@@ -2,16 +2,20 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
+  # namespace our API to /api/issues
+  namespace :api, defaults: {format: :json} do
+    resources :issues
+  end
 
-  resources :issues
+  # setup the angular "homepage" route that will handover control to the angular routes
+  get '/angular' => 'angular#index'
 
   patch '/issues/:id/vote' => 'issues#vote'
-
   patch '/issues/:issue_id/users/:id/delegate' => 'issues#delegate'
 
   get '/home' => 'home#index'
   get '/about' => 'home#about'
-  get '/angular' => 'home#angular'
+
 
   get '/issues/:id/live' => 'issues#live'
   get '/issues/:id/graph' => 'issues#graph'
@@ -78,7 +82,7 @@ Rails.application.routes.draw do
   # Example resource route within a namespace:
   #   namespace :admin do
   #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
+  #     # (angular/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
 end

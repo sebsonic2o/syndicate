@@ -16,4 +16,6 @@
 //= require angular-route/angular-route
 //= require angular-rails-templates
 //= require angular-resource/angular-resource
+//= require Chart.js/Chart.js
+//= require FlipClock/compiled/flipclock.js
 //= require_tree .

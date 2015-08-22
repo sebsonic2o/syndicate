@@ -1,8 +1,7 @@
-class IssuesController < ApplicationController
+class Api::IssuesController < ApplicationController
 
   def index
     firebase_client.delete("votes")
-
     @issues = Issue.all
     render json: @issues
   end
