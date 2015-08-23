@@ -16,8 +16,12 @@ app.config(['$routeProvider', function($routeProvider) {
             controller: 'IndexController'
         }).
         when('/issues', {
-            templateUrl: 'issues.html',
+            templateUrl: 'issues/index.html',
             controller: 'IssueController'
-        });
+        }).
+        when('/issues/:id', {
+            templateUrl: 'issues/show.html',
+            controller: 'IssueController'
+        })
 }]);
 

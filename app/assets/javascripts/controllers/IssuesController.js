@@ -1,23 +1,26 @@
-angular.module('IssueCtrl',[]).controller('IssueController', ['$scope', '$resource', '$http', 'Issue', function($scope, $resource, $http, Issue) {
-    Issue.query(function(data) {
-        $scope.issues = data
-        console.log($scope.issues)
-    });
+angular.module('IssueCtrl',[]).controller('IssueController',
+    ['$scope', '$resource', '$location', '$http','$routeParams', 'Issue' , function($scope, $resource, $location, $http, $routeParams, Issue) {
 
-    Issue.get({ id: 1}, function(data) {
-        $scope.issue = data;
-        console.log($scope.issue)
-    });
+        $scope.issues = Issue.query();
 
-    // Angular AJAX uses $http
-    //$http.get('/issues').
-    //    success(function(data, status, headers, config) {
-    //        $scope.issues = data;
-    //        //console.log($scope.issues)
-    //
-    //    }).
-    //    error(function(data, status, headers, config) {
-    //        // log error
-    //    });
-    //console.log($scope.issues)
+        $scope.issue = Issue.get({ id: $routeParams.id}, function(data) {
+            console.log($scope.issue)
+        });
+
+        $scope.view = function(issueId) {
+            $location.path('/issues/' + issueId)
+        };
+
+        // Angular AJAX uses $http
+        //$http.get('/issues').
+        //    success(function(data, status, headers, config) {
+        //        $scope.issues = data;
+        //        //console.log($scope.issues)
+        //
+        //    }).
+        //    error(function(data, status, headers, config) {
+        //        // log error
+        //    });
+        //console.log($scope.issues)
+        
 }]);
