@@ -1,4 +1,5 @@
 var controlOAuth = function() {
+    console.log("oauth.js");
 
   $('.google-oauth').on('click', function(e) {
     e.preventDefault();

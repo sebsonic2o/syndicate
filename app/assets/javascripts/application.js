@@ -18,4 +18,5 @@
 //= require angular-resource/angular-resource
 //= require Chart.js/Chart.js
 //= require FlipClock/compiled/flipclock.js
+//= require turbolinks
 //= require_tree .

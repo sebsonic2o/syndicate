@@ -1,5 +1,5 @@
 $(document).on("ready, page:change", function() {
-
+    console.log("main.js");
   var firebaseUrl = $('body').data('env');
 
   firebaseRef = new Firebase(firebaseUrl);
@@ -12,4 +12,3 @@ $(document).on("ready, page:change", function() {
   controlIssues();
 });
 
-console.log("main.js");
