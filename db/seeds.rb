@@ -40,7 +40,13 @@ group1.save
 group2 = Group.new
 group2.save
 
+permission1 = Permission.new
+permission1.update(role: "member")
+permission1.save
 
+permission2 = Permission.new
+permission2.update(role: "admin")
+permission2.save
 
 # custom issues
 issue1 = Issue.create(
