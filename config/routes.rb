@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
 
-  root 'home#index'
+  root 'angular#index'
 
   # namespace our API to /api/issues
   namespace :api, defaults: {format: :json} do
     resources :issues
   end
+
+  resources :issues
 
   # setup the angular "homepage" route that will handover control to the angular routes
   get '/angular' => 'angular#index'

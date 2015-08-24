@@ -2,15 +2,12 @@ class Issue < ActiveRecord::Base
 
   has_many :votes
   has_many :voters, through: :votes, source: :user
-
   belongs_to :creator, class_name: 'User'
-
   # attr_reader :string, :participant_count, :vote_count, :yes_votes, :yes_percentage, :no_votes, :no_percentage, :abstain_count
 
   def participant_count
     votes.count
     # @participant_count ||= votes.count
-
     # puts "PARTICIPANTS  COUNT " * 5
     # puts @participant_count
   end
@@ -18,7 +15,6 @@ class Issue < ActiveRecord::Base
   def yes_votes
     votes.where({value: "yes"}).count
     # @yes_votes ||= votes.where({value: "yes"}).count
-
     # puts "YES VOTES " * 5
     # p @yes_votes
   end
@@ -26,7 +22,6 @@ class Issue < ActiveRecord::Base
   def no_votes
     votes.where({value: "no"}).count
     # @no_votes ||= votes.where({value: "no"}).count
-
     # puts "NO VOTES " * 5
     # p @no_votes
   end

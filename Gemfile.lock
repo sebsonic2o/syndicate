@@ -166,7 +166,7 @@ DEPENDENCIES
   dotenv-rails
   faker
   firebase
-  jbuilder (~> 2.0)
+  jbuilder
   jquery-rails
   pg
   puma

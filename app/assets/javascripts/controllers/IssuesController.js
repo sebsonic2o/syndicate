@@ -1,6 +1,6 @@
 angular.module('IssueCtrl',[]).controller('IssueController',
     ['$scope', '$resource', '$location', '$http','$routeParams', 'Issue' , function($scope, $resource, $location, $http, $routeParams, Issue) {
-
+        console.log("IssuesController.js")
         $scope.issues = Issue.query();
 
         $scope.issue = Issue.get({ id: $routeParams.id}, function(data) {
