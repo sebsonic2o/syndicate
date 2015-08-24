@@ -1,10 +1,22 @@
-
-<div ng-controller="IssueController as issue">
-    <h1 class="text-center h2">Issues</h1>
-
-    <section ng-repeat="issue in issues" >
-        <a href ng-click="view(issue.id)" >{{issue.title}}</a>
-        <p>{{issue.description}}</p>
-    </section>
-
+<div class="issues">
+    <div ng-repeat="issue in issues" class="issue">
+        <div>
+            {{issue.id}}
+            {{issue.title}}
+            <a href ng-click="view(issue.id)" >{{issue.title}}</a>
+            {{issue.description}}
+            {{issue.start_date}}
+            {{issue.finish_date}}
+            {{issue.image}}
+            {{issue.participant_count}}
+            {{issue.yes_votes}}
+            {{issue.no_votes}}
+            {{issue.vote_count}}
+            {{issue.abstain_count}}
+            {{issue.yes_percentage}}
+            {{issue.no_percentage}}
+            {{issue.status}}
+            {{issue.time_remaining}}
+        </div>
+    </div>
 </div>

@@ -12,16 +12,16 @@ app.config(['$routeProvider', function($routeProvider) {
     $routeProvider
         // home page
         .when('/', {
-            templateUrl: 'index.html',
-            controller: 'IndexController'
+            templateUrl: 'issues/index.html',
+            controller: 'IssueIndexController'
         }).
         when('/issues', {
             templateUrl: 'issues/index.html',
-            controller: 'IssueController'
+            controller: 'IssueIndexController'
         }).
         when('/issues/:id', {
             templateUrl: 'issues/show.html',
-            controller: 'IssueController'
+            controller: 'IssueShowController'
         })
 }]);
 
