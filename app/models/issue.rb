@@ -3,6 +3,7 @@ class Issue < ActiveRecord::Base
   has_many :votes
   has_many :voters, through: :votes, source: :user
 
+  belongs_to :groups
   belongs_to :creator, class_name: 'User'
 
   # attr_reader :string, :participant_count, :vote_count, :yes_votes, :yes_percentage, :no_votes, :no_percentage, :abstain_count

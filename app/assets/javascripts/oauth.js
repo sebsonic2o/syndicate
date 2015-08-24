@@ -23,11 +23,11 @@ var controlOAuth = function() {
 
         request.done(function(data) {
           console.log("USER SUCCESS!");
-          console.log(data)
+          console.log(data);
           switchUserProfileDOM(data)
         });
 
-        request.fail(function(response) {
+        request.fail(function() {
           console.log("USER FAIL!");
         });
       }
@@ -36,9 +36,9 @@ var controlOAuth = function() {
     });
 
   });
-}
+};
 
 var switchUserProfileDOM = function(data) {
-  console.log("Updating User Profile Area")
+  console.log("Updating User Profile Area");
   location.reload();
-}
+};

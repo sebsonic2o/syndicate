@@ -1,0 +1,23 @@
+<h1>Create Issue</h1>
+
+<%= form_for :issue, url: issues_path do |f| %>
+
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+
+    <%= f.label :start_date %><br>
+    <%= f.text_field :start_date %>
+
+    <%= f.label :finish_date %><br>
+    <%= f.text_field :finish_date %>
+
+    <%= f.label :image_url %><br>
+    <%= f.text_field :image_url %>
+
+    <p>
+      <%= f.submit %>
+    </p>
+<% end %>

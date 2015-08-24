@@ -25,12 +25,28 @@
 
 
 # need to seed at least 1 user
-User.create(
-  username: Faker::Internet.email,
-  first_name: Faker::Name.first_name,
-  last_name: Faker::Name.last_name,
-  image_url: Faker::Avatar.image.gsub(/http/, "https")
+user = User.create(
+    username: Faker::Internet.email,
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    image_url: Faker::Avatar.image.gsub(/http/, "https")
 )
+
+# create group_id 1 to use as default group for everyone
+group1 = Group.new
+group1.save
+
+# create group_id 2 and assign our first default user to this group
+group2 = Group.new
+group2.save
+
+permission1 = Permission.new
+permission1.update(role: "member")
+permission1.save
+
+permission2 = Permission.new
+permission2.update(role: "admin")
+permission2.save
 
 # custom issues
 issue1 = Issue.create(
