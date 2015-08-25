@@ -25,19 +25,28 @@
 
 
 # need to seed at least 1 user
-user = User.create(
+30.times do
+  User.create(
     username: Faker::Internet.email,
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    image_url: Faker::Avatar.image.gsub(/http/, "https")
-)
+    image_url: Faker::Avatar.image.gsub(/http/, "https"),
+    group_id: rand(2) + 1
+  )
+end
 
 # create group_id 1 to use as default group for everyone
-group1 = Group.new
+group1 = Group.create(
+    name: "Fiery Skippers",
+    public: true
+)
 group1.save
 
 # create group_id 2 and assign our first default user to this group
-group2 = Group.new
+group2 = Group.create(
+    name: "Dragonflies",
+    public: false
+)
 group2.save
 
 permission1 = Permission.new

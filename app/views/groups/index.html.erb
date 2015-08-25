@@ -1,0 +1,11 @@
+  <div class="groups">
+    <% @groups.each do |group| %>
+        <%= group.id %>
+        <%= group.name %>
+        <% @issues.each do |issue| %>
+            <% if issue.group_id == group.id %>
+                <%= issue.title %>
+            <% end %>
+        <% end %>
+    <% end %>
+  </div>

@@ -3,7 +3,15 @@ class IssuesController < ApplicationController
   def index
     firebase_client.delete("votes")
 
-    @issues = Issue.all
+    # @issues = Issue.all
+
+    # Lookup current user and find groups they belong to
+    # Get issues related to those groups
+    user = current_user
+    p user
+    group = user.groups
+    p group
+
   end
 
   def show

@@ -4,18 +4,10 @@
     <a href="/" class="header-logo"><%= image_tag("syndicate-logo.png") %></a>
     <div class="header-menu">
       <a href="/issues">Issues</a>
+      <a href="/groups">Groups</a>
     </div>
 
-
-    <div class="header-search">
-      <form class="form-wrapper cf" method="get" action="/issues">
-        <input type="text" placeholder="Find an issue to vote on!" required>
-        <button type="submit">Search</button>
-      </form>
-    </div>
-
-
+    <%= render '/layouts/debug' %>
 
 	</div>
-</div>
 </div>

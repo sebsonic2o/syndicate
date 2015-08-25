@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
 
   resources :issues
+  resources :groups
 
   patch '/issues/:id/vote' => 'issues#vote'
 
