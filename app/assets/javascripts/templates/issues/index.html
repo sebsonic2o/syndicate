@@ -1,9 +1,14 @@
+<a href="#/issues/new" class="btn btn-primary btn-large right">New Issue</a>
+<h2>Recent Issues</h2>
+<p>View recent issues and cast your vote</p>
+
+
 <div class="issues">
     <div ng-repeat="issue in issues" class="issue">
         <div>
             {{issue.id}}
             {{issue.title}}
-            <a href ng-click="view(issue.id)" >{{issue.title}}</a>
+            <a href="#/issues/{{issue.id}}">{{issue.title}}</a>
             {{issue.description}}
             {{issue.start_date}}
             {{issue.finish_date}}

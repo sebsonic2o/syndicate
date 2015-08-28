@@ -19,9 +19,14 @@ app.config(['$routeProvider', function($routeProvider) {
             templateUrl: 'issues/index.html',
             controller: 'IssueIndexController'
         }).
+        when('/issues/new', {
+            templateUrl: 'issues/new.html',
+            controller: 'IssueCreateController'
+        }).
         when('/issues/:id', {
             templateUrl: 'issues/show.html',
             controller: 'IssueShowController'
         })
+        
 }]);
 

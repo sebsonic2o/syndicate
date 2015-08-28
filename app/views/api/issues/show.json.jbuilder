@@ -1,4 +1,3 @@
-
-  json.id @current_issue.id
-  json.title @current_issue.title
+json.id @issue.id
+json.title @issue.title
 

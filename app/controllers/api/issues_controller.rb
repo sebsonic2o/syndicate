@@ -3,12 +3,35 @@ class Api::IssuesController < ApplicationController
   def index
     firebase_client.delete("votes")
     @issues = Issue.all
-    # render json: @issues
   end
 
   def show
-    @current_issue = Issue.find(params[:id])
-    # render json: @current_issue
+    @issue = Issue.find(params[:id])
+  end
+
+  def new 
+    # @issue = Issue.new()
+  end
+
+  def create
+    @issue = Issue.new(title: params[:title], description: params[:description])
+    @issue.start_date = Faker::Time.between(2.days.ago, Time.now, :all),
+    @issue.finish_date = Faker::Time.forward(60, :all),
+    @issue.save
+    @issue.voters = User.all
+    render 'show'
+  end
+
+  def update
+    @issue = Issue.find(params[:id])
+    @issue.update_attributes(params.require(:issue).permit(:title,:description))
+    head :no_content
+  end
+
+  def destroy
+    @issue = Issue.find(params[:id])
+    @issue.destroy
+    head :no_content
   end
 
   def vote
