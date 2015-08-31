@@ -1,6 +1,7 @@
-<p>templates/issues/show.html</p>
-<div>
-    <h1 class="text-center h2">Issue {{issue.id}}</h1>
-    <h2>{{issue.title}}</h2>
+<div id="issue-{{issue.id}}" class="issue view-mode-full no-borders">
+  <div class="issue-body">
+    <h1>{{issue.title}}</h1>
     <p>{{issue.description}}</p>
+	<a href="#/issues/{{issue.id}}/live" id="vote_now" class="btn btn-primary btn-large">Vote now!</a>
+  </div>
 </div>

@@ -17,8 +17,9 @@ angular.module('IssueCtrl',[])
     ['$scope', '$resource', '$location', '$http','$routeParams', 'Issue',
         function($scope, $resource, $location, $http, $routeParams, Issue) {
             console.log("IssueShowController")
-            $scope.issue = Issue.get({ id: $routeParams.id }); //Get a single movie.Issues a GET to /api/movies/:id
-            console.log($scope.issue);
+            $scope.issue = Issue.get({ id: $routeParams.id }, function() {
+                console.log($scope.issue);
+            }); 
         }])
 
     .controller('IssueCreateController', 
@@ -27,11 +28,28 @@ angular.module('IssueCtrl',[])
             console.log("IssueCreateController")
             $scope.issue = new Issue();  //create new Issue instance. Properties will be set via ng-model on UI
 
-            $scope.addIssue = function() { //create a new Issue. Issues a POST to /api/Issues
+            $scope.addIssue = function() { //create a new Issue. Issues a POST to /api/issues
                 $scope.issue.$save(function() {
                     console.log($scope.issue);
                     $location.path('/issues/' + $scope.issue.id)
                 });
             };
 
+        }])
+    .controller('IssueLiveController', 
+    ['$scope', '$resource', '$location', '$http','$routeParams', 'Issue',
+        function($scope, $resource, $location, $http, $routeParams, Issue) {
+            console.log("IssueLiveController")
+
+            $scope.participants = function() {
+                $http.get('api/issues/' + $routeParams.id + '/live').
+                    success(function(data, status, headers, config) {
+                      return data;
+                      console.log(data)
+                    }).
+                    error(function(data, status, headers, config) {
+                      // log error
+                    });
+            }
+            console.log($scope.participants)
         }])

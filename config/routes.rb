@@ -1,25 +1,21 @@
 Rails.application.routes.draw do
 
   root 'angular#index'
+  # setup the angular "homepage" route that will handover control to the angular routes
+  get '/angular' => 'angular#index'
 
   # namespace our API to /api/issues
   namespace :api, defaults: {format: :json} do
-    resources :issues
+    resources :issues do
+      get '/live' => 'issues#live'
+    end
   end
 
   resources :issues
 
-  # setup the angular "homepage" route that will handover control to the angular routes
-  get '/angular' => 'angular#index'
-
-  patch '/issues/:id/vote' => 'issues#vote'
-  patch '/issues/:issue_id/users/:id/delegate' => 'issues#delegate'
-
-  get '/home' => 'home#index'
-  get '/about' => 'home#about'
-
-
   get '/issues/:id/live' => 'issues#live'
+  patch '/issues/:id/vote' => 'issues#vote'
+  patch '/issues/:issue_id/users/:id/delegate' => 'issues#delegate' 
   get '/issues/:id/graph' => 'issues#graph'
   get '/issues/:id/clear' => 'issues#clear'
   get '/issues/:id/set-time/:minutes' => 'issues#set_time'
@@ -29,6 +25,9 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
   get    'clear'  => 'sessions#clear'
+
+  get '/home' => 'home#index'
+  get '/about' => 'home#about'
 
 
   # resources :users

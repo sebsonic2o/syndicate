@@ -12,7 +12,7 @@ app.config(['$routeProvider', function($routeProvider) {
     $routeProvider
         // home page
         .when('/', {
-            templateUrl: 'issues/index.html',
+            templateUrl: 'index.html',
             controller: 'IssueIndexController'
         }).
         when('/issues', {
@@ -23,10 +23,14 @@ app.config(['$routeProvider', function($routeProvider) {
             templateUrl: 'issues/new.html',
             controller: 'IssueCreateController'
         }).
-        when('/issues/:id', {
+        when('/issues/:id/live', {
+            templateUrl: 'issues/live.html',
+            controller: 'IssueLiveController'
+        })
+        .when('/issues/:id', {
             templateUrl: 'issues/show.html',
             controller: 'IssueShowController'
-        })
+        });
         
 }]);
 

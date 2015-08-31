@@ -15,7 +15,7 @@ class Api::IssuesController < ApplicationController
 
   def create
     @issue = Issue.new(title: params[:title], description: params[:description])
-    @issue.start_date = Faker::Time.between(2.days.ago, Time.now, :all),
+    @issue.start_date = Time.now,
     @issue.finish_date = Faker::Time.forward(60, :all),
     @issue.save
     @issue.voters = User.all
@@ -32,6 +32,34 @@ class Api::IssuesController < ApplicationController
     @issue = Issue.find(params[:id])
     @issue.destroy
     head :no_content
+  end
+
+
+  def live
+    @issue = Issue.find(params[:issue_id])
+    @participants = @issue.voters.order(id: :asc)
+    @finish_time = @issue.finish_date.utc
+
+    # clear firebase
+    firebase_client.delete("delegates")
+    firebase_client.delete("votes")
+    firebase_client.delete("users")
+
+    if @issue.closed?
+      puts "Issue is closed!"
+    else
+      puts "Issue is open!"
+
+      if logged_in?
+        @current_user_vote = current_user.votes.find_by(issue_id: @issue.id)
+
+        if !@current_user_vote.root?
+          representative_vote = @current_user_vote.parent
+          @representative_id = User.find(representative_vote.user_id).id
+        end
+      end
+
+    end
   end
 
   def vote
@@ -228,33 +256,6 @@ class Api::IssuesController < ApplicationController
       end
     end
 
-  end
-
-  def live
-    @current_issue = Issue.find(params[:id])
-    @participants = @current_issue.voters.order(id: :asc)
-    @finish_time = @current_issue.finish_date.utc
-
-    # clear firebase
-    firebase_client.delete("delegates")
-    firebase_client.delete("votes")
-    firebase_client.delete("users")
-
-    if @current_issue.closed?
-      puts "Issue is closed!"
-    else
-      puts "Issue is open!"
-
-      if logged_in?
-        @current_user_vote = current_user.votes.find_by(issue_id: @current_issue.id)
-
-        if !@current_user_vote.root?
-          representative_vote = @current_user_vote.parent
-          @representative_id = User.find(representative_vote.user_id).id
-        end
-      end
-
-    end
   end
 
   private

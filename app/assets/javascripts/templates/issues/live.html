@@ -1,0 +1,63 @@
+<div id="live-dashboard">
+
+  <div id="issue-{{issue.id}}" class="dashboard{{issue.status}}"> 
+
+    <div class="leaderboard">
+          <h1>{{issue.title}}</h1>
+          <div class="victory">
+            <h2>This issue is closed</h2>
+          </div>
+          <div class="clock"></div>
+
+          <div id="yes-board">
+            <h1>YES: <span id="yes-votes">{{issue.yes_votes}}</span></h1>
+            <h2> (<span id="yes-percentage">{{issue.yes_percentage}}</span>%) </h2>
+
+            <div class="vote-button">
+              <button type="submit" class="vote-button-style" id="yes-button" value="YES" method="POST" action="/issues/{{issue.id}}/vote?value=yes">Vote YES
+              </button>
+              <a href="#" class="abstain-button">Abstain</a>
+
+            </div>
+          </div>
+
+          <div id="no-board">
+            <h1>NO: <span id="no-votes">{{issue.no_votes}}</span></h1>
+            <h2> (<span id="no-percentage">{{issue.no_percentage}}</span>%) </h2>
+
+            <div class="vote-button">
+              <button type="submit" class="vote-button-style" id="no-button" value="NO" method="POST" action="/issues/{{issue.id}}/vote?value=no">Vote NO
+              </button>
+              <a href="#" class="abstain-button">Abstain</a>
+            </div>
+          </div>
+
+          <div id="vs-board">
+            <canvas id="percent-donut"></canvas>
+          </div>
+
+          <div class="count-board">
+            <h3>Total participants: <span id="total-participants">{{issue.participant_count}}</span></h3>
+            <h3>Total votes: <span id="total-votes">{{issue.vote_count}}</span></h3>
+            <h3>Abstain: <span id="abstain">{{issue.abstain_count}}</span></h3>
+          </div>
+    </div>
+
+    <div class="participants" >
+
+    <div class="zone-yes zone">
+        <div class="zone-inner">
+          <!-- Only Render Yes Votes -->
+          <div ng-repeat="participant in participants">
+            {{participant}}
+          </div>
+        </div>
+    </div>
+  </div>
+  <!-- end dashboard div -->
+
+</div>
+
+
+
+
